@@ -16,6 +16,11 @@
 		9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55266220AFC8C0004ACC4 /* AppComponent.swift */; };
 		9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55268220AFCBC0004ACC4 /* RootCoordinator.swift */; };
 		9CC5526B220AFCC30004ACC4 /* RootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5526A220AFCC30004ACC4 /* RootBuilder.swift */; };
+		9CC5526D220AFF370004ACC4 /* DashboardContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5526C220AFF370004ACC4 /* DashboardContract.swift */; };
+		9CC5526F220AFF430004ACC4 /* DashboardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5526E220AFF430004ACC4 /* DashboardBuilder.swift */; };
+		9CC55271220AFF990004ACC4 /* DashboardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55270220AFF990004ACC4 /* DashboardCoordinator.swift */; };
+		9CC55273220AFFA90004ACC4 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55272220AFFA90004ACC4 /* DashboardViewController.swift */; };
+		9CC55275220AFFB40004ACC4 /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55274220AFFB40004ACC4 /* DashboardPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,11 @@
 		9CC55266220AFC8C0004ACC4 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
 		9CC55268220AFCBC0004ACC4 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		9CC5526A220AFCC30004ACC4 /* RootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootBuilder.swift; sourceTree = "<group>"; };
+		9CC5526C220AFF370004ACC4 /* DashboardContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardContract.swift; sourceTree = "<group>"; };
+		9CC5526E220AFF430004ACC4 /* DashboardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardBuilder.swift; sourceTree = "<group>"; };
+		9CC55270220AFF990004ACC4 /* DashboardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCoordinator.swift; sourceTree = "<group>"; };
+		9CC55272220AFFA90004ACC4 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		9CC55274220AFFB40004ACC4 /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				9CC5525B220AFB810004ACC4 /* Dashboard */,
+				9CC5525C220AFBA40004ACC4 /* TimeTable */,
+				9CC5525D220AFBB00004ACC4 /* Profile */,
 				9CC5525A220AFB730004ACC4 /* Root */,
 			);
 			path = Scenes;
@@ -128,8 +140,11 @@
 		9CC5525B220AFB810004ACC4 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				9CC5525C220AFBA40004ACC4 /* TimeTable */,
-				9CC5525D220AFBB00004ACC4 /* Profile */,
+				9CC5526C220AFF370004ACC4 /* DashboardContract.swift */,
+				9CC5526E220AFF430004ACC4 /* DashboardBuilder.swift */,
+				9CC55270220AFF990004ACC4 /* DashboardCoordinator.swift */,
+				9CC55272220AFFA90004ACC4 /* DashboardViewController.swift */,
+				9CC55274220AFFB40004ACC4 /* DashboardPresenter.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -217,14 +232,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CC55275220AFFB40004ACC4 /* DashboardPresenter.swift in Sources */,
+				9CC55271220AFF990004ACC4 /* DashboardCoordinator.swift in Sources */,
 				9CC55261220AFBF80004ACC4 /* Dependency.swift in Sources */,
 				9CC55263220AFC090004ACC4 /* Component.swift in Sources */,
 				9CC5525F220AFBDF0004ACC4 /* Coordinator.swift in Sources */,
 				9CC55244220AF8510004ACC4 /* AppDelegate.swift in Sources */,
 				9CC55265220AFC1C0004ACC4 /* Builder.swift in Sources */,
 				9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */,
+				9CC55273220AFFA90004ACC4 /* DashboardViewController.swift in Sources */,
+				9CC5526F220AFF430004ACC4 /* DashboardBuilder.swift in Sources */,
 				9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */,
 				9CC5526B220AFCC30004ACC4 /* RootBuilder.swift in Sources */,
+				9CC5526D220AFF370004ACC4 /* DashboardContract.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
