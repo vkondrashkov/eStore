@@ -11,9 +11,17 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-
+    private var rootCoordinator: RootCoordinator!
+    
+    // MARK: - Application lifecycle
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // TODO: AppCoordinator
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = window
+
+        let rootCoordinator = RootBuilder(dependency: AppComponent(window: window)).build()
+        self.rootCoordinator = rootCoordinator
+        rootCoordinator.start()
+
         return true
     }
 

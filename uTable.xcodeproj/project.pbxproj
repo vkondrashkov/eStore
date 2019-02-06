@@ -13,6 +13,9 @@
 		9CC55261220AFBF80004ACC4 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55260220AFBF80004ACC4 /* Dependency.swift */; };
 		9CC55263220AFC090004ACC4 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55262220AFC080004ACC4 /* Component.swift */; };
 		9CC55265220AFC1C0004ACC4 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55264220AFC1C0004ACC4 /* Builder.swift */; };
+		9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55266220AFC8C0004ACC4 /* AppComponent.swift */; };
+		9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55268220AFCBC0004ACC4 /* RootCoordinator.swift */; };
+		9CC5526B220AFCC30004ACC4 /* RootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5526A220AFCC30004ACC4 /* RootBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		9CC55260220AFBF80004ACC4 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 		9CC55262220AFC080004ACC4 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		9CC55264220AFC1C0004ACC4 /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
+		9CC55266220AFC8C0004ACC4 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
+		9CC55268220AFCBC0004ACC4 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		9CC5526A220AFCC30004ACC4 /* RootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				9CC55243220AF8510004ACC4 /* AppDelegate.swift */,
+				9CC55266220AFC8C0004ACC4 /* AppComponent.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -112,6 +119,8 @@
 		9CC5525A220AFB730004ACC4 /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				9CC55268220AFCBC0004ACC4 /* RootCoordinator.swift */,
+				9CC5526A220AFCC30004ACC4 /* RootBuilder.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -213,6 +222,9 @@
 				9CC5525F220AFBDF0004ACC4 /* Coordinator.swift in Sources */,
 				9CC55244220AF8510004ACC4 /* AppDelegate.swift in Sources */,
 				9CC55265220AFC1C0004ACC4 /* Builder.swift in Sources */,
+				9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */,
+				9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */,
+				9CC5526B220AFCC30004ACC4 /* RootBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
