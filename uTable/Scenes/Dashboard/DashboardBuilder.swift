@@ -9,11 +9,11 @@
 import UIKit
 
 protocol DashboardDependency: Dependency {
-    var navigation: UINavigationController { get }
+    var navigation: UITabBarController { get }
 }
 
 final class DashboardComponent: Component<DashboardDependency> {
-    var navigation: UINavigationController {
+    var navigation: UITabBarController {
         return dependency.navigation
     }
     // Services

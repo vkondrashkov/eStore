@@ -10,17 +10,17 @@ import UIKit
 
 class RootCoordinator {
     private let window: UIWindow
-    private let navigation: UINavigationController
+    private let navigation: UITabBarController
 
-    // DashboardCoordinator
-    // DashboardBuilder
+    private var dashboardCoordinator: DashboardCoordinator?
+    private let dashboardBuilder: DashboardBuilder
 
-    // TODO: Add Dashboard builder,
-    // component to initializer
     init(window: UIWindow,
-         navigation: UINavigationController) {
+         navigation: UITabBarController,
+         dashboardBuilder: DashboardBuilder) {
         self.window = window
         self.navigation = navigation
+        self.dashboardBuilder = dashboardBuilder
     }
 }
 
@@ -29,7 +29,7 @@ extension RootCoordinator: Coordinator {
     func start() {
         window.rootViewController = navigation
         window.makeKeyAndVisible()
-        // Build DashboardCoordinator
-        // Start DashboardCoordinator
+        dashboardCoordinator = dashboardBuilder.build()
+        dashboardCoordinator?.start()
     }
 }

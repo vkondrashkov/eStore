@@ -21,6 +21,7 @@
 		9CC55271220AFF990004ACC4 /* DashboardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55270220AFF990004ACC4 /* DashboardCoordinator.swift */; };
 		9CC55273220AFFA90004ACC4 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55272220AFFA90004ACC4 /* DashboardViewController.swift */; };
 		9CC55275220AFFB40004ACC4 /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55274220AFFB40004ACC4 /* DashboardPresenter.swift */; };
+		9CC55277220D67BE0004ACC4 /* RootComponent+Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55276220D67BE0004ACC4 /* RootComponent+Dashboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		9CC55270220AFF990004ACC4 /* DashboardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCoordinator.swift; sourceTree = "<group>"; };
 		9CC55272220AFFA90004ACC4 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		9CC55274220AFFB40004ACC4 /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
+		9CC55276220D67BE0004ACC4 /* RootComponent+Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RootComponent+Dashboard.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			children = (
 				9CC55268220AFCBC0004ACC4 /* RootCoordinator.swift */,
 				9CC5526A220AFCC30004ACC4 /* RootBuilder.swift */,
+				9CC55276220D67BE0004ACC4 /* RootComponent+Dashboard.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CC55277220D67BE0004ACC4 /* RootComponent+Dashboard.swift in Sources */,
 				9CC55275220AFFB40004ACC4 /* DashboardPresenter.swift in Sources */,
 				9CC55271220AFF990004ACC4 /* DashboardCoordinator.swift in Sources */,
 				9CC55261220AFBF80004ACC4 /* Dependency.swift in Sources */,

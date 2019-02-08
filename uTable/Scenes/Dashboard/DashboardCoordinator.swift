@@ -9,7 +9,7 @@
 import UIKit
 
 class DashboardCoordinator {
-    private let navigation: UINavigationController
+    private let navigation: UITabBarController
     private let view: DashboardViewController
 
     // TimeTableBuilder
@@ -19,7 +19,7 @@ class DashboardCoordinator {
     // ProfileCoordinator
     // TODO: Add TimeTable and Profile builders to initializer
 
-    init(navigation: UINavigationController,
+    init(navigation: UITabBarController,
          view: DashboardViewController) {
         self.navigation = navigation
         self.view = view
@@ -29,7 +29,17 @@ class DashboardCoordinator {
 // MARK: - Coordinator implementation
 extension DashboardCoordinator: Coordinator {
     func start() {
-        // TODO: start() method implementation
+        let timeTableNavigation = UINavigationController()
+        // Build coordinator
+        timeTableNavigation.view.backgroundColor = .red
+        timeTableNavigation.tabBarItem = UITabBarItem(tabBarSystemItem: .downloads, tag: 0) // Temp
+
+        let profileNavigation = UINavigationController()
+        // Build coordinator
+        profileNavigation.view.backgroundColor = .green
+        profileNavigation.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1) // Temp
+
+        navigation.viewControllers = [timeTableNavigation, profileNavigation]
     }
 }
 

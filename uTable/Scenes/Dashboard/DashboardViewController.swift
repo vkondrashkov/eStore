@@ -11,6 +11,15 @@ import UIKit
 class DashboardViewController: UIViewController {
     var presenter: DashboardPresenter?
 
+    override func loadView() {
+        view = UIView()
+        view.backgroundColor = .red
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        presenter?.viewDidLoad()
+    }
 }
 
 // MARK: - DashboardView implementation

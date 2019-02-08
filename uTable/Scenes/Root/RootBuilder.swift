@@ -13,14 +13,14 @@ protocol RootDependency: Dependency {
 }
 
 class RootComponent: Component<RootDependency> {
-    let rootViewController: UINavigationController
+    let rootViewController: UITabBarController
 
     var window: UIWindow {
         return dependency.window
     }
 
     init(dependency: RootDependency,
-         rootViewController: UINavigationController) {
+         rootViewController: UITabBarController) {
         self.rootViewController = rootViewController
         super.init(dependency: dependency)
     }
@@ -32,16 +32,16 @@ protocol RootBuildable {
 
 class RootBuilder: Builder<RootDependency>, RootBuildable {
     func build() -> RootCoordinator {
-        let rootViewController = UINavigationController()
+        let rootViewController = UITabBarController()
         let component = RootComponent(
             dependency: dependency,
             rootViewController: rootViewController
         )
-        // DashboardBuilder
-        // TODO: Add builders to Coordinator initializer
+        let dashboardBuilder = DashboardBuilder(dependency: component)
         let coordinator = RootCoordinator(
             window: component.window,
-            navigation: component.rootViewController
+            navigation: component.rootViewController,
+            dashboardBuilder: dashboardBuilder
         )
         return coordinator
     }
