@@ -10,8 +10,8 @@ final class RootCoordinator {
     private let scene: RootScene
     private let show: RootShow
 
-    // Auth builder
-    // Auth coordinator
+    private let authBuilder: AuthBuilder
+    private weak var authCoordinator: AuthCoordinator?
 
     private let dashboardBuilder: DashboardBuilder
     private weak var dashboardCoordinator: DashboardCoordinator?
@@ -19,10 +19,12 @@ final class RootCoordinator {
     // TODO: Add builders to init
     init(scene: RootScene,
          show: RootShow,
-         dashboardBuilder: DashboardBuilder) {
+         dashboardBuilder: DashboardBuilder,
+         authBuilder: AuthBuilder) {
         self.scene = scene
         self.show = show
         self.dashboardBuilder = dashboardBuilder
+        self.authBuilder = authBuilder
     }
 }
 
@@ -39,10 +41,23 @@ extension RootCoordinator: Coordinator {
 
 // MARK: - RootRouter implementation
 extension RootCoordinator: RootRouter {
-    func showAuth() { }
+    func showAuth() {
+        authCoordinator = authBuilder.build(with: self)
+        authCoordinator?.start()
+    }
 
     func showDashboard() {
         dashboardCoordinator = dashboardBuilder.build()
         dashboardCoordinator?.start()
+    }
+}
+
+// MARK: AuthListener implementation
+extension RootCoordinator: AuthListener {
+    func authenticate() {
+        authCoordinator?.stop(completion: { [weak self] in
+            self?.authCoordinator = nil
+        })
+        showDashboard()
     }
 }

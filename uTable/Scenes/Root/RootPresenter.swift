@@ -20,7 +20,6 @@ final class RootPresenterImpl {
 // MARK: - RootPresenter implementation
 extension RootPresenterImpl: RootPresenter {
     func handleViewAppear() {
-        // Route to Auth flow
-        router.showDashboard() // Temp
+        router.showAuth()
     }
 }

@@ -22,11 +22,12 @@ extension RootBuilderImpl: RootBuilder {
         let view = RootViewImpl()
         let component = RootComponent(rootViewController: view)
         let scene = RootSceneImpl(window: dependency.parent)
-//        let signInBuilder = SignInBuilderImpl(dependency: component)
+        let authBuilder = AuthBuilderImpl(dependency: component)
         let dashboardBuilder = DashboardBuilderImpl(dependency: component)
         let coordinator = RootCoordinator(scene: scene,
                                           show: view,
-                                          dashboardBuilder: dashboardBuilder)
+                                          dashboardBuilder: dashboardBuilder,
+                                          authBuilder: authBuilder)
         let presenter = RootPresenterImpl(view: view,
                                           router: coordinator)
         view.presenter = presenter
