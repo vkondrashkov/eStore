@@ -32,5 +32,5 @@ protocol RootRouter: AnyObject {
 protocol RootView: AnyObject { }
 
 protocol RootPresenter: AnyObject {
-    func handleLoadView()
+    func handleViewAppear()
 }

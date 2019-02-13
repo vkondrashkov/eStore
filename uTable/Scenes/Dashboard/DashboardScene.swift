@@ -1,5 +1,5 @@
 //
-//  RootComponent.swift
+//  DashboardScene.swift
 //  uTable
 //
 //  Created by Vladislav Kondrashkov on 2/13/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class RootComponent {
+final class DashboardSceneImpl {
     let rootViewController: UINavigationController
 
     init(rootViewController: UINavigationController) {
@@ -16,9 +16,9 @@ final class RootComponent {
     }
 }
 
-// MARK: - DashboardDependency implementation
-extension RootComponent: DashboardDependency {
-    var parent: UINavigationController {
-        return rootViewController
+// MARK: - DashboardScene implementation
+extension DashboardSceneImpl: DashboardScene {
+    func play(dashboardShow: DashboardShow) {
+        rootViewController.viewControllers = [dashboardShow.tabController]
     }
 }

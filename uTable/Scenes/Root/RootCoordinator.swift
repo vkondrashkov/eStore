@@ -13,14 +13,16 @@ final class RootCoordinator {
     // Auth builder
     // Auth coordinator
 
-    // Dashboard builder
-    // Dashboard coordinator
+    private let dashboardBuilder: DashboardBuilder
+    private weak var dashboardCoordinator: DashboardCoordinator?
 
     // TODO: Add builders to init
     init(scene: RootScene,
-         show: RootShow) {
+         show: RootShow,
+         dashboardBuilder: DashboardBuilder) {
         self.scene = scene
         self.show = show
+        self.dashboardBuilder = dashboardBuilder
     }
 }
 
@@ -39,5 +41,8 @@ extension RootCoordinator: Coordinator {
 extension RootCoordinator: RootRouter {
     func showAuth() { }
 
-    func showDashboard() { }
+    func showDashboard() {
+        dashboardCoordinator = dashboardBuilder.build()
+        dashboardCoordinator?.start()
+    }
 }

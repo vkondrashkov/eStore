@@ -8,17 +8,15 @@
 
 import UIKit
 
-final class RootViewImpl: UIViewController {
+final class RootViewImpl: UINavigationController {
     var presenter: RootPresenter!
-
-    override func loadView() {
-        view = UIView()
-        view.backgroundColor = .purple // Temp
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.handleLoadView()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        presenter.handleViewAppear()
     }
 }
 
