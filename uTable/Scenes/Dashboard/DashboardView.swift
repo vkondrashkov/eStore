@@ -34,10 +34,10 @@ final class DashboardViewImpl: UITabBarController {
     }
 }
 
-// MARK: - RootView implementation
+// MARK: - DashboardView implementation
 extension DashboardViewImpl: DashboardView { }
 
-// MARK: - RootShow implementation
+// MARK: - DashboardShow implementation
 extension DashboardViewImpl: DashboardShow {
     var tabController: UITabBarController {
         return self

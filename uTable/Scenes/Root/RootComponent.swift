@@ -9,16 +9,17 @@
 import UIKit
 
 final class RootComponent {
-    let rootViewController: UINavigationController
+    let rootViewController: UIViewController
 
-    init(rootViewController: UINavigationController) {
+    init(rootViewController: UIViewController) {
         self.rootViewController = rootViewController
     }
 }
 
 // MARK: - DashboardDependency implementation
-extension RootComponent: DashboardDependency {
-    var parent: UINavigationController {
+// MARK: - AuthDependency implementation
+extension RootComponent: DashboardDependency, AuthDependency {
+    var parent: UIViewController {
         return rootViewController
     }
 }

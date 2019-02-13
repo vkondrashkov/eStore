@@ -20,6 +20,13 @@
 		9CC46BA222141088005E24F5 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46BA122141088005E24F5 /* DashboardView.swift */; };
 		9CC46BA422141090005E24F5 /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46BA322141090005E24F5 /* DashboardPresenter.swift */; };
 		9CC46BB02214719D005E24F5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46BAF2214719D005E24F5 /* Coordinator.swift */; };
+		9CC46BB32214C3AD005E24F5 /* AuthContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46BB22214C3AD005E24F5 /* AuthContract.swift */; };
+		9CC46BB52214C3B7005E24F5 /* AuthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46BB42214C3B7005E24F5 /* AuthComponent.swift */; };
+		9CC46BB72214C3FC005E24F5 /* AuthBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46BB62214C3FC005E24F5 /* AuthBuilder.swift */; };
+		9CC46BB92214C409005E24F5 /* AuthScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46BB82214C409005E24F5 /* AuthScene.swift */; };
+		9CC46BBB2214C412005E24F5 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46BBA2214C412005E24F5 /* AuthCoordinator.swift */; };
+		9CC46BBD2214C41B005E24F5 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46BBC2214C41B005E24F5 /* AuthView.swift */; };
+		9CC46BBF2214C425005E24F5 /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46BBE2214C425005E24F5 /* AuthPresenter.swift */; };
 		9CC55244220AF8510004ACC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55243220AF8510004ACC4 /* AppDelegate.swift */; };
 		9CC5524B220AF8520004ACC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CC5524A220AF8520004ACC4 /* Assets.xcassets */; };
 		9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55266220AFC8C0004ACC4 /* AppComponent.swift */; };
@@ -41,6 +48,13 @@
 		9CC46BA122141088005E24F5 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		9CC46BA322141090005E24F5 /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
 		9CC46BAF2214719D005E24F5 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		9CC46BB22214C3AD005E24F5 /* AuthContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthContract.swift; sourceTree = "<group>"; };
+		9CC46BB42214C3B7005E24F5 /* AuthComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthComponent.swift; sourceTree = "<group>"; };
+		9CC46BB62214C3FC005E24F5 /* AuthBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBuilder.swift; sourceTree = "<group>"; };
+		9CC46BB82214C409005E24F5 /* AuthScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthScene.swift; sourceTree = "<group>"; };
+		9CC46BBA2214C412005E24F5 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		9CC46BBC2214C41B005E24F5 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		9CC46BBE2214C425005E24F5 /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
 		9CC55240220AF8510004ACC4 /* uTable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uTable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC55243220AF8510004ACC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CC5524A220AF8520004ACC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,6 +81,20 @@
 				9CC46BAF2214719D005E24F5 /* Coordinator.swift */,
 			);
 			path = Module;
+			sourceTree = "<group>";
+		};
+		9CC46BB12214C393005E24F5 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				9CC46BB22214C3AD005E24F5 /* AuthContract.swift */,
+				9CC46BB42214C3B7005E24F5 /* AuthComponent.swift */,
+				9CC46BB62214C3FC005E24F5 /* AuthBuilder.swift */,
+				9CC46BB82214C409005E24F5 /* AuthScene.swift */,
+				9CC46BBA2214C412005E24F5 /* AuthCoordinator.swift */,
+				9CC46BBC2214C41B005E24F5 /* AuthView.swift */,
+				9CC46BBE2214C425005E24F5 /* AuthPresenter.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		9CC55237220AF8510004ACC4 = {
@@ -109,6 +137,7 @@
 		9CC55256220AF8B50004ACC4 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				9CC46BB12214C393005E24F5 /* Auth */,
 				9CC5525B220AFB810004ACC4 /* Dashboard */,
 				9CC5525D220AFBB00004ACC4 /* Profile */,
 				9CC5525A220AFB730004ACC4 /* Root */,
@@ -237,21 +266,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CC46B87221405B1005E24F5 /* RootContract.swift in Sources */,
+				9CC46BB72214C3FC005E24F5 /* AuthBuilder.swift in Sources */,
 				9CC46BA222141088005E24F5 /* DashboardView.swift in Sources */,
 				9CC46BA422141090005E24F5 /* DashboardPresenter.swift in Sources */,
+				9CC46BB32214C3AD005E24F5 /* AuthContract.swift in Sources */,
 				9CC46BA02214107A005E24F5 /* DashboardCoordinator.swift in Sources */,
+				9CC46BBD2214C41B005E24F5 /* AuthView.swift in Sources */,
+				9CC46BBB2214C412005E24F5 /* AuthCoordinator.swift in Sources */,
 				9CC46B9E22141072005E24F5 /* DashboardScene.swift in Sources */,
 				9CC55244220AF8510004ACC4 /* AppDelegate.swift in Sources */,
 				9CC46B9A22141061005E24F5 /* DashboardComponent.swift in Sources */,
+				9CC46BB92214C409005E24F5 /* AuthScene.swift in Sources */,
 				9CC46B89221405C6005E24F5 /* RootComponent.swift in Sources */,
 				9CC46B9822141058005E24F5 /* DashboardContract.swift in Sources */,
 				9CC46B9C2214106B005E24F5 /* DashboardBuilder.swift in Sources */,
 				9CC46BB02214719D005E24F5 /* Coordinator.swift in Sources */,
+				9CC46BBF2214C425005E24F5 /* AuthPresenter.swift in Sources */,
 				9CC46B8F22140617005E24F5 /* RootView.swift in Sources */,
 				9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */,
 				9CC46B9122140623005E24F5 /* RootPresenter.swift in Sources */,
 				9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */,
 				9CC5526B220AFCC30004ACC4 /* RootBuilder.swift in Sources */,
+				9CC46BB52214C3B7005E24F5 /* AuthComponent.swift in Sources */,
 				9CC46B8B221405DF005E24F5 /* RootScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

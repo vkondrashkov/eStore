@@ -9,7 +9,7 @@
 import UIKit
 
 protocol DashboardDependency: AnyObject {
-    var parent: UINavigationController { get }
+    var parent: UIViewController { get }
 }
 
 protocol DashboardBuilder: AnyObject {
@@ -25,6 +25,10 @@ protocol DashboardShow: AnyObject {
 }
 
 protocol DashboardRouter: AnyObject { }
+
+protocol DashboardListener {
+    func logout() // TODO: Make method more functional
+}
 
 protocol DashboardView: AnyObject { }
 

@@ -17,7 +17,7 @@ final class DashboardPresenterImpl {
     }
 }
 
-// MARK: - RootPresenter implementation
+// MARK: - DashboardPresenter implementation
 extension DashboardPresenterImpl: DashboardPresenter {
     func handleLoadView() { }
 }

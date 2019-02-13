@@ -16,7 +16,7 @@ final class DashboardBuilderImpl {
     }
 }
 
-// MARK: - RootBuilder implementation
+// MARK: - DashboardBuilder implementation
 extension DashboardBuilderImpl: DashboardBuilder {
     func build() -> DashboardCoordinator {
         let view = DashboardViewImpl()

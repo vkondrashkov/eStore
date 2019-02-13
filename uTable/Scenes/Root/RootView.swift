@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class RootViewImpl: UINavigationController {
+final class RootViewImpl: UIViewController {
     var presenter: RootPresenter!
 
     override func viewDidLoad() {

@@ -9,9 +9,9 @@
 import UIKit
 
 final class DashboardSceneImpl {
-    let rootViewController: UINavigationController
+    let rootViewController: UIViewController
 
-    init(rootViewController: UINavigationController) {
+    init(rootViewController: UIViewController) {
         self.rootViewController = rootViewController
     }
 }
@@ -19,6 +19,6 @@ final class DashboardSceneImpl {
 // MARK: - DashboardScene implementation
 extension DashboardSceneImpl: DashboardScene {
     func play(dashboardShow: DashboardShow) {
-        rootViewController.viewControllers = [dashboardShow.tabController]
+        rootViewController.present(dashboardShow.tabController, animated: false, completion: nil)
     }
 }
