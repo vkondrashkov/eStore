@@ -10,4 +10,5 @@ import Foundation
 
 protocol Coordinator: AnyObject {
     func start()
+    func stop(completion: (() -> Void)?)
 }

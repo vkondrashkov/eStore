@@ -6,30 +6,38 @@
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
 //
 
-import UIKit
+final class RootCoordinator {
+    private let scene: RootScene
+    private let show: RootShow
 
-class RootCoordinator {
-    private let window: UIWindow
-    private let navigation: UITabBarController
+    // Auth builder
+    // Auth coordinator
 
-    private var dashboardCoordinator: DashboardCoordinator?
-    private let dashboardBuilder: DashboardBuilder
+    // Dashboard builder
+    // Dashboard coordinator
 
-    init(window: UIWindow,
-         navigation: UITabBarController,
-         dashboardBuilder: DashboardBuilder) {
-        self.window = window
-        self.navigation = navigation
-        self.dashboardBuilder = dashboardBuilder
+    // TODO: Add builders to init
+    init(scene: RootScene,
+         show: RootShow) {
+        self.scene = scene
+        self.show = show
     }
 }
 
 // MARK: - Coordinator implementation
 extension RootCoordinator: Coordinator {
     func start() {
-        window.rootViewController = navigation
-        window.makeKeyAndVisible()
-        dashboardCoordinator = dashboardBuilder.build()
-        dashboardCoordinator?.start()
+        scene.play(rootShow: show)
     }
+
+    func stop(completion: (() -> Void)?) {
+        completion?()
+    }
+}
+
+// MARK: - RootRouter implementation
+extension RootCoordinator: RootRouter {
+    func showAuth() { }
+
+    func showDashboard() { }
 }

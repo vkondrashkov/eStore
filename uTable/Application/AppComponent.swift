@@ -8,13 +8,17 @@
 
 import UIKit
 
-class AppComponent: Component<EmptyDependency> {
+final class AppComponent {
     let window: UIWindow
 
     init(window: UIWindow) {
         self.window = window
-        super.init(dependency: EmptyComponent())
     }
 }
 
-extension AppComponent: RootDependency { }
+// MARK: - RootDependency implementation
+extension AppComponent: RootDependency {
+    var parent: UIWindow {
+        return window
+    }
+}

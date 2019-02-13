@@ -10,17 +10,17 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var window: UIWindow?
     private var rootCoordinator: RootCoordinator!
     
     // MARK: - Application lifecycle
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
-        self.window = window
+        let component = AppComponent(window: window)
+        let builder = RootBuilderImpl(dependency: component)
 
-        let rootCoordinator = RootBuilder(dependency: AppComponent(window: window)).build()
-        self.rootCoordinator = rootCoordinator
-        rootCoordinator.start()
+        rootCoordinator = builder.build()
+        rootCoordinator?.start()
 
         return true
     }

@@ -8,41 +8,26 @@
 
 import UIKit
 
-protocol RootDependency: Dependency {
-    var window: UIWindow { get }
-}
+final class RootBuilderImpl {
+    private let dependency: RootDependency
 
-class RootComponent: Component<RootDependency> {
-    let rootViewController: UITabBarController
-
-    var window: UIWindow {
-        return dependency.window
-    }
-
-    init(dependency: RootDependency,
-         rootViewController: UITabBarController) {
-        self.rootViewController = rootViewController
-        super.init(dependency: dependency)
+    init(dependency: RootDependency) {
+        self.dependency = dependency
     }
 }
 
-protocol RootBuildable {
-    func build() -> RootCoordinator
-}
-
-class RootBuilder: Builder<RootDependency>, RootBuildable {
+// MARK: - RootBuilder implementation
+extension RootBuilderImpl: RootBuilder {
     func build() -> RootCoordinator {
-        let rootViewController = UITabBarController()
-        let component = RootComponent(
-            dependency: dependency,
-            rootViewController: rootViewController
-        )
-        let dashboardBuilder = DashboardBuilder(dependency: component)
-        let coordinator = RootCoordinator(
-            window: component.window,
-            navigation: component.rootViewController,
-            dashboardBuilder: dashboardBuilder
-        )
+        let view = RootViewImpl()
+        let component = RootComponent(rootViewController: view)
+        let scene = RootSceneImpl(window: dependency.parent)
+//        let signInBuilder = SignInBuilderImpl(dependency: component)
+        let coordinator = RootCoordinator(scene: scene,
+                                          show: view)
+        let presenter = RootPresenterImpl(view: view,
+                                          router: coordinator)
+        view.presenter = presenter
         return coordinator
     }
 }

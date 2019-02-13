@@ -7,41 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9CC46B87221405B1005E24F5 /* RootContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46B86221405B1005E24F5 /* RootContract.swift */; };
+		9CC46B89221405C6005E24F5 /* RootComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46B88221405C6005E24F5 /* RootComponent.swift */; };
+		9CC46B8B221405DF005E24F5 /* RootScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46B8A221405DF005E24F5 /* RootScene.swift */; };
+		9CC46B8F22140617005E24F5 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46B8E22140617005E24F5 /* RootView.swift */; };
+		9CC46B9122140623005E24F5 /* RootPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46B9022140623005E24F5 /* RootPresenter.swift */; };
+		9CC46B9622140E15005E24F5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46B9522140E15005E24F5 /* Coordinator.swift */; };
 		9CC55244220AF8510004ACC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55243220AF8510004ACC4 /* AppDelegate.swift */; };
 		9CC5524B220AF8520004ACC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CC5524A220AF8520004ACC4 /* Assets.xcassets */; };
-		9CC5525F220AFBDF0004ACC4 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5525E220AFBDF0004ACC4 /* Coordinator.swift */; };
-		9CC55261220AFBF80004ACC4 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55260220AFBF80004ACC4 /* Dependency.swift */; };
-		9CC55263220AFC090004ACC4 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55262220AFC080004ACC4 /* Component.swift */; };
-		9CC55265220AFC1C0004ACC4 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55264220AFC1C0004ACC4 /* Builder.swift */; };
 		9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55266220AFC8C0004ACC4 /* AppComponent.swift */; };
 		9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55268220AFCBC0004ACC4 /* RootCoordinator.swift */; };
 		9CC5526B220AFCC30004ACC4 /* RootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5526A220AFCC30004ACC4 /* RootBuilder.swift */; };
-		9CC5526D220AFF370004ACC4 /* DashboardContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5526C220AFF370004ACC4 /* DashboardContract.swift */; };
-		9CC5526F220AFF430004ACC4 /* DashboardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5526E220AFF430004ACC4 /* DashboardBuilder.swift */; };
-		9CC55271220AFF990004ACC4 /* DashboardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55270220AFF990004ACC4 /* DashboardCoordinator.swift */; };
-		9CC55273220AFFA90004ACC4 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55272220AFFA90004ACC4 /* DashboardViewController.swift */; };
-		9CC55275220AFFB40004ACC4 /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55274220AFFB40004ACC4 /* DashboardPresenter.swift */; };
-		9CC55277220D67BE0004ACC4 /* RootComponent+Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55276220D67BE0004ACC4 /* RootComponent+Dashboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9CC46B86221405B1005E24F5 /* RootContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootContract.swift; sourceTree = "<group>"; };
+		9CC46B88221405C6005E24F5 /* RootComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootComponent.swift; sourceTree = "<group>"; };
+		9CC46B8A221405DF005E24F5 /* RootScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootScene.swift; sourceTree = "<group>"; };
+		9CC46B8E22140617005E24F5 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		9CC46B9022140623005E24F5 /* RootPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresenter.swift; sourceTree = "<group>"; };
+		9CC46B9522140E15005E24F5 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Coordinator.swift; path = uTable/Core/Module/Coordinator.swift; sourceTree = SOURCE_ROOT; };
 		9CC55240220AF8510004ACC4 /* uTable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uTable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC55243220AF8510004ACC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CC5524A220AF8520004ACC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CC5524F220AF8520004ACC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9CC5525E220AFBDF0004ACC4 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		9CC55260220AFBF80004ACC4 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
-		9CC55262220AFC080004ACC4 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
-		9CC55264220AFC1C0004ACC4 /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		9CC55266220AFC8C0004ACC4 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
 		9CC55268220AFCBC0004ACC4 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		9CC5526A220AFCC30004ACC4 /* RootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootBuilder.swift; sourceTree = "<group>"; };
-		9CC5526C220AFF370004ACC4 /* DashboardContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardContract.swift; sourceTree = "<group>"; };
-		9CC5526E220AFF430004ACC4 /* DashboardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardBuilder.swift; sourceTree = "<group>"; };
-		9CC55270220AFF990004ACC4 /* DashboardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCoordinator.swift; sourceTree = "<group>"; };
-		9CC55272220AFFA90004ACC4 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
-		9CC55274220AFFB40004ACC4 /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
-		9CC55276220D67BE0004ACC4 /* RootComponent+Dashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RootComponent+Dashboard.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +47,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9CC46B9422140E01005E24F5 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				9CC46B9522140E15005E24F5 /* Coordinator.swift */,
+			);
+			name = Module;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		9CC55237220AF8510004ACC4 = {
 			isa = PBXGroup;
 			children = (
@@ -96,7 +97,6 @@
 			isa = PBXGroup;
 			children = (
 				9CC5525B220AFB810004ACC4 /* Dashboard */,
-				9CC5525C220AFBA40004ACC4 /* TimeTable */,
 				9CC5525D220AFBB00004ACC4 /* Profile */,
 				9CC5525A220AFB730004ACC4 /* Root */,
 			);
@@ -106,21 +106,10 @@
 		9CC55257220AF8CA0004ACC4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				9CC55258220AF9300004ACC4 /* Module */,
+				9CC46B9422140E01005E24F5 /* Module */,
 				9CC55259220AF93A0004ACC4 /* Services */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		9CC55258220AF9300004ACC4 /* Module */ = {
-			isa = PBXGroup;
-			children = (
-				9CC5525E220AFBDF0004ACC4 /* Coordinator.swift */,
-				9CC55260220AFBF80004ACC4 /* Dependency.swift */,
-				9CC55262220AFC080004ACC4 /* Component.swift */,
-				9CC55264220AFC1C0004ACC4 /* Builder.swift */,
-			);
-			path = Module;
 			sourceTree = "<group>";
 		};
 		9CC55259220AF93A0004ACC4 /* Services */ = {
@@ -133,9 +122,13 @@
 		9CC5525A220AFB730004ACC4 /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				9CC55268220AFCBC0004ACC4 /* RootCoordinator.swift */,
+				9CC46B86221405B1005E24F5 /* RootContract.swift */,
+				9CC46B88221405C6005E24F5 /* RootComponent.swift */,
 				9CC5526A220AFCC30004ACC4 /* RootBuilder.swift */,
-				9CC55276220D67BE0004ACC4 /* RootComponent+Dashboard.swift */,
+				9CC46B8A221405DF005E24F5 /* RootScene.swift */,
+				9CC55268220AFCBC0004ACC4 /* RootCoordinator.swift */,
+				9CC46B8E22140617005E24F5 /* RootView.swift */,
+				9CC46B9022140623005E24F5 /* RootPresenter.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -143,20 +136,8 @@
 		9CC5525B220AFB810004ACC4 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				9CC5526C220AFF370004ACC4 /* DashboardContract.swift */,
-				9CC5526E220AFF430004ACC4 /* DashboardBuilder.swift */,
-				9CC55270220AFF990004ACC4 /* DashboardCoordinator.swift */,
-				9CC55272220AFFA90004ACC4 /* DashboardViewController.swift */,
-				9CC55274220AFFB40004ACC4 /* DashboardPresenter.swift */,
 			);
 			path = Dashboard;
-			sourceTree = "<group>";
-		};
-		9CC5525C220AFBA40004ACC4 /* TimeTable */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TimeTable;
 			sourceTree = "<group>";
 		};
 		9CC5525D220AFBB00004ACC4 /* Profile */ = {
@@ -235,20 +216,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CC55277220D67BE0004ACC4 /* RootComponent+Dashboard.swift in Sources */,
-				9CC55275220AFFB40004ACC4 /* DashboardPresenter.swift in Sources */,
-				9CC55271220AFF990004ACC4 /* DashboardCoordinator.swift in Sources */,
-				9CC55261220AFBF80004ACC4 /* Dependency.swift in Sources */,
-				9CC55263220AFC090004ACC4 /* Component.swift in Sources */,
-				9CC5525F220AFBDF0004ACC4 /* Coordinator.swift in Sources */,
+				9CC46B87221405B1005E24F5 /* RootContract.swift in Sources */,
 				9CC55244220AF8510004ACC4 /* AppDelegate.swift in Sources */,
-				9CC55265220AFC1C0004ACC4 /* Builder.swift in Sources */,
+				9CC46B9622140E15005E24F5 /* Coordinator.swift in Sources */,
+				9CC46B89221405C6005E24F5 /* RootComponent.swift in Sources */,
+				9CC46B8F22140617005E24F5 /* RootView.swift in Sources */,
 				9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */,
-				9CC55273220AFFA90004ACC4 /* DashboardViewController.swift in Sources */,
-				9CC5526F220AFF430004ACC4 /* DashboardBuilder.swift in Sources */,
+				9CC46B9122140623005E24F5 /* RootPresenter.swift in Sources */,
 				9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */,
 				9CC5526B220AFCC30004ACC4 /* RootBuilder.swift in Sources */,
-				9CC5526D220AFF370004ACC4 /* DashboardContract.swift in Sources */,
+				9CC46B8B221405DF005E24F5 /* RootScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
