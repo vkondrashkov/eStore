@@ -10,10 +10,15 @@ final class AuthCoordinator {
     private let scene: AuthScene
     private let show: AuthShow
 
+    private let signUpBuilder: SignUpBuilder
+    private weak var signUpCoordinator: SignUpCoordinator?
+
     init(scene: AuthScene,
-         show: AuthShow) {
+         show: AuthShow,
+         signUpBuilder: SignUpBuilder) {
         self.scene = scene
         self.show = show
+        self.signUpBuilder = signUpBuilder
     }
 }
 
@@ -31,7 +36,8 @@ extension AuthCoordinator: Coordinator {
 // MARK: - AuthRouter implementation
 extension AuthCoordinator: AuthRouter {
     func showSignUp() {
-        // TODO:
+        signUpCoordinator = signUpBuilder.build()
+        signUpCoordinator?.start()
     }
 
     func showSignIn() {

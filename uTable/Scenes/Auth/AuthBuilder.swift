@@ -22,10 +22,11 @@ extension AuthBuilderImpl: AuthBuilder {
         let view = AuthViewImpl()
         let component = AuthComponent(rootViewController: view)
         let scene = AuthSceneImpl(rootViewController: dependency.parent)
-        // SignUpBuilder
+        let signUpBuilder = SignUpBuilderImpl(dependency: component)
         // SignInBuilder
         let coordinator = AuthCoordinator(scene: scene,
-                                          show: view)
+                                          show: view,
+                                          signUpBuilder: signUpBuilder)
         let presenter = AuthPresenterImpl(view: view,
                                           router: coordinator)
         view.presenter = presenter

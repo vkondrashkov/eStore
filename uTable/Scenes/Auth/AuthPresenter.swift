@@ -21,6 +21,7 @@ final class AuthPresenterImpl {
 extension AuthPresenterImpl: AuthPresenter {
     func handleViewAppear() {
         view.display(rightButton: "Sign In") // Temp
+        router.showSignUp()
     }
 
     func rightBarButtonDidPressed() {
