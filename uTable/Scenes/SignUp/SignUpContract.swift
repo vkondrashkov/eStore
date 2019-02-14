@@ -30,8 +30,11 @@ protocol SignUpListener: AnyObject {
 }
 
 protocol SignUpView: AnyObject {
-    // TODO: Think over display(_:) methods
     func display(rightBarButton: String)
+    func display(emailCaption: String)
+    func display(passwordCaption: String)
+    func display(confirmPasswordCaption: String)
+    func display(signUpButton: String)
 }
 
 protocol SignUpPresenter: AnyObject {

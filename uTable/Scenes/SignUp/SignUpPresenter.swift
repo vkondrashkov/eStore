@@ -21,6 +21,10 @@ final class SignUpPresenterImpl {
 extension SignUpPresenterImpl: SignUpPresenter {
     func shouldViewAppear() {
         view.display(rightBarButton: "Sign In")
+        view.display(emailCaption: "Email:")
+        view.display(passwordCaption: "Password:")
+        view.display(confirmPasswordCaption: "Confirm password:")
+        view.display(signUpButton: "Sign Up")
     }
 
     func rightBarButtonDidPressed() {
