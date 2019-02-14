@@ -18,14 +18,14 @@ final class SignUpBuilderImpl {
 
 // MARK: - SignUpBuilder implementation
 extension SignUpBuilderImpl: SignUpBuilder {
-    func build() -> SignUpCoordinator {
+    func build(with listener: SignUpListener) -> SignUpCoordinator {
         let view = SignUpViewImpl()
         let component = SignUpComponent(rootViewController: view)
         let scene = SignUpSceneImpl(navViewController: dependency.parent)
         let coordinator = SignUpCoordinator(scene: scene,
                                             show: view)
         let presenter = SignUpPresenterImpl(view: view,
-                                            router: coordinator)
+                                            listener: listener)
         view.presenter = presenter
         return coordinator
     }

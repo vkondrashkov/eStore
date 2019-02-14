@@ -11,16 +11,31 @@ import UIKit
 final class SignUpViewImpl: UIViewController {
     var presenter: SignUpPresenter!
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        presenter.handleViewAppear()
+    override func loadView() {
+        super.loadView()
+        view.backgroundColor = .white
+    }
 
-        view.backgroundColor = .yellow // Debug only
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.shouldViewAppear()
+    }
+
+    @objc func rightBarButtonDidPressed() {
+        presenter.rightBarButtonDidPressed()
     }
 }
 
 // MARK: - SignUpView implementation
-extension SignUpViewImpl: SignUpView { }
+extension SignUpViewImpl: SignUpView {
+    func display(rightBarButton: String) {
+        let rightBarButtonItem = UIBarButtonItem(title: rightBarButton,
+                                                 style: .plain,
+                                                 target: self,
+                                                 action: #selector(rightBarButtonDidPressed))
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+    }
+}
 
 // MARK: - SignUpShow implementation
 extension SignUpViewImpl: SignUpShow {

@@ -8,16 +8,22 @@
 
 final class SignUpPresenterImpl {
     private unowned let view: SignUpView
-    private let router: SignUpRouter
+    private unowned let listener: SignUpListener
 
     init(view: SignUpView,
-         router: SignUpRouter) {
+         listener: SignUpListener) {
         self.view = view
-        self.router = router
+        self.listener = listener
     }
 }
 
 // MARK: - AuthPresenter implementation
 extension SignUpPresenterImpl: SignUpPresenter {
-    func handleViewAppear() { }
+    func shouldViewAppear() {
+        view.display(rightBarButton: "Sign In")
+    }
+
+    func rightBarButtonDidPressed() {
+        listener.showSignIn()
+    }
 }

@@ -11,30 +11,19 @@ import UIKit
 final class AuthViewImpl: UINavigationController {
     var presenter: AuthPresenter!
 
+    override func loadView() {
+        super.loadView()
+        view.backgroundColor = .white
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         presenter.handleViewAppear()
-
-        view.backgroundColor = .purple // Debug only
-    }
-
-    @objc func rightBarButtonDidPressed() {
-        presenter.rightBarButtonDidPressed()
     }
 }
 
 // MARK: - AuthView implementation
-extension AuthViewImpl: AuthView {
-    func display(rightButton: String) {
-        let rightBarButton = UIBarButtonItem(
-            title: rightButton,
-            style: .plain,
-            target: self,
-            action: #selector(rightBarButtonDidPressed)
-        )
-        navigationItem.rightBarButtonItem = rightBarButton
-    }
-}
+extension AuthViewImpl: AuthView { }
 
 // MARK: - AuthShow implementation
 extension AuthViewImpl: AuthShow {

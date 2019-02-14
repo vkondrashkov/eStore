@@ -21,6 +21,11 @@ final class DashboardViewImpl: UITabBarController {
         ]
     }
 
+    override func loadView() {
+        super.loadView()
+        view.backgroundColor = .white
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         feedNavigation = UINavigationController()
@@ -35,8 +40,6 @@ final class DashboardViewImpl: UITabBarController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         presenter.handleViewAppear()
-
-        view.backgroundColor = .blue // Debug only
     }
 }
 

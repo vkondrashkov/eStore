@@ -25,19 +25,16 @@ protocol AuthShow: AnyObject {
 }
 
 protocol AuthRouter: AnyObject {
-    func showSignUp()
-    func showSignIn()
+    func routeSignUp()
+    func routeSignIn()
 }
 
 protocol AuthListener {
     func authenticate() // TODO: Make method more functional
 }
 
-protocol AuthView: AnyObject {
-    func display(rightButton: String)
-}
+protocol AuthView: AnyObject { }
 
 protocol AuthPresenter: AnyObject {
     func handleViewAppear()
-    func rightBarButtonDidPressed()
 }

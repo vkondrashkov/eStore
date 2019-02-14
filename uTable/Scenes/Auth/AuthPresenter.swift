@@ -20,11 +20,6 @@ final class AuthPresenterImpl {
 // MARK: - AuthPresenter implementation
 extension AuthPresenterImpl: AuthPresenter {
     func handleViewAppear() {
-        view.display(rightButton: "Sign In") // Temp
-        router.showSignUp()
-    }
-
-    func rightBarButtonDidPressed() {
-        view.display(rightButton: "Sign Up") // Temp
+        router.routeSignUp()
     }
 }

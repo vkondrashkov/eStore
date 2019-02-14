@@ -27,6 +27,3 @@ extension SignUpCoordinator: Coordinator {
         completion?()
     }
 }
-
-// MARK: - AuthRouter implementation
-extension SignUpCoordinator: SignUpRouter { }

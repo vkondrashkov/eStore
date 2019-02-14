@@ -13,7 +13,7 @@ protocol SignUpDependency: AnyObject {
 }
 
 protocol SignUpBuilder: AnyObject {
-    func build() -> SignUpCoordinator
+    func build(with listener: SignUpListener) -> SignUpCoordinator
 }
 
 protocol SignUpScene: AnyObject {
@@ -24,12 +24,16 @@ protocol SignUpShow: AnyObject {
     var rootViewController: UIViewController { get }
 }
 
-protocol SignUpRouter: AnyObject { }
+protocol SignUpListener: AnyObject {
+    func showSignIn()
+}
 
 protocol SignUpView: AnyObject {
     // TODO: Think over display(_:) methods
+    func display(rightBarButton: String)
 }
 
 protocol SignUpPresenter: AnyObject {
-    func handleViewAppear()
+    func shouldViewAppear()
+    func rightBarButtonDidPressed()
 }
