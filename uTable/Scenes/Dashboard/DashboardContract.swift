@@ -33,5 +33,5 @@ protocol DashboardListener {
 protocol DashboardView: AnyObject { }
 
 protocol DashboardPresenter: AnyObject {
-    func handleLoadView()
+    func handleViewAppear()
 }

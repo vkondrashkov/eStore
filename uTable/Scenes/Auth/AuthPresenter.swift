@@ -20,6 +20,10 @@ final class AuthPresenterImpl {
 // MARK: - AuthPresenter implementation
 extension AuthPresenterImpl: AuthPresenter {
     func handleViewAppear() {
-        // TODO: Method implementation
+        view.display(rightButton: "Sign In") // Temp
+    }
+
+    func rightBarButtonDidPressed() {
+        view.display(rightButton: "Sign Up") // Temp
     }
 }

@@ -97,6 +97,13 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		9CC46BC02215387B005E24F5 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
 		9CC55237220AF8510004ACC4 = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +144,7 @@
 		9CC55256220AF8B50004ACC4 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				9CC46BC02215387B005E24F5 /* SignUp */,
 				9CC46BB12214C393005E24F5 /* Auth */,
 				9CC5525B220AFB810004ACC4 /* Dashboard */,
 				9CC5525D220AFBB00004ACC4 /* Profile */,

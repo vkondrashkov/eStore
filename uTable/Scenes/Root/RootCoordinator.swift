@@ -16,7 +16,6 @@ final class RootCoordinator {
     private let dashboardBuilder: DashboardBuilder
     private weak var dashboardCoordinator: DashboardCoordinator?
 
-    // TODO: Add builders to init
     init(scene: RootScene,
          show: RootShow,
          dashboardBuilder: DashboardBuilder,

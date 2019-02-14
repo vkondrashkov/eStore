@@ -30,7 +30,13 @@ final class DashboardViewImpl: UITabBarController {
         profileNavigation.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
 
         viewControllers = tabs
-        // presenter.handleLoadView() // Crash?
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presenter.handleViewAppear()
+
+        view.backgroundColor = .blue // Debug only
     }
 }
 

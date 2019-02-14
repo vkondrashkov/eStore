@@ -39,4 +39,5 @@ protocol AuthView: AnyObject {
 
 protocol AuthPresenter: AnyObject {
     func handleViewAppear()
+    func rightBarButtonDidPressed()
 }

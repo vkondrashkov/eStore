@@ -14,17 +14,29 @@ final class AuthViewImpl: UINavigationController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         presenter.handleViewAppear()
+
+        view.backgroundColor = .purple // Debug only
+    }
+
+    @objc func rightBarButtonDidPressed() {
+        presenter.rightBarButtonDidPressed()
     }
 }
 
-// MARK: AuthView implementation
+// MARK: - AuthView implementation
 extension AuthViewImpl: AuthView {
     func display(rightButton: String) {
-        // TODO: Method implementation
+        let rightBarButton = UIBarButtonItem(
+            title: rightButton,
+            style: .plain,
+            target: self,
+            action: #selector(rightBarButtonDidPressed)
+        )
+        navigationItem.rightBarButtonItem = rightBarButton
     }
 }
 
-// MARK: AuthShow implementation
+// MARK: - AuthShow implementation
 extension AuthViewImpl: AuthShow {
     var navViewController: UINavigationController {
         return self
