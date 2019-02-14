@@ -20,7 +20,6 @@ final class SignUpBuilderImpl {
 extension SignUpBuilderImpl: SignUpBuilder {
     func build(with listener: SignUpListener) -> SignUpCoordinator {
         let view = SignUpViewImpl()
-        let component = SignUpComponent(rootViewController: view)
         let scene = SignUpSceneImpl(navViewController: dependency.parent)
         let coordinator = SignUpCoordinator(scene: scene,
                                             show: view)

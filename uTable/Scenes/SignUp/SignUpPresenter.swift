@@ -17,7 +17,7 @@ final class SignUpPresenterImpl {
     }
 }
 
-// MARK: - AuthPresenter implementation
+// MARK: - SignUpPresenter implementation
 extension SignUpPresenterImpl: SignUpPresenter {
     func shouldViewAppear() {
         view.display(rightBarButton: "Sign In")
