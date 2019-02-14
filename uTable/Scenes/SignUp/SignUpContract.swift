@@ -26,6 +26,7 @@ protocol SignUpShow: AnyObject {
 
 protocol SignUpListener: AnyObject {
     func showSignIn()
+    func handleSignUp()
 }
 
 protocol SignUpView: AnyObject {

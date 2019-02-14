@@ -9,7 +9,7 @@
 import UIKit
 
 final class AuthSceneImpl {
-    let rootViewController: UIViewController
+    private let rootViewController: UIViewController
 
     init(rootViewController: UIViewController) {
         self.rootViewController = rootViewController

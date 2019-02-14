@@ -13,12 +13,17 @@ final class AuthCoordinator {
     private let signUpBuilder: SignUpBuilder
     private var signUpCoordinator: SignUpCoordinator?
 
+    private let signInBuilder: SignInBuilder
+    private var signInCoordinator: SignInCoordinator?
+
     init(scene: AuthScene,
          show: AuthShow,
-         signUpBuilder: SignUpBuilder) {
+         signUpBuilder: SignUpBuilder,
+         signInBuilder: SignInBuilder) {
         self.scene = scene
         self.show = show
         self.signUpBuilder = signUpBuilder
+        self.signInBuilder = signInBuilder
     }
 }
 
@@ -41,15 +46,35 @@ extension AuthCoordinator: AuthRouter {
     }
 
     func routeSignIn() {
-        // TODO:
+        signInCoordinator = signInBuilder.build(with: self)
+        signInCoordinator?.start()
     }
 }
 
+// MARK: - SignUpListener implementation
 extension AuthCoordinator: SignUpListener {
     func showSignIn() {
         signUpCoordinator?.stop(completion: { [weak self] in
             self?.signUpCoordinator = nil
         })
         routeSignIn()
+    }
+
+    func handleSignUp() {
+        // TODO:
+    }
+}
+
+// MARK: - SignInListener implementation
+extension AuthCoordinator: SignInListener {
+    func showSignUp() {
+        signInCoordinator?.stop(completion: { [weak self] in
+            self?.signInCoordinator = nil
+        })
+        routeSignUp()
+    }
+
+    func handleSignIn() {
+        // TODO:
     }
 }

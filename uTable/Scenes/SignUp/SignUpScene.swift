@@ -19,6 +19,6 @@ final class SignUpSceneImpl {
 // MARK: - SignUpScene implementation
 extension SignUpSceneImpl: SignUpScene {
     func play(signUpShow: SignUpShow) {
-        navViewController.pushViewController(signUpShow.rootViewController, animated: false)
+        navViewController.viewControllers = [signUpShow.rootViewController]
     }
 }

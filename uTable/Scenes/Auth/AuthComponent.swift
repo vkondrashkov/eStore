@@ -17,7 +17,7 @@ final class AuthComponent {
 }
 
 // MARK: - SignUpDependency implementation
-extension AuthComponent: SignUpDependency {
+extension AuthComponent: SignUpDependency, SignInDependency {
     var parent: UINavigationController {
         return rootViewController
     }
