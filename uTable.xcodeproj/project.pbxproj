@@ -40,6 +40,7 @@
 		9CC46C0922161559005E24F5 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46C0822161559005E24F5 /* SignInView.swift */; };
 		9CC46C0B22161562005E24F5 /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46C0A22161562005E24F5 /* SignInPresenter.swift */; };
 		9CC46C172216982E005E24F5 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46C162216982E005E24F5 /* KeyboardManager.swift */; };
+		9CC46C1A22176B39005E24F5 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46C1922176B39005E24F5 /* AlertFactory.swift */; };
 		9CC55244220AF8510004ACC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55243220AF8510004ACC4 /* AppDelegate.swift */; };
 		9CC5524B220AF8520004ACC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CC5524A220AF8520004ACC4 /* Assets.xcassets */; };
 		9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55266220AFC8C0004ACC4 /* AppComponent.swift */; };
@@ -81,6 +82,7 @@
 		9CC46C0822161559005E24F5 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		9CC46C0A22161562005E24F5 /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
 		9CC46C162216982E005E24F5 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
+		9CC46C1922176B39005E24F5 /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		9CC55240220AF8510004ACC4 /* uTable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uTable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC55243220AF8510004ACC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CC5524A220AF8520004ACC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -157,6 +159,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		9CC46C1822176B28005E24F5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9CC46C1922176B39005E24F5 /* AlertFactory.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		9CC55237220AF8510004ACC4 = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +220,7 @@
 		9CC55257220AF8CA0004ACC4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				9CC46C1822176B28005E24F5 /* Helpers */,
 				9CC46C0F221695DF005E24F5 /* Utils */,
 				9CC46BAE2214719D005E24F5 /* Module */,
 				9CC55259220AF93A0004ACC4 /* Services */,
@@ -357,6 +368,7 @@
 				9CC46BFF22161529005E24F5 /* SignInContract.swift in Sources */,
 				9CC46B8F22140617005E24F5 /* RootView.swift in Sources */,
 				9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */,
+				9CC46C1A22176B39005E24F5 /* AlertFactory.swift in Sources */,
 				9CC46C032216153A005E24F5 /* SignInBuilder.swift in Sources */,
 				9CC46BCC22153908005E24F5 /* SignUpBuilder.swift in Sources */,
 				9CC46B9122140623005E24F5 /* RootPresenter.swift in Sources */,

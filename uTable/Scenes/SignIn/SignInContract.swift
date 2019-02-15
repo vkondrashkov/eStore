@@ -34,10 +34,15 @@ protocol SignInView: AnyObject {
     func display(emailCaption: String)
     func display(passwordCaption: String)
     func display(signInButton: String)
-    func display(forgotPasswordLabel: String)
+    func display(forgotPasswordButton: String)
+    func display(alert: Alert)
+    func showActivityIndicator()
+    func hideActivityIndicator()
 }
 
 protocol SignInPresenter: AnyObject {
     func shouldViewAppear()
-    func rightBarButtonDidPressed()
+    func handleRightBarButtonPress()
+    func handleForgotPasswordPress()
+    func handleSignInButtonPress()
 }

@@ -19,10 +19,12 @@ final class SignInViewImpl: UIViewController {
     private var confirmPasswordCaption: UILabel!
     private var confirmPasswordTextField: UITextField!
     private var signInButton: UIButton!
-    private var forgotPasswordLabel: UILabel!
+    private var forgotPasswordButton: UIButton!
+    private var activityIndicator: UIActivityIndicatorView!
 
     private let signInButtonBackgroundColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-    private let forgotPasswordLabelColor = UIColor(white: 0.75, alpha: 1.0)
+    private let forgotPasswordButtonRegularColor = UIColor(white: 0.5, alpha: 1.0)
+    private let forgotPasswordButtonHighlightedColor = UIColor(white: 0.75, alpha: 1.0)
 
     private lazy var keyboardManager = KeyboardManager(viewController: self)
 
@@ -36,7 +38,8 @@ final class SignInViewImpl: UIViewController {
         setupPasswordCaption()
         setupPasswordTextField()
         setupSignInButton()
-        setupForgotPasswordLabel()
+        setupForgotPasswordButton()
+        setupActivityIndicator()
 
         view.addSubview(containerView)
         activateContainerViewConstraints(view: containerView)
@@ -87,14 +90,20 @@ final class SignInViewImpl: UIViewController {
         activateSignInButtonConstraints(view: signInButton, anchorView: passwordTextField)
     }
 
-    private func setupForgotPasswordLabel() {
-        forgotPasswordLabel = UILabel()
-        forgotPasswordLabel.textColor = forgotPasswordLabelColor
-        forgotPasswordLabel.textAlignment = .center
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(forgotPasswordLabelDidPressed))
-        forgotPasswordLabel.addGestureRecognizer(tapGesture)
-        containerView.addSubview(forgotPasswordLabel)
-        activateForgotPasswordLabelConstraints(view: forgotPasswordLabel, anchorView: signInButton)
+    private func setupForgotPasswordButton() {
+        forgotPasswordButton = UIButton()
+        forgotPasswordButton.setTitleColor(forgotPasswordButtonRegularColor, for: .normal)
+        forgotPasswordButton.setTitleColor(forgotPasswordButtonHighlightedColor, for: .highlighted)
+        forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonDidPressed), for: .touchUpInside)
+        containerView.addSubview(forgotPasswordButton)
+        activateForgotPasswordButtonConstraints(view: forgotPasswordButton, anchorView: signInButton)
+    }
+
+    private func setupActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView()
+        activityIndicator.style = .white
+        signInButton.addSubview(activityIndicator)
+        activateActivityIndicatorConstraints(view: activityIndicator)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -103,15 +112,15 @@ final class SignInViewImpl: UIViewController {
     }
 
     @objc func rightBarButtonDidPressed() {
-        presenter.rightBarButtonDidPressed()
+        presenter.handleRightBarButtonPress()
     }
 
     @objc func signInButtonDidPressed() {
-
+        presenter.handleSignInButtonPress()
     }
 
-    @objc func forgotPasswordLabelDidPressed() {
-
+    @objc func forgotPasswordButtonDidPressed() {
+        presenter.handleForgotPasswordPress()
     }
 }
 
@@ -137,8 +146,21 @@ extension SignInViewImpl: SignInView {
         self.signInButton.setTitle(signInButton, for: .normal)
     }
 
-    func display(forgotPasswordLabel: String) {
-        self.forgotPasswordLabel.text = forgotPasswordLabel
+    func display(forgotPasswordButton: String) {
+        self.forgotPasswordButton.setTitle(forgotPasswordButton, for: .normal)
+    }
+
+    func display(alert: Alert) {
+        let alertController = AlertFactory().make(alert: alert)
+        present(alertController, animated: true, completion: nil)
+    }
+
+    func showActivityIndicator() {
+        activityIndicator.startAnimating()
+    }
+
+    func hideActivityIndicator() {
+        activityIndicator.stopAnimating()
     }
 }
 
@@ -204,14 +226,22 @@ private extension SignInViewImpl {
             ])
     }
 
-    func activateForgotPasswordLabelConstraints(view: UIView, anchorView: UIView) {
+    func activateForgotPasswordButtonConstraints(view: UIView, anchorView: UIView) {
         guard let superview = view.superview else { return }
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             view.topAnchor.constraint(equalTo: anchorView.bottomAnchor, constant: 10),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
+            view.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
             view.bottomAnchor.constraint(equalTo: superview.bottomAnchor),
+            ])
+    }
+
+    func activateActivityIndicatorConstraints(view: UIView) {
+        guard let superview = view.superview else { return }
+        view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            view.centerYAnchor.constraint(equalTo: superview.centerYAnchor),
+            view.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
             ])
     }
 
