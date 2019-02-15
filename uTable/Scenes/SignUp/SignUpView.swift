@@ -20,6 +20,12 @@ final class SignUpViewImpl: UIViewController {
     private var confirmPasswordTextField: UITextField!
     private var signUpButton: UIButton!
 
+    private let signUpButtonBackgroundColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
+
+    private let signUpButtonContentEdgeInsets = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+
+    private lazy var keyboardManager = KeyboardManager(viewController: self)
+
     override func loadView() {
         super.loadView()
         view.backgroundColor = .white
@@ -35,6 +41,11 @@ final class SignUpViewImpl: UIViewController {
 
         view.addSubview(containerView)
         activateContainerViewConstraints(view: containerView)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        keyboardManager.hideKeyboardWhenTappedAround()
     }
 
     private func setupEmailCaption() {
@@ -87,7 +98,8 @@ final class SignUpViewImpl: UIViewController {
         signUpButton.addTarget(self, action: #selector(signUpButtonDidPressed), for: .touchUpInside)
         signUpButton.layer.cornerRadius = 5
         signUpButton.layer.masksToBounds = true
-        signUpButton.backgroundColor = .purple
+        signUpButton.contentEdgeInsets = signUpButtonContentEdgeInsets
+        signUpButton.backgroundColor = signUpButtonBackgroundColor
         containerView.addSubview(signUpButton)
         activateSignUpButtonConstraints(view: signUpButton, anchorView: confirmPasswordTextField)
     }
@@ -208,7 +220,8 @@ private extension SignUpViewImpl {
         NSLayoutConstraint.activate([
             view.topAnchor.constraint(equalTo: anchorView.bottomAnchor, constant: 20),
             view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor)
+            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
+            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
             ])
     }
 
