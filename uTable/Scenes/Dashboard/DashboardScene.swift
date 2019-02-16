@@ -19,6 +19,10 @@ final class DashboardSceneImpl {
 // MARK: - DashboardScene implementation
 extension DashboardSceneImpl: DashboardScene {
     func play(dashboardShow: DashboardShow) {
-        rootViewController.present(dashboardShow.tabController, animated: false, completion: nil)
+        rootViewController.present(dashboardShow.tabController, animated: true, completion: nil)
+    }
+
+    func finish(completion: (() -> Void)?) {
+        rootViewController.dismiss(animated: true, completion: completion)
     }
 }

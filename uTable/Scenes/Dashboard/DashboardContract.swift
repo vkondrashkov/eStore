@@ -18,6 +18,7 @@ protocol DashboardBuilder: AnyObject {
 
 protocol DashboardScene: AnyObject {
     func play(dashboardShow: DashboardShow)
+    func finish(completion: (() -> Void)?)
 }
 
 protocol DashboardShow: AnyObject {

@@ -31,6 +31,7 @@ final class RootCoordinator {
 extension RootCoordinator: Coordinator {
     func start() {
         scene.play(rootShow: show)
+        showAuth()
     }
 
     func stop(completion: (() -> Void)?) {
@@ -56,7 +57,7 @@ extension RootCoordinator: AuthListener {
     func authenticate() {
         authCoordinator?.stop(completion: { [weak self] in
             self?.authCoordinator = nil
+            self?.showDashboard()
         })
-        showDashboard()
     }
 }

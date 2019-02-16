@@ -16,14 +16,18 @@ final class AuthCoordinator {
     private let signInBuilder: SignInBuilder
     private var signInCoordinator: SignInCoordinator?
 
+    private weak var listener: AuthListener?
+
     init(scene: AuthScene,
          show: AuthShow,
          signUpBuilder: SignUpBuilder,
-         signInBuilder: SignInBuilder) {
+         signInBuilder: SignInBuilder,
+         listener: AuthListener) {
         self.scene = scene
         self.show = show
         self.signUpBuilder = signUpBuilder
         self.signInBuilder = signInBuilder
+        self.listener = listener
     }
 }
 
@@ -31,10 +35,11 @@ final class AuthCoordinator {
 extension AuthCoordinator: Coordinator {
     func start() {
         scene.play(authShow: show)
+        routeSignUp()
     }
 
     func stop(completion: (() -> Void)?) {
-        completion?()
+        scene.finish(completion: completion)
     }
 }
 
@@ -56,12 +61,12 @@ extension AuthCoordinator: SignUpListener {
     func showSignIn() {
         signUpCoordinator?.stop(completion: { [weak self] in
             self?.signUpCoordinator = nil
+            self?.routeSignIn()
         })
-        routeSignIn()
     }
 
     func handleSignUp() {
-        // TODO:
+        listener?.authenticate()
     }
 }
 
@@ -70,11 +75,14 @@ extension AuthCoordinator: SignInListener {
     func showSignUp() {
         signInCoordinator?.stop(completion: { [weak self] in
             self?.signInCoordinator = nil
+            self?.routeSignUp()
         })
-        routeSignUp()
     }
 
     func handleSignIn() {
-        // TODO:
+        signInCoordinator?.stop(completion: { [weak self] in
+            self?.signInCoordinator = nil
+            self?.listener?.authenticate()
+        })
     }
 }

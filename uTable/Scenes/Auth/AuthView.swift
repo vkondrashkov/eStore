@@ -16,9 +16,13 @@ final class AuthViewImpl: UINavigationController {
         view.backgroundColor = .white
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        modalTransitionStyle = .crossDissolve
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        presenter.handleViewAppear()
     }
 }
 

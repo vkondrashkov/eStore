@@ -35,6 +35,7 @@ final class DashboardViewImpl: UITabBarController {
         profileNavigation.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
 
         viewControllers = tabs
+        modalTransitionStyle = .crossDissolve
     }
 
     override func viewDidAppear(_ animated: Bool) {

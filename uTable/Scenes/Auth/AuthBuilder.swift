@@ -27,7 +27,8 @@ extension AuthBuilderImpl: AuthBuilder {
         let coordinator = AuthCoordinator(scene: scene,
                                           show: view,
                                           signUpBuilder: signUpBuilder,
-                                          signInBuilder: signInBuilder)
+                                          signInBuilder: signInBuilder,
+                                          listener: listener)
         let presenter = AuthPresenterImpl(view: view,
                                           router: coordinator)
         view.presenter = presenter

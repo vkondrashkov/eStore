@@ -13,10 +13,11 @@ final class RootViewImpl: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        presenter.handleViewAppear()
+        super.viewDidAppear(animated)
     }
 }
 

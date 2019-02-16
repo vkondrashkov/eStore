@@ -19,6 +19,10 @@ final class AuthSceneImpl {
 // MARK: - AuthScene implementation
 extension AuthSceneImpl: AuthScene {
     func play(authShow: AuthShow) {
-        rootViewController.present(authShow.navViewController, animated: false, completion: nil)
+        rootViewController.present(authShow.navViewController, animated: true, completion: nil)
+    }
+
+    func finish(completion: (() -> Void)?) {
+        rootViewController.dismiss(animated: true, completion: completion)
     }
 }

@@ -18,6 +18,7 @@ protocol AuthBuilder: AnyObject {
 
 protocol AuthScene: AnyObject {
     func play(authShow: AuthShow)
+    func finish(completion: (() -> Void)?)
 }
 
 protocol AuthShow: AnyObject {
@@ -29,7 +30,7 @@ protocol AuthRouter: AnyObject {
     func routeSignIn()
 }
 
-protocol AuthListener {
+protocol AuthListener: AnyObject {
     func authenticate() // TODO: Make method more functional
 }
 
