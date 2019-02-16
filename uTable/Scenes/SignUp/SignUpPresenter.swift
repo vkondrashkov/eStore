@@ -6,6 +6,8 @@
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
 //
 
+import Foundation
+
 final class SignUpPresenterImpl {
     private unowned let view: SignUpView
     private unowned let listener: SignUpListener
@@ -27,7 +29,18 @@ extension SignUpPresenterImpl: SignUpPresenter {
         view.display(signUpButton: "Sign Up")
     }
 
-    func rightBarButtonDidPressed() {
+    func handleRightBarButtonPress() {
         listener.showSignIn()
     }
+
+    func handleSignUpButtonPress() {
+        view.showActivityIndicator()
+        view.display(signUpButton: "")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: { [weak self] in
+            self?.view.hideActivityIndicator()
+            self?.view.display(signUpButton: "Sign Up")
+            self?.listener.handleSignUp()
+        })
+    }
+    
 }

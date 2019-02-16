@@ -35,9 +35,12 @@ protocol SignUpView: AnyObject {
     func display(passwordCaption: String)
     func display(confirmPasswordCaption: String)
     func display(signUpButton: String)
+    func showActivityIndicator()
+    func hideActivityIndicator()
 }
 
 protocol SignUpPresenter: AnyObject {
     func shouldViewAppear()
-    func rightBarButtonDidPressed()
+    func handleRightBarButtonPress()
+    func handleSignUpButtonPress()
 }

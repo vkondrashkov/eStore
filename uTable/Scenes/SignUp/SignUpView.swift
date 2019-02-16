@@ -19,6 +19,7 @@ final class SignUpViewImpl: UIViewController {
     private var confirmPasswordCaption: UILabel!
     private var confirmPasswordTextField: UITextField!
     private var signUpButton: UIButton!
+    private var activityIndicator: UIActivityIndicatorView!
 
     private let signUpButtonBackgroundColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
 
@@ -36,6 +37,7 @@ final class SignUpViewImpl: UIViewController {
         setupConfirmPasswordCaption()
         setupConfirmPasswordTextField()
         setupSignUpButton()
+        setupActivityIndicator()
 
         view.addSubview(containerView)
         activateContainerViewConstraints(view: containerView)
@@ -101,17 +103,24 @@ final class SignUpViewImpl: UIViewController {
         activateSignUpButtonConstraints(view: signUpButton, anchorView: confirmPasswordTextField)
     }
 
+    private func setupActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView()
+        activityIndicator.style = .white
+        signUpButton.addSubview(activityIndicator)
+        activateActivityIndicatorConstraints(view: activityIndicator)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.shouldViewAppear()
     }
 
     @objc func rightBarButtonDidPressed() {
-        presenter.rightBarButtonDidPressed()
+        presenter.handleRightBarButtonPress()
     }
 
     @objc func signUpButtonDidPressed() {
-        
+        presenter.handleSignUpButtonPress()
     }
 }
 
@@ -139,6 +148,14 @@ extension SignUpViewImpl: SignUpView {
 
     func display(signUpButton: String) {
         self.signUpButton.setTitle(signUpButton, for: .normal)
+    }
+
+    func showActivityIndicator() {
+        activityIndicator.startAnimating()
+    }
+
+    func hideActivityIndicator() {
+        activityIndicator.stopAnimating()
     }
 }
 
@@ -223,6 +240,15 @@ private extension SignUpViewImpl {
             view.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
             view.bottomAnchor.constraint(equalTo: superview.bottomAnchor),
             view.heightAnchor.constraint(equalToConstant: 40)
+            ])
+    }
+
+    func activateActivityIndicatorConstraints(view: UIView) {
+        guard let superview = view.superview else { return }
+        view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            view.centerYAnchor.constraint(equalTo: superview.centerYAnchor),
+            view.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
             ])
     }
 
