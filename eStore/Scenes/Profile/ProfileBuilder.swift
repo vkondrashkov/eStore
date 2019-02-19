@@ -9,23 +9,24 @@
 import UIKit
 
 final class ProfileBuilderImpl {
-    private let navigation: UINavigationController
+    private let dependency: ProfileDependency
 
-    init(navigation: UINavigationController) {
-        self.navigation = navigation
+    init(dependency: ProfileDependency) {
+        self.dependency = dependency
     }
 }
 
 // MARK: - ProfileBuilder implementation
 extension ProfileBuilderImpl: ProfileBuilder {
-    func build() -> ProfileCoordinator {
+    func build(with listener: ProfileListener) -> ProfileCoordinator {
         let view = ProfileViewImpl()
         let component = ProfileComponent(rootViewController: view)
-        let scene = ProfileSceneImpl(rootViewController: navigation)
+        let scene = ProfileSceneImpl(rootViewController: dependency.profileNavigation)
         let coordinator = ProfileCoordinator(scene: scene,
                                              show: view)
         let presenter = ProfilePresenterImpl(view: view,
-                                             router: coordinator)
+                                             router: coordinator,
+                                             listener: listener)
         view.presenter = presenter
         return coordinator
     }

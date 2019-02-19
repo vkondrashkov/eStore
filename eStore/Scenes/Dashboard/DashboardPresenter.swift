@@ -12,6 +12,7 @@ final class DashboardPresenterImpl {
 
     init(view: DashboardView,
          router: DashboardRouter) {
+
         self.view = view
         self.router = router
     }

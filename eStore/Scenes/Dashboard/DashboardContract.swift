@@ -13,7 +13,7 @@ protocol DashboardDependency: AnyObject {
 }
 
 protocol DashboardBuilder: AnyObject {
-    func build() -> DashboardCoordinator
+    func build(with listener: DashboardListener) -> DashboardCoordinator
 }
 
 protocol DashboardScene: AnyObject {
@@ -27,7 +27,7 @@ protocol DashboardShow: AnyObject {
 
 protocol DashboardRouter: AnyObject { }
 
-protocol DashboardListener {
+protocol DashboardListener: AnyObject {
     func logout() // TODO: Make method more functional
 }
 

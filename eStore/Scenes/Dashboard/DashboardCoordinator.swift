@@ -10,10 +10,22 @@ final class DashboardCoordinator {
     private let scene: DashboardScene
     private let show: DashboardShow
 
+    private let profileBuilder: ProfileBuilder
+    private weak var profileCoordinator: ProfileCoordinator?
+
+    // TODO: Change contract between Dash or Auth screen
+    // with its Root module
+    private unowned var listener: DashboardListener
+
     init(scene: DashboardScene,
-         show: DashboardShow) {
+         show: DashboardShow,
+         profileBuilder: ProfileBuilder,
+         listener: DashboardListener) {
+
         self.scene = scene
         self.show = show
+        self.profileBuilder = profileBuilder
+        self.listener = listener
     }
 }
 
@@ -21,12 +33,25 @@ final class DashboardCoordinator {
 extension DashboardCoordinator: Coordinator {
     func start() {
         scene.play(dashboardShow: show)
+
+        profileCoordinator = profileBuilder.build(with: self)
+        profileCoordinator?.start()
     }
 
     func stop(completion: (() -> Void)?) {
-        completion?()
+        scene.finish(completion: completion)
     }
 }
 
 // MARK: - DashboardRouter implementation
 extension DashboardCoordinator: DashboardRouter { }
+
+// MARK: - ProfileListener implementation
+extension DashboardCoordinator: ProfileListener {
+    func logout() {
+        profileCoordinator?.stop(completion: { [weak self] in
+            self?.profileCoordinator = nil
+        })
+        listener.logout()
+    }
+}

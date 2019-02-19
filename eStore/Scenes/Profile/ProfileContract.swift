@@ -9,11 +9,11 @@
 import UIKit
 
 protocol ProfileDependency: AnyObject {
-    var parent: UINavigationController { get }
+    var profileNavigation: UINavigationController { get }
 }
 
 protocol ProfileBuilder: AnyObject {
-    func build() -> ProfileCoordinator
+    func build(with listener: ProfileListener) -> ProfileCoordinator
 }
 
 protocol ProfileScene: AnyObject {
@@ -28,8 +28,15 @@ protocol ProfileRouter: AnyObject {
 
 }
 
-protocol ProfileView: AnyObject { }
+protocol ProfileListener: AnyObject {
+    func logout()
+}
+
+protocol ProfileView: AnyObject {
+    func display(logoutButton: String)
+}
 
 protocol ProfilePresenter: AnyObject {
-    func handleViewAppear()
+    func handleLoadView()
+    func handleLogoutButtonPress()
 }

@@ -28,14 +28,14 @@ final class DashboardViewImpl: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        feedNavigation = UINavigationController()
-        feedNavigation.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
+        modalTransitionStyle = .crossDissolve
+    }
 
-        profileNavigation = UINavigationController()
+    func setupTabs() {
+        feedNavigation.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
         profileNavigation.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
 
         viewControllers = tabs
-        modalTransitionStyle = .crossDissolve
     }
 
     override func viewDidAppear(_ animated: Bool) {
