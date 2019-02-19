@@ -41,6 +41,13 @@
 		9CC46C0B22161562005E24F5 /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46C0A22161562005E24F5 /* SignInPresenter.swift */; };
 		9CC46C172216982E005E24F5 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46C162216982E005E24F5 /* KeyboardManager.swift */; };
 		9CC46C1A22176B39005E24F5 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46C1922176B39005E24F5 /* AlertFactory.swift */; };
+		9CC46C1C22180B64005E24F5 /* ProfileContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46C1B22180B64005E24F5 /* ProfileContract.swift */; };
+		9CC46C2022180B7B005E24F5 /* ProfileComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46C1F22180B7B005E24F5 /* ProfileComponent.swift */; };
+		9CC46C2222180B83005E24F5 /* ProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46C2122180B83005E24F5 /* ProfileBuilder.swift */; };
+		9CC46C2422180B8C005E24F5 /* ProfileScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46C2322180B8C005E24F5 /* ProfileScene.swift */; };
+		9CC46C2622180B95005E24F5 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46C2522180B95005E24F5 /* ProfileCoordinator.swift */; };
+		9CC46C2822180B9F005E24F5 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46C2722180B9F005E24F5 /* ProfileView.swift */; };
+		9CC46C2A22180BAD005E24F5 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46C2922180BAD005E24F5 /* ProfilePresenter.swift */; };
 		9CC55244220AF8510004ACC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55243220AF8510004ACC4 /* AppDelegate.swift */; };
 		9CC5524B220AF8520004ACC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CC5524A220AF8520004ACC4 /* Assets.xcassets */; };
 		9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55266220AFC8C0004ACC4 /* AppComponent.swift */; };
@@ -83,6 +90,13 @@
 		9CC46C0A22161562005E24F5 /* SignInPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
 		9CC46C162216982E005E24F5 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		9CC46C1922176B39005E24F5 /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
+		9CC46C1B22180B64005E24F5 /* ProfileContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContract.swift; sourceTree = "<group>"; };
+		9CC46C1F22180B7B005E24F5 /* ProfileComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileComponent.swift; sourceTree = "<group>"; };
+		9CC46C2122180B83005E24F5 /* ProfileBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBuilder.swift; sourceTree = "<group>"; };
+		9CC46C2322180B8C005E24F5 /* ProfileScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScene.swift; sourceTree = "<group>"; };
+		9CC46C2522180B95005E24F5 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		9CC46C2722180B9F005E24F5 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		9CC46C2922180BAD005E24F5 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		9CC55240220AF8510004ACC4 /* uTable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = uTable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CC55243220AF8510004ACC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CC5524A220AF8520004ACC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -266,6 +280,13 @@
 		9CC5525D220AFBB00004ACC4 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				9CC46C1B22180B64005E24F5 /* ProfileContract.swift */,
+				9CC46C1F22180B7B005E24F5 /* ProfileComponent.swift */,
+				9CC46C2122180B83005E24F5 /* ProfileBuilder.swift */,
+				9CC46C2322180B8C005E24F5 /* ProfileScene.swift */,
+				9CC46C2522180B95005E24F5 /* ProfileCoordinator.swift */,
+				9CC46C2722180B9F005E24F5 /* ProfileView.swift */,
+				9CC46C2922180BAD005E24F5 /* ProfilePresenter.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -351,6 +372,7 @@
 				9CC46BBD2214C41B005E24F5 /* AuthView.swift in Sources */,
 				9CC46BBB2214C412005E24F5 /* AuthCoordinator.swift in Sources */,
 				9CC46B9E22141072005E24F5 /* DashboardScene.swift in Sources */,
+				9CC46C2222180B83005E24F5 /* ProfileBuilder.swift in Sources */,
 				9CC55244220AF8510004ACC4 /* AppDelegate.swift in Sources */,
 				9CC46B9A22141061005E24F5 /* DashboardComponent.swift in Sources */,
 				9CC46BB92214C409005E24F5 /* AuthScene.swift in Sources */,
@@ -358,22 +380,28 @@
 				9CC46B89221405C6005E24F5 /* RootComponent.swift in Sources */,
 				9CC46C0922161559005E24F5 /* SignInView.swift in Sources */,
 				9CC46B9822141058005E24F5 /* DashboardContract.swift in Sources */,
+				9CC46C2822180B9F005E24F5 /* ProfileView.swift in Sources */,
 				9CC46BD42215392A005E24F5 /* SignUpView.swift in Sources */,
 				9CC46C172216982E005E24F5 /* KeyboardManager.swift in Sources */,
+				9CC46C2A22180BAD005E24F5 /* ProfilePresenter.swift in Sources */,
 				9CC46B9C2214106B005E24F5 /* DashboardBuilder.swift in Sources */,
 				9CC46C0522161548005E24F5 /* SignInScene.swift in Sources */,
 				9CC46BB02214719D005E24F5 /* Coordinator.swift in Sources */,
 				9CC46BBF2214C425005E24F5 /* AuthPresenter.swift in Sources */,
 				9CC46C0722161550005E24F5 /* SignInCoordinator.swift in Sources */,
 				9CC46BFF22161529005E24F5 /* SignInContract.swift in Sources */,
+				9CC46C1C22180B64005E24F5 /* ProfileContract.swift in Sources */,
 				9CC46B8F22140617005E24F5 /* RootView.swift in Sources */,
+				9CC46C2022180B7B005E24F5 /* ProfileComponent.swift in Sources */,
 				9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */,
 				9CC46C1A22176B39005E24F5 /* AlertFactory.swift in Sources */,
 				9CC46C032216153A005E24F5 /* SignInBuilder.swift in Sources */,
+				9CC46C2422180B8C005E24F5 /* ProfileScene.swift in Sources */,
 				9CC46BCC22153908005E24F5 /* SignUpBuilder.swift in Sources */,
 				9CC46B9122140623005E24F5 /* RootPresenter.swift in Sources */,
 				9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */,
 				9CC46BCE2215390F005E24F5 /* SignUpScene.swift in Sources */,
+				9CC46C2622180B95005E24F5 /* ProfileCoordinator.swift in Sources */,
 				9CC5526B220AFCC30004ACC4 /* RootBuilder.swift in Sources */,
 				9CC46BB52214C3B7005E24F5 /* AuthComponent.swift in Sources */,
 				9CC46B8B221405DF005E24F5 /* RootScene.swift in Sources */,
