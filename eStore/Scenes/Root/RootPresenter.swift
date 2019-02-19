@@ -8,7 +8,7 @@
 
 final class RootPresenterImpl {
     private unowned let view: RootView
-    private let router: RootRouter
+    private unowned let router: RootRouter
 
     init(view: RootView,
          router: RootRouter) {

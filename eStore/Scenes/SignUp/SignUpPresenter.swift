@@ -10,7 +10,7 @@ import Foundation
 
 final class SignUpPresenterImpl {
     private unowned let view: SignUpView
-    private unowned let listener: SignUpListener
+    private weak var listener: SignUpListener?
 
     init(view: SignUpView,
          listener: SignUpListener) {
@@ -30,7 +30,7 @@ extension SignUpPresenterImpl: SignUpPresenter {
     }
 
     func handleRightBarButtonPress() {
-        listener.showSignIn()
+        listener?.showSignIn()
     }
 
     func handleSignUpButtonPress() {
@@ -39,7 +39,7 @@ extension SignUpPresenterImpl: SignUpPresenter {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: { [weak self] in
             self?.view.hideActivityIndicator()
             self?.view.display(signUpButton: "Sign Up")
-            self?.listener.handleSignUp()
+            self?.listener?.handleSignUp()
         })
     }
     

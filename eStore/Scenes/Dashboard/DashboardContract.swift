@@ -33,6 +33,4 @@ protocol DashboardListener: AnyObject {
 
 protocol DashboardView: AnyObject { }
 
-protocol DashboardPresenter: AnyObject {
-    func handleViewAppear()
-}
+protocol DashboardPresenter: AnyObject { }

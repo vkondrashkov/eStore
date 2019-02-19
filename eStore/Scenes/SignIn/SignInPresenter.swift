@@ -10,7 +10,7 @@ import Foundation
 
 final class SignInPresenterImpl {
     private unowned let view: SignInView
-    private unowned let listener: SignInListener
+    private weak var listener: SignInListener?
 
     init(view: SignInView,
          listener: SignInListener) {
@@ -22,13 +22,13 @@ final class SignInPresenterImpl {
 // MARK: - SignInPresenter implementation
 extension SignInPresenterImpl: SignInPresenter {
     func handleRightBarButtonPress() {
-        listener.showSignUp()
+        listener?.showSignUp()
     }
 
     func handleForgotPasswordPress() {
         let alert = Alert(
             title: "Oops...",
-            message: "Unfortunately this feature is unvaiable, try again later.",
+            message: "Unfortunately this feature is unavailable, try again later.",
             alertType: .singleAction,
             primaryCaption: "OK",
             primaryAction: nil,
@@ -44,7 +44,7 @@ extension SignInPresenterImpl: SignInPresenter {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: { [weak self] in
             self?.view.hideActivityIndicator()
             self?.view.display(signInButton: "Sign In")
-            self?.listener.handleSignIn()
+            self?.listener?.handleSignIn()
         })
     }
 

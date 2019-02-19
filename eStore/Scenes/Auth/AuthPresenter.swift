@@ -8,7 +8,7 @@
 
 final class AuthPresenterImpl {
     private unowned let view: AuthView
-    private let router: AuthRouter
+    private unowned let router: AuthRouter
 
     init(view: AuthView,
          router: AuthRouter) {

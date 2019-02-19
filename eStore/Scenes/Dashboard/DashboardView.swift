@@ -37,11 +37,6 @@ final class DashboardViewImpl: UITabBarController {
 
         viewControllers = tabs
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        presenter.handleViewAppear()
-    }
 }
 
 // MARK: - DashboardView implementation

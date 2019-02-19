@@ -8,17 +8,14 @@
 
 final class DashboardPresenterImpl {
     private unowned let view: DashboardView
-    private let router: DashboardRouter
+    private unowned let router: DashboardRouter
 
     init(view: DashboardView,
          router: DashboardRouter) {
-
         self.view = view
         self.router = router
     }
 }
 
 // MARK: - DashboardPresenter implementation
-extension DashboardPresenterImpl: DashboardPresenter {
-    func handleViewAppear() { }
-}
+extension DashboardPresenterImpl: DashboardPresenter { }

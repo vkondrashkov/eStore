@@ -11,11 +11,11 @@ final class DashboardCoordinator {
     private let show: DashboardShow
 
     private let profileBuilder: ProfileBuilder
-    private weak var profileCoordinator: ProfileCoordinator?
+    private var profileCoordinator: ProfileCoordinator?
 
     // TODO: Change contract between Dash or Auth screen
     // with its Root module
-    private unowned var listener: DashboardListener
+    private weak var listener: DashboardListener?
 
     init(scene: DashboardScene,
          show: DashboardShow,
@@ -52,6 +52,6 @@ extension DashboardCoordinator: ProfileListener {
         profileCoordinator?.stop(completion: { [weak self] in
             self?.profileCoordinator = nil
         })
-        listener.logout()
+        listener?.logout()
     }
 }

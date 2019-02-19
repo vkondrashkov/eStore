@@ -20,6 +20,7 @@ final class RootCoordinator {
          show: RootShow,
          dashboardBuilder: DashboardBuilder,
          authBuilder: AuthBuilder) {
+        
         self.scene = scene
         self.show = show
         self.dashboardBuilder = dashboardBuilder

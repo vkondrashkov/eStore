@@ -23,6 +23,7 @@ final class AuthCoordinator {
          signUpBuilder: SignUpBuilder,
          signInBuilder: SignInBuilder,
          listener: AuthListener) {
+        
         self.scene = scene
         self.show = show
         self.signUpBuilder = signUpBuilder
