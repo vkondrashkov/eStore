@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9CA418D4221D879C00BAF215 /* StoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D3221D879C00BAF215 /* StoreItem.swift */; };
+		9CA418D6221D883700BAF215 /* Smartphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D5221D883700BAF215 /* Smartphone.swift */; };
+		9CA418D8221D883F00BAF215 /* TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D7221D883F00BAF215 /* TV.swift */; };
+		9CA418DA221D884900BAF215 /* Laptop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D9221D884900BAF215 /* Laptop.swift */; };
+		9CA418DC221D894D00BAF215 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418DB221D894D00BAF215 /* Brand.swift */; };
+		9CA418DE221D898300BAF215 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418DD221D898300BAF215 /* Display.swift */; };
+		9CA418E0221D8A0900BAF215 /* OperatingSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418DF221D8A0900BAF215 /* OperatingSystem.swift */; };
 		9CC46B87221405B1005E24F5 /* RootContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46B86221405B1005E24F5 /* RootContract.swift */; };
 		9CC46B89221405C6005E24F5 /* RootComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46B88221405C6005E24F5 /* RootComponent.swift */; };
 		9CC46B8B221405DF005E24F5 /* RootScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46B8A221405DF005E24F5 /* RootScene.swift */; };
@@ -56,6 +63,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9CA418D3221D879C00BAF215 /* StoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItem.swift; sourceTree = "<group>"; };
+		9CA418D5221D883700BAF215 /* Smartphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Smartphone.swift; sourceTree = "<group>"; };
+		9CA418D7221D883F00BAF215 /* TV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TV.swift; sourceTree = "<group>"; };
+		9CA418D9221D884900BAF215 /* Laptop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Laptop.swift; sourceTree = "<group>"; };
+		9CA418DB221D894D00BAF215 /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
+		9CA418DD221D898300BAF215 /* Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
+		9CA418DF221D8A0900BAF215 /* OperatingSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatingSystem.swift; sourceTree = "<group>"; };
 		9CC46B86221405B1005E24F5 /* RootContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootContract.swift; sourceTree = "<group>"; };
 		9CC46B88221405C6005E24F5 /* RootComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootComponent.swift; sourceTree = "<group>"; };
 		9CC46B8A221405DF005E24F5 /* RootScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootScene.swift; sourceTree = "<group>"; };
@@ -117,6 +131,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9CA418D2221D878500BAF215 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				9CA418D3221D879C00BAF215 /* StoreItem.swift */,
+				9CA418D5221D883700BAF215 /* Smartphone.swift */,
+				9CA418D7221D883F00BAF215 /* TV.swift */,
+				9CA418D9221D884900BAF215 /* Laptop.swift */,
+				9CA418DB221D894D00BAF215 /* Brand.swift */,
+				9CA418DD221D898300BAF215 /* Display.swift */,
+				9CA418DF221D8A0900BAF215 /* OperatingSystem.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		9CC46BAE2214719D005E24F5 /* Module */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +262,7 @@
 		9CC55257220AF8CA0004ACC4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				9CA418D2221D878500BAF215 /* Entities */,
 				9CC46C1822176B28005E24F5 /* Helpers */,
 				9CC46C0F221695DF005E24F5 /* Utils */,
 				9CC46BAE2214719D005E24F5 /* Module */,
@@ -362,6 +391,8 @@
 			files = (
 				9CC46B87221405B1005E24F5 /* RootContract.swift in Sources */,
 				9CC46BD622153932005E24F5 /* SignUpPresenter.swift in Sources */,
+				9CA418DA221D884900BAF215 /* Laptop.swift in Sources */,
+				9CA418D4221D879C00BAF215 /* StoreItem.swift in Sources */,
 				9CC46BB72214C3FC005E24F5 /* AuthBuilder.swift in Sources */,
 				9CC46BD022153918005E24F5 /* SignUpCoordinator.swift in Sources */,
 				9CC46BA222141088005E24F5 /* DashboardView.swift in Sources */,
@@ -383,12 +414,16 @@
 				9CC46C2822180B9F005E24F5 /* ProfileView.swift in Sources */,
 				9CC46BD42215392A005E24F5 /* SignUpView.swift in Sources */,
 				9CC46C172216982E005E24F5 /* KeyboardManager.swift in Sources */,
+				9CA418D6221D883700BAF215 /* Smartphone.swift in Sources */,
 				9CC46C2A22180BAD005E24F5 /* ProfilePresenter.swift in Sources */,
 				9CC46B9C2214106B005E24F5 /* DashboardBuilder.swift in Sources */,
+				9CA418DE221D898300BAF215 /* Display.swift in Sources */,
 				9CC46C0522161548005E24F5 /* SignInScene.swift in Sources */,
 				9CC46BB02214719D005E24F5 /* Coordinator.swift in Sources */,
+				9CA418D8221D883F00BAF215 /* TV.swift in Sources */,
 				9CC46BBF2214C425005E24F5 /* AuthPresenter.swift in Sources */,
 				9CC46C0722161550005E24F5 /* SignInCoordinator.swift in Sources */,
+				9CA418E0221D8A0900BAF215 /* OperatingSystem.swift in Sources */,
 				9CC46BFF22161529005E24F5 /* SignInContract.swift in Sources */,
 				9CC46C1C22180B64005E24F5 /* ProfileContract.swift in Sources */,
 				9CC46B8F22140617005E24F5 /* RootView.swift in Sources */,
@@ -399,6 +434,7 @@
 				9CC46C2422180B8C005E24F5 /* ProfileScene.swift in Sources */,
 				9CC46BCC22153908005E24F5 /* SignUpBuilder.swift in Sources */,
 				9CC46B9122140623005E24F5 /* RootPresenter.swift in Sources */,
+				9CA418DC221D894D00BAF215 /* Brand.swift in Sources */,
 				9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */,
 				9CC46BCE2215390F005E24F5 /* SignUpScene.swift in Sources */,
 				9CC46C2622180B95005E24F5 /* ProfileCoordinator.swift in Sources */,
