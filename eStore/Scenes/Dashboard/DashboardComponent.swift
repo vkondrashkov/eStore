@@ -10,18 +10,21 @@ import UIKit
 
 final class DashboardComponent {
     let rootViewController: UITabBarController
-    let feedNavigation: UINavigationController
+    let catalogNavigation: UINavigationController
     let profileNavigation: UINavigationController
 
     init(rootViewController: UITabBarController,
-         feedNavigation: UINavigationController,
+         catalogNavigation: UINavigationController,
          profileNavigation: UINavigationController) {
 
         self.rootViewController = rootViewController
-        self.feedNavigation = feedNavigation
+        self.catalogNavigation = catalogNavigation
         self.profileNavigation = profileNavigation
     }
 }
 
 // MARK: - ProfileDependency implementation
 extension DashboardComponent: ProfileDependency { }
+
+// MARK: - CatalogDependency implementation
+extension DashboardComponent: CatalogDependency { }
