@@ -28,5 +28,5 @@ extension CatalogCoordinator: Coordinator {
     }
 }
 
-// MARK: - ProfileRouter implementation
+// MARK: - CatalogRouter implementation
 extension CatalogCoordinator: CatalogRouter { }

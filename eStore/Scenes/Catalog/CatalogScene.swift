@@ -16,7 +16,7 @@ final class CatalogSceneImpl {
     }
 }
 
-// MARK: - ProfileScene implementation
+// MARK: - CatalogScene implementation
 extension CatalogSceneImpl: CatalogScene {
     func play(catalogShow: CatalogShow) {
         rootViewController.viewControllers = [catalogShow.viewController]

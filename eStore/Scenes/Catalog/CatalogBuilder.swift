@@ -16,7 +16,7 @@ final class CatalogBuilderImpl {
     }
 }
 
-// MARK: - ProfileBuilder implementation
+// MARK: - CatalogBuilder implementation
 extension CatalogBuilderImpl: CatalogBuilder {
     func build() -> CatalogCoordinator {
         let view = CatalogViewImpl()
