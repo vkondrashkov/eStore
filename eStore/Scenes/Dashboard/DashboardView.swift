@@ -14,6 +14,8 @@ final class DashboardViewImpl: UITabBarController {
     var catalogNavigation: UINavigationController!
     var profileNavigation: UINavigationController!
 
+    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
+
     var tabs: [UIViewController] {
         return [
             catalogNavigation,
@@ -24,6 +26,7 @@ final class DashboardViewImpl: UITabBarController {
     override func loadView() {
         super.loadView()
         view.backgroundColor = .white
+        tabBar.tintColor = customTintColor
     }
 
     override func viewDidLoad() {

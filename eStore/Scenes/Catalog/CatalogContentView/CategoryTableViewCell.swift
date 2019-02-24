@@ -16,6 +16,8 @@ class CategoryTableViewCell: UITableViewCell {
     private var iconImageView: UIImageView!
     private var descriptionLabel: UILabel!
 
+    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -41,10 +43,11 @@ class CategoryTableViewCell: UITableViewCell {
     func display(iconUrl: String?, description: String) {
         descriptionLabel.text = description
         if let url = iconUrl, let icon = UIImage(named: url) {
-            iconImageView.image = icon
+            iconImageView.image = icon.withRenderingMode(.alwaysTemplate)
         } else {
-            iconImageView.image = UIImage(named: "error-icon")
+            iconImageView.image = UIImage(named: "error-icon")!.withRenderingMode(.alwaysTemplate)
         }
+        iconImageView.tintColor = customTintColor
     }
 
     required init?(coder aDecoder: NSCoder) {
