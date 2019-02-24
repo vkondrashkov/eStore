@@ -10,10 +10,16 @@ final class CatalogCoordinator {
     private let scene: CatalogScene
     private let show: CatalogShow
 
+    private let goodsListBuilder: GoodsListBuilder
+    private var goodsListCoordinator: GoodsListCoordinator?
+
     init(scene: CatalogScene,
-         show: CatalogShow) {
+         show: CatalogShow,
+         goodsListBuilder: GoodsListBuilder) {
+
         self.scene = scene
         self.show = show
+        self.goodsListBuilder = goodsListBuilder
     }
 }
 
