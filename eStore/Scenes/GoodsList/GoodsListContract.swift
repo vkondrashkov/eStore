@@ -26,6 +26,10 @@ protocol GoodsListShow: AnyObject {
 
 protocol GoodsListView: AnyObject {
     // TODO: Think over display(_:) methods
+    func showActivityIndicator()
+    func hideActivityIndicator()
 }
 
-protocol GoodsListPresenter: AnyObject { }
+protocol GoodsListPresenter: AnyObject {
+    func handleLoadView()
+}

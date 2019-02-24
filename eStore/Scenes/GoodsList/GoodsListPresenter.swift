@@ -6,6 +6,8 @@
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
 //
 
+import Foundation
+
 final class GoodsListPresenterImpl {
     private unowned let view: GoodsListView
 
@@ -16,5 +18,11 @@ final class GoodsListPresenterImpl {
 
 // MARK: - GoodsListPresenter implementation
 extension GoodsListPresenterImpl: GoodsListPresenter {
-
+    func handleLoadView() {
+        // Temp
+        view.showActivityIndicator()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
+            self.view.hideActivityIndicator()
+        })
+    }
 }
