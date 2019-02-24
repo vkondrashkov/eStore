@@ -18,6 +18,7 @@ final class CatalogViewImpl: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = catalogBackgroundColor
+        title = "Choose category"
 
         setupCategoryTableView()
     }

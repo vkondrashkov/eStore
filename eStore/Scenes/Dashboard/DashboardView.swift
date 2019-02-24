@@ -32,8 +32,18 @@ final class DashboardViewImpl: UITabBarController {
     }
 
     func setupTabs() {
-        catalogNavigation.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
-        profileNavigation.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
+        let catalogTabBarItem = UITabBarItem(
+            title: "Catalog",
+            image: UIImage(named: "catalog-icon"),
+            tag: 0
+        )
+        catalogNavigation.tabBarItem = catalogTabBarItem
+        let profileTabBarItem = UITabBarItem(
+            title: "Profile",
+            image: UIImage(named: "profile-icon"),
+            tag: 1
+        )
+        profileNavigation.tabBarItem = profileTabBarItem
 
         viewControllers = tabs
     }
