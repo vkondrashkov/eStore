@@ -13,6 +13,9 @@ final class DashboardCoordinator {
     private let profileBuilder: ProfileBuilder
     private var profileCoordinator: ProfileCoordinator?
 
+    private let catalogBuilder: CatalogBuilder
+    private var catalogCoordinator: CatalogCoordinator?
+
     // TODO: Change contract between Dash or Auth screen
     // with its Root module
     private weak var listener: DashboardListener?
@@ -20,11 +23,13 @@ final class DashboardCoordinator {
     init(scene: DashboardScene,
          show: DashboardShow,
          profileBuilder: ProfileBuilder,
+         catalogBuilder: CatalogBuilder,
          listener: DashboardListener) {
 
         self.scene = scene
         self.show = show
         self.profileBuilder = profileBuilder
+        self.catalogBuilder = catalogBuilder
         self.listener = listener
     }
 }
@@ -36,6 +41,9 @@ extension DashboardCoordinator: Coordinator {
 
         profileCoordinator = profileBuilder.build(with: self)
         profileCoordinator?.start()
+
+        catalogCoordinator = catalogBuilder.build()
+        catalogCoordinator?.start()
     }
 
     func stop(completion: (() -> Void)?) {

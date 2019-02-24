@@ -19,21 +19,22 @@ final class DashboardBuilderImpl {
 // MARK: - DashboardBuilder implementation
 extension DashboardBuilderImpl: DashboardBuilder {
     func build(with listener: DashboardListener) -> DashboardCoordinator {
-        let feedNavigation = UINavigationController()
+        let catalogNavigation = UINavigationController()
         let profileNavigation = UINavigationController()
         let view = DashboardViewImpl()
-        view.feedNavigation = feedNavigation
+        view.catalogNavigation = catalogNavigation
         view.profileNavigation = profileNavigation
         view.setupTabs()
         let component = DashboardComponent(rootViewController: view,
-                                           feedNavigation: feedNavigation,
+                                           catalogNavigation: catalogNavigation,
                                            profileNavigation: profileNavigation)
         let scene = DashboardSceneImpl(rootViewController: dependency.parent)
         let profileBuilder = ProfileBuilderImpl(dependency: component)
-        // FeedBuilder
+        let catalogBuilder = CatalogBuilderImpl(dependency: component)
         let coordinator = DashboardCoordinator(scene: scene,
                                                show: view,
                                                profileBuilder: profileBuilder,
+                                               catalogBuilder: catalogBuilder,
                                                listener: listener)
         let presenter = DashboardPresenterImpl(view: view,
                                                router: coordinator)

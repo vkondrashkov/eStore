@@ -11,12 +11,12 @@ import UIKit
 final class DashboardViewImpl: UITabBarController {
     var presenter: DashboardPresenter!
 
-    var feedNavigation: UINavigationController!
+    var catalogNavigation: UINavigationController!
     var profileNavigation: UINavigationController!
 
     var tabs: [UIViewController] {
         return [
-            feedNavigation,
+            catalogNavigation,
             profileNavigation
         ]
     }
@@ -32,7 +32,7 @@ final class DashboardViewImpl: UITabBarController {
     }
 
     func setupTabs() {
-        feedNavigation.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
+        catalogNavigation.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
         profileNavigation.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
 
         viewControllers = tabs
