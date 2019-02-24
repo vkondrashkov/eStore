@@ -38,10 +38,10 @@ class CategoryTableViewCell: UITableViewCell {
         activateDescriptionLabelConstraints(view: descriptionLabel, anchorView: iconImageView)
     }
 
-    func display(icon: UIImage?, description: String) {
+    func display(iconUrl: String?, description: String) {
         descriptionLabel.text = description
-        if let categoryIcon = icon {
-            iconImageView.image = categoryIcon
+        if let url = iconUrl, let icon = UIImage(named: url) {
+            iconImageView.image = icon
         } else {
             iconImageView.image = UIImage(named: "error-icon")
         }

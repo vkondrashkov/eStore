@@ -10,9 +10,9 @@ import UIKit
 
 class CategoryTableViewDataSource: NSObject, UITableViewDataSource {
     var categories: [Category] = [
-        Category(icon: nil, name: "Smartphone"),
-        Category(icon: nil, name: "TV"),
-        Category(icon: nil, name: "Laptop")
+        Category(iconUrl: "smartphone-icon", name: "Smartphone"),
+        Category(iconUrl: "tv-icon", name: "TV"),
+        Category(iconUrl: "laptop-icon", name: "Laptop")
     ]
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -21,7 +21,7 @@ class CategoryTableViewDataSource: NSObject, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = CategoryTableViewCell()
-        cell.display(icon: categories[indexPath.row].icon, description: categories[indexPath.row].name)
+        cell.display(iconUrl: categories[indexPath.row].iconUrl, description: categories[indexPath.row].name)
         return cell
     }
 }

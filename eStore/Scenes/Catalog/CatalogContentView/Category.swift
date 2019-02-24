@@ -9,6 +9,6 @@
 import UIKit
 
 struct Category {
-    let icon: UIImage?
+    let iconUrl: String?
     let name: String
 }
