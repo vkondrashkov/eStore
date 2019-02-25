@@ -1,6 +1,6 @@
 //
 //  AuthScene.swift
-//  uTable
+//  eStore
 //
 //  Created by Vladislav Kondrashkov on 2/14/19.
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.

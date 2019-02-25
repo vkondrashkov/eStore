@@ -1,6 +1,6 @@
 //
 //  DashboardScene.swift
-//  uTable
+//  eStore
 //
 //  Created by Vladislav Kondrashkov on 2/13/19.
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
