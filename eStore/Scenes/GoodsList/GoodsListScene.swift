@@ -16,7 +16,7 @@ final class GoodsListSceneImpl {
     }
 }
 
-// MARK: - ProfileScene implementation
+// MARK: - GoodsListScene implementation
 extension GoodsListSceneImpl: GoodsListScene {
     func play(goodsListShow: GoodsListShow) {
         navigation.pushViewController(goodsListShow.rootViewController, animated: true)

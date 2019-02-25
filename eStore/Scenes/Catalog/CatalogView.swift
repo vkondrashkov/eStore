@@ -56,15 +56,7 @@ extension CatalogViewImpl: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let templateViewController = UIViewController()
-        let randomColors: [UIColor] = [
-            .red, .blue, .white,
-            .purple, .orange, .yellow,
-            .black, .gray, .lightGray
-        ]
-        templateViewController.view.backgroundColor = randomColors[Int.random(in: 0..<randomColors.count)]
-        templateViewController.title = categoryTableViewDataSource.categories[indexPath.row].name
-        navigationController?.pushViewController(templateViewController, animated: true)
+        presenter.handleCategoryPress(title: categoryTableViewDataSource.categories[indexPath.row].name)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

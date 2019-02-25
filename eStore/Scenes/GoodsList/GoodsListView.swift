@@ -15,8 +15,17 @@ final class GoodsListViewImpl: UIViewController {
     private var fadeMaskView: UIView!
     private var activityIndicator: UIActivityIndicatorView!
 
+    private let goodsListBackgroundColor = UIColor(red: 242.0 / 255.0, green: 241.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
+    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = goodsListBackgroundColor
+        navigationController?.navigationBar.tintColor = customTintColor
+
+        setupLoadingView()
+        setupFadeMaskView()
+        setupActivityIndicator()
 
         presenter.handleLoadView()
     }
@@ -30,7 +39,7 @@ final class GoodsListViewImpl: UIViewController {
 
     private func setupFadeMaskView() {
         fadeMaskView = UIView()
-        fadeMaskView.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
+        fadeMaskView.backgroundColor = UIColor(white: 0.0, alpha: 0.2)
         loadingView.addSubview(fadeMaskView)
         activateFadeMaskViewConstraints(view: fadeMaskView)
     }
@@ -46,20 +55,28 @@ final class GoodsListViewImpl: UIViewController {
 // MARK: - GoodsListView implementation
 extension GoodsListViewImpl: GoodsListView {
     func showActivityIndicator() {
-        UIView.animate(
-            withDuration: 0.25,
+        activityIndicator.startAnimating()
+        UIView.transition(
+            with: view,
+            duration: 0.25,
+            options: .transitionCrossDissolve,
             animations: { [weak self] in
                 self?.loadingView.isHidden = false
-            }
+            },
+            completion: nil
         )
     }
 
     func hideActivityIndicator() {
-        UIView.animate(
-            withDuration: 0.25,
+        activityIndicator.stopAnimating()
+        UIView.transition(
+            with: view,
+            duration: 0.25,
+            options: .transitionCrossDissolve,
             animations: { [weak self] in
                 self?.loadingView.isHidden = true
-            }
+            },
+            completion: nil
         )
     }
 }

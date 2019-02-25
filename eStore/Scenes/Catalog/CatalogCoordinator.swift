@@ -35,4 +35,9 @@ extension CatalogCoordinator: Coordinator {
 }
 
 // MARK: - ProfileRouter implementation
-extension CatalogCoordinator: CatalogRouter { }
+extension CatalogCoordinator: CatalogRouter {
+    func showGoodsList(title: String) {
+        goodsListCoordinator = goodsListBuilder.build(title: title)
+        goodsListCoordinator?.start()
+    }
+}

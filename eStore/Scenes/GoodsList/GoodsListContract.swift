@@ -13,7 +13,7 @@ protocol GoodsListDependency: AnyObject {
 }
 
 protocol GoodsListBuilder: AnyObject {
-    func build() -> GoodsListCoordinator
+    func build(title: String) -> GoodsListCoordinator
 }
 
 protocol GoodsListScene: AnyObject {

@@ -25,4 +25,9 @@ extension CatalogPresenterImpl: CatalogPresenter {
     func handleLoadView() {
         
     }
+
+    // TEMP
+    func handleCategoryPress(title: String) {
+        router.showGoodsList(title: title)
+    }
 }

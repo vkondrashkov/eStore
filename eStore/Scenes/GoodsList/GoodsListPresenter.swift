@@ -21,8 +21,8 @@ extension GoodsListPresenterImpl: GoodsListPresenter {
     func handleLoadView() {
         // Temp
         view.showActivityIndicator()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
-            self.view.hideActivityIndicator()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: { [weak self] in
+            self?.view.hideActivityIndicator()
         })
     }
 }

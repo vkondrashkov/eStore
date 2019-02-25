@@ -16,10 +16,11 @@ final class GoodsListBuilderImpl {
     }
 }
 
-// MARK: - SignInBuilder implementation
+// MARK: - GoodsListBuilder implementation
 extension GoodsListBuilderImpl: GoodsListBuilder {
-    func build() -> GoodsListCoordinator {
+    func build(title: String) -> GoodsListCoordinator {
         let view = GoodsListViewImpl()
+        view.title = title
         let scene = GoodsListSceneImpl(navigation: dependency.navigation)
         let coordinator = GoodsListCoordinator(scene: scene,
                                                show: view)
