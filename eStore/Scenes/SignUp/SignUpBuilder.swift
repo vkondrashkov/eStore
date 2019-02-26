@@ -22,9 +22,10 @@ extension SignUpBuilderImpl: SignUpBuilder {
         let view = SignUpViewImpl()
         let scene = SignUpSceneImpl(navViewController: dependency.parent)
         let coordinator = SignUpCoordinator(scene: scene,
-                                            show: view)
-        let presenter = SignUpPresenterImpl(view: view,
+                                            show: view,
                                             listener: listener)
+        let presenter = SignUpPresenterImpl(view: view,
+                                            router: coordinator)
         view.presenter = presenter
         return coordinator
     }

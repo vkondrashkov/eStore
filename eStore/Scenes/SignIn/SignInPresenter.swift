@@ -10,19 +10,19 @@ import Foundation
 
 final class SignInPresenterImpl {
     private unowned let view: SignInView
-    private weak var listener: SignInListener?
+    private weak var router: SignInRouter?
 
     init(view: SignInView,
-         listener: SignInListener) {
+         router: SignInRouter) {
         self.view = view
-        self.listener = listener
+        self.router = router
     }
 }
 
 // MARK: - SignInPresenter implementation
 extension SignInPresenterImpl: SignInPresenter {
     func handleRightBarButtonPress() {
-        listener?.showSignUp()
+        router?.routeSignUp()
     }
 
     func handleForgotPasswordPress() {
@@ -44,7 +44,7 @@ extension SignInPresenterImpl: SignInPresenter {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: { [weak self] in
             self?.view.hideActivityIndicator()
             self?.view.display(signInButton: "Sign In")
-            self?.listener?.handleSignIn()
+            self?.router?.completeSignIn()
         })
     }
 

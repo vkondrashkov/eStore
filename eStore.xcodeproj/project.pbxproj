@@ -327,14 +327,14 @@
 		9CC55256220AF8B50004ACC4 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				9CA41922222324AF00BAF215 /* GoodsList */,
+				9CC5525A220AFB730004ACC4 /* Root */,
+				9CC46BB12214C393005E24F5 /* Auth */,
 				9CC46BFD221614CD005E24F5 /* SignIn */,
 				9CC46BC02215387B005E24F5 /* SignUp */,
-				9CC46BB12214C393005E24F5 /* Auth */,
 				9CC5525B220AFB810004ACC4 /* Dashboard */,
 				9CC5525D220AFBB00004ACC4 /* Profile */,
 				9CA418E1221D8CD300BAF215 /* Catalog */,
-				9CC5525A220AFB730004ACC4 /* Root */,
+				9CA41922222324AF00BAF215 /* GoodsList */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";

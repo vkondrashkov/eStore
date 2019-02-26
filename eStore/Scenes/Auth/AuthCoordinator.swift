@@ -66,7 +66,7 @@ extension AuthCoordinator: SignUpListener {
         })
     }
 
-    func handleSignUp() {
+    func signUp() {
         signUpCoordinator?.stop(completion: { [weak self] in
             self?.signUpCoordinator = nil
             self?.listener?.authenticate()
@@ -83,7 +83,7 @@ extension AuthCoordinator: SignInListener {
         })
     }
 
-    func handleSignIn() {
+    func signIn() {
         signInCoordinator?.stop(completion: { [weak self] in
             self?.signInCoordinator = nil
             self?.listener?.authenticate()

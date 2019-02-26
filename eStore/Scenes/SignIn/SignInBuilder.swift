@@ -22,9 +22,10 @@ extension SignInBuilderImpl: SignInBuilder {
         let view = SignInViewImpl()
         let scene = SignInSceneImpl(navViewController: dependency.parent)
         let coordinator = SignInCoordinator(scene: scene,
-                                            show: view)
-        let presenter = SignInPresenterImpl(view: view,
+                                            show: view,
                                             listener: listener)
+        let presenter = SignInPresenterImpl(view: view,
+                                            router: coordinator)
         view.presenter = presenter
         return coordinator
     }

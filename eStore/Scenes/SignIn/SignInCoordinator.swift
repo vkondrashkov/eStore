@@ -9,11 +9,15 @@
 final class SignInCoordinator {
     private let scene: SignInScene
     private let show: SignInShow
+    private weak var listener: SignInListener?
 
     init(scene: SignInScene,
-         show: SignInShow) {
+         show: SignInShow,
+         listener: SignInListener) {
+
         self.scene = scene
         self.show = show
+        self.listener = listener
     }
 }
 
@@ -25,5 +29,16 @@ extension SignInCoordinator: Coordinator {
 
     func stop(completion: (() -> Void)?) {
         completion?()
+    }
+}
+
+// MARK: - SignInRouter implementation
+extension SignInCoordinator: SignInRouter {
+    func completeSignIn() {
+        listener?.signIn()
+    }
+
+    func routeSignUp() {
+        listener?.showSignUp()
     }
 }
