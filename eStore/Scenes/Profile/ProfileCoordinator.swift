@@ -9,11 +9,15 @@
 final class ProfileCoordinator {
     private let scene: ProfileScene
     private let show: ProfileShow
+    private weak var listener: ProfileListener?
 
     init(scene: ProfileScene,
-         show: ProfileShow) {
+         show: ProfileShow,
+         listener: ProfileListener) {
+
         self.scene = scene
         self.show = show
+        self.listener = listener
     }
 }
 
@@ -29,4 +33,8 @@ extension ProfileCoordinator: Coordinator {
 }
 
 // MARK: - ProfileRouter implementation
-extension ProfileCoordinator: ProfileRouter { }
+extension ProfileCoordinator: ProfileRouter {
+    func logout() {
+        listener?.logout()
+    }
+}

@@ -10,7 +10,7 @@ import Foundation
 
 final class SignInPresenterImpl {
     private unowned let view: SignInView
-    private weak var router: SignInRouter?
+    private unowned let router: SignInRouter
 
     init(view: SignInView,
          router: SignInRouter) {
@@ -22,7 +22,7 @@ final class SignInPresenterImpl {
 // MARK: - SignInPresenter implementation
 extension SignInPresenterImpl: SignInPresenter {
     func handleRightBarButtonPress() {
-        router?.routeSignUp()
+        router.routeSignUp()
     }
 
     func handleForgotPasswordPress() {
@@ -44,7 +44,7 @@ extension SignInPresenterImpl: SignInPresenter {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: { [weak self] in
             self?.view.hideActivityIndicator()
             self?.view.display(signInButton: "Sign In")
-            self?.router?.completeSignIn()
+            self?.router.completeSignIn()
         })
     }
 

@@ -23,10 +23,10 @@ extension ProfileBuilderImpl: ProfileBuilder {
         let component = ProfileComponent(rootViewController: view)
         let scene = ProfileSceneImpl(rootViewController: dependency.profileNavigation)
         let coordinator = ProfileCoordinator(scene: scene,
-                                             show: view)
-        let presenter = ProfilePresenterImpl(view: view,
-                                             router: coordinator,
+                                             show: view,
                                              listener: listener)
+        let presenter = ProfilePresenterImpl(view: view,
+                                             router: coordinator)
         view.presenter = presenter
         return coordinator
     }
