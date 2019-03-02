@@ -10,10 +10,16 @@ final class CatalogCoordinator {
     private let scene: CatalogScene
     private let show: CatalogShow
 
+    private let goodsListBuilder: GoodsListBuilder
+    private var goodsListCoordinator: GoodsListCoordinator?
+
     init(scene: CatalogScene,
-         show: CatalogShow) {
+         show: CatalogShow,
+         goodsListBuilder: GoodsListBuilder) {
+
         self.scene = scene
         self.show = show
+        self.goodsListBuilder = goodsListBuilder
     }
 }
 
@@ -29,4 +35,9 @@ extension CatalogCoordinator: Coordinator {
 }
 
 // MARK: - CatalogRouter implementation
-extension CatalogCoordinator: CatalogRouter { }
+extension CatalogCoordinator: CatalogRouter {
+    func showGoodsList(title: String) {
+        goodsListCoordinator = goodsListBuilder.build(title: title)
+        goodsListCoordinator?.start()
+    }
+}

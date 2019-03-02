@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C83BB94222A591A00CBB1FF /* GoodsListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BB93222A591A00CBB1FF /* GoodsListTableViewDataSource.swift */; };
 		9CA418D4221D879C00BAF215 /* StoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D3221D879C00BAF215 /* StoreItem.swift */; };
 		9CA418D6221D883700BAF215 /* Smartphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D5221D883700BAF215 /* Smartphone.swift */; };
 		9CA418D8221D883F00BAF215 /* TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D7221D883F00BAF215 /* TV.swift */; };
@@ -21,10 +22,18 @@
 		9CA418EB221D8D0D00BAF215 /* CatalogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418EA221D8D0D00BAF215 /* CatalogCoordinator.swift */; };
 		9CA418ED221D8D1600BAF215 /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418EC221D8D1600BAF215 /* CatalogView.swift */; };
 		9CA418EF221D8D1F00BAF215 /* CatalogPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418EE221D8D1F00BAF215 /* CatalogPresenter.swift */; };
+		9CA4191722201A0A00BAF215 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4191622201A0A00BAF215 /* String+MD5.swift */; };
 		9CA4191B2222CC9500BAF215 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4191A2222CC9500BAF215 /* CategoryTableViewCell.swift */; };
 		9CA4191E2222CF0B00BAF215 /* CategoryTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4191D2222CF0B00BAF215 /* CategoryTableViewDataSource.swift */; };
 		9CA419202222D6E900BAF215 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4191F2222D6E900BAF215 /* Category.swift */; };
-		9CA4191722201A0A00BAF215 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4191622201A0A00BAF215 /* String+MD5.swift */; };
+		9CA41924222324DE00BAF215 /* GoodsListContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA41923222324DE00BAF215 /* GoodsListContract.swift */; };
+		9CA41926222324E800BAF215 /* GoodsListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA41925222324E800BAF215 /* GoodsListComponent.swift */; };
+		9CA41928222324EF00BAF215 /* GoodsListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA41927222324EF00BAF215 /* GoodsListBuilder.swift */; };
+		9CA4192A222324F800BAF215 /* GoodsListScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA41929222324F800BAF215 /* GoodsListScene.swift */; };
+		9CA4192C2223250200BAF215 /* GoodsListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4192B2223250200BAF215 /* GoodsListCoordinator.swift */; };
+		9CA4192E2223250A00BAF215 /* GoodsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4192D2223250A00BAF215 /* GoodsListView.swift */; };
+		9CA419302223251200BAF215 /* GoodsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4192F2223251200BAF215 /* GoodsListPresenter.swift */; };
+		9CA4193422251C5600BAF215 /* GoodsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4193322251C5600BAF215 /* GoodsListTableViewCell.swift */; };
 		9CC46B87221405B1005E24F5 /* RootContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46B86221405B1005E24F5 /* RootContract.swift */; };
 		9CC46B89221405C6005E24F5 /* RootComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46B88221405C6005E24F5 /* RootComponent.swift */; };
 		9CC46B8B221405DF005E24F5 /* RootScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC46B8A221405DF005E24F5 /* RootScene.swift */; };
@@ -74,6 +83,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C83BB93222A591A00CBB1FF /* GoodsListTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListTableViewDataSource.swift; sourceTree = "<group>"; };
 		9CA418D3221D879C00BAF215 /* StoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItem.swift; sourceTree = "<group>"; };
 		9CA418D5221D883700BAF215 /* Smartphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Smartphone.swift; sourceTree = "<group>"; };
 		9CA418D7221D883F00BAF215 /* TV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TV.swift; sourceTree = "<group>"; };
@@ -88,11 +98,19 @@
 		9CA418EA221D8D0D00BAF215 /* CatalogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCoordinator.swift; sourceTree = "<group>"; };
 		9CA418EC221D8D1600BAF215 /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
 		9CA418EE221D8D1F00BAF215 /* CatalogPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPresenter.swift; sourceTree = "<group>"; };
+		9CA41913222019CD00BAF215 /* eStore-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "eStore-Bridging-Header.h"; sourceTree = "<group>"; };
+		9CA4191622201A0A00BAF215 /* String+MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
 		9CA4191A2222CC9500BAF215 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		9CA4191D2222CF0B00BAF215 /* CategoryTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewDataSource.swift; sourceTree = "<group>"; };
 		9CA4191F2222D6E900BAF215 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		9CA41913222019CD00BAF215 /* eStore-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "eStore-Bridging-Header.h"; sourceTree = "<group>"; };
-		9CA4191622201A0A00BAF215 /* String+MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
+		9CA41923222324DE00BAF215 /* GoodsListContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListContract.swift; sourceTree = "<group>"; };
+		9CA41925222324E800BAF215 /* GoodsListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListComponent.swift; sourceTree = "<group>"; };
+		9CA41927222324EF00BAF215 /* GoodsListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListBuilder.swift; sourceTree = "<group>"; };
+		9CA41929222324F800BAF215 /* GoodsListScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListScene.swift; sourceTree = "<group>"; };
+		9CA4192B2223250200BAF215 /* GoodsListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListCoordinator.swift; sourceTree = "<group>"; };
+		9CA4192D2223250A00BAF215 /* GoodsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListView.swift; sourceTree = "<group>"; };
+		9CA4192F2223251200BAF215 /* GoodsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListPresenter.swift; sourceTree = "<group>"; };
+		9CA4193322251C5600BAF215 /* GoodsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListTableViewCell.swift; sourceTree = "<group>"; };
 		9CC46B86221405B1005E24F5 /* RootContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootContract.swift; sourceTree = "<group>"; };
 		9CC46B88221405C6005E24F5 /* RootComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootComponent.swift; sourceTree = "<group>"; };
 		9CC46B8A221405DF005E24F5 /* RootScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootScene.swift; sourceTree = "<group>"; };
@@ -191,6 +209,30 @@
 				9CA4191F2222D6E900BAF215 /* Category.swift */,
 			);
 			path = CatalogContentView;
+			sourceTree = "<group>";
+		};
+		9CA41922222324AF00BAF215 /* GoodsList */ = {
+			isa = PBXGroup;
+			children = (
+				9CA4193222251C2100BAF215 /* GoodsListContentView */,
+				9CA41923222324DE00BAF215 /* GoodsListContract.swift */,
+				9CA41925222324E800BAF215 /* GoodsListComponent.swift */,
+				9CA41927222324EF00BAF215 /* GoodsListBuilder.swift */,
+				9CA41929222324F800BAF215 /* GoodsListScene.swift */,
+				9CA4192B2223250200BAF215 /* GoodsListCoordinator.swift */,
+				9CA4192D2223250A00BAF215 /* GoodsListView.swift */,
+				9CA4192F2223251200BAF215 /* GoodsListPresenter.swift */,
+			);
+			path = GoodsList;
+			sourceTree = "<group>";
+		};
+		9CA4193222251C2100BAF215 /* GoodsListContentView */ = {
+			isa = PBXGroup;
+			children = (
+				9CA4193322251C5600BAF215 /* GoodsListTableViewCell.swift */,
+				9C83BB93222A591A00CBB1FF /* GoodsListTableViewDataSource.swift */,
+			);
+			path = GoodsListContentView;
 			sourceTree = "<group>";
 		};
 		9CC46BAE2214719D005E24F5 /* Module */ = {
@@ -299,6 +341,7 @@
 		9CC55256220AF8B50004ACC4 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				9CA41922222324AF00BAF215 /* GoodsList */,
 				9CC46BFD221614CD005E24F5 /* SignIn */,
 				9CC46BC02215387B005E24F5 /* SignUp */,
 				9CC46BB12214C393005E24F5 /* Auth */,
@@ -449,6 +492,7 @@
 				9CA418D4221D879C00BAF215 /* StoreItem.swift in Sources */,
 				9CC46BB72214C3FC005E24F5 /* AuthBuilder.swift in Sources */,
 				9CC46BD022153918005E24F5 /* SignUpCoordinator.swift in Sources */,
+				9CA41924222324DE00BAF215 /* GoodsListContract.swift in Sources */,
 				9CA418EB221D8D0D00BAF215 /* CatalogCoordinator.swift in Sources */,
 				9CC46BA222141088005E24F5 /* DashboardView.swift in Sources */,
 				9CC46BA422141090005E24F5 /* DashboardPresenter.swift in Sources */,
@@ -459,6 +503,7 @@
 				9CC46BBD2214C41B005E24F5 /* AuthView.swift in Sources */,
 				9CC46BBB2214C412005E24F5 /* AuthCoordinator.swift in Sources */,
 				9CC46B9E22141072005E24F5 /* DashboardScene.swift in Sources */,
+				9CA4192E2223250A00BAF215 /* GoodsListView.swift in Sources */,
 				9CC46C2222180B83005E24F5 /* ProfileBuilder.swift in Sources */,
 				9CC55244220AF8510004ACC4 /* AppDelegate.swift in Sources */,
 				9CC46B9A22141061005E24F5 /* DashboardComponent.swift in Sources */,
@@ -471,8 +516,12 @@
 				9CC46C2822180B9F005E24F5 /* ProfileView.swift in Sources */,
 				9CC46BD42215392A005E24F5 /* SignUpView.swift in Sources */,
 				9CC46C172216982E005E24F5 /* KeyboardManager.swift in Sources */,
+				9CA41926222324E800BAF215 /* GoodsListComponent.swift in Sources */,
 				9CA418D6221D883700BAF215 /* Smartphone.swift in Sources */,
+				9CA4192C2223250200BAF215 /* GoodsListCoordinator.swift in Sources */,
+				9CA4192A222324F800BAF215 /* GoodsListScene.swift in Sources */,
 				9CC46C2A22180BAD005E24F5 /* ProfilePresenter.swift in Sources */,
+				9CA41928222324EF00BAF215 /* GoodsListBuilder.swift in Sources */,
 				9CC46B9C2214106B005E24F5 /* DashboardBuilder.swift in Sources */,
 				9CA418DE221D898300BAF215 /* Display.swift in Sources */,
 				9CA418E9221D8D0500BAF215 /* CatalogScene.swift in Sources */,
@@ -482,6 +531,7 @@
 				9CA418D8221D883F00BAF215 /* TV.swift in Sources */,
 				9CC46BBF2214C425005E24F5 /* AuthPresenter.swift in Sources */,
 				9CC46C0722161550005E24F5 /* SignInCoordinator.swift in Sources */,
+				9C83BB94222A591A00CBB1FF /* GoodsListTableViewDataSource.swift in Sources */,
 				9CA418E0221D8A0900BAF215 /* OperatingSystem.swift in Sources */,
 				9CC46BFF22161529005E24F5 /* SignInContract.swift in Sources */,
 				9CC46C1C22180B64005E24F5 /* ProfileContract.swift in Sources */,
@@ -489,9 +539,11 @@
 				9CA418E3221D8CEC00BAF215 /* CatalogContract.swift in Sources */,
 				9CC46C2022180B7B005E24F5 /* ProfileComponent.swift in Sources */,
 				9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */,
+				9CA4193422251C5600BAF215 /* GoodsListTableViewCell.swift in Sources */,
 				9CC46C1A22176B39005E24F5 /* AlertFactory.swift in Sources */,
 				9CA4191E2222CF0B00BAF215 /* CategoryTableViewDataSource.swift in Sources */,
 				9CC46C032216153A005E24F5 /* SignInBuilder.swift in Sources */,
+				9CA419302223251200BAF215 /* GoodsListPresenter.swift in Sources */,
 				9CC46C2422180B8C005E24F5 /* ProfileScene.swift in Sources */,
 				9CC46BCC22153908005E24F5 /* SignUpBuilder.swift in Sources */,
 				9CA418E7221D8CFC00BAF215 /* CatalogBuilder.swift in Sources */,
@@ -631,15 +683,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CCVQJZF8JS;
+				DEVELOPMENT_TEAM = 638H9B3B32;
 				INFOPLIST_FILE = eStore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.declipz.eStore;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vkondrashkov.eStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "eStore/eStore-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -652,15 +706,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CCVQJZF8JS;
+				DEVELOPMENT_TEAM = 638H9B3B32;
 				INFOPLIST_FILE = eStore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.declipz.eStore;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vkondrashkov.eStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "eStore/eStore-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

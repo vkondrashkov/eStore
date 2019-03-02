@@ -25,7 +25,8 @@ protocol CatalogShow: AnyObject {
 }
 
 protocol CatalogRouter: AnyObject {
-
+    // TODO: Refactor show(_:) method
+    func showGoodsList(title: String)
 }
 
 protocol CatalogView: AnyObject {
@@ -35,4 +36,5 @@ protocol CatalogView: AnyObject {
 
 protocol CatalogPresenter: AnyObject {
     func handleLoadView()
+    func handleCategoryPress(title: String) // TEMP
 }

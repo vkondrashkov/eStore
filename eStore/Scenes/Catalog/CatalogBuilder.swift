@@ -20,10 +20,12 @@ final class CatalogBuilderImpl {
 extension CatalogBuilderImpl: CatalogBuilder {
     func build() -> CatalogCoordinator {
         let view = CatalogViewImpl()
-        let component = CatalogComponent(rootViewController: view)
+        let component = CatalogComponent(navigation: dependency.catalogNavigation)
         let scene = CatalogSceneImpl(rootViewController: dependency.catalogNavigation)
+        let goodsListBuilder = GoodsListBuilderImpl(dependency: component)
         let coordinator = CatalogCoordinator(scene: scene,
-                                             show: view)
+                                             show: view,
+                                             goodsListBuilder: goodsListBuilder)
         let presenter = CatalogPresenterImpl(view: view,
                                              router: coordinator)
         view.presenter = presenter
