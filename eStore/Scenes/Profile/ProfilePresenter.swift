@@ -8,16 +8,13 @@
 
 final class ProfilePresenterImpl {
     private unowned let view: ProfileView
-    private weak var listener: ProfileListener?
     private unowned let router: ProfileRouter
 
     init(view: ProfileView,
-         router: ProfileRouter,
-         listener: ProfileListener) {
+         router: ProfileRouter) {
 
         self.view = view
         self.router = router
-        self.listener = listener
     }
 }
 
@@ -50,7 +47,7 @@ extension ProfilePresenterImpl: ProfilePresenter {
             alertType: .doubleAction,
             primaryCaption: "OK",
             primaryAction: { [weak self] in
-                self?.listener?.logout()
+                self?.router.logout()
             },
             secondaryCaption: "Cancel",
             secondaryAction: nil

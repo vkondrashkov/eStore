@@ -25,7 +25,7 @@ protocol ProfileShow: AnyObject {
 }
 
 protocol ProfileRouter: AnyObject {
-
+    func logout()
 }
 
 protocol ProfileListener: AnyObject {

@@ -24,9 +24,14 @@ protocol SignInShow: AnyObject {
     var rootViewController: UIViewController { get }
 }
 
+protocol SignInRouter: AnyObject {
+    func completeSignIn()
+    func routeSignUp()
+}
+
 protocol SignInListener: AnyObject {
     func showSignUp()
-    func handleSignIn()
+    func signIn()
 }
 
 protocol SignInView: AnyObject {
