@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9C83BB94222A591A00CBB1FF /* GoodsListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BB93222A591A00CBB1FF /* GoodsListTableViewDataSource.swift */; };
+		9C83BB97222A9D1300CBB1FF /* GoodsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BB96222A9D1300CBB1FF /* GoodsManager.swift */; };
 		9CA418D4221D879C00BAF215 /* StoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D3221D879C00BAF215 /* StoreItem.swift */; };
 		9CA418D6221D883700BAF215 /* Smartphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D5221D883700BAF215 /* Smartphone.swift */; };
 		9CA418D8221D883F00BAF215 /* TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D7221D883F00BAF215 /* TV.swift */; };
@@ -84,6 +85,7 @@
 
 /* Begin PBXFileReference section */
 		9C83BB93222A591A00CBB1FF /* GoodsListTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListTableViewDataSource.swift; sourceTree = "<group>"; };
+		9C83BB96222A9D1300CBB1FF /* GoodsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsManager.swift; sourceTree = "<group>"; };
 		9CA418D3221D879C00BAF215 /* StoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItem.swift; sourceTree = "<group>"; };
 		9CA418D5221D883700BAF215 /* Smartphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Smartphone.swift; sourceTree = "<group>"; };
 		9CA418D7221D883F00BAF215 /* TV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TV.swift; sourceTree = "<group>"; };
@@ -172,6 +174,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C83BB95222A9CD400CBB1FF /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				9C83BB96222A9D1300CBB1FF /* GoodsManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		9CA418D2221D878500BAF215 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,6 +366,7 @@
 		9CC55257220AF8CA0004ACC4 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				9C83BB95222A9CD400CBB1FF /* Networking */,
 				9CA418D2221D878500BAF215 /* Entities */,
 				9CC46C1822176B28005E24F5 /* Helpers */,
 				9CC46C0F221695DF005E24F5 /* Utils */,
@@ -526,6 +537,7 @@
 				9CA418DE221D898300BAF215 /* Display.swift in Sources */,
 				9CA418E9221D8D0500BAF215 /* CatalogScene.swift in Sources */,
 				9CC46C0522161548005E24F5 /* SignInScene.swift in Sources */,
+				9C83BB97222A9D1300CBB1FF /* GoodsManager.swift in Sources */,
 				9CC46BB02214719D005E24F5 /* Coordinator.swift in Sources */,
 				9CA4191B2222CC9500BAF215 /* CategoryTableViewCell.swift in Sources */,
 				9CA418D8221D883F00BAF215 /* TV.swift in Sources */,
