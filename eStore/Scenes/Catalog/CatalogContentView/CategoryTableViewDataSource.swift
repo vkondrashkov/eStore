@@ -25,4 +25,3 @@ class CategoryTableViewDataSource: NSObject, UITableViewDataSource {
         return cell
     }
 }
-
