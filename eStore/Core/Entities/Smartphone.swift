@@ -51,7 +51,7 @@ class Smartphone: ImmutableMappable {
         id = try map.value("id")
         name = try map.value("name")
         brand = try map.value("brand")
-        operatingSystem = try OperatingSystem(rawValue: map.value("operatingSystem"))! // Temp force
+        operatingSystem = try OperatingSystem(rawValue: map.value("operatingSystem")) ?? .unknown
         display = Display(width: try map.value("display.width"), height: try map.value("display.height"))
         ram = try map.value("ram")
         flashMemory = try map.value("flashMemory")
@@ -77,9 +77,16 @@ class Smartphone: ImmutableMappable {
     }
 }
 
-// TODO: Update StoreItem protocol
 // MARK: - StoreItem implementation
-//extension Smartphone: StoreItem { }
+extension Smartphone: StoreItem {
+    var fullName: String {
+        return "\(brand) \(name)"
+    }
+
+    var description: String {
+        return "\(operatingSystem), display \(display.description), \(processor), RAM \(ram), flash memory \(flashMemory), battery capacity \(batteryCapacity), color \(color)"
+    }
+}
 
 // MARK: - Equatable implementation
 extension Smartphone: Equatable {
