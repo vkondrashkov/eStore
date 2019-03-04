@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		9C83BB94222A591A00CBB1FF /* GoodsListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BB93222A591A00CBB1FF /* GoodsListTableViewDataSource.swift */; };
 		9C83BB97222A9D1300CBB1FF /* GoodsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BB96222A9D1300CBB1FF /* GoodsManager.swift */; };
-		9C83BBF4222CFAE800CBB1FF /* SmartphonesFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BBF3222CFAE800CBB1FF /* SmartphonesFetch.swift */; };
+		9C83BBF8222DB5D900CBB1FF /* SmartphonesFetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BBF7222DB5D900CBB1FF /* SmartphonesFetchTests.swift */; };
 		9CA418D4221D879C00BAF215 /* StoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D3221D879C00BAF215 /* StoreItem.swift */; };
 		9CA418D6221D883700BAF215 /* Smartphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D5221D883700BAF215 /* Smartphone.swift */; };
 		9CA418D8221D883F00BAF215 /* TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D7221D883F00BAF215 /* TV.swift */; };
@@ -104,7 +104,7 @@
 		9C83BB96222A9D1300CBB1FF /* GoodsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsManager.swift; sourceTree = "<group>"; };
 		9C83BBE9222C2D1500CBB1FF /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C83BBED222C2D1500CBB1FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C83BBF3222CFAE800CBB1FF /* SmartphonesFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartphonesFetch.swift; sourceTree = "<group>"; };
+		9C83BBF7222DB5D900CBB1FF /* SmartphonesFetchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartphonesFetchTests.swift; sourceTree = "<group>"; };
 		9CA418D3221D879C00BAF215 /* StoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItem.swift; sourceTree = "<group>"; };
 		9CA418D5221D883700BAF215 /* Smartphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Smartphone.swift; sourceTree = "<group>"; };
 		9CA418D7221D883F00BAF215 /* TV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TV.swift; sourceTree = "<group>"; };
@@ -214,7 +214,7 @@
 		9C83BBEA222C2D1500CBB1FF /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				9C83BBF3222CFAE800CBB1FF /* SmartphonesFetch.swift */,
+				9C83BBF7222DB5D900CBB1FF /* SmartphonesFetchTests.swift */,
 				9C83BBED222C2D1500CBB1FF /* Info.plist */,
 			);
 			path = Tests;
@@ -539,6 +539,7 @@
 				TargetAttributes = {
 					9C83BBE8222C2D1500CBB1FF = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 						TestTargetID = 9CC5523F220AF8510004ACC4;
 					};
 					9CC5523F220AF8510004ACC4 = {
@@ -658,7 +659,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C83BBF4222CFAE800CBB1FF /* SmartphonesFetch.swift in Sources */,
+				9C83BBF8222DB5D900CBB1FF /* SmartphonesFetchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,6 +758,7 @@
 			baseConfigurationReference = D5EFADDB5B92B2711B865C84 /* Pods-Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 638H9B3B32;
 				INFOPLIST_FILE = Tests/Info.plist;
@@ -767,6 +769,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vkondrashkov.Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eStore.app/eStore";
@@ -778,6 +781,7 @@
 			baseConfigurationReference = 54FCAB27BD45A8EE1C80EED6 /* Pods-Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 638H9B3B32;
 				INFOPLIST_FILE = Tests/Info.plist;
