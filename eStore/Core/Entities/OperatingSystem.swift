@@ -9,6 +9,7 @@
 enum OperatingSystem: String {
     case iOS
     case Android
+    case MacOs
     case Windows
     case Linux
     case WebOS
