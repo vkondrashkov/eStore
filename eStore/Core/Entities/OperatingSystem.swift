@@ -12,6 +12,6 @@ enum OperatingSystem: String {
     case MacOs
     case Windows
     case Linux
-    case WebOS
+    case WebOs
     case unknown
 }
