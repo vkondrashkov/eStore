@@ -10,3 +10,10 @@ struct Display {
     let width: Int
     let height: Int
 }
+
+// MARK: - Equatable implementation
+extension Display: Equatable {
+    static func == (lhs: Display, rhs: Display) -> Bool {
+        return lhs.width == rhs.width && lhs.height == rhs.height
+    }
+}
