@@ -10,12 +10,12 @@ import ObjectMapper
 
 // TODO: Expand class fields
 class TV: ImmutableMappable {
-    var id: String
-    var name: String
-    var brand: String
-    var display: Display
-    var operatingSystem: OperatingSystem
-    var price: Int
+    let id: String
+    let name: String
+    let brand: String
+    let display: Display
+    let operatingSystem: OperatingSystem
+    let price: Int
 
     init(id: String,
          name: String,

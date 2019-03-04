@@ -10,13 +10,13 @@ import ObjectMapper
 
 // TODO: Expand class fields
 class Laptop: ImmutableMappable {
-    var id: String
-    var name: String
-    var brand: String
-    var operatingSystem: OperatingSystem
-    var display: Display
-    var processor: String
-    var price: Int
+    let id: String
+    let name: String
+    let brand: String
+    let operatingSystem: OperatingSystem
+    let display: Display
+    let processor: String
+    let price: Int
 
     init(id: String,
          name: String,
