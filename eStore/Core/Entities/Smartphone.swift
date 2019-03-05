@@ -88,6 +88,9 @@ extension Smartphone: StoreItem {
     }
 }
 
+// MARK: - PropertyReflectable implementation
+extension Smartphone: PropertyReflectable { }
+
 // MARK: - Equatable implementation
 extension Smartphone: Equatable {
     static func == (lhs: Smartphone, rhs: Smartphone) -> Bool {
