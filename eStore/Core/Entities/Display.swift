@@ -9,6 +9,10 @@
 struct Display {
     let width: Int
     let height: Int
+
+    var description: String {
+        return "\(width)x\(height)"
+    }
 }
 
 // MARK: - Equatable implementation

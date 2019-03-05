@@ -14,7 +14,6 @@
 		9CA418D6221D883700BAF215 /* Smartphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D5221D883700BAF215 /* Smartphone.swift */; };
 		9CA418D8221D883F00BAF215 /* TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D7221D883F00BAF215 /* TV.swift */; };
 		9CA418DA221D884900BAF215 /* Laptop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D9221D884900BAF215 /* Laptop.swift */; };
-		9CA418DC221D894D00BAF215 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418DB221D894D00BAF215 /* Brand.swift */; };
 		9CA418DE221D898300BAF215 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418DD221D898300BAF215 /* Display.swift */; };
 		9CA418E0221D8A0900BAF215 /* OperatingSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418DF221D8A0900BAF215 /* OperatingSystem.swift */; };
 		9CA418E3221D8CEC00BAF215 /* CatalogContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418E2221D8CEC00BAF215 /* CatalogContract.swift */; };
@@ -110,7 +109,6 @@
 		9CA418D5221D883700BAF215 /* Smartphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Smartphone.swift; sourceTree = "<group>"; };
 		9CA418D7221D883F00BAF215 /* TV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TV.swift; sourceTree = "<group>"; };
 		9CA418D9221D884900BAF215 /* Laptop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Laptop.swift; sourceTree = "<group>"; };
-		9CA418DB221D894D00BAF215 /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 		9CA418DD221D898300BAF215 /* Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
 		9CA418DF221D8A0900BAF215 /* OperatingSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatingSystem.swift; sourceTree = "<group>"; };
 		9CA418E2221D8CEC00BAF215 /* CatalogContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogContract.swift; sourceTree = "<group>"; };
@@ -227,9 +225,8 @@
 			children = (
 				9CA418D3221D879C00BAF215 /* StoreItem.swift */,
 				9CA418D5221D883700BAF215 /* Smartphone.swift */,
-				9CA418D7221D883F00BAF215 /* TV.swift */,
 				9CA418D9221D884900BAF215 /* Laptop.swift */,
-				9CA418DB221D894D00BAF215 /* Brand.swift */,
+				9CA418D7221D883F00BAF215 /* TV.swift */,
 				9CA418DD221D898300BAF215 /* Display.swift */,
 				9CA418DF221D8A0900BAF215 /* OperatingSystem.swift */,
 			);
@@ -734,7 +731,6 @@
 				9CC46BCC22153908005E24F5 /* SignUpBuilder.swift in Sources */,
 				9CA418E7221D8CFC00BAF215 /* CatalogBuilder.swift in Sources */,
 				9CC46B9122140623005E24F5 /* RootPresenter.swift in Sources */,
-				9CA418DC221D894D00BAF215 /* Brand.swift in Sources */,
 				9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */,
 				9CC46BCE2215390F005E24F5 /* SignUpScene.swift in Sources */,
 				9CA418EF221D8D1F00BAF215 /* CatalogPresenter.swift in Sources */,
