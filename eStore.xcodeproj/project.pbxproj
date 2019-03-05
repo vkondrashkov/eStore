@@ -25,7 +25,6 @@
 		9CA418EB221D8D0D00BAF215 /* CatalogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418EA221D8D0D00BAF215 /* CatalogCoordinator.swift */; };
 		9CA418ED221D8D1600BAF215 /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418EC221D8D1600BAF215 /* CatalogView.swift */; };
 		9CA418EF221D8D1F00BAF215 /* CatalogPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418EE221D8D1F00BAF215 /* CatalogPresenter.swift */; };
-		9CA4191722201A0A00BAF215 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4191622201A0A00BAF215 /* String+MD5.swift */; };
 		9CA4191B2222CC9500BAF215 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4191A2222CC9500BAF215 /* CategoryTableViewCell.swift */; };
 		9CA4191E2222CF0B00BAF215 /* CategoryTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4191D2222CF0B00BAF215 /* CategoryTableViewDataSource.swift */; };
 		9CA419202222D6E900BAF215 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA4191F2222D6E900BAF215 /* Category.swift */; };
@@ -122,8 +121,6 @@
 		9CA418EA221D8D0D00BAF215 /* CatalogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCoordinator.swift; sourceTree = "<group>"; };
 		9CA418EC221D8D1600BAF215 /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
 		9CA418EE221D8D1F00BAF215 /* CatalogPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPresenter.swift; sourceTree = "<group>"; };
-		9CA41913222019CD00BAF215 /* eStore-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "eStore-Bridging-Header.h"; sourceTree = "<group>"; };
-		9CA4191622201A0A00BAF215 /* String+MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
 		9CA4191A2222CC9500BAF215 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		9CA4191D2222CF0B00BAF215 /* CategoryTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewDataSource.swift; sourceTree = "<group>"; };
 		9CA4191F2222D6E900BAF215 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -340,7 +337,6 @@
 			isa = PBXGroup;
 			children = (
 				9CC46C162216982E005E24F5 /* KeyboardManager.swift */,
-				9CA4191622201A0A00BAF215 /* String+MD5.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -381,7 +377,6 @@
 				9CC55256220AF8B50004ACC4 /* Scenes */,
 				9CC5524A220AF8520004ACC4 /* Assets.xcassets */,
 				9CC5524F220AF8520004ACC4 /* Info.plist */,
-				9CA41913222019CD00BAF215 /* eStore-Bridging-Header.h */,
 			);
 			path = eStore;
 			sourceTree = "<group>";
@@ -689,7 +684,6 @@
 				9CC46BA422141090005E24F5 /* DashboardPresenter.swift in Sources */,
 				9CC46C0B22161562005E24F5 /* SignInPresenter.swift in Sources */,
 				9CC46BB32214C3AD005E24F5 /* AuthContract.swift in Sources */,
-				9CA4191722201A0A00BAF215 /* String+MD5.swift in Sources */,
 				9CC46BA02214107A005E24F5 /* DashboardCoordinator.swift in Sources */,
 				9CC46BBD2214C41B005E24F5 /* AuthView.swift in Sources */,
 				9CC46BBB2214C412005E24F5 /* AuthCoordinator.swift in Sources */,
@@ -939,7 +933,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vkondrashkov.eStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "eStore/eStore-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -963,7 +956,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vkondrashkov.eStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "eStore/eStore-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
