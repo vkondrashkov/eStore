@@ -1,5 +1,5 @@
 //
-//  SmartphonesFetch.swift
+//  SmartphonesFetchTests.swift
 //  Tests
 //
 //  Created by Vladislav Kondrashkov on 3/4/19.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import eStore
 
-class SmartphonesFetch: XCTestCase {
+class SmartphonesFetchTests: XCTestCase {
     private var manager: GoodsManager!
 
     override func setUp() {
@@ -82,6 +82,32 @@ class SmartphonesFetch: XCTestCase {
         manager.fetchSmartphones(from: json, completion: { smartphones in
             // Then
             XCTAssertEqual(smartphones, nil)
+        })
+    }
+
+    func testPartlyWrongJson() {
+        // Given
+        let json = "[{ \"id\": \"3571539fcbe330452d4d938502ed9f15\", \"brand\": \"Apple\", \"name\": \"iPhone 7 128GB Black\", \"operatingSystem\": \"iOS\", \"display\": { \"width\": 750, \"height\": 1334 }, \"ram\": \"2 GB\", \"flashMemory\": \"128 GB\", \"processor\": \"Apple A10 Fusion\", \"color\": \"Black\", \"batteryCapacity\": 1960, \"price\": 1389, \"stockCount\": 12 }, { \"id\": \"wrong\", \"name\": \"json\" } ]"
+
+        // When
+        manager.fetchSmartphones(from: json, completion: { smartphones in
+            // Then
+            let expectedResult: [Smartphone]? = [
+                Smartphone(
+                    id: "3571539fcbe330452d4d938502ed9f15",
+                    name: "iPhone 7 128GB Black",
+                    brand: "Apple",
+                    operatingSystem: .iOS,
+                    display: Display(width: 750, height: 1334),
+                    ram: "2 GB",
+                    flashMemory: "128 GB",
+                    processor: "Apple A10 Fusion",
+                    color: "Black",
+                    batteryCapacity: 1960,
+                    price: 1389
+                )
+            ]
+            XCTAssertEqual(smartphones, expectedResult)
         })
     }
 
