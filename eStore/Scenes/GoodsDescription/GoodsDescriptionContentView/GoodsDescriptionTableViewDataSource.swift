@@ -8,8 +8,8 @@
 
 import UIKit
 
-class GoodsDescriptionTableViewDataSource<Item: StoreItem & PropertyReflectable>: NSObject, UITableViewDataSource {
-    var item: Item!
+class GoodsDescriptionTableViewDataSource: NSObject, UITableViewDataSource {
+    var item: (PropertyReflectable & StoreItem)!
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return item.properties.count

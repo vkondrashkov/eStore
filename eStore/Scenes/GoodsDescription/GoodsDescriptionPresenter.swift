@@ -16,7 +16,7 @@ final class GoodsDescriptionPresenterImpl {
     }
 }
 
-// MARK: - GoodsListPresenter implementation
+// MARK: - GoodsDescriptionPresenter implementation
 extension GoodsDescriptionPresenterImpl: GoodsDescriptionPresenter {
     func handleLoadView() {
 

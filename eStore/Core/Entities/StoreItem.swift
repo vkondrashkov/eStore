@@ -7,7 +7,7 @@
 //
 
 // TODO: Add StockCount property
-protocol StoreItem {
+protocol StoreItem: PropertyReflectable {
     var id: String { get }
     var fullName: String { get }
     var description: String { get }

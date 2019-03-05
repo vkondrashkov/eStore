@@ -18,9 +18,9 @@ final class GoodsDescriptionBuilderImpl {
 
 // MARK: - GoodsDescriptionBuilder implementation
 extension GoodsDescriptionBuilderImpl: GoodsDescriptionBuilder {
-    func build(title: String) -> GoodsDescriptionCoordinator {
+    func build(with dataSource: GoodsDescriptionTableViewDataSource) -> GoodsDescriptionCoordinator {
         let view = GoodsDescriptionViewImpl()
-        view.title = title
+        view.title = dataSource.item.fullName
         let scene = GoodsDescriptionSceneImpl(navigation: dependency.navigation)
         let coordinator = GoodsDescriptionCoordinator(scene: scene,
                                                       show: view)
