@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C76ABA722314F4000FB39DA /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76ABA622314F4000FB39DA /* ProductType.swift */; };
 		9C83BB94222A591A00CBB1FF /* GoodsListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BB93222A591A00CBB1FF /* GoodsListTableViewDataSource.swift */; };
 		9C83BB97222A9D1300CBB1FF /* GoodsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BB96222A9D1300CBB1FF /* GoodsManager.swift */; };
 		9C83BBF8222DB5D900CBB1FF /* SmartphonesFetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BBF7222DB5D900CBB1FF /* SmartphonesFetchTests.swift */; };
@@ -111,6 +112,7 @@
 		54FCAB27BD45A8EE1C80EED6 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		729C066A86EECB57EB23A9B3 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9636105CD80314886F52C479 /* Pods-eStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eStore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eStore/Pods-eStore.debug.xcconfig"; sourceTree = "<group>"; };
+		9C76ABA622314F4000FB39DA /* ProductType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
 		9C83BB93222A591A00CBB1FF /* GoodsListTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListTableViewDataSource.swift; sourceTree = "<group>"; };
 		9C83BB96222A9D1300CBB1FF /* GoodsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsManager.swift; sourceTree = "<group>"; };
 		9C83BBE9222C2D1500CBB1FF /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -276,6 +278,7 @@
 				9CA418D7221D883F00BAF215 /* TV.swift */,
 				9CA418DD221D898300BAF215 /* Display.swift */,
 				9CA418DF221D8A0900BAF215 /* OperatingSystem.swift */,
+				9C76ABA622314F4000FB39DA /* ProductType.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -793,6 +796,7 @@
 				9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */,
 				9CC46BCE2215390F005E24F5 /* SignUpScene.swift in Sources */,
 				9CA418EF221D8D1F00BAF215 /* CatalogPresenter.swift in Sources */,
+				9C76ABA722314F4000FB39DA /* ProductType.swift in Sources */,
 				9CC46C2622180B95005E24F5 /* ProfileCoordinator.swift in Sources */,
 				9CC5526B220AFCC30004ACC4 /* RootBuilder.swift in Sources */,
 				9CC46BB52214C3B7005E24F5 /* AuthComponent.swift in Sources */,

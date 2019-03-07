@@ -17,21 +17,6 @@ class TV: ImmutableMappable {
     let operatingSystem: OperatingSystem
     let price: Int
 
-    init(id: String,
-         name: String,
-         brand: String,
-         display: Display,
-         operatingSystem: OperatingSystem,
-         price: Int) {
-        
-        self.id = id
-        self.name = name
-        self.brand = brand
-        self.display = display
-        self.operatingSystem = operatingSystem
-        self.price = price
-    }
-
     required init(map: Map) throws {
         id = try map.value("id")
         name = try map.value("name")
@@ -52,25 +37,16 @@ class TV: ImmutableMappable {
     }
 }
 
-// MARK: - StoreItem implementation
-extension TV: StoreItem {
-    var fullName: String {
-        return "\(brand) \(name)"
-    }
-
-    var description: String {
-        return "\(operatingSystem), display \(display.description)"
-    }
-}
-
-// MARK: - Equatable implementation
-extension TV: Equatable {
-    static func == (lhs: TV, rhs: TV) -> Bool {
-        return lhs.id == rhs.id &&
-            lhs.name == rhs.name &&
-            lhs.brand == rhs.brand &&
-            lhs.operatingSystem == rhs.operatingSystem &&
-            lhs.display == rhs.display &&
-            lhs.price == rhs.price
+// MARK: - StoreItemConvertible implementation
+extension TV: StoreItemConvertible {
+    func toStoreItem() -> StoreItem {
+        let storeItem = StoreItem(
+            id: id,
+            name: name,
+            brand: brand,
+            type: .tv(data: self),
+            price: price
+        )
+        return storeItem
     }
 }

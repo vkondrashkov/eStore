@@ -22,31 +22,6 @@ class Smartphone: ImmutableMappable {
     let batteryCapacity: Int
     let price: Int
 
-    init(id: String,
-         name: String,
-         brand: String,
-         operatingSystem: OperatingSystem,
-         display: Display,
-         ram: String,
-         flashMemory: String,
-         processor: String,
-         color: String,
-         batteryCapacity: Int,
-         price: Int) {
-
-        self.id = id
-        self.name = name
-        self.brand = brand
-        self.operatingSystem = operatingSystem
-        self.display = display
-        self.ram = ram
-        self.flashMemory = flashMemory
-        self.processor = processor
-        self.color = color
-        self.batteryCapacity = batteryCapacity
-        self.price = price
-    }
-
     required init(map: Map) throws {
         id = try map.value("id")
         name = try map.value("name")
@@ -77,33 +52,16 @@ class Smartphone: ImmutableMappable {
     }
 }
 
-// MARK: - StoreItem implementation
-extension Smartphone: StoreItem {
-    var fullName: String {
-        return "\(brand) \(name)"
-    }
-
-    var description: String {
-        return "\(operatingSystem), display \(display.description), \(processor), RAM \(ram), flash memory \(flashMemory), battery capacity \(batteryCapacity), color \(color)"
-    }
-}
-
-// MARK: - PropertyReflectable implementation
-extension Smartphone: PropertyReflectable { }
-
-// MARK: - Equatable implementation
-extension Smartphone: Equatable {
-    static func == (lhs: Smartphone, rhs: Smartphone) -> Bool {
-        return lhs.id == rhs.id &&
-            lhs.name == rhs.name &&
-            lhs.brand == rhs.brand &&
-            lhs.operatingSystem == rhs.operatingSystem &&
-            lhs.display == rhs.display &&
-            lhs.ram == rhs.ram &&
-            lhs.flashMemory == rhs.flashMemory &&
-            lhs.processor == rhs.processor &&
-            lhs.color == rhs.color &&
-            lhs.batteryCapacity == rhs.batteryCapacity &&
-            lhs.price == rhs.price
+// MARK: - StoreItemConvertible implementation
+extension Smartphone: StoreItemConvertible {
+    func toStoreItem() -> StoreItem {
+        let storeItem = StoreItem(
+            id: id,
+            name: name,
+            brand: brand,
+            type: .smartphone(data: self),
+            price: price
+        )
+        return storeItem
     }
 }
