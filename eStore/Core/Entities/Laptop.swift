@@ -51,6 +51,7 @@ extension Laptop: StoreItemConvertible {
             id: id,
             name: name,
             brand: brand,
+            type: .Laptop,
             specifications: specifications,
             price: price
         )

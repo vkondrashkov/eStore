@@ -13,7 +13,7 @@ protocol GoodsDescriptionDependency: AnyObject {
 }
 
 protocol GoodsDescriptionBuilder: AnyObject {
-    func build(with dataSource: GoodsDescriptionTableViewDataSource) -> GoodsDescriptionCoordinator
+    func build(with storeItem: StoreItem) -> GoodsDescriptionCoordinator
 }
 
 protocol GoodsDescriptionScene: AnyObject {

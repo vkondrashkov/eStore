@@ -37,9 +37,7 @@ extension GoodsListCoordinator: Coordinator {
 // MARK: - GoodsListRouter implementation
 extension GoodsListCoordinator: GoodsListRouter {
     func showGoodsDescription(for storeItem: StoreItem) {
-        let dataSource = GoodsDescriptionTableViewDataSource()
-        dataSource.item = storeItem
-        goodsDescriptionCoordinator = goodsDescriptionBuilder.build(with: dataSource)
+        goodsDescriptionCoordinator = goodsDescriptionBuilder.build(with: storeItem)
         goodsDescriptionCoordinator?.start()
     }
 }

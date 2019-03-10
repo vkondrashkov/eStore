@@ -13,7 +13,7 @@ protocol GoodsListDependency: AnyObject {
 }
 
 protocol GoodsListBuilder: AnyObject {
-    func build(title: String) -> GoodsListCoordinator
+    func build(with productType: ProductType) -> GoodsListCoordinator
 }
 
 protocol GoodsListScene: AnyObject {
@@ -31,6 +31,7 @@ protocol GoodsListRouter: AnyObject {
 protocol GoodsListView: AnyObject {
     func showActivityIndicator()
     func hideActivityIndicator()
+    func display(storeItemList: [StoreItem])
 }
 
 protocol GoodsListPresenter: AnyObject {

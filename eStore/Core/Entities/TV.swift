@@ -47,6 +47,7 @@ extension TV: StoreItemConvertible {
             id: id,
             name: name,
             brand: brand,
+            type: .TV,
             specifications: specifications,
             price: price
         )

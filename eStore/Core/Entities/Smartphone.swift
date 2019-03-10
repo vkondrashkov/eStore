@@ -67,6 +67,7 @@ extension Smartphone: StoreItemConvertible {
             id: id,
             name: name,
             brand: brand,
+            type: .Smartphone,
             specifications: specifications,
             price: price
         )
