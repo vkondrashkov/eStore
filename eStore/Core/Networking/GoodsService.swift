@@ -9,6 +9,10 @@
 protocol GoodsService {
     func getSmartphone(completion: @escaping ([StoreItem]?) -> Void)
     func postSmartphone(smartphone: Smartphone, completion: @escaping (StoreItem?) -> Void)
+
+    func getLaptops(completion: @escaping ([StoreItem]?) -> Void)
+
+    func getTV(completion: @escaping ([StoreItem]?) -> Void)
 }
 
 class GoodsServiceImpl {
@@ -39,5 +43,38 @@ extension GoodsServiceImpl: GoodsService {
 
     func postSmartphone(smartphone: Smartphone, completion: @escaping (StoreItem?) -> Void) {
 
+    }
+
+    func getLaptops(completion: @escaping ([StoreItem]?) -> Void) {
+        // Temp json
+        let json = "[{ \"id\": \"34ec91a46a12a40fc44c414b61b638e6\", \"brand\": \"Apple\", \"name\": \"MacBook Air 13\'\' (2017 год) [MQD32]\", \"operatingSystem\": \"MacOs\", \"display\": { \"width\": 1440, \"height\": 900 }, \"processor\": \"Intel Core i5 5350U\", \"price\": 2129, \"stockCount\": 6 }, { \"id\": \"c584ce7e3117e3563b1bf0450844d459\", \"brand\": \"Xiaomi\", \"name\": \"Mi Notebook Pro 15.6 JYU4036CN\", \"operatingSystem\": \"Windows\", \"display\": { \"width\": 1920, \"height\": 1080 }, \"processor\": \"Intel Core i5 8250U\", \"price\": 2202, \"stockCount\": 2 }]"
+        manager.fetchLaptops(from: json, completion: { result in
+            guard let laptops = result else {
+                completion(nil)
+                return
+            }
+            var storeItemList: [StoreItem] = []
+            for laptop in laptops {
+                storeItemList.append(laptop.toStoreItem())
+            }
+            completion(storeItemList)
+        })
+
+    }
+
+    func getTV(completion: @escaping ([StoreItem]?) -> Void) {
+        // Temp json
+        let json = "[{ \"id\": \"09af2b066b649bbb8ff54dafca4660fe\", \"brand\": \"Samsung\", \"name\": \"UE43NU7100U\", \"operatingSystem\": \"WebOs\", \"display\": { \"width\": 3840, \"height\": 2160 }, \"price\": 991, \"stockCount\": 6 }, { \"id\": \"1490ab49c5af2773450bc6c017477029\", \"brand\": \"Xiaomi\", \"name\": \"MI TV 4A Pro 43\'\'\", \"operatingSystem\": \"WebOs\", \"display\": { \"width\": 1920, \"height\": 1080 }, \"price\": 858, \"stockCount\": 4 }]"
+        manager.fetchTV(from: json, completion: { result in
+            guard let tvList = result else {
+                completion(nil)
+                return
+            }
+            var storeItemList: [StoreItem] = []
+            for tv in tvList {
+                storeItemList.append(tv.toStoreItem())
+            }
+            completion(storeItemList)
+        })
     }
 }
