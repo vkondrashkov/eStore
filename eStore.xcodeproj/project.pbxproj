@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9C76ABAD22357FCC00FB39DA /* Specification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76ABAC22357FCC00FB39DA /* Specification.swift */; };
 		9C76ABAF223588D900FB39DA /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76ABAE223588D900FB39DA /* ProductType.swift */; };
+		9C76ABB122359F8400FB39DA /* GoodsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76ABB022359F8400FB39DA /* GoodsService.swift */; };
 		9C83BB94222A591A00CBB1FF /* GoodsListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BB93222A591A00CBB1FF /* GoodsListTableViewDataSource.swift */; };
 		9C83BB97222A9D1300CBB1FF /* GoodsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BB96222A9D1300CBB1FF /* GoodsManager.swift */; };
 		9C83BBF8222DB5D900CBB1FF /* SmartphonesFetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BBF7222DB5D900CBB1FF /* SmartphonesFetchTests.swift */; };
@@ -114,6 +115,7 @@
 		9636105CD80314886F52C479 /* Pods-eStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eStore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eStore/Pods-eStore.debug.xcconfig"; sourceTree = "<group>"; };
 		9C76ABAC22357FCC00FB39DA /* Specification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Specification.swift; sourceTree = "<group>"; };
 		9C76ABAE223588D900FB39DA /* ProductType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
+		9C76ABB022359F8400FB39DA /* GoodsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsService.swift; sourceTree = "<group>"; };
 		9C83BB93222A591A00CBB1FF /* GoodsListTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListTableViewDataSource.swift; sourceTree = "<group>"; };
 		9C83BB96222A9D1300CBB1FF /* GoodsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsManager.swift; sourceTree = "<group>"; };
 		9C83BBE9222C2D1500CBB1FF /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -230,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				9C83BB96222A9D1300CBB1FF /* GoodsManager.swift */,
+				9C76ABB022359F8400FB39DA /* GoodsService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -791,6 +794,7 @@
 				9CC46C2422180B8C005E24F5 /* ProfileScene.swift in Sources */,
 				9CC46BCC22153908005E24F5 /* SignUpBuilder.swift in Sources */,
 				9CA418E7221D8CFC00BAF215 /* CatalogBuilder.swift in Sources */,
+				9C76ABB122359F8400FB39DA /* GoodsService.swift in Sources */,
 				9C76ABAD22357FCC00FB39DA /* Specification.swift in Sources */,
 				9CC46B9122140623005E24F5 /* RootPresenter.swift in Sources */,
 				9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */,
