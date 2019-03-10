@@ -41,7 +41,7 @@ extension SignInPresenterImpl: SignInPresenter {
     func handleSignInButtonPress() {
         view.showActivityIndicator()
         view.display(signInButton: "")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
             self?.view.hideActivityIndicator()
             self?.view.display(signInButton: "Sign In")
             self?.router.completeSignIn()

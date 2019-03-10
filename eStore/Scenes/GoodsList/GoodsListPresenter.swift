@@ -30,11 +30,19 @@ extension GoodsListPresenterImpl: GoodsListPresenter {
     func handleLoadView() {
         // Temp
         view.showActivityIndicator()
+        let tempSpecifications: [Specification] = [
+            Specification(name: "Foo", value: "Bar"),
+            Specification(name: "Foo", value: "Bar"),
+            Specification(name: "Foo", value: "Bar"),
+            Specification(name: "Foo", value: "Bar"),
+            Specification(name: "Foo", value: "Bar"),
+            Specification(name: "Foo", value: "Bar")
+        ]
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: { [weak self] in
             let storeItems: [StoreItem] = [
-                StoreItem(id: "123", name: "Foo", brand: "Foo", type: .Smartphone, specifications: [], price: 1),
-                StoreItem(id: "456", name: "Bar", brand: "Bar", type: .Smartphone, specifications: [], price: 2),
-                StoreItem(id: "789", name: "FooBar", brand: "FooBar", type: .Smartphone, specifications: [], price: 1),
+                StoreItem(id: "123", name: "Foo", brand: "Foo", type: .Smartphone, specifications: tempSpecifications, price: 1),
+                StoreItem(id: "456", name: "Bar", brand: "Bar", type: .Smartphone, specifications: tempSpecifications, price: 2),
+                StoreItem(id: "789", name: "FooBar", brand: "FooBar", type: .Smartphone, specifications: tempSpecifications, price: 1),
             ]
             self?.view.display(storeItemList: storeItems)
             self?.view.hideActivityIndicator()

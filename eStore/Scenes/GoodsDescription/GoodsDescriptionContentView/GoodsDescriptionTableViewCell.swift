@@ -44,7 +44,7 @@ final class GoodsDescriptionTableViewCell: UITableViewCell {
     private func setupPropertyValueLabel() {
         propertyValueLabel = UILabel()
         propertyValueLabel.font = .systemFont(ofSize: 17)
-        containerView.addSubview(propertyNameLabel)
+        containerView.addSubview(propertyValueLabel)
         activatePropertyValueLabelConstraints(view: propertyValueLabel, anchorView: propertyNameLabel)
     }
 
@@ -87,7 +87,7 @@ private extension GoodsDescriptionTableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             view.topAnchor.constraint(equalTo: superview.topAnchor, constant: 20),
-            view.leadingAnchor.constraint(equalTo: superview.centerXAnchor, constant: 10),
+            view.leadingAnchor.constraint(equalTo: anchorView.trailingAnchor, constant: 10),
             view.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -20),
             view.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -10)
             ])

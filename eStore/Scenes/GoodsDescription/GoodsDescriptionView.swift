@@ -14,8 +14,13 @@ final class GoodsDescriptionViewImpl: UIViewController {
 
     private var descriptionTableView: UITableView!
 
+    private let goodsDescriptionBackgroundColor = UIColor(red: 242.0 / 255.0, green: 241.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
+    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
+
     override func loadView() {
         super.loadView()
+        view.backgroundColor = goodsDescriptionBackgroundColor
+        navigationController?.navigationBar.tintColor = customTintColor
 
         setupDescriptionTableView()
     }
