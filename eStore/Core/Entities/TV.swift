@@ -40,11 +40,14 @@ class TV: ImmutableMappable {
 // MARK: - StoreItemConvertible implementation
 extension TV: StoreItemConvertible {
     func toStoreItem() -> StoreItem {
+        var specifications: [Specification] = []
+        specifications.append(Specification(name: "Operating system", value: operatingSystem))
+        specifications.append(Specification(name: "Display", value: display))
         let storeItem = StoreItem(
             id: id,
             name: name,
             brand: brand,
-            type: .tv(data: self),
+            specifications: specifications,
             price: price
         )
         return storeItem

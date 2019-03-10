@@ -9,22 +9,15 @@
 import UIKit
 
 class GoodsDescriptionTableViewDataSource: NSObject, UITableViewDataSource {
-    var item: (PropertyReflectable & StoreItem)!
+    var item: StoreItem!
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return item.properties.count
+        return item.specifications.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: GoodsDescriptionTableViewCell.reuseIdentifier, for: indexPath) as! GoodsDescriptionTableViewCell
-        let key = item.properties[indexPath.row]
-        var value = ""
-        if let display = item[key] as? Display {
-            value = display.description
-        } else {
-            value = item[key] as? String ?? "unknown"
-        }
-        cell.display(name: key, value: value)
+
 
         return cell
     }

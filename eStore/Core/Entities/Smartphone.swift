@@ -55,11 +55,19 @@ class Smartphone: ImmutableMappable {
 // MARK: - StoreItemConvertible implementation
 extension Smartphone: StoreItemConvertible {
     func toStoreItem() -> StoreItem {
+        var specifications: [Specification] = []
+        specifications.append(Specification(name: "Operating system", value: operatingSystem))
+        specifications.append(Specification(name: "Display", value: display))
+        specifications.append(Specification(name: "RAM", value: ram))
+        specifications.append(Specification(name: "Flash memory", value: flashMemory))
+        specifications.append(Specification(name: "Processor", value: processor))
+        specifications.append(Specification(name: "Color", value: color))
+        specifications.append(Specification(name: "Battery capacity", value: batteryCapacity))
         let storeItem = StoreItem(
             id: id,
             name: name,
             brand: brand,
-            type: .smartphone(data: self),
+            specifications: specifications,
             price: price
         )
         return storeItem

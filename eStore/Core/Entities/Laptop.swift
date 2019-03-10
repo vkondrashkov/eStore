@@ -43,11 +43,15 @@ class Laptop: ImmutableMappable {
 // MARK: - StoreItemConvertible implementation
 extension Laptop: StoreItemConvertible {
     func toStoreItem() -> StoreItem {
+        var specifications: [Specification] = []
+        specifications.append(Specification(name: "Operating system", value: operatingSystem))
+        specifications.append(Specification(name: "Display", value: display))
+        specifications.append(Specification(name: "Processor", value: processor))
         let storeItem = StoreItem(
             id: id,
             name: name,
             brand: brand,
-            type: .laptop(data: self),
+            specifications: specifications,
             price: price
         )
         return storeItem
