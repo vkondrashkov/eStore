@@ -17,7 +17,21 @@ class GoodsDescriptionTableViewDataSource: NSObject, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: GoodsDescriptionTableViewCell.reuseIdentifier, for: indexPath) as! GoodsDescriptionTableViewCell
-
+        let specification = item.specifications[indexPath.row]
+        var value = ""
+        switch specification.value {
+        case let someString as String:
+            value = someString
+        case let someInt as Int:
+            value = String(someInt)
+        case let someDisplay as Display:
+            value = "\(someDisplay.width)x\(someDisplay.height)"
+        case let someOs as OperatingSystem:
+            value = someOs.rawValue
+        default:
+            value = "unknown"
+        }
+        cell.display(name: specification.name, value: value)
 
         return cell
     }

@@ -10,9 +10,11 @@ import Foundation
 
 final class GoodsListPresenterImpl {
     private unowned let view: GoodsListView
+    private unowned let router: GoodsListRouter
 
-    init(view: GoodsListView) {
+    init(view: GoodsListView, router: GoodsListRouter) {
         self.view = view
+        self.router = router
     }
 }
 
@@ -24,5 +26,9 @@ extension GoodsListPresenterImpl: GoodsListPresenter {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: { [weak self] in
             self?.view.hideActivityIndicator()
         })
+    }
+
+    func handleProductPress(storeItem: StoreItem) {
+        router.showGoodsDescription(for: storeItem)
     }
 }

@@ -30,7 +30,6 @@ protocol CatalogRouter: AnyObject {
 }
 
 protocol CatalogView: AnyObject {
-
     func display(alert: Alert)
 }
 

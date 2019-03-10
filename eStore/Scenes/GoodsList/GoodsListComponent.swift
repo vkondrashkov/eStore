@@ -16,3 +16,5 @@ final class GoodsListComponent {
     }
 }
 
+// MARK: - GoodsDescriptionDependency implementation
+extension GoodsListComponent: GoodsDescriptionDependency { }

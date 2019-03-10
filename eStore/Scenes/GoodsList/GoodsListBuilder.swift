@@ -21,10 +21,14 @@ extension GoodsListBuilderImpl: GoodsListBuilder {
     func build(title: String) -> GoodsListCoordinator {
         let view = GoodsListViewImpl()
         view.title = title
+        let component = GoodsListComponent(navigation: dependency.navigation)
         let scene = GoodsListSceneImpl(navigation: dependency.navigation)
+        let goodsDescriptionBuilder = GoodsDescriptionBuilderImpl(dependency: component)
         let coordinator = GoodsListCoordinator(scene: scene,
-                                               show: view)
-        let presenter = GoodsListPresenterImpl(view: view)
+                                               show: view,
+                                               goodsDescriptionBuilder: goodsDescriptionBuilder)
+        let presenter = GoodsListPresenterImpl(view: view,
+                                               router: coordinator)
         view.presenter = presenter
         return coordinator
     }

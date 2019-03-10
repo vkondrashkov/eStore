@@ -24,12 +24,19 @@ protocol GoodsListShow: AnyObject {
     var rootViewController: UIViewController { get }
 }
 
+protocol GoodsListRouter: AnyObject {
+    func showGoodsDescription(for storeItem: StoreItem)
+}
+
 protocol GoodsListView: AnyObject {
-    // TODO: Think over display(_:) methods
     func showActivityIndicator()
     func hideActivityIndicator()
 }
 
 protocol GoodsListPresenter: AnyObject {
     func handleLoadView()
+
+    // Should I only handle indexPath and hold
+    // dataSource in Presenter?
+    func handleProductPress(storeItem: StoreItem)
 }
