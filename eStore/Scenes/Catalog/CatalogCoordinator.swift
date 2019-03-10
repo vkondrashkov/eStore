@@ -37,7 +37,8 @@ extension CatalogCoordinator: Coordinator {
 // MARK: - CatalogRouter implementation
 extension CatalogCoordinator: CatalogRouter {
     func showGoodsList(title: String) {
-        goodsListCoordinator = goodsListBuilder.build(title: title)
+        guard let productType = ProductType(rawValue: title) else { return }
+        goodsListCoordinator = goodsListBuilder.build(with: productType)
         goodsListCoordinator?.start()
     }
 }

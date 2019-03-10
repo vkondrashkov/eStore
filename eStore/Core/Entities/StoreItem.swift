@@ -6,10 +6,30 @@
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
 //
 
+protocol StoreItemConvertible {
+    func toStoreItem() -> StoreItem
+}
 // TODO: Add StockCount property
-protocol StoreItem {
-    var id: String { get }
-    var fullName: String { get }
-    var description: String { get }
-    var price: Int { get }
+class StoreItem {
+    var id: String
+    var name: String
+    var brand: String
+    var type: ProductType
+    var specifications: [Specification]
+    var price: Int
+
+    init(id: String,
+         name: String,
+         brand: String,
+         type: ProductType,
+         specifications: [Specification],
+         price: Int) {
+
+        self.id = id
+        self.name = name
+        self.brand = brand
+        self.type = type
+        self.specifications = specifications
+        self.price = price
+    }
 }

@@ -18,23 +18,6 @@ class Laptop: ImmutableMappable {
     let processor: String
     let price: Int
 
-    init(id: String,
-         name: String,
-         brand: String,
-         operatingSystem: OperatingSystem,
-         display: Display,
-         processor: String,
-         price: Int) {
-
-        self.id = id
-        self.name = name
-        self.brand = brand
-        self.operatingSystem = operatingSystem
-        self.display = display
-        self.processor = processor
-        self.price = price
-    }
-
     required init(map: Map) throws {
         id = try map.value("id")
         name = try map.value("name")
@@ -57,26 +40,21 @@ class Laptop: ImmutableMappable {
     }
 }
 
-// MARK: - StoreItem implementation
-extension Laptop: StoreItem {
-    var fullName: String {
-        return "\(brand) \(name)"
-    }
-
-    var description: String {
-        return "\(operatingSystem), display \(display.description), \(processor)"
-    }
-}
-
-// MARK: - Equatable implementation
-extension Laptop: Equatable {
-    static func == (lhs: Laptop, rhs: Laptop) -> Bool {
-        return lhs.id == rhs.id &&
-            lhs.name == rhs.name &&
-            lhs.brand == rhs.brand &&
-            lhs.operatingSystem == rhs.operatingSystem &&
-            lhs.display == rhs.display &&
-            lhs.processor == rhs.processor &&
-            lhs.price == rhs.price
+// MARK: - StoreItemConvertible implementation
+extension Laptop: StoreItemConvertible {
+    func toStoreItem() -> StoreItem {
+        var specifications: [Specification] = []
+        specifications.append(Specification(name: "Operating system", value: operatingSystem))
+        specifications.append(Specification(name: "Display", value: display))
+        specifications.append(Specification(name: "Processor", value: processor))
+        let storeItem = StoreItem(
+            id: id,
+            name: name,
+            brand: brand,
+            type: .Laptop,
+            specifications: specifications,
+            price: price
+        )
+        return storeItem
     }
 }
