@@ -41,7 +41,8 @@ final class GoodsDescriptionTableHeaderCell: UITableViewCell {
 
     private func setupProductTitleLabel() {
         productTitleLabel = UILabel()
-        productTitleLabel.font = .boldSystemFont(ofSize: 24)
+        productTitleLabel.font = .boldSystemFont(ofSize: 22)
+        productTitleLabel.numberOfLines = 0
         productTitleLabel.textAlignment = .center
         containerView.addSubview(productTitleLabel)
         activateProductTitleLabelConstraints(view: productTitleLabel, anchorView: productImageView)

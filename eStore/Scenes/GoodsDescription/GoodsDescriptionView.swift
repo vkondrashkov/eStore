@@ -20,6 +20,7 @@ final class GoodsDescriptionViewImpl: UIViewController {
     override func loadView() {
         super.loadView()
         view.backgroundColor = goodsDescriptionBackgroundColor
+        title = "Description"
         navigationController?.navigationBar.tintColor = customTintColor
 
         setupDescriptionTableView()
