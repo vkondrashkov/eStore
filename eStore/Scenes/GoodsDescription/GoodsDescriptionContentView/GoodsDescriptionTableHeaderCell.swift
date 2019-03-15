@@ -9,9 +9,7 @@
 import UIKit
 
 final class GoodsDescriptionTableHeaderCell: UITableViewCell {
-    static var reuseIdentifier: String {
-        return "GoodsDescriptionTableHeaderCellReuseIdentifier"
-    }
+    static var reuseIdentifier = "GoodsDescriptionTableHeaderCellReuseIdentifier"
 
     private var containerView: UIView!
     private var productTitleLabel: UILabel!
