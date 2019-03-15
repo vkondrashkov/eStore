@@ -48,9 +48,11 @@ final class GoodsListTableViewCell: UITableViewCell {
     }
 
     func display(imageUrl: String?, title: String) {
-        // TODO: Implement imageView download from
-        // url supported by activity indicator
-        goodsItemImageView.image = UIImage(named: "image-not-found")
+        if let url = imageUrl {
+            goodsItemImageView.downloaded(from: url)
+        } else {
+            goodsItemImageView.image = UIImage(named: "image-not-found")
+        }
         goodsItemTitleLabel.text = title
     }
 

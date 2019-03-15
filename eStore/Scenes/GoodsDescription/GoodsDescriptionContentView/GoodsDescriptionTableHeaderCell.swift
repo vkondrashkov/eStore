@@ -50,7 +50,7 @@ final class GoodsDescriptionTableHeaderCell: UITableViewCell {
 
     func display(title: String, imageUrl: String?) {
         if let url = imageUrl {
-            // TODO: Download images from url
+            productImageView.downloaded(from: url)
         } else {
             productImageView.image = UIImage(named: "image-not-found")
         }
