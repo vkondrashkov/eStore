@@ -384,13 +384,6 @@
 			path = SignIn;
 			sourceTree = "<group>";
 		};
-		9CC46C0F221695DF005E24F5 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		9CC46C1822176B28005E24F5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,7 +456,6 @@
 				9C83BB95222A9CD400CBB1FF /* Networking */,
 				9CA418D2221D878500BAF215 /* Entities */,
 				9CC46C1822176B28005E24F5 /* Helpers */,
-				9CC46C0F221695DF005E24F5 /* Utils */,
 				9CC46BAE2214719D005E24F5 /* Module */,
 				9CC55259220AF93A0004ACC4 /* Services */,
 			);
