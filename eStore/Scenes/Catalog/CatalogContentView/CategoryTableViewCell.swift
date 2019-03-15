@@ -9,9 +9,7 @@
 import UIKit
 
 class CategoryTableViewCell: UITableViewCell {
-    static var reuseIdentifier: String {
-        return "CategoryTableViewCellReuseIdentifier"
-    }
+    static var reuseIdentifier = "CategoryTableViewCellReuseIdentifier"
 
     private var iconImageView: UIImageView!
     private var descriptionLabel: UILabel!

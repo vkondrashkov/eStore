@@ -9,9 +9,7 @@
 import UIKit
 
 final class GoodsListTableViewCell: UITableViewCell {
-    static var reuseIdentifier: String {
-        return "GoodsListTableViewCellReuseIdentifier"
-    }
+    static var reuseIdentifier = "GoodsListTableViewCellReuseIdentifier"
 
     private var containerView: UIView!
     private var goodsItemImageView: UIImageView!
