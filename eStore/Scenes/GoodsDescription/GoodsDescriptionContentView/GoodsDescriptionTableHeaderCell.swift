@@ -94,8 +94,9 @@ private extension GoodsDescriptionTableHeaderCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             view.topAnchor.constraint(equalTo: anchorView.bottomAnchor, constant: 10),
-            view.leadingAnchor.constraint(equalTo: anchorView.trailingAnchor, constant: 10),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -10)
+            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 10),
+            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -10),
+            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -10)
             ])
     }
 }
