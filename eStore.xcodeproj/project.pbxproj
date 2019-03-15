@@ -11,10 +11,6 @@
 		9C76ABAF223588D900FB39DA /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76ABAE223588D900FB39DA /* ProductType.swift */; };
 		9C76ABB122359F8400FB39DA /* GoodsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76ABB022359F8400FB39DA /* GoodsService.swift */; };
 		9C83BB94222A591A00CBB1FF /* GoodsListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BB93222A591A00CBB1FF /* GoodsListTableViewDataSource.swift */; };
-		9C83BB97222A9D1300CBB1FF /* GoodsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BB96222A9D1300CBB1FF /* GoodsManager.swift */; };
-		9C83BBF8222DB5D900CBB1FF /* SmartphonesFetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BBF7222DB5D900CBB1FF /* SmartphonesFetchTests.swift */; };
-		9C83BBFA222DB7D400CBB1FF /* LaptopsFetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BBF9222DB7D400CBB1FF /* LaptopsFetchTests.swift */; };
-		9C83BBFC222DBC6B00CBB1FF /* TVFetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BBFB222DBC6B00CBB1FF /* TVFetchTests.swift */; };
 		9C83BBFF222EAECF00CBB1FF /* GoodsDescriptionContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BBFE222EAECF00CBB1FF /* GoodsDescriptionContract.swift */; };
 		9C83BC01222EAED800CBB1FF /* GoodsDescriptionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BC00222EAED800CBB1FF /* GoodsDescriptionComponent.swift */; };
 		9C83BC03222EAEE100CBB1FF /* GoodsDescriptionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BC02222EAEE100CBB1FF /* GoodsDescriptionBuilder.swift */; };
@@ -118,12 +114,8 @@
 		9C76ABAE223588D900FB39DA /* ProductType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
 		9C76ABB022359F8400FB39DA /* GoodsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsService.swift; sourceTree = "<group>"; };
 		9C83BB93222A591A00CBB1FF /* GoodsListTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListTableViewDataSource.swift; sourceTree = "<group>"; };
-		9C83BB96222A9D1300CBB1FF /* GoodsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsManager.swift; sourceTree = "<group>"; };
 		9C83BBE9222C2D1500CBB1FF /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C83BBED222C2D1500CBB1FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C83BBF7222DB5D900CBB1FF /* SmartphonesFetchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartphonesFetchTests.swift; sourceTree = "<group>"; };
-		9C83BBF9222DB7D400CBB1FF /* LaptopsFetchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaptopsFetchTests.swift; sourceTree = "<group>"; };
-		9C83BBFB222DBC6B00CBB1FF /* TVFetchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVFetchTests.swift; sourceTree = "<group>"; };
 		9C83BBFE222EAECF00CBB1FF /* GoodsDescriptionContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsDescriptionContract.swift; sourceTree = "<group>"; };
 		9C83BC00222EAED800CBB1FF /* GoodsDescriptionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsDescriptionComponent.swift; sourceTree = "<group>"; };
 		9C83BC02222EAEE100CBB1FF /* GoodsDescriptionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsDescriptionBuilder.swift; sourceTree = "<group>"; };
@@ -233,7 +225,6 @@
 		9C83BB95222A9CD400CBB1FF /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				9C83BB96222A9D1300CBB1FF /* GoodsManager.swift */,
 				9C76ABB022359F8400FB39DA /* GoodsService.swift */,
 			);
 			path = Networking;
@@ -242,9 +233,6 @@
 		9C83BBEA222C2D1500CBB1FF /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				9C83BBFB222DBC6B00CBB1FF /* TVFetchTests.swift */,
-				9C83BBF9222DB7D400CBB1FF /* LaptopsFetchTests.swift */,
-				9C83BBF7222DB5D900CBB1FF /* SmartphonesFetchTests.swift */,
 				9C83BBED222C2D1500CBB1FF /* Info.plist */,
 			);
 			path = Tests;
@@ -707,9 +695,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C83BBFA222DB7D400CBB1FF /* LaptopsFetchTests.swift in Sources */,
-				9C83BBF8222DB5D900CBB1FF /* SmartphonesFetchTests.swift in Sources */,
-				9C83BBFC222DBC6B00CBB1FF /* TVFetchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,7 +747,6 @@
 				9CA418DE221D898300BAF215 /* Display.swift in Sources */,
 				9CA418E9221D8D0500BAF215 /* CatalogScene.swift in Sources */,
 				9CC46C0522161548005E24F5 /* SignInScene.swift in Sources */,
-				9C83BB97222A9D1300CBB1FF /* GoodsManager.swift in Sources */,
 				9CC46BB02214719D005E24F5 /* Coordinator.swift in Sources */,
 				9C83BC01222EAED800CBB1FF /* GoodsDescriptionComponent.swift in Sources */,
 				9CA4191B2222CC9500BAF215 /* CategoryTableViewCell.swift in Sources */,
