@@ -11,8 +11,8 @@ import ObjectMapper
 
 protocol GoodsManager {
     func fetchSmartphones(from json: String, completion: @escaping ([Smartphone]?) -> Void)
-    func fetchLaptops(from json: [String: Any], completion: @escaping ([Laptop]) -> Void)
-    func fetchTV(from json: [String: Any], completion: @escaping ([TV]) -> Void)
+    func fetchLaptops(from json: String, completion: @escaping ([Laptop]?) -> Void)
+    func fetchTV(from json: String, completion: @escaping ([TV]?) -> Void)
 }
 
 class GoodsManagerImpl: GoodsManager {
@@ -21,11 +21,13 @@ class GoodsManagerImpl: GoodsManager {
         completion(smartphonesList)
     }
 
-    func fetchLaptops(from json: [String: Any], completion: @escaping ([Laptop]) -> Void) {
-
+    func fetchLaptops(from json: String, completion: @escaping ([Laptop]?) -> Void) {
+        let laptopsList = try? Mapper<Laptop>().mapArray(JSONString: json)
+        completion(laptopsList)
     }
 
-    func fetchTV(from json: [String: Any], completion: @escaping ([TV]) -> Void) {
-
+    func fetchTV(from json: String, completion: @escaping ([TV]?) -> Void) {
+        let tvList = try? Mapper<TV>().mapArray(JSONString: json)
+        completion(tvList)
     }
 }

@@ -13,7 +13,7 @@ protocol GoodsListDependency: AnyObject {
 }
 
 protocol GoodsListBuilder: AnyObject {
-    func build(title: String) -> GoodsListCoordinator
+    func build(with productType: ProductType) -> GoodsListCoordinator
 }
 
 protocol GoodsListScene: AnyObject {
@@ -24,12 +24,20 @@ protocol GoodsListShow: AnyObject {
     var rootViewController: UIViewController { get }
 }
 
+protocol GoodsListRouter: AnyObject {
+    func showGoodsDescription(for storeItem: StoreItem)
+}
+
 protocol GoodsListView: AnyObject {
-    // TODO: Think over display(_:) methods
     func showActivityIndicator()
     func hideActivityIndicator()
+    func display(storeItemList: [StoreItem])
 }
 
 protocol GoodsListPresenter: AnyObject {
     func handleLoadView()
+
+    // Should I only handle indexPath and hold
+    // dataSource in Presenter?
+    func handleProductPress(storeItem: StoreItem)
 }

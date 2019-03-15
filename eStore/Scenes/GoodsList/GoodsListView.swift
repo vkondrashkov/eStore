@@ -15,7 +15,7 @@ final class GoodsListViewImpl: UIViewController {
     private var fadeMaskView: UIView!
     private var activityIndicator: UIActivityIndicatorView!
 
-    private var goodsTableViewDataSource = GoodsListTableViewDataSource() // Temporary
+    private var goodsTableViewDataSource = GoodsListTableViewDataSource()
     private var goodsTableView: UITableView!
 
     private let goodsListBackgroundColor = UIColor(red: 242.0 / 255.0, green: 241.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
@@ -96,6 +96,11 @@ extension GoodsListViewImpl: GoodsListView {
             completion: nil
         )
     }
+
+    func display(storeItemList: [StoreItem]) {
+        goodsTableViewDataSource.items = storeItemList
+        goodsTableView.reloadData()
+    }
 }
 
 // MARK: - GoodsListShow implementation
@@ -108,6 +113,7 @@ extension GoodsListViewImpl: GoodsListShow {
 // MARK: - UITableViewDelegate implementation
 extension GoodsListViewImpl: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.handleProductPress(storeItem: goodsTableViewDataSource.items[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

@@ -1,14 +1,14 @@
 //
-//  GoodsListComponent.swift
+//  GoodsDescriptionComponent.swift
 //  eStore
 //
-//  Created by Vladislav Kondrashkov on 2/24/19.
+//  Created by Vladislav Kondrashkov on 3/5/19.
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
 //
 
 import UIKit
 
-final class GoodsListComponent {
+final class GoodsDescriptionComponent {
     let navigation: UINavigationController
 
     init(navigation: UINavigationController) {
@@ -16,5 +16,3 @@ final class GoodsListComponent {
     }
 }
 
-// MARK: - GoodsDescriptionDependency implementation
-extension GoodsListComponent: GoodsDescriptionDependency { }

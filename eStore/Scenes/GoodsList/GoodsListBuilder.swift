@@ -18,13 +18,18 @@ final class GoodsListBuilderImpl {
 
 // MARK: - GoodsListBuilder implementation
 extension GoodsListBuilderImpl: GoodsListBuilder {
-    func build(title: String) -> GoodsListCoordinator {
+    func build(with productType: ProductType) -> GoodsListCoordinator {
         let view = GoodsListViewImpl()
-        view.title = title
+        view.title = productType.rawValue
+        let component = GoodsListComponent(navigation: dependency.navigation)
         let scene = GoodsListSceneImpl(navigation: dependency.navigation)
+        let goodsDescriptionBuilder = GoodsDescriptionBuilderImpl(dependency: component)
         let coordinator = GoodsListCoordinator(scene: scene,
-                                               show: view)
-        let presenter = GoodsListPresenterImpl(view: view)
+                                               show: view,
+                                               goodsDescriptionBuilder: goodsDescriptionBuilder)
+        let presenter = GoodsListPresenterImpl(view: view,
+                                               router: coordinator,
+                                               productType: productType)
         view.presenter = presenter
         return coordinator
     }

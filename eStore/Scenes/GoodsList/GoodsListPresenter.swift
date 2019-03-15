@@ -8,21 +8,62 @@
 
 import Foundation
 
+// TODO: Add networking service to initializier
 final class GoodsListPresenterImpl {
     private unowned let view: GoodsListView
+    private unowned let router: GoodsListRouter
 
-    init(view: GoodsListView) {
+    private let productType: ProductType
+
+    init(view: GoodsListView,
+         router: GoodsListRouter,
+         productType: ProductType) {
+
         self.view = view
+        self.router = router
+        self.productType = productType
     }
 }
 
 // MARK: - GoodsListPresenter implementation
 extension GoodsListPresenterImpl: GoodsListPresenter {
     func handleLoadView() {
-        // Temp
         view.showActivityIndicator()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: { [weak self] in
-            self?.view.hideActivityIndicator()
-        })
+        // TODO: Dependency injection
+        let service = GoodsServiceImpl()
+
+        switch productType {
+        case .Smartphone:
+            service.getSmartphone(completion: { [weak self] result in
+                guard let storeItemList = result else {
+                    // TODO: Error handling
+                    return
+                }
+                self?.view.display(storeItemList: storeItemList)
+                self?.view.hideActivityIndicator()
+            })
+        case .Laptop:
+            service.getLaptops(completion: { [weak self] result in
+                guard let storeItemList = result else {
+                    // TODO: Error handling
+                    return
+                }
+                self?.view.display(storeItemList: storeItemList)
+                self?.view.hideActivityIndicator()
+            })
+        case .TV:
+            service.getTV(completion: { [weak self] result in
+                guard let storeItemList = result else {
+                    // TODO: Error handling
+                    return
+                }
+                self?.view.display(storeItemList: storeItemList)
+                self?.view.hideActivityIndicator()
+            })
+        }
+    }
+
+    func handleProductPress(storeItem: StoreItem) {
+        router.showGoodsDescription(for: storeItem)
     }
 }
