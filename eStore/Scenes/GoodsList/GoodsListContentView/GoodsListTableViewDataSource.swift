@@ -17,7 +17,8 @@ class GoodsListTableViewDataSource: NSObject, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: GoodsListTableViewCell.reuseIdentifier, for: indexPath) as! GoodsListTableViewCell
-        cell.display(imageUrl: nil, title: items[indexPath.row].name) // TODO: implement display(_:) method
+        let item = items[indexPath.row]
+        cell.display(imageUrl: nil, title: "\(item.brand) \(item.name)") // TODO: implement display(_:) method
         return cell
     }
 }

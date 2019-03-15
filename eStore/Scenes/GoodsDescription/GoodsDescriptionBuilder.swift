@@ -22,7 +22,6 @@ extension GoodsDescriptionBuilderImpl: GoodsDescriptionBuilder {
         let dataSource = GoodsDescriptionTableViewDataSource()
         dataSource.item = storeItem
         let view = GoodsDescriptionViewImpl()
-        view.title = storeItem.name
         view.dataSource = dataSource
         let scene = GoodsDescriptionSceneImpl(navigation: dependency.navigation)
         let coordinator = GoodsDescriptionCoordinator(scene: scene,

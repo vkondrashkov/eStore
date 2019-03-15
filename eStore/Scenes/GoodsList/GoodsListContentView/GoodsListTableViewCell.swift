@@ -41,7 +41,8 @@ final class GoodsListTableViewCell: UITableViewCell {
 
     private func setupGoodsItemTitleLabel() {
         goodsItemTitleLabel = UILabel()
-        goodsItemTitleLabel.font = .boldSystemFont(ofSize: 20)
+        goodsItemTitleLabel.font = .boldSystemFont(ofSize: 17)
+        goodsItemTitleLabel.numberOfLines = 0
         containerView.addSubview(goodsItemTitleLabel)
         activateGoodsItemTitleLabelConstraints(view: goodsItemTitleLabel, anchorView: goodsItemImageView)
     }
