@@ -18,7 +18,7 @@ class GoodsDescriptionTableViewDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let header = tableView.dequeueReusableCell(withIdentifier: GoodsDescriptionTableHeaderCell.reuseIdentifier, for: indexPath) as! GoodsDescriptionTableHeaderCell
-            header.display(title: "\(item.brand) \(item.name)", imageUrl: "https://content2.onliner.by/catalog/device/header@2/0ab0b43eb38b5767ea29c4509f0a9d3b.jpeg")
+            header.display(title: "\(item.brand) \(item.name)", imageUrl: item.imageUrl)
             header.isUserInteractionEnabled = false
             return header
         }

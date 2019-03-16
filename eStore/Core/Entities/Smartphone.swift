@@ -10,6 +10,7 @@ import ObjectMapper
 
 class Smartphone: ImmutableMappable {
     let id: String
+    let imageUrl: String?
     let name: String
     let brand: String
     let operatingSystem: OperatingSystem
@@ -24,6 +25,7 @@ class Smartphone: ImmutableMappable {
 
     required init(map: Map) throws {
         id = try map.value("id")
+        imageUrl = try? map.value("imageUrl")
         name = try map.value("name")
         brand = try map.value("brand")
         operatingSystem = try OperatingSystem(rawValue: map.value("operatingSystem")) ?? .unknown
@@ -39,6 +41,7 @@ class Smartphone: ImmutableMappable {
 
     func mapping(map: Map) {
         id >>> map["id"]
+        imageUrl >>> map["imageUrl"]
         name >>> map["name"]
         brand >>> map["brand"]
         operatingSystem.rawValue >>> map["operatingSystem"]
@@ -67,6 +70,7 @@ extension Smartphone: StoreItemConvertible {
         specifications.append(Specification(name: "Battery capacity", value: "\(batteryCapacity) mAh"))
         let storeItem = StoreItem(
             id: id,
+            imageUrl: imageUrl,
             name: name,
             brand: brand,
             type: .Smartphone,
