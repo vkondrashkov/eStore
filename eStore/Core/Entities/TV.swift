@@ -17,6 +17,7 @@ class TV: ImmutableMappable {
     let display: Display
     let operatingSystem: OperatingSystem
     let price: Int
+    let stockCount: Int
 
     required init(map: Map) throws {
         id = try map.value("id")
@@ -26,6 +27,7 @@ class TV: ImmutableMappable {
         operatingSystem = try OperatingSystem(rawValue: map.value("operatingSystem")) ?? .unknown
         display = Display(width: try map.value("display.width"), height: try map.value("display.height"))
         price = try map.value("price")
+        stockCount = try map.value("stockCount")
     }
 
     func mapping(map: Map) {
@@ -37,6 +39,7 @@ class TV: ImmutableMappable {
         display.width >>> map["display.width"]
         display.height >>> map["display.height"]
         price >>> map["price"]
+        stockCount >>> map["stockCount"]
     }
 }
 
@@ -53,7 +56,8 @@ extension TV: StoreItemConvertible {
             brand: brand,
             type: .TV,
             specifications: specifications,
-            price: price
+            price: price,
+            stockCount: stockCount
         )
         return storeItem
     }

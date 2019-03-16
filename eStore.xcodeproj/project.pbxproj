@@ -20,6 +20,7 @@
 		9C83BC0B222EAF0700CBB1FF /* GoodsDescriptionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BC0A222EAF0700CBB1FF /* GoodsDescriptionPresenter.swift */; };
 		9C83BC0E222EF5D100CBB1FF /* GoodsDescriptionTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BC0D222EF5D100CBB1FF /* GoodsDescriptionTableViewDataSource.swift */; };
 		9C83BC12222EFCC300CBB1FF /* GoodsDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BC11222EFCC300CBB1FF /* GoodsDescriptionTableViewCell.swift */; };
+		9C9C73CA223CF92A00C4B5EE /* GoodsDescriptionTablePriceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9C73C9223CF92A00C4B5EE /* GoodsDescriptionTablePriceCell.swift */; };
 		9CA418D4221D879C00BAF215 /* StoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D3221D879C00BAF215 /* StoreItem.swift */; };
 		9CA418D6221D883700BAF215 /* Smartphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D5221D883700BAF215 /* Smartphone.swift */; };
 		9CA418D8221D883F00BAF215 /* TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D7221D883F00BAF215 /* TV.swift */; };
@@ -126,6 +127,7 @@
 		9C83BC0A222EAF0700CBB1FF /* GoodsDescriptionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsDescriptionPresenter.swift; sourceTree = "<group>"; };
 		9C83BC0D222EF5D100CBB1FF /* GoodsDescriptionTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsDescriptionTableViewDataSource.swift; sourceTree = "<group>"; };
 		9C83BC11222EFCC300CBB1FF /* GoodsDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsDescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		9C9C73C9223CF92A00C4B5EE /* GoodsDescriptionTablePriceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsDescriptionTablePriceCell.swift; sourceTree = "<group>"; };
 		9CA418D3221D879C00BAF215 /* StoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItem.swift; sourceTree = "<group>"; };
 		9CA418D5221D883700BAF215 /* Smartphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Smartphone.swift; sourceTree = "<group>"; };
 		9CA418D7221D883F00BAF215 /* TV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TV.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				9C83BC11222EFCC300CBB1FF /* GoodsDescriptionTableViewCell.swift */,
 				9C83BC0D222EF5D100CBB1FF /* GoodsDescriptionTableViewDataSource.swift */,
 				9CBC2818223B839D0091082B /* GoodsDescriptionTableHeaderCell.swift */,
+				9C9C73C9223CF92A00C4B5EE /* GoodsDescriptionTablePriceCell.swift */,
 			);
 			path = GoodsDescriptionContentView;
 			sourceTree = "<group>";
@@ -778,6 +781,7 @@
 				9CA4193422251C5600BAF215 /* GoodsListTableViewCell.swift in Sources */,
 				9C83BC0B222EAF0700CBB1FF /* GoodsDescriptionPresenter.swift in Sources */,
 				9CC46C1A22176B39005E24F5 /* AlertFactory.swift in Sources */,
+				9C9C73CA223CF92A00C4B5EE /* GoodsDescriptionTablePriceCell.swift in Sources */,
 				9C83BC0E222EF5D100CBB1FF /* GoodsDescriptionTableViewDataSource.swift in Sources */,
 				9CA4191E2222CF0B00BAF215 /* CategoryTableViewDataSource.swift in Sources */,
 				9CC46C032216153A005E24F5 /* SignInBuilder.swift in Sources */,

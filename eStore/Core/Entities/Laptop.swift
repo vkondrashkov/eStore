@@ -18,6 +18,7 @@ class Laptop: ImmutableMappable {
     let display: Display
     let processor: String
     let price: Int
+    let stockCount: Int
 
     required init(map: Map) throws {
         id = try map.value("id")
@@ -28,6 +29,7 @@ class Laptop: ImmutableMappable {
         display = Display(width: try map.value("display.width"), height: try map.value("display.height"))
         processor = try map.value("processor")
         price = try map.value("price")
+        stockCount = try map.value("stockCount")
     }
 
     func mapping(map: Map) {
@@ -40,6 +42,7 @@ class Laptop: ImmutableMappable {
         display.height >>> map["display.height"]
         processor >>> map["processor"]
         price >>> map["price"]
+        stockCount >>> map["stockCount"]
     }
 }
 
@@ -57,7 +60,8 @@ extension Laptop: StoreItemConvertible {
             brand: brand,
             type: .Laptop,
             specifications: specifications,
-            price: price
+            price: price,
+            stockCount: stockCount
         )
         return storeItem
     }

@@ -9,15 +9,16 @@
 protocol StoreItemConvertible {
     func toStoreItem() -> StoreItem
 }
-// TODO: Add StockCount property
+
 class StoreItem {
-    var id: String
-    var imageUrl: String?
-    var name: String
-    var brand: String
-    var type: ProductType
-    var specifications: [Specification]
-    var price: Int
+    let id: String
+    let imageUrl: String?
+    let name: String
+    let brand: String
+    let type: ProductType
+    let specifications: [Specification]
+    let price: Int
+    let stockCount: Int
 
     init(id: String,
          imageUrl: String?,
@@ -25,7 +26,8 @@ class StoreItem {
          brand: String,
          type: ProductType,
          specifications: [Specification],
-         price: Int) {
+         price: Int,
+         stockCount: Int) {
 
         self.id = id
         self.imageUrl = imageUrl
@@ -34,5 +36,6 @@ class StoreItem {
         self.type = type
         self.specifications = specifications
         self.price = price
+        self.stockCount = stockCount
     }
 }
