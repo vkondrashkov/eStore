@@ -24,10 +24,10 @@ class GoodsDescriptionTableViewDataSource: NSObject, UITableViewDataSource {
         }
         if indexPath.row == 1 {
             let price = tableView.dequeueReusableCell(withIdentifier: GoodsDescriptionTablePriceCell.reuseIdentifier, for: indexPath) as! GoodsDescriptionTablePriceCell
-            let isAvailable = true // Temp
+            let isAvailable = item.stockCount != 0
+            let stockAvailableText = isAvailable ? "Available" : "Not available"
             price.display(price: "Price: \(item.price) BYN")
             price.display(cartAddButtonText: "Add to cart", isAvailable: isAvailable)
-            let stockAvailableText = isAvailable ? "Available" : "Not available"
             price.display(stockAvailableText: stockAvailableText, isAvailable: isAvailable)
             price.isUserInteractionEnabled = false
             return price
