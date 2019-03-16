@@ -32,6 +32,7 @@ final class GoodsDescriptionViewImpl: UIViewController {
         descriptionTableView.backgroundColor = .clear
         descriptionTableView.register(GoodsDescriptionTableViewCell.self, forCellReuseIdentifier: GoodsDescriptionTableViewCell.reuseIdentifier)
         descriptionTableView.register(GoodsDescriptionTableHeaderCell.self, forCellReuseIdentifier: GoodsDescriptionTableHeaderCell.reuseIdentifier)
+        descriptionTableView.register(GoodsDescriptionTablePriceCell.self, forCellReuseIdentifier: GoodsDescriptionTablePriceCell.reuseIdentifier)
         descriptionTableView.dataSource = dataSource
         descriptionTableView.delegate = self
         view.addSubview(descriptionTableView)

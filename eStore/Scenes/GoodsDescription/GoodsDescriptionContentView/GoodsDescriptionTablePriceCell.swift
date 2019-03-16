@@ -29,7 +29,9 @@ final class GoodsDescriptionTablePriceCell: UITableViewCell {
         contentView.backgroundColor = .white
 
         setupContainerView()
-
+        setupPriceLabel()
+        setupCartAddButton()
+        setupStockAvailableLabel()
     }
 
     private func setupContainerView() {
