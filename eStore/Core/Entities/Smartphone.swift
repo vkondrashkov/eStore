@@ -8,7 +8,6 @@
 
 import ObjectMapper
 
-// TODO: Add StockCount property
 class Smartphone: ImmutableMappable {
     let id: String
     let name: String
@@ -21,6 +20,7 @@ class Smartphone: ImmutableMappable {
     let color: String
     let batteryCapacity: Int
     let price: Int
+    let stockCount: Int
 
     required init(map: Map) throws {
         id = try map.value("id")
@@ -34,6 +34,7 @@ class Smartphone: ImmutableMappable {
         color = try map.value("color")
         batteryCapacity = try map.value("batteryCapacity")
         price = try map.value("price")
+        stockCount = try map.value("stockCount")
     }
 
     func mapping(map: Map) {
@@ -49,6 +50,7 @@ class Smartphone: ImmutableMappable {
         color >>> map["color"]
         batteryCapacity >>> map["batteryCapacity"]
         price >>> map["price"]
+        stockCount >>> map["stockCount"]
     }
 }
 
@@ -69,7 +71,8 @@ extension Smartphone: StoreItemConvertible {
             brand: brand,
             type: .Smartphone,
             specifications: specifications,
-            price: price
+            price: price,
+            stockCount: stockCount
         )
         return storeItem
     }
