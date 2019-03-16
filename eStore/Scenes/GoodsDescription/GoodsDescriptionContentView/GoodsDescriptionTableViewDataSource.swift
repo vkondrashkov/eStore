@@ -12,19 +12,29 @@ class GoodsDescriptionTableViewDataSource: NSObject, UITableViewDataSource {
     var item: StoreItem!
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return item.specifications.count + 1
+        return item.specifications.count + 2
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard indexPath.row > 0 else {
+        if indexPath.row == 0 {
             let header = tableView.dequeueReusableCell(withIdentifier: GoodsDescriptionTableHeaderCell.reuseIdentifier, for: indexPath) as! GoodsDescriptionTableHeaderCell
             header.display(title: "\(item.brand) \(item.name)", imageUrl: "https://content2.onliner.by/catalog/device/header@2/0ab0b43eb38b5767ea29c4509f0a9d3b.jpeg")
             header.isUserInteractionEnabled = false
             return header
         }
+        if indexPath.row == 1 {
+            let price = tableView.dequeueReusableCell(withIdentifier: GoodsDescriptionTablePriceCell.reuseIdentifier, for: indexPath) as! GoodsDescriptionTablePriceCell
+            let isAvailable = true // Temp
+            price.display(price: "Price: \(item.price) BYN")
+            price.display(cartAddButtonText: "Add to cart", isAvailable: isAvailable)
+            let stockAvailableText = isAvailable ? "Available" : "Not available"
+            price.display(stockAvailableText: stockAvailableText, isAvailable: isAvailable)
+            price.isUserInteractionEnabled = false
+            return price
+        }
 
         let cell = tableView.dequeueReusableCell(withIdentifier: GoodsDescriptionTableViewCell.reuseIdentifier, for: indexPath) as! GoodsDescriptionTableViewCell
-        let specification = item.specifications[indexPath.row - 1]
+        let specification = item.specifications[indexPath.row - 2]
         var value = ""
         switch specification.value {
         case let someString as String:

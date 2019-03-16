@@ -64,7 +64,7 @@ extension Smartphone: StoreItemConvertible {
         specifications.append(Specification(name: "Flash memory", value: "\(flashMemory) GB"))
         specifications.append(Specification(name: "Processor", value: processor))
         specifications.append(Specification(name: "Color", value: color))
-        specifications.append(Specification(name: "Battery capacity", value: batteryCapacity))
+        specifications.append(Specification(name: "Battery capacity", value: "\(batteryCapacity) mAh"))
         let storeItem = StoreItem(
             id: id,
             name: name,
