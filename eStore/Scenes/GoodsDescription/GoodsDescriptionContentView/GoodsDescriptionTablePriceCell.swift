@@ -42,8 +42,8 @@ final class GoodsDescriptionTablePriceCell: UITableViewCell {
 
     private func setupPriceLabel() {
         priceLabel = UILabel()
-        priceLabel.font = .systemFont(ofSize: 17)
-        priceLabel.textColor = customTintColor
+        priceLabel.font = .boldSystemFont(ofSize: 17)
+        priceLabel.textAlignment = .center
         containerView.addSubview(priceLabel)
         activatePriceLabelConstraints(view: priceLabel)
     }
@@ -55,28 +55,29 @@ final class GoodsDescriptionTablePriceCell: UITableViewCell {
         cartAddButton.backgroundColor = cartAddButtonDisabledBackgroundColor
         cartAddButton.addTarget(self, action: #selector(cartAddButtonDidPress), for: .touchUpInside)
         containerView.addSubview(cartAddButton)
-        activateCartAddButtonConstraints(view: cartAddButton)
+        activateCartAddButtonConstraints(view: cartAddButton, anchorView: priceLabel)
     }
 
     private func setupStockAvailableLabel() {
         stockAvailableLabel = UILabel()
         stockAvailableLabel.font = .systemFont(ofSize: 14)
         stockAvailableLabel.textColor = stockAvailableLabelDisabledColor
+        stockAvailableLabel.textAlignment = .center
         containerView.addSubview(stockAvailableLabel)
         activateStockAvailableLabelConstraints(view: stockAvailableLabel, anchorView: cartAddButton)
     }
 
-
-
-    func display(price: String,
-                 cartAddButtonText: String,
-                 stockAvailableText: String,
-                 isAvailable: Bool) {
-
+    func display(price: String) {
         priceLabel.text = price
-        cartAddButton.setTitle(cartAddButtonText, for: .normal)
-        cartAddButton.backgroundColor = isAvailable ? cartAddButtonActiveBackgroundColor : cartAddButtonDisabledBackgroundColor
+    }
 
+    func display(cartAddButtonText: String, isAvailable: Bool) {
+        cartAddButton.setTitle(cartAddButtonText, for: .normal)
+        cartAddButton.isEnabled = isAvailable
+        cartAddButton.backgroundColor = isAvailable ? cartAddButtonActiveBackgroundColor : cartAddButtonDisabledBackgroundColor
+    }
+
+    func display(stockAvailableText: String, isAvailable: Bool) {
         stockAvailableLabel.text = stockAvailableText
         stockAvailableLabel.textColor = isAvailable ? stockAvailableLabelActiveColor : stockAvailableLabelDisabledColor
     }
@@ -109,16 +110,17 @@ private extension GoodsDescriptionTablePriceCell {
         NSLayoutConstraint.activate([
             view.topAnchor.constraint(equalTo: superview.topAnchor, constant: 10),
             view.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 10),
-            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -10)
+            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -10)
             ])
     }
 
-    func activateCartAddButtonConstraints(view: UIView) {
+    func activateCartAddButtonConstraints(view: UIView, anchorView: UIView) {
         guard let superview = view.superview else { return }
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: superview.topAnchor, constant: 10),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -10),
+            view.topAnchor.constraint(equalTo: anchorView.bottomAnchor, constant: 10),
+            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 10),
+            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -10)
             ])
     }
 
@@ -126,10 +128,10 @@ private extension GoodsDescriptionTablePriceCell {
         guard let superview = view.superview else { return }
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: anchorView.bottomAnchor, constant: 10),
-            view.centerXAnchor.constraint(equalTo: anchorView.centerXAnchor),
+            view.topAnchor.constraint(equalTo: anchorView.bottomAnchor, constant: 5),
             view.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -10),
-            view.trailingAnchor.constraint(lessThanOrEqualTo: superview.trailingAnchor, constant: -10)
+            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 10),
+            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -10)
             ])
     }
 }
