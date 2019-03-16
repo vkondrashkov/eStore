@@ -11,6 +11,7 @@ import ObjectMapper
 // TODO: Expand class fields
 class TV: ImmutableMappable {
     let id: String
+    let imageUrl: String?
     let name: String
     let brand: String
     let display: Display
@@ -19,6 +20,7 @@ class TV: ImmutableMappable {
 
     required init(map: Map) throws {
         id = try map.value("id")
+        imageUrl = try? map.value("imageUrl")
         name = try map.value("name")
         brand = try map.value("brand")
         operatingSystem = try OperatingSystem(rawValue: map.value("operatingSystem")) ?? .unknown
@@ -28,6 +30,7 @@ class TV: ImmutableMappable {
 
     func mapping(map: Map) {
         id >>> map["id"]
+        imageUrl >>> map["imageUrl"]
         name >>> map["name"]
         brand >>> map["brand"]
         operatingSystem.rawValue >>> map["operatingSystem"]
@@ -45,6 +48,7 @@ extension TV: StoreItemConvertible {
         specifications.append(Specification(name: "Display", value: display))
         let storeItem = StoreItem(
             id: id,
+            imageUrl: imageUrl,
             name: name,
             brand: brand,
             type: .TV,
