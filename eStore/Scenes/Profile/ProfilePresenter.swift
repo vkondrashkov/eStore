@@ -16,14 +16,35 @@ final class ProfilePresenterImpl {
         self.view = view
         self.router = router
     }
+
+    private func handleCartCategoryPress() {
+
+    }
+
+    private func handleSettingsCategoryPress() {
+
+    }
 }
 
 // MARK: - ProfilePresenter implementation
 extension ProfilePresenterImpl: ProfilePresenter {
     func handleLoadView() {
         view.display(rightBarButton: "Edit")
-        view.display(emailCaption: "Email")
-        view.display(emailLabel: "myemail@example.com")
+
+        let userCategory = ProfileCategoryImpl(name: "USERNAME", iconUrl: nil, onTapAction: nil)
+        let cartCategory = ProfileCategoryImpl(name: "Cart", iconUrl: nil, onTapAction: { [weak self] in
+            self?.handleCartCategoryPress()
+        })
+        let settingsCategory = ProfileCategoryImpl(name: "Settings", iconUrl: nil, onTapAction: { [weak self] in
+            self?.handleSettingsCategoryPress()
+        })
+        let profileCategories: [ProfileCategory] = [
+            userCategory,
+            cartCategory,
+            settingsCategory
+        ]
+        view.display(profileCategories: profileCategories)
+
         view.display(logoutButton: "Log out")
     }
 

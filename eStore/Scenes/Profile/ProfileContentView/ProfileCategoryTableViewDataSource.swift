@@ -9,9 +9,7 @@
 import UIKit
 
 class ProfileCategoryTableViewDataSource: NSObject, UITableViewDataSource {
-    var items: [ProfileCategory] = [
-        ProfileCategoryImpl(name: "USERNAME", iconUrl: nil, onTapAction: nil)
-    ]
+    var items: [ProfileCategory] = []
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count

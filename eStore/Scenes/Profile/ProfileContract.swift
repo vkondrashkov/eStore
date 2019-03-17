@@ -34,6 +34,7 @@ protocol ProfileListener: AnyObject {
 
 protocol ProfileView: AnyObject {
     func display(rightBarButton: String)
+    func display(profileCategories: [ProfileCategory])
     func display(emailCaption: String)
     func display(emailLabel: String)
     func display(logoutButton: String)

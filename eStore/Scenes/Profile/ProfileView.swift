@@ -12,6 +12,8 @@ final class ProfileViewImpl: UIViewController {
     var presenter: ProfilePresenter!
 
     private var containerView: UIView!
+    private var profileTableViewDataSource = ProfileCategoryTableViewDataSource()
+    private var profileTableView: UITableView!
     private var emailCaption: UILabel!
     private var emailLabel: UILabel!
     private var logoutButton: UIButton!
@@ -27,15 +29,29 @@ final class ProfileViewImpl: UIViewController {
         view.backgroundColor = .white
         title = "Profile"
         navigationController?.navigationBar.tintColor = customTintColor
-        containerView = UIView()
 
-        setupEmailCaption()
-        setupEmailLabel()
+        setupContainerView()
+        setupProfileTableView()
         setupLogoutButton()
 
+        presenter.handleLoadView()
+    }
+
+    private func setupContainerView() {
+        containerView = UIView()
         view.addSubview(containerView)
         activateContainerViewConstraints(view: containerView)
-        presenter.handleLoadView()
+    }
+
+    private func setupProfileTableView() {
+        profileTableView = UITableView()
+        profileTableView.tableFooterView = UIView() // Is needed to remove unnecessary separators
+        profileTableView.backgroundColor = .clear
+        profileTableView.register(ProfileCategoryTableViewCell.self, forCellReuseIdentifier: ProfileCategoryTableViewCell.reuseIdentifier)
+        profileTableView.dataSource = profileTableViewDataSource
+        profileTableView.delegate = self
+        view.addSubview(profileTableView)
+        activateProfileTableViewConstraints(view: profileTableView)
     }
 
     private func setupEmailCaption() {
@@ -80,6 +96,11 @@ extension ProfileViewImpl: ProfileView {
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 
+    func display(profileCategories: [ProfileCategory]) {
+        profileTableViewDataSource.items = profileCategories
+        profileTableView.reloadData()
+    }
+
     func display(emailCaption: String) {
         self.emailCaption.text = emailCaption
     }
@@ -105,8 +126,24 @@ extension ProfileViewImpl: ProfileShow {
     }
 }
 
+// MARK: - UITableViewDelegate implementation
+extension ProfileViewImpl: UITableViewDelegate {
+
+}
+
 // MARK: - Constraints
 private extension ProfileViewImpl {
+    func activateProfileTableViewConstraints(view: UIView) {
+        guard let superview = view.superview else { return }
+        view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            view.topAnchor.constraint(equalTo: superview.topAnchor),
+            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
+            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
+            ])
+    }
+
     func activateEmailCaptionConstraints(view: UIView) {
         guard let superview = view.superview else { return }
         view.translatesAutoresizingMaskIntoConstraints = false
