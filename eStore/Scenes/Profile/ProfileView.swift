@@ -44,7 +44,7 @@ final class ProfileViewImpl: UIViewController {
     }
 
     private func setupProfileTableView() {
-        profileTableView = UITableView()
+        profileTableView = UITableView(frame: .zero, style: .grouped)
         profileTableView.tableFooterView = UIView() // Is needed to remove unnecessary separators
         profileTableView.backgroundColor = .clear
         profileTableView.register(ProfileCategoryTableViewCell.self, forCellReuseIdentifier: ProfileCategoryTableViewCell.reuseIdentifier)
@@ -96,8 +96,9 @@ extension ProfileViewImpl: ProfileView {
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 
-    func display(profileCategories: [ProfileCategory]) {
-        profileTableViewDataSource.items = profileCategories
+    func display(sectionName: String?, categories: [ProfileCategory]) {
+        profileTableViewDataSource.sections.append(sectionName)
+        profileTableViewDataSource.items.append(categories)
         profileTableView.reloadData()
     }
 

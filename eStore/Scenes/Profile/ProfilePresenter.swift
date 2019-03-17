@@ -24,6 +24,10 @@ final class ProfilePresenterImpl {
     private func handleSettingsCategoryPress() {
 
     }
+
+    private func handleContactCategoryPress() {
+
+    }
 }
 
 // MARK: - ProfilePresenter implementation
@@ -35,15 +39,24 @@ extension ProfilePresenterImpl: ProfilePresenter {
         let cartCategory = ProfileCategoryImpl(name: "Cart", iconUrl: nil, onTapAction: { [weak self] in
             self?.handleCartCategoryPress()
         })
+        let userCategories: [ProfileCategory] = [
+            userCategory,
+            cartCategory,
+        ]
+        view.display(sectionName: nil, categories: userCategories)
+
         let settingsCategory = ProfileCategoryImpl(name: "Settings", iconUrl: nil, onTapAction: { [weak self] in
             self?.handleSettingsCategoryPress()
         })
-        let profileCategories: [ProfileCategory] = [
-            userCategory,
-            cartCategory,
-            settingsCategory
+        let contactCategory = ProfileCategoryImpl(name: "Contact us", iconUrl: nil, onTapAction: { [weak self] in
+            self?.handleContactCategoryPress()
+        })
+        let helpCategories: [ProfileCategory] = [
+            settingsCategory,
+            contactCategory
         ]
-        view.display(profileCategories: profileCategories)
+        view.display(sectionName: "Help", categories: helpCategories)
+
 
         view.display(logoutButton: "Log out")
     }
