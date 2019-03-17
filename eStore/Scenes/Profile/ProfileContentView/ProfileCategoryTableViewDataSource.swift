@@ -9,23 +9,22 @@
 import UIKit
 
 class ProfileCategoryTableViewDataSource: NSObject, UITableViewDataSource {
-    var sections: [String?] = []
-    var items: [[ProfileCategory]] = []
+    var items: [ProfileSection] = []
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return items.count
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section]
+        return items[section].name
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items[section].count
+        return items[section].categories.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = items[indexPath.section][indexPath.row]
+        let item = items[indexPath.section].categories[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: ProfileCategoryTableViewCell.reuseIdentifier, for: indexPath) as! ProfileCategoryTableViewCell
         cell.display(iconImageUrl: item.iconUrl, title: item.name)
         return cell

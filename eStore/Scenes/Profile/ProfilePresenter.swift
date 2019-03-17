@@ -39,11 +39,7 @@ extension ProfilePresenterImpl: ProfilePresenter {
         let cartCategory = ProfileCategoryImpl(name: "Cart", iconUrl: nil, onTapAction: { [weak self] in
             self?.handleCartCategoryPress()
         })
-        let userCategories: [ProfileCategory] = [
-            userCategory,
-            cartCategory,
-        ]
-        view.display(sectionName: nil, categories: userCategories)
+        let userSection = ProfileSection(name: nil, categories: [userCategory, cartCategory])
 
         let settingsCategory = ProfileCategoryImpl(name: "Settings", iconUrl: nil, onTapAction: { [weak self] in
             self?.handleSettingsCategoryPress()
@@ -51,11 +47,10 @@ extension ProfilePresenterImpl: ProfilePresenter {
         let contactCategory = ProfileCategoryImpl(name: "Contact us", iconUrl: nil, onTapAction: { [weak self] in
             self?.handleContactCategoryPress()
         })
-        let helpCategories: [ProfileCategory] = [
-            settingsCategory,
-            contactCategory
-        ]
-        view.display(sectionName: "Help", categories: helpCategories)
+        let helpSection = ProfileSection(name: "Help", categories: [settingsCategory, contactCategory])
+
+        let sections = [userSection, helpSection]
+        view.display(sections: sections)
 
 
         view.display(logoutButton: "Log out")

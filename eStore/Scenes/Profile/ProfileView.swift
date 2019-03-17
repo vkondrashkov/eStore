@@ -96,9 +96,8 @@ extension ProfileViewImpl: ProfileView {
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 
-    func display(sectionName: String?, categories: [ProfileCategory]) {
-        profileTableViewDataSource.sections.append(sectionName)
-        profileTableViewDataSource.items.append(categories)
+    func display(sections: [ProfileSection]) {
+        profileTableViewDataSource.items = sections
         profileTableView.reloadData()
     }
 
