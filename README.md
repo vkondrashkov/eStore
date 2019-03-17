@@ -12,7 +12,7 @@ eStore uses CocoaPods for dependency management. You will need next tools to lau
 * Git client
 
 ### Steps
-1. Checkout this repository [Develop](https://github.com/vkondrashkov/eStore "eStore Develop") branch
+1. Checkout this repository [Develop](https://github.com/vkondrashkov/eStore/tree/Develop "eStore Develop") branch
 2. In terminal switch to your repository with project
 3. Run `pod install` command
 4. Now you can install application from Xcode to your device or simulator
