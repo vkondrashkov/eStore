@@ -47,11 +47,12 @@ final class ProfileRegularCategoryTableViewCell: UITableViewCell {
     }
 
     func display(iconImageUrl: String?, title: String) {
-        if let url = iconImageUrl {
-            iconImageView.downloaded(from: url) // Temp
+        if let url = iconImageUrl, let icon = UIImage(named: url) {
+            iconImageView.image = icon.withRenderingMode(.alwaysTemplate)
         } else {
-            iconImageView.image = UIImage(named: "image-not-found")
+            iconImageView.image = UIImage(named: "error-icon")!.withRenderingMode(.alwaysTemplate)
         }
+        iconImageView.tintColor = customTintColor
         titleLabel.text = title
     }
 

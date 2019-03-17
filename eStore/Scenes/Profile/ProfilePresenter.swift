@@ -42,20 +42,20 @@ extension ProfilePresenterImpl: ProfilePresenter {
         let userCategory = ProfileCategoryImpl(name: "USERNAME", iconUrl: nil, type: .thumbnail, onTapAction: nil)
         let userSection = ProfileSection(name: nil, categories: [userCategory])
 
-        let cartCategory = ProfileCategoryImpl(name: "Cart", iconUrl: nil, onTapAction: { [weak self] in
+        let cartCategory = ProfileCategoryImpl(name: "Cart", iconUrl: "cart-icon", onTapAction: { [weak self] in
             self?.handleCartCategoryPress()
         })
         let cartSection = ProfileSection(name: "Cart", categories: [cartCategory])
 
-        let settingsCategory = ProfileCategoryImpl(name: "Settings", iconUrl: nil, onTapAction: { [weak self] in
+        let settingsCategory = ProfileCategoryImpl(name: "Settings", iconUrl: "settings-icon", onTapAction: { [weak self] in
             self?.handleSettingsCategoryPress()
         })
-        let contactCategory = ProfileCategoryImpl(name: "Contact us", iconUrl: nil, onTapAction: { [weak self] in
+        let contactCategory = ProfileCategoryImpl(name: "Contact us", iconUrl: "help-icon", onTapAction: { [weak self] in
             self?.handleContactCategoryPress()
         })
         let helpSection = ProfileSection(name: "Help", categories: [settingsCategory, contactCategory])
 
-        let logoutCategory = ProfileCategoryImpl(name: "Log out", iconUrl: nil, type: .warning, onTapAction: { [weak self] in
+        let logoutCategory = ProfileCategoryImpl(name: "Log out", iconUrl: "exit-icon", type: .warning, onTapAction: { [weak self] in
             self?.handleLogoutCategoryPress()
         })
         let logoutSection = ProfileSection(name: nil, categories: [logoutCategory])
