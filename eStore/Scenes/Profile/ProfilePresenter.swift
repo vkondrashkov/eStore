@@ -18,15 +18,24 @@ final class ProfilePresenterImpl {
     }
 
     private func handleCartCategoryPress() {
-
+        let alert = Alert(
+            title: "Oops...",
+            message: "Unfortunately this feature is unavailable, try again later.",
+            alertType: .singleAction,
+            primaryCaption: "OK",
+            primaryAction: nil,
+            secondaryCaption: nil,
+            secondaryAction: nil
+        )
+        view.display(alert: alert)
     }
 
     private func handleSettingsCategoryPress() {
-
+        router.showSettings()
     }
 
     private func handleContactCategoryPress() {
-
+        router.showContact()
     }
 
     private func handleLogoutCategoryPress() {

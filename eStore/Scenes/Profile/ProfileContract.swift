@@ -26,6 +26,9 @@ protocol ProfileShow: AnyObject {
 
 protocol ProfileRouter: AnyObject {
     func logout()
+    func showSettings()
+    func showCart()
+    func showContact()
 }
 
 protocol ProfileListener: AnyObject {
