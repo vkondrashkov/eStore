@@ -30,7 +30,18 @@ final class ProfilePresenterImpl {
     }
 
     private func handleLogoutCategoryPress() {
-
+        let alert = Alert(
+            title: "Logout confirmation",
+            message: "Are you sure you want to log out?",
+            alertType: .doubleAction,
+            primaryCaption: "OK",
+            primaryAction: { [weak self] in
+                self?.router.logout()
+            },
+            secondaryCaption: "Cancel",
+            secondaryAction: nil
+        )
+        view.display(alert: alert)
     }
 }
 
@@ -78,17 +89,6 @@ extension ProfilePresenterImpl: ProfilePresenter {
     }
 
     func handleLogoutButtonPress() {
-        let alert = Alert(
-            title: "Logout confirmation",
-            message: "Are you sure you want to log out?",
-            alertType: .doubleAction,
-            primaryCaption: "OK",
-            primaryAction: { [weak self] in
-                self?.router.logout()
-            },
-            secondaryCaption: "Cancel",
-            secondaryAction: nil
-        )
-        view.display(alert: alert)
+
     }
 }

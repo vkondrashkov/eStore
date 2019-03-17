@@ -131,7 +131,11 @@ extension ProfileViewImpl: ProfileShow {
 
 // MARK: - UITableViewDelegate implementation
 extension ProfileViewImpl: UITableViewDelegate {
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let category = profileTableViewDataSource.items[indexPath.section].categories[indexPath.row]
+        category.action()
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
 
 // MARK: - Constraints
