@@ -35,14 +35,10 @@ protocol ProfileListener: AnyObject {
 protocol ProfileView: AnyObject {
     func display(rightBarButton: String)
     func display(sections: [ProfileSection])
-    func display(emailCaption: String)
-    func display(emailLabel: String)
-    func display(logoutButton: String)
     func display(alert: Alert)
 }
 
 protocol ProfilePresenter: AnyObject {
     func handleLoadView()
     func handleRightBarButtonPress()
-    func handleLogoutButtonPress()
 }

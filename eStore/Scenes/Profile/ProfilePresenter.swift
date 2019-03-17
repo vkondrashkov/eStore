@@ -87,8 +87,4 @@ extension ProfilePresenterImpl: ProfilePresenter {
         )
         view.display(alert: alert)
     }
-
-    func handleLogoutButtonPress() {
-
-    }
 }
