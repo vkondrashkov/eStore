@@ -35,13 +35,18 @@ final class ProfileThumbnailCategoryTableViewCell: UITableViewCell {
 
     private func setupThumbnailImageView() {
         thumbnailImageView = UIImageView()
+        thumbnailImageView.clipsToBounds = true
+        thumbnailImageView.contentMode = .center
+        thumbnailImageView.layer.cornerRadius = thumbnailImageSize / 2
+        thumbnailImageView.layer.borderWidth = 1.0
+        thumbnailImageView.layer.borderColor = UIColor(white: 0.0, alpha: 0.15).cgColor
         containerView.addSubview(thumbnailImageView)
         activateThumbnailImageViewConstraints(view: thumbnailImageView)
     }
 
     private func setupTitleLabel() {
         titleLabel = UILabel()
-        titleLabel.font = .systemFont(ofSize: 17)
+        titleLabel.font = .systemFont(ofSize: 20)
         containerView.addSubview(titleLabel)
         activateTitleLabelConstraints(view: titleLabel, anchorView: thumbnailImageView)
     }
@@ -50,7 +55,7 @@ final class ProfileThumbnailCategoryTableViewCell: UITableViewCell {
         if let url = thumbnailImageUrl {
             thumbnailImageView.downloaded(from: url) // Temp
         } else {
-            thumbnailImageView.image = UIImage(named: "image-not-found")
+            thumbnailImageView.image = UIImage(named: "default-user-icon")
         }
         titleLabel.text = title
     }

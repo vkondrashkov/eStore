@@ -50,7 +50,7 @@ extension ProfilePresenterImpl: ProfilePresenter {
     func handleLoadView() {
         view.display(rightBarButton: "Edit")
 
-        let userCategory = ProfileCategoryImpl(name: "USERNAME", iconUrl: nil, type: .thumbnail, onTapAction: nil)
+        let userCategory = ProfileCategoryImpl(name: "Vladislav Kondrashkov", iconUrl: "https://pp.userapi.com/c846420/v846420977/17f606/5X3A9gQCaY8.jpg?ava=1", type: .thumbnail, onTapAction: nil)
         let userSection = ProfileSection(name: nil, categories: [userCategory])
 
         let cartCategory = ProfileCategoryImpl(name: "Cart", iconUrl: "cart-icon", onTapAction: { [weak self] in
