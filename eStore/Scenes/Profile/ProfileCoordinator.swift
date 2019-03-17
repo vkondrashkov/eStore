@@ -6,6 +6,8 @@
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
 //
 
+import UIKit
+
 final class ProfileCoordinator {
     private let scene: ProfileScene
     private let show: ProfileShow
@@ -36,5 +38,19 @@ extension ProfileCoordinator: Coordinator {
 extension ProfileCoordinator: ProfileRouter {
     func logout() {
         listener?.logout()
+    }
+
+    func showSettings() {
+        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+        UIApplication.shared.open(url)
+    }
+
+    func showCart() {
+
+    }
+
+    func showContact() {
+        guard let url = URL(string: "https://github.com/vkondrashkov/eStore") else { return }
+        UIApplication.shared.open(url)
     }
 }

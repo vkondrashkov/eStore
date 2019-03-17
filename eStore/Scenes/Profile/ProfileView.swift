@@ -11,62 +11,38 @@ import UIKit
 final class ProfileViewImpl: UIViewController {
     var presenter: ProfilePresenter!
 
-    private var containerView: UIView!
-    private var emailCaption: UILabel!
-    private var emailLabel: UILabel!
-    private var logoutButton: UIButton!
+    private var profileTableViewDataSource = ProfileCategoryTableViewDataSource()
+    private var profileTableView: UITableView!
 
-    private let logoutButtonOffset: CGFloat = 10
-    private let regularFont: UIFont = .systemFont(ofSize: 17)
-    private let heavyFont: UIFont = .boldSystemFont(ofSize: 24)
-
+    private let profileBackgroundColor = UIColor(red: 242.0 / 255.0, green: 241.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
     private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = profileBackgroundColor
         title = "Profile"
         navigationController?.navigationBar.tintColor = customTintColor
-        containerView = UIView()
 
-        setupEmailCaption()
-        setupEmailLabel()
-        setupLogoutButton()
+        setupProfileTableView()
 
-        view.addSubview(containerView)
-        activateContainerViewConstraints(view: containerView)
         presenter.handleLoadView()
     }
 
-    private func setupEmailCaption() {
-        emailCaption = UILabel()
-        emailCaption.font = heavyFont
-        containerView.addSubview(emailCaption)
-        activateEmailCaptionConstraints(view: emailCaption)
-    }
-
-    private func setupEmailLabel() {
-        emailLabel = UILabel()
-        emailLabel.font = regularFont
-        containerView.addSubview(emailLabel)
-        activateEmailLabelConstraints(view: emailLabel, anchorView: emailCaption)
-    }
-
-    private func setupLogoutButton() {
-        logoutButton = UIButton()
-        logoutButton.setTitleColor(.red, for: .normal)
-        logoutButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 20, bottom: 20, right: 20)
-        logoutButton.addTarget(self, action: #selector(logoutButtonDidPressed), for: .touchUpInside)
-        view.addSubview(logoutButton)
-        activateSetupLogoutButtonConstraints(view: logoutButton)
+    private func setupProfileTableView() {
+        profileTableView = UITableView(frame: .zero, style: .grouped)
+        profileTableView.tableFooterView = UIView() // Is needed to remove unnecessary separators
+        profileTableView.backgroundColor = .clear
+        profileTableView.register(ProfileRegularCategoryTableViewCell.self, forCellReuseIdentifier: ProfileRegularCategoryTableViewCell.reuseIdentifier)
+        profileTableView.register(ProfileThumbnailCategoryTableViewCell.self, forCellReuseIdentifier: ProfileThumbnailCategoryTableViewCell.reuseIdentifier)
+        profileTableView.register(ProfileWarningCategoryTableViewCell.self, forCellReuseIdentifier: ProfileWarningCategoryTableViewCell.reuseIdentifier)
+        profileTableView.dataSource = profileTableViewDataSource
+        profileTableView.delegate = self
+        view.addSubview(profileTableView)
+        activateProfileTableViewConstraints(view: profileTableView)
     }
 
     @objc private func rightBarButtonDidPressed() {
         presenter.handleRightBarButtonPress()
-    }
-
-    @objc private func logoutButtonDidPressed() {
-        presenter.handleLogoutButtonPress()
     }
 }
 
@@ -80,16 +56,9 @@ extension ProfileViewImpl: ProfileView {
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 
-    func display(emailCaption: String) {
-        self.emailCaption.text = emailCaption
-    }
-
-    func display(emailLabel: String) {
-        self.emailLabel.text = emailLabel
-    }
-
-    func display(logoutButton: String) {
-        self.logoutButton.setTitle(logoutButton, for: .normal)
+    func display(sections: [ProfileSection]) {
+        profileTableViewDataSource.items = sections
+        profileTableView.reloadData()
     }
 
     func display(alert: Alert) {
@@ -105,44 +74,25 @@ extension ProfileViewImpl: ProfileShow {
     }
 }
 
+// MARK: - UITableViewDelegate implementation
+extension ProfileViewImpl: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let category = profileTableViewDataSource.items[indexPath.section].categories[indexPath.row]
+        category.action()
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
 // MARK: - Constraints
 private extension ProfileViewImpl {
-    func activateEmailCaptionConstraints(view: UIView) {
+    func activateProfileTableViewConstraints(view: UIView) {
         guard let superview = view.superview else { return }
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             view.topAnchor.constraint(equalTo: superview.topAnchor),
             view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor)
-            ])
-    }
-
-    func activateEmailLabelConstraints(view: UIView, anchorView: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: anchorView.bottomAnchor, constant: 10),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor)
-            ])
-    }
-
-    func activateSetupLogoutButtonConstraints(view: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
-            view.bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor, constant: logoutButtonOffset)
-            ])
-    }
-
-    func activateContainerViewConstraints(view: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor, constant: 20),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 20),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: 20)
+            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
+            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
             ])
     }
 }
