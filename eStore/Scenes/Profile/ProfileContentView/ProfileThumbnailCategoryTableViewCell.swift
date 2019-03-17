@@ -1,5 +1,5 @@
 //
-//  ProfileCategoryTableViewCell.swift
+//  ProfileThumbnailCategoryTableViewCell.swift
 //  eStore
 //
 //  Created by Vladislav Kondrashkov on 3/17/19.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-final class ProfileCategoryTableViewCell: UITableViewCell {
-    static var reuseIdentifier = "ProfileCategoryTableViewCellReuseIdentifier"
+final class ProfileThumbnailCategoryTableViewCell: UITableViewCell {
+    static var reuseIdentifier = "ProfileThumbnailCategoryTableViewCellReuseIdentifier"
 
     private var containerView: UIView!
-    private var iconImageView: UIImageView!
+    private var thumbnailImageView: UIImageView!
     private var titleLabel: UILabel!
 
-    private let iconImageSize: CGFloat = 32
+    private let thumbnailImageSize: CGFloat = 64
     private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -23,7 +23,7 @@ final class ProfileCategoryTableViewCell: UITableViewCell {
         contentView.backgroundColor = .white
 
         setupContainerView()
-        setupIconImageView()
+        setupThumbnailImageView()
         setupTitleLabel()
     }
 
@@ -33,24 +33,24 @@ final class ProfileCategoryTableViewCell: UITableViewCell {
         activateContainerViewConstraints(view: containerView)
     }
 
-    private func setupIconImageView() {
-        iconImageView = UIImageView()
-        containerView.addSubview(iconImageView)
-        activateIconImageViewConstraints(view: iconImageView)
+    private func setupThumbnailImageView() {
+        thumbnailImageView = UIImageView()
+        containerView.addSubview(thumbnailImageView)
+        activateThumbnailImageViewConstraints(view: thumbnailImageView)
     }
 
     private func setupTitleLabel() {
         titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 17)
         containerView.addSubview(titleLabel)
-        activateTitleLabelConstraints(view: titleLabel, anchorView: iconImageView)
+        activateTitleLabelConstraints(view: titleLabel, anchorView: thumbnailImageView)
     }
 
-    func display(iconImageUrl: String?, title: String) {
-        if let url = iconImageUrl {
-            iconImageView.downloaded(from: url) // Temp
+    func display(thumbnailImageUrl: String?, title: String) {
+        if let url = thumbnailImageUrl {
+            thumbnailImageView.downloaded(from: url) // Temp
         } else {
-            iconImageView.image = UIImage(named: "image-not-found")
+            thumbnailImageView.image = UIImage(named: "image-not-found")
         }
         titleLabel.text = title
     }
@@ -61,7 +61,7 @@ final class ProfileCategoryTableViewCell: UITableViewCell {
 }
 
 // MARK: - Constraints
-private extension ProfileCategoryTableViewCell {
+private extension ProfileThumbnailCategoryTableViewCell {
     func activateContainerViewConstraints(view: UIView) {
         guard let superview = view.superview else { return }
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -73,12 +73,12 @@ private extension ProfileCategoryTableViewCell {
             ])
     }
 
-    func activateIconImageViewConstraints(view: UIView) {
+    func activateThumbnailImageViewConstraints(view: UIView) {
         guard let superview = view.superview else { return }
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            view.widthAnchor.constraint(equalToConstant: iconImageSize),
-            view.heightAnchor.constraint(equalToConstant: iconImageSize),
+            view.widthAnchor.constraint(equalToConstant: thumbnailImageSize),
+            view.heightAnchor.constraint(equalToConstant: thumbnailImageSize),
             view.topAnchor.constraint(equalTo: superview.topAnchor, constant: 10),
             view.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 10),
             view.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -10)

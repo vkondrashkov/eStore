@@ -25,8 +25,17 @@ class ProfileCategoryTableViewDataSource: NSObject, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = items[indexPath.section].categories[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: ProfileCategoryTableViewCell.reuseIdentifier, for: indexPath) as! ProfileCategoryTableViewCell
-        cell.display(iconImageUrl: item.iconUrl, title: item.name)
-        return cell
+        switch item.type {
+        case .regular:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ProfileRegularCategoryTableViewCell.reuseIdentifier, for: indexPath) as! ProfileRegularCategoryTableViewCell
+            cell.display(iconImageUrl: item.iconUrl, title: item.name)
+            return cell
+        case .thumbnail:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ProfileThumbnailCategoryTableViewCell.reuseIdentifier, for: indexPath) as! ProfileThumbnailCategoryTableViewCell
+            cell.display(thumbnailImageUrl: item.iconUrl, title: item.name)
+            return cell
+        case .warning:
+            return UITableViewCell() // Temp
+        }
     }
 }

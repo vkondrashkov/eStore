@@ -22,11 +22,12 @@ final class ProfileViewImpl: UIViewController {
     private let regularFont: UIFont = .systemFont(ofSize: 17)
     private let heavyFont: UIFont = .boldSystemFont(ofSize: 24)
 
+    private let profileBackgroundColor = UIColor(red: 242.0 / 255.0, green: 241.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
     private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = profileBackgroundColor
         title = "Profile"
         navigationController?.navigationBar.tintColor = customTintColor
 
@@ -47,7 +48,8 @@ final class ProfileViewImpl: UIViewController {
         profileTableView = UITableView(frame: .zero, style: .grouped)
         profileTableView.tableFooterView = UIView() // Is needed to remove unnecessary separators
         profileTableView.backgroundColor = .clear
-        profileTableView.register(ProfileCategoryTableViewCell.self, forCellReuseIdentifier: ProfileCategoryTableViewCell.reuseIdentifier)
+        profileTableView.register(ProfileRegularCategoryTableViewCell.self, forCellReuseIdentifier: ProfileRegularCategoryTableViewCell.reuseIdentifier)
+        profileTableView.register(ProfileThumbnailCategoryTableViewCell.self, forCellReuseIdentifier: ProfileThumbnailCategoryTableViewCell.reuseIdentifier)
         profileTableView.dataSource = profileTableViewDataSource
         profileTableView.delegate = self
         view.addSubview(profileTableView)

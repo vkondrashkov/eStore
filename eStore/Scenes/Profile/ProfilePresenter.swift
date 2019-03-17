@@ -35,11 +35,13 @@ extension ProfilePresenterImpl: ProfilePresenter {
     func handleLoadView() {
         view.display(rightBarButton: "Edit")
 
-        let userCategory = ProfileCategoryImpl(name: "USERNAME", iconUrl: nil, onTapAction: nil)
+        let userCategory = ProfileCategoryImpl(name: "USERNAME", iconUrl: nil, type: .thumbnail, onTapAction: nil)
+        let userSection = ProfileSection(name: nil, categories: [userCategory])
+
         let cartCategory = ProfileCategoryImpl(name: "Cart", iconUrl: nil, onTapAction: { [weak self] in
             self?.handleCartCategoryPress()
         })
-        let userSection = ProfileSection(name: nil, categories: [userCategory, cartCategory])
+        let cartSection = ProfileSection(name: "Cart", categories: [cartCategory])
 
         let settingsCategory = ProfileCategoryImpl(name: "Settings", iconUrl: nil, onTapAction: { [weak self] in
             self?.handleSettingsCategoryPress()
@@ -49,7 +51,7 @@ extension ProfilePresenterImpl: ProfilePresenter {
         })
         let helpSection = ProfileSection(name: "Help", categories: [settingsCategory, contactCategory])
 
-        let sections = [userSection, helpSection]
+        let sections = [userSection,cartSection, helpSection]
         view.display(sections: sections)
 
 
