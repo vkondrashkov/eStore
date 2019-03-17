@@ -28,6 +28,10 @@ final class ProfilePresenterImpl {
     private func handleContactCategoryPress() {
 
     }
+
+    private func handleLogoutCategoryPress() {
+
+    }
 }
 
 // MARK: - ProfilePresenter implementation
@@ -51,11 +55,13 @@ extension ProfilePresenterImpl: ProfilePresenter {
         })
         let helpSection = ProfileSection(name: "Help", categories: [settingsCategory, contactCategory])
 
-        let sections = [userSection,cartSection, helpSection]
+        let logoutCategory = ProfileCategoryImpl(name: "Log out", iconUrl: nil, type: .warning, onTapAction: { [weak self] in
+            self?.handleLogoutCategoryPress()
+        })
+        let logoutSection = ProfileSection(name: nil, categories: [logoutCategory])
+
+        let sections = [userSection,cartSection, helpSection, logoutSection]
         view.display(sections: sections)
-
-
-        view.display(logoutButton: "Log out")
     }
 
     func handleRightBarButtonPress() {

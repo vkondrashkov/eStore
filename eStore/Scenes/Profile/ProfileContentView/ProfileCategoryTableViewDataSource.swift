@@ -35,7 +35,9 @@ class ProfileCategoryTableViewDataSource: NSObject, UITableViewDataSource {
             cell.display(thumbnailImageUrl: item.iconUrl, title: item.name)
             return cell
         case .warning:
-            return UITableViewCell() // Temp
+            let cell = tableView.dequeueReusableCell(withIdentifier: ProfileWarningCategoryTableViewCell.reuseIdentifier, for: indexPath) as! ProfileWarningCategoryTableViewCell
+            cell.display(iconImageUrl: item.iconUrl, title: item.name)
+            return cell
         }
     }
 }

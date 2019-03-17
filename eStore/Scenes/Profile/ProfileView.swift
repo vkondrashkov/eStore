@@ -50,6 +50,7 @@ final class ProfileViewImpl: UIViewController {
         profileTableView.backgroundColor = .clear
         profileTableView.register(ProfileRegularCategoryTableViewCell.self, forCellReuseIdentifier: ProfileRegularCategoryTableViewCell.reuseIdentifier)
         profileTableView.register(ProfileThumbnailCategoryTableViewCell.self, forCellReuseIdentifier: ProfileThumbnailCategoryTableViewCell.reuseIdentifier)
+        profileTableView.register(ProfileWarningCategoryTableViewCell.self, forCellReuseIdentifier: ProfileWarningCategoryTableViewCell.reuseIdentifier)
         profileTableView.dataSource = profileTableViewDataSource
         profileTableView.delegate = self
         view.addSubview(profileTableView)
