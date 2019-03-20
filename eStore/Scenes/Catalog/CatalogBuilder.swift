@@ -10,7 +10,7 @@ import UIKit
 
 final class CatalogBuilderImpl {
     private let dependency: CatalogDependency
-
+    
     init(dependency: CatalogDependency) {
         self.dependency = dependency
     }
@@ -22,10 +22,10 @@ extension CatalogBuilderImpl: CatalogBuilder {
         let view = CatalogViewImpl()
         let component = CatalogComponent(navigation: dependency.catalogNavigation)
         let scene = CatalogSceneImpl(rootViewController: dependency.catalogNavigation)
-        let goodsListBuilder = GoodsListBuilderImpl(dependency: component)
+        let productsListBuilder = ProductsListBuilderImpl(dependency: component)
         let coordinator = CatalogCoordinator(scene: scene,
                                              show: view,
-                                             goodsListBuilder: goodsListBuilder)
+                                             productsListBuilder: productsListBuilder)
         let presenter = CatalogPresenterImpl(view: view,
                                              router: coordinator)
         view.presenter = presenter

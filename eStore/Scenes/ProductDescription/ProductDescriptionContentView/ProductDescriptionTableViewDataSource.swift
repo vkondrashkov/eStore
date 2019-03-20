@@ -1,5 +1,5 @@
 //
-//  GoodsDescriptionTableViewDataSource.swift
+//  ProductDescriptionTableViewDataSource.swift
 //  eStore
 //
 //  Created by Vladislav Kondrashkov on 3/5/19.
@@ -8,22 +8,22 @@
 
 import UIKit
 
-class GoodsDescriptionTableViewDataSource: NSObject, UITableViewDataSource {
+class ProductDescriptionTableViewDataSource: NSObject, UITableViewDataSource {
     var item: StoreItem!
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return item.specifications.count + 2
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let header = tableView.dequeueReusableCell(withIdentifier: GoodsDescriptionTableHeaderCell.reuseIdentifier, for: indexPath) as! GoodsDescriptionTableHeaderCell
+            let header = tableView.dequeueReusableCell(withIdentifier: ProductDescriptionTableHeaderCell.reuseIdentifier, for: indexPath) as! ProductDescriptionTableHeaderCell
             header.display(title: "\(item.brand) \(item.name)", imageUrl: item.imageUrl)
             header.isUserInteractionEnabled = false
             return header
         }
         if indexPath.row == 1 {
-            let price = tableView.dequeueReusableCell(withIdentifier: GoodsDescriptionTablePriceCell.reuseIdentifier, for: indexPath) as! GoodsDescriptionTablePriceCell
+            let price = tableView.dequeueReusableCell(withIdentifier: ProductDescriptionTablePriceCell.reuseIdentifier, for: indexPath) as! ProductDescriptionTablePriceCell
             let isAvailable = item.stockCount != 0
             let stockAvailableText = isAvailable ? "Available" : "Not available"
             price.display(price: "Price: \(item.price) BYN")
@@ -32,8 +32,8 @@ class GoodsDescriptionTableViewDataSource: NSObject, UITableViewDataSource {
             price.isUserInteractionEnabled = false
             return price
         }
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: GoodsDescriptionTableViewCell.reuseIdentifier, for: indexPath) as! GoodsDescriptionTableViewCell
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: ProductDescriptionTableViewCell.reuseIdentifier, for: indexPath) as! ProductDescriptionTableViewCell
         let specification = item.specifications[indexPath.row - 2]
         var value = ""
         switch specification.value {

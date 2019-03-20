@@ -1,5 +1,5 @@
 //
-//  GoodsListView.swift
+//  ProductsListView.swift
 //  eStore
 //
 //  Created by Vladislav Kondrashkov on 2/24/19.
@@ -8,67 +8,67 @@
 
 import UIKit
 
-final class GoodsListViewImpl: UIViewController {
-    var presenter: GoodsListPresenter!
-
+final class ProductsListViewImpl: UIViewController {
+    var presenter: ProductsListPresenter!
+    
     private var loadingView: UIView!
     private var fadeMaskView: UIView!
     private var activityIndicator: UIActivityIndicatorView!
-
-    private var goodsTableViewDataSource = GoodsListTableViewDataSource()
-    private var goodsTableView: UITableView!
-
-    private let goodsListBackgroundColor = UIColor(red: 242.0 / 255.0, green: 241.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
+    
+    private var productsTableViewDataSource = ProductsListTableViewDataSource()
+    private var productsTableView: UITableView!
+    
+    private let productsListBackgroundColor = UIColor(red: 242.0 / 255.0, green: 241.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
     private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = goodsListBackgroundColor
+        view.backgroundColor = productsListBackgroundColor
         navigationController?.navigationBar.tintColor = customTintColor
-
+        
         setupLoadingView()
         setupFadeMaskView()
         setupActivityIndicator()
-        setupGoodsTableView()
-
+        setupProductsTableView()
+        
         presenter.handleLoadView()
     }
-
+    
     private func setupLoadingView() {
         loadingView = UIView()
         loadingView.isHidden = true
         view.addSubview(loadingView)
         activateLoadingViewConstraints(view: loadingView)
     }
-
+    
     private func setupFadeMaskView() {
         fadeMaskView = UIView()
         fadeMaskView.backgroundColor = UIColor(white: 0.0, alpha: 0.2)
         loadingView.addSubview(fadeMaskView)
         activateFadeMaskViewConstraints(view: fadeMaskView)
     }
-
+    
     private func setupActivityIndicator() {
         activityIndicator = UIActivityIndicatorView()
         activityIndicator.style = .white
         loadingView.addSubview(activityIndicator)
         activateActivityIndicatorConstraints(view: activityIndicator)
     }
-
-    private func setupGoodsTableView() {
-        goodsTableView = UITableView()
-        goodsTableView.tableFooterView = UIView()
-        goodsTableView.backgroundColor = .clear
-        goodsTableView.register(GoodsListTableViewCell.self, forCellReuseIdentifier: GoodsListTableViewCell.reuseIdentifier)
-        goodsTableView.dataSource = goodsTableViewDataSource
-        goodsTableView.delegate = self
-        view.addSubview(goodsTableView)
-        activateGoodsTableViewConstraints(view: goodsTableView)
+    
+    private func setupProductsTableView() {
+        productsTableView = UITableView()
+        productsTableView.tableFooterView = UIView()
+        productsTableView.backgroundColor = .clear
+        productsTableView.register(ProductsListTableViewCell.self, forCellReuseIdentifier: ProductsListTableViewCell.reuseIdentifier)
+        productsTableView.dataSource = productsTableViewDataSource
+        productsTableView.delegate = self
+        view.addSubview(productsTableView)
+        activateProductsTableViewConstraints(view: productsTableView)
     }
 }
 
-// MARK: - GoodsListView implementation
-extension GoodsListViewImpl: GoodsListView {
+// MARK: - ProductsListView implementation
+extension ProductsListViewImpl: ProductsListView {
     func showActivityIndicator() {
         activityIndicator.startAnimating()
         UIView.transition(
@@ -77,12 +77,12 @@ extension GoodsListViewImpl: GoodsListView {
             options: .transitionCrossDissolve,
             animations: { [weak self] in
                 self?.loadingView.isHidden = false
-                self?.goodsTableView.isHidden = true
+                self?.productsTableView.isHidden = true
             },
             completion: nil
         )
     }
-
+    
     func hideActivityIndicator() {
         activityIndicator.stopAnimating()
         UIView.transition(
@@ -91,35 +91,35 @@ extension GoodsListViewImpl: GoodsListView {
             options: .transitionCrossDissolve,
             animations: { [weak self] in
                 self?.loadingView.isHidden = true
-                self?.goodsTableView.isHidden = false
+                self?.productsTableView.isHidden = false
             },
             completion: nil
         )
     }
-
+    
     func display(storeItemList: [StoreItem]) {
-        goodsTableViewDataSource.items = storeItemList
-        goodsTableView.reloadData()
+        productsTableViewDataSource.items = storeItemList
+        productsTableView.reloadData()
     }
 }
 
-// MARK: - GoodsListShow implementation
-extension GoodsListViewImpl: GoodsListShow {
+// MARK: - ProductsListShow implementation
+extension ProductsListViewImpl: ProductsListShow {
     var rootViewController: UIViewController {
         return self
     }
 }
 
 // MARK: - UITableViewDelegate implementation
-extension GoodsListViewImpl: UITableViewDelegate {
+extension ProductsListViewImpl: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.handleProductPress(storeItem: goodsTableViewDataSource.items[indexPath.row])
+        presenter.handleProductPress(storeItem: productsTableViewDataSource.items[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
 // MARK: - Constraints
-private extension GoodsListViewImpl {
+private extension ProductsListViewImpl {
     func activateLoadingViewConstraints(view: UIView) {
         guard let superview = view.superview else { return }
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -130,7 +130,7 @@ private extension GoodsListViewImpl {
             view.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
             ])
     }
-
+    
     func activateFadeMaskViewConstraints(view: UIView) {
         guard let superview = view.superview else { return }
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -141,7 +141,7 @@ private extension GoodsListViewImpl {
             view.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
             ])
     }
-
+    
     func activateActivityIndicatorConstraints(view: UIView) {
         guard let superview = view.superview else { return }
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -150,8 +150,8 @@ private extension GoodsListViewImpl {
             view.centerYAnchor.constraint(equalTo: superview.centerYAnchor)
             ])
     }
-
-    func activateGoodsTableViewConstraints(view: UIView) {
+    
+    func activateProductsTableViewConstraints(view: UIView) {
         guard let superview = view.superview else { return }
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

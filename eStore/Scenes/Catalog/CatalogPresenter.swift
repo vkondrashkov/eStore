@@ -11,10 +11,10 @@ import Foundation
 final class CatalogPresenterImpl {
     private unowned let view: CatalogView
     private unowned let router: CatalogRouter
-
+    
     init(view: CatalogView,
          router: CatalogRouter) {
-
+        
         self.view = view
         self.router = router
     }
@@ -25,9 +25,9 @@ extension CatalogPresenterImpl: CatalogPresenter {
     func handleLoadView() {
         
     }
-
+    
     // TEMP
     func handleCategoryPress(title: String) {
-        router.showGoodsList(title: title)
+        router.showProductsList(title: title)
     }
 }

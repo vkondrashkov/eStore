@@ -1,5 +1,5 @@
 //
-//  GoodsDescriptionTableHeaderCell.swift
+//  ProductDescriptionTableHeaderCell.swift
 //  eStore
 //
 //  Created by Vladislav Kondrashkov on 3/15/19.
@@ -8,37 +8,37 @@
 
 import UIKit
 
-final class GoodsDescriptionTableHeaderCell: UITableViewCell {
-    static var reuseIdentifier = "GoodsDescriptionTableHeaderCellReuseIdentifier"
-
+final class ProductDescriptionTableHeaderCell: UITableViewCell {
+    static var reuseIdentifier = "ProductDescriptionTableHeaderCellReuseIdentifier"
+    
     private var containerView: UIView!
     private var productTitleLabel: UILabel!
     private var productImageView: UIImageView!
-
+    
     private let imageSize: CGFloat = 300
     private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .white
-
+        
         setupContainerView()
         setupProductImageView()
         setupProductTitleLabel()
     }
-
+    
     private func setupContainerView() {
         containerView = UIView()
         contentView.addSubview(containerView)
         activateContainerViewConstraints(view: containerView)
     }
-
+    
     private func setupProductImageView() {
         productImageView = UIImageView()
         containerView.addSubview(productImageView)
         activateProductImageViewConstraints(view: productImageView)
     }
-
+    
     private func setupProductTitleLabel() {
         productTitleLabel = UILabel()
         productTitleLabel.font = .boldSystemFont(ofSize: 22)
@@ -47,7 +47,7 @@ final class GoodsDescriptionTableHeaderCell: UITableViewCell {
         containerView.addSubview(productTitleLabel)
         activateProductTitleLabelConstraints(view: productTitleLabel, anchorView: productImageView)
     }
-
+    
     func display(title: String, imageUrl: String?) {
         if let url = imageUrl {
             productImageView.downloaded(from: url)
@@ -56,14 +56,14 @@ final class GoodsDescriptionTableHeaderCell: UITableViewCell {
         }
         productTitleLabel.text = title
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 // MARK: - Constraints
-private extension GoodsDescriptionTableHeaderCell {
+private extension ProductDescriptionTableHeaderCell {
     func activateContainerViewConstraints(view: UIView) {
         guard let superview = view.superview else { return }
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -74,7 +74,7 @@ private extension GoodsDescriptionTableHeaderCell {
             view.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
             ])
     }
-
+    
     func activateProductImageViewConstraints(view: UIView) {
         guard let superview = view.superview else { return }
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -87,7 +87,7 @@ private extension GoodsDescriptionTableHeaderCell {
             view.trailingAnchor.constraint(lessThanOrEqualTo: superview.leadingAnchor, constant: -10)
             ])
     }
-
+    
     func activateProductTitleLabelConstraints(view: UIView, anchorView: UIView) {
         guard let superview = view.superview else { return }
         view.translatesAutoresizingMaskIntoConstraints = false

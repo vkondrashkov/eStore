@@ -1,5 +1,5 @@
 //
-//  GoodsDescriptionView.swift
+//  ProductDescriptionView.swift
 //  eStore
 //
 //  Created by Vladislav Kondrashkov on 3/5/19.
@@ -8,18 +8,18 @@
 
 import UIKit
 
-final class GoodsDescriptionViewImpl: UIViewController {
-    var presenter: GoodsDescriptionPresenter!
-    var dataSource: GoodsDescriptionTableViewDataSource!
+final class ProductDescriptionViewImpl: UIViewController {
+    var presenter: ProductDescriptionPresenter!
+    var dataSource: ProductDescriptionTableViewDataSource!
 
     private var descriptionTableView: UITableView!
 
-    private let goodsDescriptionBackgroundColor = UIColor(red: 242.0 / 255.0, green: 241.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
+    private let productDescriptionBackgroundColor = UIColor(red: 242.0 / 255.0, green: 241.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
     private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
 
     override func loadView() {
         super.loadView()
-        view.backgroundColor = goodsDescriptionBackgroundColor
+        view.backgroundColor = productDescriptionBackgroundColor
         title = "Description"
         navigationController?.navigationBar.tintColor = customTintColor
 
@@ -30,36 +30,36 @@ final class GoodsDescriptionViewImpl: UIViewController {
         descriptionTableView = UITableView()
         descriptionTableView.tableFooterView = UIView()
         descriptionTableView.backgroundColor = .clear
-        descriptionTableView.register(GoodsDescriptionTableViewCell.self, forCellReuseIdentifier: GoodsDescriptionTableViewCell.reuseIdentifier)
-        descriptionTableView.register(GoodsDescriptionTableHeaderCell.self, forCellReuseIdentifier: GoodsDescriptionTableHeaderCell.reuseIdentifier)
-        descriptionTableView.register(GoodsDescriptionTablePriceCell.self, forCellReuseIdentifier: GoodsDescriptionTablePriceCell.reuseIdentifier)
+        descriptionTableView.register(ProductDescriptionTableViewCell.self, forCellReuseIdentifier: ProductDescriptionTableViewCell.reuseIdentifier)
+        descriptionTableView.register(ProductDescriptionTableHeaderCell.self, forCellReuseIdentifier: ProductDescriptionTableHeaderCell.reuseIdentifier)
+        descriptionTableView.register(ProductDescriptionTablePriceCell.self, forCellReuseIdentifier: ProductDescriptionTablePriceCell.reuseIdentifier)
         descriptionTableView.dataSource = dataSource
         descriptionTableView.delegate = self
         view.addSubview(descriptionTableView)
-        activateGoodsDescriptionTableViewConstraints(view: descriptionTableView)
+        activateDescriptionTableViewConstraints(view: descriptionTableView)
     }
 }
 
-// MARK: - GoodsDescriptionView implementation
-extension GoodsDescriptionViewImpl: GoodsDescriptionView {
+// MARK: - ProductDescriptionView implementation
+extension ProductDescriptionViewImpl: ProductDescriptionView {
     
 }
 
-// MARK: - GoodsDescriptionShow implementation
-extension GoodsDescriptionViewImpl: GoodsDescriptionShow {
+// MARK: - ProductDescriptionShow implementation
+extension ProductDescriptionViewImpl: ProductDescriptionShow {
     var rootViewController: UIViewController {
         return self
     }
 }
 
 // MARK: - UITableViewDelegate implementation
-extension GoodsDescriptionViewImpl: UITableViewDelegate {
+extension ProductDescriptionViewImpl: UITableViewDelegate {
 
 }
 
 // MARK: - Constraints
-private extension GoodsDescriptionViewImpl {
-    func activateGoodsDescriptionTableViewConstraints(view: UIView) {
+private extension ProductDescriptionViewImpl {
+    func activateDescriptionTableViewConstraints(view: UIView) {
         guard let superview = view.superview else { return }
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
