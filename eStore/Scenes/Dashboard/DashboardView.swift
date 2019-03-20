@@ -12,6 +12,7 @@ final class DashboardViewImpl: UITabBarController {
     var presenter: DashboardPresenter!
 
     var catalogNavigation: UINavigationController!
+    var cartNavigation: UINavigationController!
     var profileNavigation: UINavigationController!
 
     private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
@@ -19,6 +20,7 @@ final class DashboardViewImpl: UITabBarController {
     var tabs: [UIViewController] {
         return [
             catalogNavigation,
+            cartNavigation,
             profileNavigation
         ]
     }
@@ -41,6 +43,10 @@ final class DashboardViewImpl: UITabBarController {
             tag: 0
         )
         catalogNavigation.tabBarItem = catalogTabBarItem
+
+        let cartTabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
+        cartNavigation.tabBarItem = cartTabBarItem
+
         let profileTabBarItem = UITabBarItem(
             title: "Profile",
             image: UIImage(named: "profile-icon"),

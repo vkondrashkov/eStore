@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CartDependency: AnyObject {
-    var navigation: UINavigationController { get }
+    var cartNavigation: UINavigationController { get }
 }
 
 protocol CartBuilder: AnyObject {

@@ -9,7 +9,7 @@
 import UIKit
 
 class CartViewImpl: UIViewController {
-
+    var presenter: CartPresenter!
 }
 
 // MARK: - CartView implementation
