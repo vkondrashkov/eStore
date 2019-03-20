@@ -1,5 +1,5 @@
 //
-//  GoodsListTableViewDataSource.swift
+//  ProductsListTableViewDataSource.swift
 //  eStore
 //
 //  Created by Vladislav Kondrashkov on 3/2/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GoodsListTableViewDataSource: NSObject, UITableViewDataSource {
+class ProductsListTableViewDataSource: NSObject, UITableViewDataSource {
     var items: [StoreItem] = []
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -16,7 +16,7 @@ class GoodsListTableViewDataSource: NSObject, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: GoodsListTableViewCell.reuseIdentifier, for: indexPath) as! GoodsListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ProductsListTableViewCell.reuseIdentifier, for: indexPath) as! ProductsListTableViewCell
         let item = items[indexPath.row]
         cell.display(imageUrl: item.imageUrl, title: "\(item.brand) \(item.name)") // TODO: implement display(_:) method
         return cell

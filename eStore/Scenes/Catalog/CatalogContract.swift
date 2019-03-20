@@ -26,7 +26,7 @@ protocol CatalogShow: AnyObject {
 
 protocol CatalogRouter: AnyObject {
     // TODO: Refactor show(_:) method
-    func showGoodsList(title: String)
+    func showProductsList(title: String)
 }
 
 protocol CatalogView: AnyObject {

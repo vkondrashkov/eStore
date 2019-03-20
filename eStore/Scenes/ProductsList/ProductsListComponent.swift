@@ -1,14 +1,14 @@
 //
-//  CatalogComponent.swift
+//  ProductsListComponent.swift
 //  eStore
 //
-//  Created by Vladislav Kondrashkov on 2/20/19.
+//  Created by Vladislav Kondrashkov on 2/24/19.
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
 //
 
 import UIKit
 
-final class CatalogComponent {
+final class ProductsListComponent {
     let navigation: UINavigationController
     
     init(navigation: UINavigationController) {
@@ -16,5 +16,5 @@ final class CatalogComponent {
     }
 }
 
-// MARK: - ProductsListDependency implementation
-extension CatalogComponent: ProductsListDependency { }
+// MARK: - ProductDescriptionDependency implementation
+extension ProductsListComponent: ProductDescriptionDependency { }

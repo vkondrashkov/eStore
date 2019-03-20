@@ -1,5 +1,5 @@
 //
-//  GoodsListPresenter.swift
+//  ProductsListPresenter.swift
 //  eStore
 //
 //  Created by Vladislav Kondrashkov on 2/24/19.
@@ -9,29 +9,29 @@
 import Foundation
 
 // TODO: Add networking service to initializier
-final class GoodsListPresenterImpl {
-    private unowned let view: GoodsListView
-    private unowned let router: GoodsListRouter
-
+final class ProductsListPresenterImpl {
+    private unowned let view: ProductsListView
+    private unowned let router: ProductsListRouter
+    
     private let productType: ProductType
-
-    init(view: GoodsListView,
-         router: GoodsListRouter,
+    
+    init(view: ProductsListView,
+         router: ProductsListRouter,
          productType: ProductType) {
-
+        
         self.view = view
         self.router = router
         self.productType = productType
     }
 }
 
-// MARK: - GoodsListPresenter implementation
-extension GoodsListPresenterImpl: GoodsListPresenter {
+// MARK: - ProductsListPresenter implementation
+extension ProductsListPresenterImpl: ProductsListPresenter {
     func handleLoadView() {
         view.showActivityIndicator()
         // TODO: Dependency injection
-        let service = GoodsServiceImpl()
-
+        let service = ProductsServiceImpl()
+        
         switch productType {
         case .Smartphone:
             service.getSmartphone(completion: { [weak self] result in
@@ -62,8 +62,8 @@ extension GoodsListPresenterImpl: GoodsListPresenter {
             })
         }
     }
-
+    
     func handleProductPress(storeItem: StoreItem) {
-        router.showGoodsDescription(for: storeItem)
+        router.showProductDescription(for: storeItem)
     }
 }

@@ -1,63 +1,68 @@
 //
-//  GoodsDescriptionTableViewCell.swift
+//  ProductsListTableViewCell.swift
 //  eStore
 //
-//  Created by Vladislav Kondrashkov on 3/5/19.
+//  Created by Vladislav Kondrashkov on 2/26/19.
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
 //
 
 import UIKit
 
-final class GoodsDescriptionTableViewCell: UITableViewCell {
-    static var reuseIdentifier = "GoodsDescriptionTableViewCellReuseIdentifier"
-
+final class ProductsListTableViewCell: UITableViewCell {
+    static var reuseIdentifier = "ProductsListTableViewCellReuseIdentifier"
+    
     private var containerView: UIView!
-    private var propertyNameLabel: UILabel!
-    private var propertyValueLabel: UILabel!
-
+    private var productImageView: UIImageView!
+    private var productTitleLabel: UILabel!
+    
+    private let thumbnailSize: CGFloat = 100
     private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .white
-
+        
         setupContainerView()
-        setupPropertyNameLabel()
-        setupPropertyValueLabel()
+        setupProductImageView()
+        setupProductTitleLabel()
     }
-
+    
     private func setupContainerView() {
         containerView = UIView()
         contentView.addSubview(containerView)
         activateContainerViewConstraints(view: containerView)
     }
-
-    private func setupPropertyNameLabel() {
-        propertyNameLabel = UILabel()
-        propertyNameLabel.font = .boldSystemFont(ofSize: 17)
-        containerView.addSubview(propertyNameLabel)
-        activatePropertyNameLabelConstraints(view: propertyNameLabel)
+    
+    private func setupProductImageView() {
+        productImageView = UIImageView()
+        containerView.addSubview(productImageView)
+        activateProductImageViewConstraints(view: productImageView)
     }
-
-    private func setupPropertyValueLabel() {
-        propertyValueLabel = UILabel()
-        propertyValueLabel.font = .systemFont(ofSize: 17)
-        containerView.addSubview(propertyValueLabel)
-        activatePropertyValueLabelConstraints(view: propertyValueLabel, anchorView: propertyNameLabel)
+    
+    private func setupProductTitleLabel() {
+        productTitleLabel = UILabel()
+        productTitleLabel.font = .boldSystemFont(ofSize: 17)
+        productTitleLabel.numberOfLines = 0
+        containerView.addSubview(productTitleLabel)
+        activateProductTitleLabelConstraints(view: productTitleLabel, anchorView: productImageView)
     }
-
-    func display(name: String, value: String) {
-        propertyNameLabel.text = name
-        propertyValueLabel.text = value
+    
+    func display(imageUrl: String?, title: String) {
+        if let url = imageUrl {
+            productImageView.downloaded(from: url)
+        } else {
+            productImageView.image = UIImage(named: "image-not-found")
+        }
+        productTitleLabel.text = title
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 // MARK: - Constraints
-private extension GoodsDescriptionTableViewCell {
+private extension ProductsListTableViewCell {
     func activateContainerViewConstraints(view: UIView) {
         guard let superview = view.superview else { return }
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -68,25 +73,25 @@ private extension GoodsDescriptionTableViewCell {
             view.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
             ])
     }
-
-    func activatePropertyNameLabelConstraints(view: UIView) {
+    
+    func activateProductImageViewConstraints(view: UIView) {
         guard let superview = view.superview else { return }
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: superview.topAnchor, constant: 20),
+            view.widthAnchor.constraint(equalToConstant: thumbnailSize),
+            view.heightAnchor.constraint(equalToConstant: thumbnailSize),
+            view.topAnchor.constraint(equalTo: superview.topAnchor, constant: 10),
             view.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 10),
-            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -20),
-            view.trailingAnchor.constraint(equalTo: superview.centerXAnchor, constant: -10)
+            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -10)
             ])
     }
-
-    func activatePropertyValueLabelConstraints(view: UIView, anchorView: UIView) {
+    
+    func activateProductTitleLabelConstraints(view: UIView, anchorView: UIView) {
         guard let superview = view.superview else { return }
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: superview.topAnchor, constant: 20),
+            view.topAnchor.constraint(equalTo: anchorView.topAnchor),
             view.leadingAnchor.constraint(equalTo: anchorView.trailingAnchor, constant: 10),
-            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -20),
             view.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -10)
             ])
     }

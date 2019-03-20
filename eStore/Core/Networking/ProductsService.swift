@@ -1,5 +1,5 @@
 //
-//  GoodsService.swift
+//  ProductsService.swift
 //  eStore
 //
 //  Created by Vladislav Kondrashkov on 3/10/19.
@@ -8,13 +8,13 @@
 
 import ObjectMapper
 
-protocol GoodsService {
+protocol ProductsService {
     func getSmartphone(completion: @escaping ([StoreItem]?) -> Void)
     func getLaptops(completion: @escaping ([StoreItem]?) -> Void)
     func getTV(completion: @escaping ([StoreItem]?) -> Void)
 }
 
-class GoodsServiceImpl: GoodsService {
+class ProductsServiceImpl: ProductsService {
     func getSmartphone(completion: @escaping ([StoreItem]?) -> Void) {
         // Temp json
         let json = "[{ \"id\": \"3571539fcbe330452d4d938502ed9f15\", \"imageUrl\": \"https://content2.onliner.by/catalog/device/header@2/0ab0b43eb38b5767ea29c4509f0a9d3b.jpeg\", \"brand\": \"Apple\", \"name\": \"iPhone 7 128GB Black\", \"operatingSystem\": \"iOS\", \"display\": { \"width\": 750, \"height\": 1334 }, \"ram\": 2, \"flashMemory\": 128, \"processor\": \"Apple A10 Fusion\", \"color\": \"Black\", \"batteryCapacity\": 1960, \"price\": 1389, \"stockCount\": 12 }, { \"id\": \"1192ee0cfbc6d237211c9c3b45423260\", \"imageUrl\": \"https://content2.onliner.by/catalog/device/header@2/4fd64af4d5bccc1d8907191af785d5fa.jpeg\", \"brand\": \"Apple\", \"name\": \"iPhone 7 32GB Rose Gold\", \"operatingSystem\": \"iOS\", \"display\": { \"width\": 750, \"height\": 1334 }, \"ram\": 2, \"flashMemory\": 32, \"processor\": \"Apple A10 Fusion\", \"color\": \"Rose Gold\", \"batteryCapacity\": 1960, \"price\": 1190, \"stockCount\": 18 }, { \"id\": \"3571539fcbe330452d4d938502ed9f15\", \"imageUrl\": \"https://content2.onliner.by/catalog/device/header/a660b069b77682ba4b5b84ef87fd09da.jpeg\", \"brand\": \"Samsung\", \"name\": \"Galaxy S10+ G975 8GB/128GB Dual Sim Exynos 9820 Onyx\", \"operatingSystem\": \"Android\", \"display\": { \"width\": 1440, \"height\": 3040 }, \"ram\": 8, \"flashMemory\": 128, \"processor\": \"Exynos 9820\", \"color\": \"Onyx\", \"batteryCapacity\": 4100, \"price\": 2549, \"stockCount\": 0 } ]"
