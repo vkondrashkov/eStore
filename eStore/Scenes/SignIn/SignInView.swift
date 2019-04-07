@@ -22,11 +22,6 @@ final class SignInViewImpl: UIViewController {
     private var forgotPasswordButton: UIButton!
     private var activityIndicator: UIActivityIndicatorView!
 
-    private let signInButtonBackgroundColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-    private let forgotPasswordButtonRegularColor = UIColor(white: 0.5, alpha: 1.0)
-    private let forgotPasswordButtonHighlightedColor = UIColor(white: 0.75, alpha: 1.0)
-
     private lazy var keyboardManager = KeyboardManager(viewController: self)
 
     override func loadView() {
@@ -95,27 +90,32 @@ final class SignInViewImpl: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = Color.background
         title = "Sign In"
-        navigationController?.navigationBar.tintColor = customTintColor
 
         emailCaption.font = .boldSystemFont(ofSize: 17)
+        emailCaption.textColor = Color.text
 
         emailTextField.borderStyle = .roundedRect
         emailTextField.keyboardType = .emailAddress
+        emailTextField.backgroundColor = Color.foreground
+        emailTextField.textColor = Color.text
 
         passwordCaption.font = .boldSystemFont(ofSize: 17)
+        passwordCaption.textColor = Color.text
 
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.backgroundColor = Color.foreground
+        passwordTextField.textColor = Color.text
 
         signInButton.addTarget(self, action: #selector(signInButtonDidPressed), for: .touchUpInside)
         signInButton.layer.cornerRadius = 5
         signInButton.layer.masksToBounds = true
-        signInButton.backgroundColor = signInButtonBackgroundColor
+        signInButton.backgroundColor = Color.shamrock
 
-        forgotPasswordButton.setTitleColor(forgotPasswordButtonRegularColor, for: .normal)
-        forgotPasswordButton.setTitleColor(forgotPasswordButtonHighlightedColor, for: .highlighted)
+        forgotPasswordButton.setTitleColor(Color.grey, for: .normal)
+        forgotPasswordButton.setTitleColor(Color.silver, for: .highlighted)
         forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonDidPressed), for: .touchUpInside)
 
         activityIndicator.style = .white

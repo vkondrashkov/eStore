@@ -21,9 +21,6 @@ final class SignUpViewImpl: UIViewController {
     private var signUpButton: UIButton!
     private var activityIndicator: UIActivityIndicatorView!
 
-    private let signUpButtonBackgroundColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-
     private lazy var keyboardManager = KeyboardManager(viewController: self)
 
     override func loadView() {
@@ -101,29 +98,38 @@ final class SignUpViewImpl: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        view.backgroundColor = Color.background
         title = "Sign Up"
-        navigationController?.navigationBar.tintColor = customTintColor
+        navigationController?.navigationBar.tintColor = Color.shamrock
 
         emailCaption.font = .boldSystemFont(ofSize: 17)
+        emailCaption.textColor = Color.text
 
         emailTextField.borderStyle = .roundedRect
         emailTextField.keyboardType = .emailAddress
+        emailTextField.backgroundColor = Color.foreground
+        emailTextField.textColor = Color.text
 
         passwordCaption.font = .boldSystemFont(ofSize: 17)
+        passwordCaption.textColor = Color.text
 
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.backgroundColor = Color.foreground
+        passwordTextField.textColor = Color.text
 
         confirmPasswordCaption.font = .boldSystemFont(ofSize: 17)
+        confirmPasswordCaption.textColor = Color.text
 
         confirmPasswordTextField.borderStyle = .roundedRect
         confirmPasswordTextField.isSecureTextEntry = true
+        confirmPasswordTextField.backgroundColor = Color.foreground
+        confirmPasswordTextField.textColor = Color.text
 
         signUpButton.addTarget(self, action: #selector(signUpButtonDidPressed), for: .touchUpInside)
         signUpButton.layer.cornerRadius = 5
         signUpButton.layer.masksToBounds = true
-        signUpButton.backgroundColor = signUpButtonBackgroundColor
+        signUpButton.backgroundColor = Color.shamrock
 
         activityIndicator.style = .white
 
