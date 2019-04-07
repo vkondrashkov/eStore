@@ -14,12 +14,11 @@ class CategoryTableViewCell: UITableViewCell {
     private var iconImageView: UIImageView!
     private var descriptionLabel: UILabel!
 
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        contentView.backgroundColor = .white
+        backgroundColor = .clear
+        contentView.backgroundColor = Color.foreground
         setupIconImageView()
         setupDescriptionLabel()
     }
@@ -33,7 +32,7 @@ class CategoryTableViewCell: UITableViewCell {
     private func setupDescriptionLabel() {
         descriptionLabel = UILabel()
         descriptionLabel.font = .boldSystemFont(ofSize: 17)
-        descriptionLabel.textColor = .black
+        descriptionLabel.textColor = Color.text
         contentView.addSubview(descriptionLabel)
         activateDescriptionLabelConstraints(view: descriptionLabel, anchorView: iconImageView)
     }
@@ -45,7 +44,7 @@ class CategoryTableViewCell: UITableViewCell {
         } else {
             iconImageView.image = UIImage(named: "error-icon")!.withRenderingMode(.alwaysTemplate)
         }
-        iconImageView.tintColor = customTintColor
+        iconImageView.tintColor = Color.shamrock
     }
 
     required init?(coder aDecoder: NSCoder) {

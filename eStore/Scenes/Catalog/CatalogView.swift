@@ -12,7 +12,6 @@ final class CatalogViewImpl: UIViewController {
     var presenter: CatalogPresenter!
 
     private let categoryTableViewDataSource = CategoryTableViewDataSource()
-    private let catalogBackgroundColor = UIColor(red: 242.0 / 255.0, green: 241.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
     private var categoryTableView: UITableView!
 
     override func loadView() {
@@ -27,12 +26,16 @@ final class CatalogViewImpl: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = catalogBackgroundColor
+        view.backgroundColor = Color.background
         title = "Catalog"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.barTintColor = Color.navigationBar
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Color.text]
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: Color.text]
 
         categoryTableView.tableFooterView = UIView() // Is needed to remove unnecessary separators
         categoryTableView.backgroundColor = .clear
+        categoryTableView.separatorColor = Color.border
         categoryTableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.reuseIdentifier)
         categoryTableView.dataSource = categoryTableViewDataSource
         categoryTableView.delegate = self
