@@ -18,6 +18,13 @@
 		9C452FBF2242E08B00924FA5 /* CartTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452FBE2242E08B00924FA5 /* CartTableViewDataSource.swift */; };
 		9C56E0FC225A747100E72428 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E0FB225A747100E72428 /* Color.swift */; };
 		9C56E0FE225A76B100E72428 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E0FD225A76B100E72428 /* Themes.swift */; };
+		9C56E101225A93C000E72428 /* ThemeContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E100225A93C000E72428 /* ThemeContract.swift */; };
+		9C56E103225A93C700E72428 /* ThemeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E102225A93C700E72428 /* ThemeComponent.swift */; };
+		9C56E105225A93CE00E72428 /* ThemeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E104225A93CD00E72428 /* ThemeBuilder.swift */; };
+		9C56E107225A93D200E72428 /* ThemeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E106225A93D200E72428 /* ThemeScene.swift */; };
+		9C56E109225A93D900E72428 /* ThemeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E108225A93D900E72428 /* ThemeCoordinator.swift */; };
+		9C56E10B225A93E000E72428 /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E10A225A93E000E72428 /* ThemeView.swift */; };
+		9C56E10D225A93E700E72428 /* ThemePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E10C225A93E700E72428 /* ThemePresenter.swift */; };
 		9C76ABAD22357FCC00FB39DA /* Specification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76ABAC22357FCC00FB39DA /* Specification.swift */; };
 		9C76ABAF223588D900FB39DA /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76ABAE223588D900FB39DA /* ProductType.swift */; };
 		9C76ABB122359F8400FB39DA /* ProductsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76ABB022359F8400FB39DA /* ProductsService.swift */; };
@@ -141,6 +148,13 @@
 		9C452FBE2242E08B00924FA5 /* CartTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewDataSource.swift; sourceTree = "<group>"; };
 		9C56E0FB225A747100E72428 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		9C56E0FD225A76B100E72428 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
+		9C56E100225A93C000E72428 /* ThemeContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeContract.swift; sourceTree = "<group>"; };
+		9C56E102225A93C700E72428 /* ThemeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeComponent.swift; sourceTree = "<group>"; };
+		9C56E104225A93CD00E72428 /* ThemeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeBuilder.swift; sourceTree = "<group>"; };
+		9C56E106225A93D200E72428 /* ThemeScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeScene.swift; sourceTree = "<group>"; };
+		9C56E108225A93D900E72428 /* ThemeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCoordinator.swift; sourceTree = "<group>"; };
+		9C56E10A225A93E000E72428 /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
+		9C56E10C225A93E700E72428 /* ThemePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePresenter.swift; sourceTree = "<group>"; };
 		9C76ABAC22357FCC00FB39DA /* Specification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Specification.swift; sourceTree = "<group>"; };
 		9C76ABAE223588D900FB39DA /* ProductType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
 		9C76ABB022359F8400FB39DA /* ProductsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsService.swift; sourceTree = "<group>"; };
@@ -293,6 +307,20 @@
 				9C56E0FD225A76B100E72428 /* Themes.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		9C56E0FF225A937000E72428 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				9C56E100225A93C000E72428 /* ThemeContract.swift */,
+				9C56E102225A93C700E72428 /* ThemeComponent.swift */,
+				9C56E104225A93CD00E72428 /* ThemeBuilder.swift */,
+				9C56E106225A93D200E72428 /* ThemeScene.swift */,
+				9C56E108225A93D900E72428 /* ThemeCoordinator.swift */,
+				9C56E10A225A93E000E72428 /* ThemeView.swift */,
+				9C56E10C225A93E700E72428 /* ThemePresenter.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		9C83BB95222A9CD400CBB1FF /* Networking */ = {
@@ -529,11 +557,12 @@
 				9CC46BFD221614CD005E24F5 /* SignIn */,
 				9CC46BC02215387B005E24F5 /* SignUp */,
 				9CC5525B220AFB810004ACC4 /* Dashboard */,
-				9CC5525D220AFBB00004ACC4 /* Profile */,
 				9CA418E1221D8CD300BAF215 /* Catalog */,
 				9CA41922222324AF00BAF215 /* ProductsList */,
 				9C83BBFD222EAEAC00CBB1FF /* ProductDescription */,
 				9C452FAA2242DAB300924FA5 /* Cart */,
+				9CC5525D220AFBB00004ACC4 /* Profile */,
+				9C56E0FF225A937000E72428 /* Theme */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -841,6 +870,7 @@
 				9CC46BC8221538F8005E24F5 /* SignUpContract.swift in Sources */,
 				9CC46B89221405C6005E24F5 /* RootComponent.swift in Sources */,
 				9C452FB42242DB0700924FA5 /* CartScene.swift in Sources */,
+				9C56E103225A93C700E72428 /* ThemeComponent.swift in Sources */,
 				9CA418ED221D8D1600BAF215 /* CatalogView.swift in Sources */,
 				9CC46C0922161559005E24F5 /* SignInView.swift in Sources */,
 				9CC46B9822141058005E24F5 /* DashboardContract.swift in Sources */,
@@ -851,6 +881,7 @@
 				9C9C73CF223EB18000C4B5EE /* ProfileCategoryTableViewDataSource.swift in Sources */,
 				9CA418D6221D883700BAF215 /* Smartphone.swift in Sources */,
 				9CA4192C2223250200BAF215 /* ProductsListCoordinator.swift in Sources */,
+				9C56E107225A93D200E72428 /* ThemeScene.swift in Sources */,
 				9CA4192A222324F800BAF215 /* ProductsListScene.swift in Sources */,
 				9CC46C2A22180BAD005E24F5 /* ProfilePresenter.swift in Sources */,
 				9CA41928222324EF00BAF215 /* ProductsListBuilder.swift in Sources */,
@@ -864,6 +895,7 @@
 				9C9C73D1223EB25400C4B5EE /* ProfileCategory.swift in Sources */,
 				9C83BC01222EAED800CBB1FF /* ProductDescriptionComponent.swift in Sources */,
 				9CA4191B2222CC9500BAF215 /* CategoryTableViewCell.swift in Sources */,
+				9C56E105225A93CE00E72428 /* ThemeBuilder.swift in Sources */,
 				9CA418D8221D883F00BAF215 /* TV.swift in Sources */,
 				9CC46BBF2214C425005E24F5 /* AuthPresenter.swift in Sources */,
 				9C83BC05222EAEEB00CBB1FF /* ProductDescriptionScene.swift in Sources */,
@@ -889,8 +921,11 @@
 				9C452FB82242DB1500924FA5 /* CartView.swift in Sources */,
 				9CA4191E2222CF0B00BAF215 /* CategoryTableViewDataSource.swift in Sources */,
 				9CC46C032216153A005E24F5 /* SignInBuilder.swift in Sources */,
+				9C56E109225A93D900E72428 /* ThemeCoordinator.swift in Sources */,
 				9CBC2819223B839D0091082B /* ProductDescriptionTableHeaderCell.swift in Sources */,
 				9CA419302223251200BAF215 /* ProductsListPresenter.swift in Sources */,
+				9C56E101225A93C000E72428 /* ThemeContract.swift in Sources */,
+				9C56E10D225A93E700E72428 /* ThemePresenter.swift in Sources */,
 				9CC46C2422180B8C005E24F5 /* ProfileScene.swift in Sources */,
 				9CC46BCC22153908005E24F5 /* SignUpBuilder.swift in Sources */,
 				9CA418E7221D8CFC00BAF215 /* CatalogBuilder.swift in Sources */,
@@ -900,6 +935,7 @@
 				9C76ABAD22357FCC00FB39DA /* Specification.swift in Sources */,
 				9CC46B9122140623005E24F5 /* RootPresenter.swift in Sources */,
 				9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */,
+				9C56E10B225A93E000E72428 /* ThemeView.swift in Sources */,
 				9CC46BCE2215390F005E24F5 /* SignUpScene.swift in Sources */,
 				9CA418EF221D8D1F00BAF215 /* CatalogPresenter.swift in Sources */,
 				9C76ABAF223588D900FB39DA /* ProductType.swift in Sources */,
