@@ -20,50 +20,54 @@ final class ProductsListViewImpl: UIViewController {
     
     private let productsListBackgroundColor = UIColor(red: 242.0 / 255.0, green: 241.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
     private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-    
+
+    override func loadView() {
+        view = UIView()
+
+        loadingView = UIView()
+        view.addSubview(loadingView)
+        loadingView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+
+        fadeMaskView = UIView()
+        loadingView.addSubview(fadeMaskView)
+        fadeMaskView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+
+        activityIndicator = UIActivityIndicatorView()
+        loadingView.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
+
+        productsTableView = UITableView()
+        view.addSubview(productsTableView)
+        productsTableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = productsListBackgroundColor
         navigationController?.navigationBar.tintColor = customTintColor
-        
-        setupLoadingView()
-        setupFadeMaskView()
-        setupActivityIndicator()
-        setupProductsTableView()
-        
-        presenter.handleLoadView()
-    }
-    
-    private func setupLoadingView() {
-        loadingView = UIView()
+        navigationItem.largeTitleDisplayMode = .never
+
         loadingView.isHidden = true
-        view.addSubview(loadingView)
-        activateLoadingViewConstraints(view: loadingView)
-    }
-    
-    private func setupFadeMaskView() {
-        fadeMaskView = UIView()
+
         fadeMaskView.backgroundColor = UIColor(white: 0.0, alpha: 0.2)
-        loadingView.addSubview(fadeMaskView)
-        activateFadeMaskViewConstraints(view: fadeMaskView)
-    }
-    
-    private func setupActivityIndicator() {
-        activityIndicator = UIActivityIndicatorView()
+
         activityIndicator.style = .white
-        loadingView.addSubview(activityIndicator)
-        activateActivityIndicatorConstraints(view: activityIndicator)
-    }
-    
-    private func setupProductsTableView() {
-        productsTableView = UITableView()
+
         productsTableView.tableFooterView = UIView()
         productsTableView.backgroundColor = .clear
         productsTableView.register(ProductsListTableViewCell.self, forCellReuseIdentifier: ProductsListTableViewCell.reuseIdentifier)
         productsTableView.dataSource = productsTableViewDataSource
         productsTableView.delegate = self
-        view.addSubview(productsTableView)
-        activateProductsTableViewConstraints(view: productsTableView)
+
+        presenter.handleLoadView()
     }
 }
 
@@ -115,50 +119,5 @@ extension ProductsListViewImpl: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.handleProductPress(storeItem: productsTableViewDataSource.items[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-}
-
-// MARK: - Constraints
-private extension ProductsListViewImpl {
-    func activateLoadingViewConstraints(view: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: superview.topAnchor),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
-            ])
-    }
-    
-    func activateFadeMaskViewConstraints(view: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: superview.topAnchor),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
-            ])
-    }
-    
-    func activateActivityIndicatorConstraints(view: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
-            view.centerYAnchor.constraint(equalTo: superview.centerYAnchor)
-            ])
-    }
-    
-    func activateProductsTableViewConstraints(view: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-            view.bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor)
-            ])
     }
 }

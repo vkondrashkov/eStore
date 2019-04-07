@@ -25,14 +25,10 @@ final class DashboardViewImpl: UITabBarController {
         ]
     }
 
-    override func loadView() {
-        super.loadView()
-        view.backgroundColor = .white
-        tabBar.tintColor = customTintColor
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        tabBar.tintColor = customTintColor
         modalTransitionStyle = .crossDissolve
     }
 

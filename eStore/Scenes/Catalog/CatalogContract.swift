@@ -29,9 +29,7 @@ protocol CatalogRouter: AnyObject {
     func showProductsList(title: String)
 }
 
-protocol CatalogView: AnyObject {
-    func display(alert: Alert)
-}
+protocol CatalogView: AnyObject { }
 
 protocol CatalogPresenter: AnyObject {
     func handleLoadView()
