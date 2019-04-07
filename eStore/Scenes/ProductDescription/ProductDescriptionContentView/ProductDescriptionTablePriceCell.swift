@@ -26,7 +26,8 @@ final class ProductDescriptionTablePriceCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .white
+        backgroundColor = .clear
+        contentView.backgroundColor = Color.foreground
         
         setupContainerView()
         setupPriceLabel()
@@ -44,6 +45,7 @@ final class ProductDescriptionTablePriceCell: UITableViewCell {
         priceLabel = UILabel()
         priceLabel.font = .boldSystemFont(ofSize: 17)
         priceLabel.textAlignment = .center
+        priceLabel.textColor = Color.text
         containerView.addSubview(priceLabel)
         activatePriceLabelConstraints(view: priceLabel)
     }

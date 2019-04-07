@@ -15,11 +15,10 @@ final class ProductDescriptionTableViewCell: UITableViewCell {
     private var propertyNameLabel: UILabel!
     private var propertyValueLabel: UILabel!
     
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .white
+        backgroundColor = .clear
+        contentView.backgroundColor = Color.foreground
         
         setupContainerView()
         setupPropertyNameLabel()
@@ -35,6 +34,7 @@ final class ProductDescriptionTableViewCell: UITableViewCell {
     private func setupPropertyNameLabel() {
         propertyNameLabel = UILabel()
         propertyNameLabel.font = .boldSystemFont(ofSize: 17)
+        propertyNameLabel.textColor = Color.text
         containerView.addSubview(propertyNameLabel)
         activatePropertyNameLabelConstraints(view: propertyNameLabel)
     }
@@ -42,6 +42,7 @@ final class ProductDescriptionTableViewCell: UITableViewCell {
     private func setupPropertyValueLabel() {
         propertyValueLabel = UILabel()
         propertyValueLabel.font = .systemFont(ofSize: 17)
+        propertyValueLabel.textColor = Color.text
         containerView.addSubview(propertyValueLabel)
         activatePropertyValueLabelConstraints(view: propertyValueLabel, anchorView: propertyNameLabel)
     }

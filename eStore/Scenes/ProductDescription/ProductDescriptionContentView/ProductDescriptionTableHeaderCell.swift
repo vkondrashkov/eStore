@@ -16,11 +16,11 @@ final class ProductDescriptionTableHeaderCell: UITableViewCell {
     private var productImageView: UIImageView!
     
     private let imageSize: CGFloat = 300
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .white
+        backgroundColor = .clear
+        contentView.backgroundColor = Color.foreground
         
         setupContainerView()
         setupProductImageView()
@@ -44,6 +44,7 @@ final class ProductDescriptionTableHeaderCell: UITableViewCell {
         productTitleLabel.font = .boldSystemFont(ofSize: 22)
         productTitleLabel.numberOfLines = 0
         productTitleLabel.textAlignment = .center
+        productTitleLabel.textColor = Color.text
         containerView.addSubview(productTitleLabel)
         activateProductTitleLabelConstraints(view: productTitleLabel, anchorView: productImageView)
     }

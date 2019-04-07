@@ -14,9 +14,6 @@ final class ProductDescriptionViewImpl: UIViewController {
 
     private var descriptionTableView: UITableView!
 
-    private let productDescriptionBackgroundColor = UIColor(red: 242.0 / 255.0, green: 241.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-
     override func loadView() {
         view = UIView()
 
@@ -30,12 +27,13 @@ final class ProductDescriptionViewImpl: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = productDescriptionBackgroundColor
+        view.backgroundColor = Color.background
         title = "Description"
-        navigationController?.navigationBar.tintColor = customTintColor
+        navigationController?.navigationBar.tintColor = Color.shamrock
 
         descriptionTableView.tableFooterView = UIView()
         descriptionTableView.backgroundColor = .clear
+        descriptionTableView.separatorColor = Color.border
         descriptionTableView.register(ProductDescriptionTableViewCell.self, forCellReuseIdentifier: ProductDescriptionTableViewCell.reuseIdentifier)
         descriptionTableView.register(ProductDescriptionTableHeaderCell.self, forCellReuseIdentifier: ProductDescriptionTableHeaderCell.reuseIdentifier)
         descriptionTableView.register(ProductDescriptionTablePriceCell.self, forCellReuseIdentifier: ProductDescriptionTablePriceCell.reuseIdentifier)
@@ -55,6 +53,4 @@ extension ProductDescriptionViewImpl: ProductDescriptionShow {
 }
 
 // MARK: - UITableViewDelegate implementation
-extension ProductDescriptionViewImpl: UITableViewDelegate {
-
-}
+extension ProductDescriptionViewImpl: UITableViewDelegate { }
