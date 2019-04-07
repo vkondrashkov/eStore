@@ -24,10 +24,16 @@ final class CartViewImpl: UIViewController {
     override func loadView() {
         view = UIView()
 
+        cartTableView = UITableView()
+        view.addSubview(cartTableView)
+        cartTableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+
         loadingView = UIView()
         view.addSubview(loadingView)
         loadingView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalTo(cartTableView)
         }
 
         fadeMaskView = UIView()
@@ -40,12 +46,6 @@ final class CartViewImpl: UIViewController {
         loadingView.addSubview(activityIndicator)
         activityIndicator.snp.makeConstraints { make in
             make.center.equalToSuperview()
-        }
-
-        cartTableView = UITableView()
-        view.addSubview(cartTableView)
-        cartTableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
         }
     }
 

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 
 final class SignInViewImpl: UIViewController {
     var presenter: SignInPresenter!
