@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C452FAE2242DAEF00924FA5 /* CartContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452FAD2242DAEF00924FA5 /* CartContract.swift */; };
+		9C452FB02242DAF800924FA5 /* CartComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452FAF2242DAF800924FA5 /* CartComponent.swift */; };
+		9C452FB22242DB0000924FA5 /* CartBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452FB12242DB0000924FA5 /* CartBuilder.swift */; };
+		9C452FB42242DB0700924FA5 /* CartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452FB32242DB0700924FA5 /* CartScene.swift */; };
+		9C452FB62242DB0F00924FA5 /* CartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452FB52242DB0F00924FA5 /* CartCoordinator.swift */; };
+		9C452FB82242DB1500924FA5 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452FB72242DB1500924FA5 /* CartView.swift */; };
+		9C452FBA2242DB1E00924FA5 /* CartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452FB92242DB1E00924FA5 /* CartPresenter.swift */; };
+		9C452FBD2242E07F00924FA5 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452FBC2242E07F00924FA5 /* CartTableViewCell.swift */; };
+		9C452FBF2242E08B00924FA5 /* CartTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452FBE2242E08B00924FA5 /* CartTableViewDataSource.swift */; };
 		9C76ABAD22357FCC00FB39DA /* Specification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76ABAC22357FCC00FB39DA /* Specification.swift */; };
 		9C76ABAF223588D900FB39DA /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76ABAE223588D900FB39DA /* ProductType.swift */; };
 		9C76ABB122359F8400FB39DA /* ProductsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76ABB022359F8400FB39DA /* ProductsService.swift */; };
@@ -119,6 +128,15 @@
 		54FCAB27BD45A8EE1C80EED6 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		729C066A86EECB57EB23A9B3 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9636105CD80314886F52C479 /* Pods-eStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eStore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eStore/Pods-eStore.debug.xcconfig"; sourceTree = "<group>"; };
+		9C452FAD2242DAEF00924FA5 /* CartContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartContract.swift; sourceTree = "<group>"; };
+		9C452FAF2242DAF800924FA5 /* CartComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartComponent.swift; sourceTree = "<group>"; };
+		9C452FB12242DB0000924FA5 /* CartBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBuilder.swift; sourceTree = "<group>"; };
+		9C452FB32242DB0700924FA5 /* CartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScene.swift; sourceTree = "<group>"; };
+		9C452FB52242DB0F00924FA5 /* CartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCoordinator.swift; sourceTree = "<group>"; };
+		9C452FB72242DB1500924FA5 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		9C452FB92242DB1E00924FA5 /* CartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPresenter.swift; sourceTree = "<group>"; };
+		9C452FBC2242E07F00924FA5 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
+		9C452FBE2242E08B00924FA5 /* CartTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewDataSource.swift; sourceTree = "<group>"; };
 		9C76ABAC22357FCC00FB39DA /* Specification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Specification.swift; sourceTree = "<group>"; };
 		9C76ABAE223588D900FB39DA /* ProductType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
 		9C76ABB022359F8400FB39DA /* ProductsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsService.swift; sourceTree = "<group>"; };
@@ -240,6 +258,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C452FAA2242DAB300924FA5 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				9C452FBB2242E06F00924FA5 /* CartContentView */,
+				9C452FAD2242DAEF00924FA5 /* CartContract.swift */,
+				9C452FAF2242DAF800924FA5 /* CartComponent.swift */,
+				9C452FB12242DB0000924FA5 /* CartBuilder.swift */,
+				9C452FB32242DB0700924FA5 /* CartScene.swift */,
+				9C452FB52242DB0F00924FA5 /* CartCoordinator.swift */,
+				9C452FB72242DB1500924FA5 /* CartView.swift */,
+				9C452FB92242DB1E00924FA5 /* CartPresenter.swift */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		9C452FBB2242E06F00924FA5 /* CartContentView */ = {
+			isa = PBXGroup;
+			children = (
+				9C452FBC2242E07F00924FA5 /* CartTableViewCell.swift */,
+				9C452FBE2242E08B00924FA5 /* CartTableViewDataSource.swift */,
+			);
+			path = CartContentView;
+			sourceTree = "<group>";
+		};
 		9C83BB95222A9CD400CBB1FF /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -478,6 +520,7 @@
 				9CA418E1221D8CD300BAF215 /* Catalog */,
 				9CA41922222324AF00BAF215 /* ProductsList */,
 				9C83BBFD222EAEAC00CBB1FF /* ProductDescription */,
+				9C452FAA2242DAB300924FA5 /* Cart */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -673,7 +716,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-eStore/Pods-eStore-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-eStore/Pods-eStore-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -684,7 +727,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-eStore/Pods-eStore-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-eStore/Pods-eStore-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E3F727956F3C3FFC22D354FC /* [CP] Check Pods Manifest.lock */ = {
@@ -751,6 +794,7 @@
 				9CA419202222D6E900BAF215 /* Category.swift in Sources */,
 				9CA418DA221D884900BAF215 /* Laptop.swift in Sources */,
 				9CA418D4221D879C00BAF215 /* StoreItem.swift in Sources */,
+				9C452FB22242DB0000924FA5 /* CartBuilder.swift in Sources */,
 				9CC46BB72214C3FC005E24F5 /* AuthBuilder.swift in Sources */,
 				9C9C73D7223EC24300C4B5EE /* ProfileThumbnailCategoryTableViewCell.swift in Sources */,
 				9CC46BD022153918005E24F5 /* SignUpCoordinator.swift in Sources */,
@@ -759,6 +803,7 @@
 				9CC46BA222141088005E24F5 /* DashboardView.swift in Sources */,
 				9C9C73D9223EC5BF00C4B5EE /* ProfileWarningCategoryTableViewCell.swift in Sources */,
 				9C83BC12222EFCC300CBB1FF /* ProductDescriptionTableViewCell.swift in Sources */,
+				9C452FB62242DB0F00924FA5 /* CartCoordinator.swift in Sources */,
 				9CC46BA422141090005E24F5 /* DashboardPresenter.swift in Sources */,
 				9CC46C0B22161562005E24F5 /* SignInPresenter.swift in Sources */,
 				9CC46BB32214C3AD005E24F5 /* AuthContract.swift in Sources */,
@@ -766,6 +811,7 @@
 				9C9C73D3223EBFC400C4B5EE /* ProfileSection.swift in Sources */,
 				9C9C73D5223EC1AC00C4B5EE /* ProfileCategoryType.swift in Sources */,
 				9C83BBFF222EAECF00CBB1FF /* ProductDescriptionContract.swift in Sources */,
+				9C452FB02242DAF800924FA5 /* CartComponent.swift in Sources */,
 				9CC46BBD2214C41B005E24F5 /* AuthView.swift in Sources */,
 				9CC46BBB2214C412005E24F5 /* AuthCoordinator.swift in Sources */,
 				9CC46B9E22141072005E24F5 /* DashboardScene.swift in Sources */,
@@ -774,9 +820,11 @@
 				9CC55244220AF8510004ACC4 /* AppDelegate.swift in Sources */,
 				9CC46B9A22141061005E24F5 /* DashboardComponent.swift in Sources */,
 				9CC46BB92214C409005E24F5 /* AuthScene.swift in Sources */,
+				9C452FBF2242E08B00924FA5 /* CartTableViewDataSource.swift in Sources */,
 				9C83BC07222EAEF700CBB1FF /* ProductDescriptionCoordinator.swift in Sources */,
 				9CC46BC8221538F8005E24F5 /* SignUpContract.swift in Sources */,
 				9CC46B89221405C6005E24F5 /* RootComponent.swift in Sources */,
+				9C452FB42242DB0700924FA5 /* CartScene.swift in Sources */,
 				9CA418ED221D8D1600BAF215 /* CatalogView.swift in Sources */,
 				9CC46C0922161559005E24F5 /* SignInView.swift in Sources */,
 				9CC46B9822141058005E24F5 /* DashboardContract.swift in Sources */,
@@ -807,6 +855,8 @@
 				9CA418E0221D8A0900BAF215 /* OperatingSystem.swift in Sources */,
 				9CC46BFF22161529005E24F5 /* SignInContract.swift in Sources */,
 				9C83BC09222EAEFF00CBB1FF /* ProductDescriptionView.swift in Sources */,
+				9C452FAE2242DAEF00924FA5 /* CartContract.swift in Sources */,
+				9C452FBD2242E07F00924FA5 /* CartTableViewCell.swift in Sources */,
 				9CC46C1C22180B64005E24F5 /* ProfileContract.swift in Sources */,
 				9CC46B8F22140617005E24F5 /* RootView.swift in Sources */,
 				9CA418E3221D8CEC00BAF215 /* CatalogContract.swift in Sources */,
@@ -814,10 +864,12 @@
 				9CC46C2022180B7B005E24F5 /* ProfileComponent.swift in Sources */,
 				9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */,
 				9CA4193422251C5600BAF215 /* ProductsListTableViewCell.swift in Sources */,
+				9C452FBA2242DB1E00924FA5 /* CartPresenter.swift in Sources */,
 				9C83BC0B222EAF0700CBB1FF /* ProductDescriptionPresenter.swift in Sources */,
 				9CC46C1A22176B39005E24F5 /* AlertFactory.swift in Sources */,
 				9C9C73CA223CF92A00C4B5EE /* ProductDescriptionTablePriceCell.swift in Sources */,
 				9C83BC0E222EF5D100CBB1FF /* ProductDescriptionTableViewDataSource.swift in Sources */,
+				9C452FB82242DB1500924FA5 /* CartView.swift in Sources */,
 				9CA4191E2222CF0B00BAF215 /* CategoryTableViewDataSource.swift in Sources */,
 				9CC46C032216153A005E24F5 /* SignInBuilder.swift in Sources */,
 				9CBC2819223B839D0091082B /* ProductDescriptionTableHeaderCell.swift in Sources */,
