@@ -53,6 +53,7 @@ final class ProductsListViewImpl: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = productsListBackgroundColor
         navigationController?.navigationBar.tintColor = customTintColor
+        navigationItem.largeTitleDisplayMode = .never
 
         loadingView.isHidden = true
 

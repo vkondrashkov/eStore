@@ -29,6 +29,7 @@ final class CatalogViewImpl: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = catalogBackgroundColor
         title = "Catalog"
+        navigationController?.navigationBar.prefersLargeTitles = true
 
         categoryTableView.tableFooterView = UIView() // Is needed to remove unnecessary separators
         categoryTableView.backgroundColor = .clear
