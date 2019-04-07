@@ -23,7 +23,18 @@ final class CartPresenterImpl {
 
 // MARK: - CartPresenter implementation
 extension CartPresenterImpl: CartPresenter {
-    func handleLoadView() { }
+    func handleLoadView() {
+        view.showActivityIndicator()
+        let service = ProductsServiceImpl()
+        service.getSmartphone(completion: { [weak self] result in
+            guard let storeItemList = result else {
+                // TODO: Error handling
+                return
+            }
+            self?.view.display(storeItemList: storeItemList)
+            self?.view.hideActivityIndicator()
+        })
+    }
 
     func handleProductPress(storeItem: StoreItem) { }
 }
