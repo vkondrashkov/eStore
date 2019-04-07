@@ -16,11 +16,11 @@ final class ProfileThumbnailCategoryTableViewCell: UITableViewCell {
     private var titleLabel: UILabel!
 
     private let thumbnailImageSize: CGFloat = 64
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .white
+        backgroundColor = .clear
+        contentView.backgroundColor = Color.foreground
 
         setupContainerView()
         setupThumbnailImageView()
@@ -39,7 +39,7 @@ final class ProfileThumbnailCategoryTableViewCell: UITableViewCell {
         thumbnailImageView.contentMode = .center
         thumbnailImageView.layer.cornerRadius = thumbnailImageSize / 2
         thumbnailImageView.layer.borderWidth = 1.0
-        thumbnailImageView.layer.borderColor = UIColor(white: 0.0, alpha: 0.15).cgColor
+        thumbnailImageView.layer.borderColor = Color.border.cgColor
         containerView.addSubview(thumbnailImageView)
         activateThumbnailImageViewConstraints(view: thumbnailImageView)
     }
@@ -47,6 +47,7 @@ final class ProfileThumbnailCategoryTableViewCell: UITableViewCell {
     private func setupTitleLabel() {
         titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 20)
+        titleLabel.textColor = Color.text
         containerView.addSubview(titleLabel)
         activateTitleLabelConstraints(view: titleLabel, anchorView: thumbnailImageView)
     }

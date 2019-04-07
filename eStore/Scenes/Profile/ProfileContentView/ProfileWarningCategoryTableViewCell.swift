@@ -16,13 +16,11 @@ final class ProfileWarningCategoryTableViewCell: UITableViewCell {
     private var titleLabel: UILabel!
 
     private let iconImageSize: CGFloat = 32
-    private let titleLabelColor = UIColor(red: 231.0 / 255.0, green: 76.0 / 255.0, blue: 60.0 / 255.0, alpha: 1.0)
-    private let iconImageColor = UIColor(red: 231.0 / 255.0, green: 76.0 / 255.0, blue: 60.0 / 255.0, alpha: 1.0)
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .white
+        backgroundColor = .clear
+        contentView.backgroundColor = Color.foreground
 
         setupContainerView()
         setupIconImageView()
@@ -44,7 +42,7 @@ final class ProfileWarningCategoryTableViewCell: UITableViewCell {
     private func setupTitleLabel() {
         titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 17)
-        titleLabel.textColor = titleLabelColor
+        titleLabel.textColor = Color.cinnabar
         containerView.addSubview(titleLabel)
         activateTitleLabelConstraints(view: titleLabel, anchorView: iconImageView)
     }
@@ -55,7 +53,7 @@ final class ProfileWarningCategoryTableViewCell: UITableViewCell {
         } else {
             iconImageView.image = UIImage(named: "error-icon")!.withRenderingMode(.alwaysTemplate)
         }
-        iconImageView.tintColor = iconImageColor
+        iconImageView.tintColor = Color.cinnabar
         titleLabel.text = title
     }
 

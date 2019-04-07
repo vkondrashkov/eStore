@@ -16,11 +16,11 @@ final class ProfileRegularCategoryTableViewCell: UITableViewCell {
     private var titleLabel: UILabel!
 
     private let iconImageSize: CGFloat = 32
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .white
+        backgroundColor = .clear
+        contentView.backgroundColor = Color.foreground
 
         setupContainerView()
         setupIconImageView()
@@ -42,6 +42,7 @@ final class ProfileRegularCategoryTableViewCell: UITableViewCell {
     private func setupTitleLabel() {
         titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 17)
+        titleLabel.textColor = Color.text
         containerView.addSubview(titleLabel)
         activateTitleLabelConstraints(view: titleLabel, anchorView: iconImageView)
     }
@@ -52,7 +53,7 @@ final class ProfileRegularCategoryTableViewCell: UITableViewCell {
         } else {
             iconImageView.image = UIImage(named: "error-icon")!.withRenderingMode(.alwaysTemplate)
         }
-        iconImageView.tintColor = customTintColor
+        iconImageView.tintColor = Color.shamrock
         titleLabel.text = title
     }
 
