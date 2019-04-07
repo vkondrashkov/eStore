@@ -25,7 +25,7 @@ final class ProductsListViewImpl: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = productsListBackgroundColor
         navigationController?.navigationBar.tintColor = customTintColor
-        
+
         setupLoadingView()
         setupFadeMaskView()
         setupActivityIndicator()

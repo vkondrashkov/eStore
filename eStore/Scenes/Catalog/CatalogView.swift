@@ -15,32 +15,31 @@ final class CatalogViewImpl: UIViewController {
     private let catalogBackgroundColor = UIColor(red: 242.0 / 255.0, green: 241.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
     private var categoryTableView: UITableView!
 
+    override func loadView() {
+        view = UIView()
+
+        categoryTableView = UITableView()
+        view.addSubview(categoryTableView)
+        categoryTableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = catalogBackgroundColor
         title = "Catalog"
 
-        setupCategoryTableView()
-    }
-
-    private func setupCategoryTableView() {
-        categoryTableView = UITableView()
         categoryTableView.tableFooterView = UIView() // Is needed to remove unnecessary separators
         categoryTableView.backgroundColor = .clear
         categoryTableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.reuseIdentifier)
         categoryTableView.dataSource = categoryTableViewDataSource
         categoryTableView.delegate = self
-        view.addSubview(categoryTableView)
-        activateCatalogTableViewConstraints(view: categoryTableView)
     }
 }
 
 // MARK: - CatalogView implementation
-extension CatalogViewImpl: CatalogView {
-    func display(alert: Alert) {
-        
-    }
-}
+extension CatalogViewImpl: CatalogView { }
 
 // MARK: - CatalogShow implementation
 extension CatalogViewImpl: CatalogShow {
@@ -58,19 +57,5 @@ extension CatalogViewImpl: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.handleCategoryPress(title: categoryTableViewDataSource.categories[indexPath.row].name)
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-}
-
-// MARK: - Constraints
-private extension CatalogViewImpl {
-    func activateCatalogTableViewConstraints(view: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: superview.topAnchor),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
-            ])
     }
 }

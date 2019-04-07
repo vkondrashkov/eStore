@@ -87,7 +87,7 @@ final class SignUpViewImpl: UIViewController {
         containerView.addSubview(signUpButton)
         signUpButton.snp.makeConstraints { make in
             make.top.equalTo(confirmPasswordTextField.snp.bottom).offset(20)
-            make.leading.trailing.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(40)
         }
 
