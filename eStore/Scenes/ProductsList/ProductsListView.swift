@@ -17,9 +17,6 @@ final class ProductsListViewImpl: UIViewController {
     
     private var productsTableViewDataSource = ProductsListTableViewDataSource()
     private var productsTableView: UITableView!
-    
-    private let productsListBackgroundColor = UIColor(red: 242.0 / 255.0, green: 241.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
 
     override func loadView() {
         view = UIView()
@@ -51,8 +48,8 @@ final class ProductsListViewImpl: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = productsListBackgroundColor
-        navigationController?.navigationBar.tintColor = customTintColor
+        view.backgroundColor = Color.background
+        navigationController?.navigationBar.tintColor = Color.shamrock
         navigationItem.largeTitleDisplayMode = .never
 
         loadingView.isHidden = true
@@ -63,6 +60,7 @@ final class ProductsListViewImpl: UIViewController {
 
         productsTableView.tableFooterView = UIView()
         productsTableView.backgroundColor = .clear
+        productsTableView.separatorColor = Color.border
         productsTableView.register(ProductsListTableViewCell.self, forCellReuseIdentifier: ProductsListTableViewCell.reuseIdentifier)
         productsTableView.dataSource = productsTableViewDataSource
         productsTableView.delegate = self
