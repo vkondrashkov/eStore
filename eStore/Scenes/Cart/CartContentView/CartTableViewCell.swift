@@ -16,11 +16,11 @@ final class CartTableViewCell: UITableViewCell {
     private var productTitleLabel: UILabel!
 
     private let thumbnailSize: CGFloat = 100
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .white
+        backgroundColor = .clear
+        contentView.backgroundColor = Color.foreground
 
         setupProductImageView()
         setupProductPriceLabel()
@@ -37,6 +37,7 @@ final class CartTableViewCell: UITableViewCell {
         productPriceLabel = UILabel()
         productPriceLabel.font = .boldSystemFont(ofSize: 17)
         productPriceLabel.textAlignment = .right
+        productPriceLabel.textColor = Color.text
         contentView.addSubview(productPriceLabel)
         activateProductPriceLabelConstraints(view: productPriceLabel, anchorView: productImageView)
     }
@@ -45,6 +46,7 @@ final class CartTableViewCell: UITableViewCell {
         productTitleLabel = UILabel()
         productTitleLabel.font = .boldSystemFont(ofSize: 17)
         productTitleLabel.numberOfLines = 0
+        productTitleLabel.textColor = Color.text
         contentView.addSubview(productTitleLabel)
         activateProductTitleLabelConstraints(view: productTitleLabel, anchorView: productImageView)
     }

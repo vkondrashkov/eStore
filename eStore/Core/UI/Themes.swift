@@ -18,6 +18,6 @@ struct Themes {
     }
 
     static func value<T>(from values: [ThemeType: T]) -> T {
-        return values[currentTheme] ?? values[.light]!
+        return values[currentTheme] ?? values[.any] ?? values[.light]!
     }
 }

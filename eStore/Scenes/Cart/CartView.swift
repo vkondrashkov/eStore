@@ -18,9 +18,6 @@ final class CartViewImpl: UIViewController {
     private var cartTableViewDataSource = CartTableViewDataSource()
     private var cartTableView: UITableView!
 
-    private let productsListBackgroundColor = UIColor(red: 242.0 / 255.0, green: 241.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-
     override func loadView() {
         view = UIView()
 
@@ -51,19 +48,24 @@ final class CartViewImpl: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = productsListBackgroundColor
-        navigationController?.navigationBar.tintColor = customTintColor
+        view.backgroundColor = Color.background
+        navigationController?.navigationBar.tintColor = Color.shamrock
+        navigationController?.navigationBar.barTintColor = Color.navigationBar
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Color.text]
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: Color.text]
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.barStyle = Themes.value(from: [.light: .default, .dark: .black])
         title = "Cart"
 
         loadingView.isHidden = true
 
-        fadeMaskView.backgroundColor = UIColor(white: 0.0, alpha: 0.2)
+        fadeMaskView.backgroundColor = Color.silver
 
         activityIndicator.style = .white
 
         cartTableView.tableFooterView = UIView()
         cartTableView.backgroundColor = .clear
+        cartTableView.separatorColor = Color.border
         cartTableView.register(CartTableViewCell.self, forCellReuseIdentifier: CartTableViewCell.reuseIdentifier)
         cartTableView.dataSource = cartTableViewDataSource
         cartTableView.delegate = self

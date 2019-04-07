@@ -32,6 +32,7 @@ final class CatalogViewImpl: UIViewController {
         navigationController?.navigationBar.barTintColor = Color.navigationBar
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Color.text]
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: Color.text]
+        navigationController?.navigationBar.barStyle = Themes.value(from: [.light: .default, .dark: .black])
 
         categoryTableView.tableFooterView = UIView() // Is needed to remove unnecessary separators
         categoryTableView.backgroundColor = .clear
