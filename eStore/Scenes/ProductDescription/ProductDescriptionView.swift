@@ -18,16 +18,22 @@ final class ProductDescriptionViewImpl: UIViewController {
     private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
 
     override func loadView() {
-        super.loadView()
+        view = UIView()
+
+        descriptionTableView = UITableView()
+        view.addSubview(descriptionTableView)
+        descriptionTableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
         view.backgroundColor = productDescriptionBackgroundColor
         title = "Description"
         navigationController?.navigationBar.tintColor = customTintColor
 
-        setupDescriptionTableView()
-    }
-
-    private func setupDescriptionTableView() {
-        descriptionTableView = UITableView()
         descriptionTableView.tableFooterView = UIView()
         descriptionTableView.backgroundColor = .clear
         descriptionTableView.register(ProductDescriptionTableViewCell.self, forCellReuseIdentifier: ProductDescriptionTableViewCell.reuseIdentifier)
@@ -35,15 +41,11 @@ final class ProductDescriptionViewImpl: UIViewController {
         descriptionTableView.register(ProductDescriptionTablePriceCell.self, forCellReuseIdentifier: ProductDescriptionTablePriceCell.reuseIdentifier)
         descriptionTableView.dataSource = dataSource
         descriptionTableView.delegate = self
-        view.addSubview(descriptionTableView)
-        activateDescriptionTableViewConstraints(view: descriptionTableView)
     }
 }
 
 // MARK: - ProductDescriptionView implementation
-extension ProductDescriptionViewImpl: ProductDescriptionView {
-    
-}
+extension ProductDescriptionViewImpl: ProductDescriptionView { }
 
 // MARK: - ProductDescriptionShow implementation
 extension ProductDescriptionViewImpl: ProductDescriptionShow {
@@ -55,18 +57,4 @@ extension ProductDescriptionViewImpl: ProductDescriptionShow {
 // MARK: - UITableViewDelegate implementation
 extension ProductDescriptionViewImpl: UITableViewDelegate {
 
-}
-
-// MARK: - Constraints
-private extension ProductDescriptionViewImpl {
-    func activateDescriptionTableViewConstraints(view: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-            view.bottomAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.bottomAnchor)
-            ])
-    }
 }
