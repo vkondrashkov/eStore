@@ -6,7 +6,7 @@
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
 //
 
-enum ThemeType {
+enum ThemeType: Int {
     case light
     case dark
     case any
@@ -14,7 +14,7 @@ enum ThemeType {
 
 struct Themes {
     static var currentTheme: ThemeType {
-        return .dark // TODO: Make integration to UserDefaults
+        return UserDefaultsManager.theme
     }
 
     static func value<T>(from values: [ThemeType: T]) -> T {

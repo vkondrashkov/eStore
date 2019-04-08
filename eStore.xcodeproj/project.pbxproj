@@ -25,6 +25,7 @@
 		9C56E109225A93D900E72428 /* ThemeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E108225A93D900E72428 /* ThemeCoordinator.swift */; };
 		9C56E10B225A93E000E72428 /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E10A225A93E000E72428 /* ThemeView.swift */; };
 		9C56E10D225A93E700E72428 /* ThemePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E10C225A93E700E72428 /* ThemePresenter.swift */; };
+		9C56E10F225A950A00E72428 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E10E225A950A00E72428 /* UserDefaultsManager.swift */; };
 		9C76ABAD22357FCC00FB39DA /* Specification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76ABAC22357FCC00FB39DA /* Specification.swift */; };
 		9C76ABAF223588D900FB39DA /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76ABAE223588D900FB39DA /* ProductType.swift */; };
 		9C76ABB122359F8400FB39DA /* ProductsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76ABB022359F8400FB39DA /* ProductsService.swift */; };
@@ -155,6 +156,7 @@
 		9C56E108225A93D900E72428 /* ThemeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCoordinator.swift; sourceTree = "<group>"; };
 		9C56E10A225A93E000E72428 /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
 		9C56E10C225A93E700E72428 /* ThemePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePresenter.swift; sourceTree = "<group>"; };
+		9C56E10E225A950A00E72428 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		9C76ABAC22357FCC00FB39DA /* Specification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Specification.swift; sourceTree = "<group>"; };
 		9C76ABAE223588D900FB39DA /* ProductType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
 		9C76ABB022359F8400FB39DA /* ProductsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsService.swift; sourceTree = "<group>"; };
@@ -504,6 +506,7 @@
 			children = (
 				9CC46C162216982E005E24F5 /* KeyboardManager.swift */,
 				9CC46C1922176B39005E24F5 /* AlertFactory.swift */,
+				9C56E10E225A950A00E72428 /* UserDefaultsManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -901,6 +904,7 @@
 				9C83BC05222EAEEB00CBB1FF /* ProductDescriptionScene.swift in Sources */,
 				9CC46C0722161550005E24F5 /* SignInCoordinator.swift in Sources */,
 				9C83BB94222A591A00CBB1FF /* ProductsListTableViewDataSource.swift in Sources */,
+				9C56E10F225A950A00E72428 /* UserDefaultsManager.swift in Sources */,
 				9CA418E0221D8A0900BAF215 /* OperatingSystem.swift in Sources */,
 				9CC46BFF22161529005E24F5 /* SignInContract.swift in Sources */,
 				9C83BC09222EAEFF00CBB1FF /* ProductDescriptionView.swift in Sources */,

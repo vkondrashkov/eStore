@@ -73,7 +73,10 @@ extension ProfilePresenterImpl: ProfilePresenter {
         let contactCategory = ProfileCategoryImpl(name: "Contact us", iconUrl: "help-icon", onTapAction: { [weak self] in
             self?.handleContactCategoryPress()
         })
-        let helpSection = ProfileSection(name: "Help", categories: [settingsCategory, contactCategory])
+        let themeCategory = ProfileCategoryImpl(name: "Theme", iconUrl: "settings-icon", onTapAction: { [weak self] in
+            UserDefaultsManager.theme = Themes.currentTheme == .light ? .dark : .light
+        })
+        let helpSection = ProfileSection(name: "Help", categories: [settingsCategory, contactCategory, themeCategory])
 
         let logoutCategory = ProfileCategoryImpl(name: "Log out", iconUrl: "exit-icon", type: .warning, onTapAction: { [weak self] in
             self?.handleLogoutCategoryPress()
