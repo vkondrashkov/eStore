@@ -10,6 +10,7 @@ import UIKit
 
 protocol SignInDependency: AnyObject {
     var parent: UINavigationController { get }
+    var themeManager: ThemeManager { get }
 }
 
 protocol SignInBuilder: AnyObject {

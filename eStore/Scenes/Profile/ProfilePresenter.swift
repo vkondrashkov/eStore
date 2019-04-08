@@ -9,12 +9,16 @@
 final class ProfilePresenterImpl {
     private unowned let view: ProfileView
     private unowned let router: ProfileRouter
+    private weak var themeManager: ThemeManager?
 
     init(view: ProfileView,
-         router: ProfileRouter) {
+         router: ProfileRouter,
+         themeManager: ThemeManager) {
 
         self.view = view
         self.router = router
+        self.themeManager = themeManager
+        self.themeManager?.add(observer: self)
     }
 
     private func handleCartCategoryPress() {
@@ -89,6 +93,7 @@ extension ProfilePresenterImpl: ProfilePresenter {
 
         let sections = [userSection,cartSection, helpSection, logoutSection]
         view.display(sections: sections)
+        view.update(theme: themeManager?.currentTheme ?? LightTheme())
     }
 
     func handleRightBarButtonPress() {
@@ -108,6 +113,6 @@ extension ProfilePresenterImpl: ProfilePresenter {
 // MARK: - ThemeObserver implementation
 extension ProfilePresenterImpl: ThemeObserver {
     func didChangedTheme(_ theme: Theme) {
-
+        view.update(theme: theme)
     }
 }

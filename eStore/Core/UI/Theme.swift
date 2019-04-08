@@ -8,7 +8,11 @@
 
 import UIKit
 
-class Theme: NSObject, NSCoding {
+class Theme: NSObject, NSCoding, NSSecureCoding {
+    static var supportsSecureCoding: Bool {
+        return true
+    }
+
     var barColor: UIColor
     var backgroundColor: UIColor
     var foregroundColor: UIColor

@@ -27,10 +27,13 @@ extension DashboardBuilderImpl: DashboardBuilder {
         view.cartNavigation = cartNavigation
         view.profileNavigation = profileNavigation
         view.setupTabs()
-        let component = DashboardComponent(rootViewController: view,
-                                           catalogNavigation: catalogNavigation,
-                                           cartNavigation: cartNavigation,
-                                           profileNavigation: profileNavigation)
+        let component = DashboardComponent(
+            rootViewController: view,
+            catalogNavigation: catalogNavigation,
+            cartNavigation: cartNavigation,
+            profileNavigation: profileNavigation,
+            themeManager: dependency.themeManager
+        )
         let scene = DashboardSceneImpl(rootViewController: dependency.parent)
         let profileBuilder = ProfileBuilderImpl(dependency: component)
         let cartBuilder = CartBuilderImpl(dependency: component)

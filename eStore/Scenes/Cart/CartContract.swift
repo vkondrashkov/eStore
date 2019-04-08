@@ -10,6 +10,7 @@ import UIKit
 
 protocol CartDependency: AnyObject {
     var cartNavigation: UINavigationController { get }
+    var themeManager: ThemeManager { get }
 }
 
 protocol CartBuilder: AnyObject {

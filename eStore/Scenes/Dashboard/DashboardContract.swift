@@ -10,6 +10,7 @@ import UIKit
 
 protocol DashboardDependency: AnyObject {
     var parent: UIViewController { get }
+    var themeManager: ThemeManager { get }
 }
 
 protocol DashboardBuilder: AnyObject {

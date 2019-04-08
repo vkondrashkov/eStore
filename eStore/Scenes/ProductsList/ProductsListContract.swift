@@ -10,6 +10,7 @@ import UIKit
 
 protocol ProductsListDependency: AnyObject {
     var navigation: UINavigationController { get }
+    var themeManager: ThemeManager { get }
 }
 
 protocol ProductsListBuilder: AnyObject {

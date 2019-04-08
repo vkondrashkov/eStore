@@ -24,7 +24,7 @@ struct UserDefaultsManager {
             return theme
         }
         set {
-            guard let data = try? NSKeyedArchiver.archivedData(withRootObject: newValue, requiringSecureCoding: false) else {
+            guard let data = try? NSKeyedArchiver.archivedData(withRootObject: newValue, requiringSecureCoding: true) else {
                 assertionFailure("Cant save")
                 return
             }

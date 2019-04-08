@@ -10,6 +10,7 @@ import UIKit
 
 protocol RootDependency: AnyObject {
     var parent: UIWindow { get }
+    var themeManager: ThemeManager { get }
 }
 
 protocol RootBuilder: AnyObject {

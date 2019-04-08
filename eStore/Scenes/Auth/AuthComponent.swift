@@ -10,9 +10,13 @@ import UIKit
 
 final class AuthComponent {
     let rootViewController: UINavigationController
+    let themeManager: ThemeManager
 
-    init(rootViewController: UINavigationController) {
+    init(rootViewController: UINavigationController,
+         themeManager: ThemeManager) {
+
         self.rootViewController = rootViewController
+        self.themeManager = themeManager
     }
 }
 

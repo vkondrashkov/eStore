@@ -26,18 +26,13 @@ final class ProfileViewImpl: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Color.background
+        update(theme: ThemeManagerImpl().currentTheme) // Temp
         title = "Profile"
-        navigationController?.navigationBar.tintColor = Color.shamrock
-        navigationController?.navigationBar.barTintColor = Color.navigationBar
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Color.text]
-        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: Color.text]
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.barStyle = Themes.value(from: [.light: .default, .dark: .black])
 
         profileTableView.tableFooterView = UIView() // Is needed to remove unnecessary separators
         profileTableView.backgroundColor = .clear
-        profileTableView.separatorColor = Color.border
         profileTableView.register(ProfileRegularCategoryTableViewCell.self, forCellReuseIdentifier: ProfileRegularCategoryTableViewCell.reuseIdentifier)
         profileTableView.register(ProfileThumbnailCategoryTableViewCell.self, forCellReuseIdentifier: ProfileThumbnailCategoryTableViewCell.reuseIdentifier)
         profileTableView.register(ProfileWarningCategoryTableViewCell.self, forCellReuseIdentifier: ProfileWarningCategoryTableViewCell.reuseIdentifier)
@@ -70,6 +65,16 @@ extension ProfileViewImpl: ProfileView {
     func display(alert: Alert) {
         let alertController = AlertFactory().make(alert: alert)
         present(alertController, animated: true, completion: nil)
+    }
+
+    func update(theme: Theme) {
+        // TODO: navigationController?.navigationBar.barStyle = theme.barColor
+        view.backgroundColor = theme.backgroundColor
+        navigationController?.navigationBar.tintColor = theme.tintColor
+        navigationController?.navigationBar.barTintColor = theme.barColor
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: theme.textColor]
+        profileTableView.separatorColor = theme.borderColor
     }
 }
 

@@ -6,7 +6,7 @@
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
 //
 
-protocol ThemeManager {
+protocol ThemeManager: AnyObject {
     var currentTheme: Theme { get }
     func applyTheme(_ theme: Theme)
     func add(observer: ThemeObserver)
@@ -17,7 +17,7 @@ final class ThemeManagerImpl: ThemeManager {
     private var observers: [WeakRef<AnyObject>] = []
 
     var currentTheme: Theme {
-        return DarkTheme() // Temp
+        return UserDefaultsManager.theme
     }
 
     func applyTheme(_ theme: Theme) {

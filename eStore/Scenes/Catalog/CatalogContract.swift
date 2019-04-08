@@ -10,6 +10,7 @@ import UIKit
 
 protocol CatalogDependency: AnyObject {
     var catalogNavigation: UINavigationController { get }
+    var themeManager: ThemeManager { get }
 }
 
 protocol CatalogBuilder: AnyObject {

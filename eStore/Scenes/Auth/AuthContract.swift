@@ -10,6 +10,7 @@ import UIKit
 
 protocol AuthDependency: AnyObject {
     var parent: UIViewController { get }
+    var themeManager: ThemeManager { get }
 }
 
 protocol AuthBuilder: AnyObject {

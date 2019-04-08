@@ -10,9 +10,13 @@ import UIKit
 
 final class ProductDescriptionComponent {
     let navigation: UINavigationController
+    let themeManager: ThemeManager
     
-    init(navigation: UINavigationController) {
+    init(navigation: UINavigationController,
+         themeManager: ThemeManager) {
+
         self.navigation = navigation
+        self.themeManager = themeManager
     }
 }
 

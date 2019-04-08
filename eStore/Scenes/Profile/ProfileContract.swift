@@ -10,6 +10,7 @@ import UIKit
 
 protocol ProfileDependency: AnyObject {
     var profileNavigation: UINavigationController { get }
+    var themeManager: ThemeManager { get }
 }
 
 protocol ProfileBuilder: AnyObject {
@@ -39,6 +40,8 @@ protocol ProfileView: AnyObject {
     func display(rightBarButton: String)
     func display(sections: [ProfileSection])
     func display(alert: Alert)
+
+    func update(theme: Theme)
 }
 
 protocol ProfilePresenter: AnyObject {
