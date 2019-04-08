@@ -14,7 +14,7 @@ enum ThemeType: Int {
 
 struct Themes {
     static var currentTheme: ThemeType {
-        return UserDefaultsManager.theme
+        return .dark//UserDefaultsManager.theme
     }
 
     static func value<T>(from values: [ThemeType: T]) -> T {

@@ -74,7 +74,11 @@ extension ProfilePresenterImpl: ProfilePresenter {
             self?.handleContactCategoryPress()
         })
         let themeCategory = ProfileCategoryImpl(name: "Theme", iconUrl: "settings-icon", onTapAction: { [weak self] in
-            UserDefaultsManager.theme = Themes.currentTheme == .light ? .dark : .light
+            guard let self = self else { return }
+            let test = ThemeManagerImpl()
+            test.add(observer: self)
+            test.applyTheme(LightTheme())
+//            UserDefaultsManager.theme = Themes.currentTheme == .light ? .dark : .light
         })
         let helpSection = ProfileSection(name: "Help", categories: [settingsCategory, contactCategory, themeCategory])
 
@@ -98,5 +102,12 @@ extension ProfilePresenterImpl: ProfilePresenter {
             secondaryAction: nil
         )
         view.display(alert: alert)
+    }
+}
+
+// MARK: - ThemeObserver implementation
+extension ProfilePresenterImpl: ThemeObserver {
+    func didChangedTheme(_ theme: Theme) {
+
     }
 }
