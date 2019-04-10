@@ -1,4 +1,6 @@
 # eStore
+[![License](https://img.shields.io/github/license/vkondrashkov/eStore.svg)](https://github.com/vkondrashkov/eStore/blob/Develop/LICENSE)
+
 __eStore__ – simple online store mobile application, that fetches
 information from custom server. Application is written fully in Swift
 without use of storyboards and xib files. The pattern of choice to implement
