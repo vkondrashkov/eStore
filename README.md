@@ -22,8 +22,8 @@ These instructions will get you a copy of the project up and running on your loc
 Oops, they have gone somewhere, let's wait for them!
 
 ## Build with
-- [SnapKit](https://github.com/SnapKit/SnapKit "SnapKit/SnapKit")
-- [ObjectMapper](https://github.com/tristanhimmelman/ObjectMapper "tristanhimmelman/ObjectMapper")
+- [SnapKit](https://github.com/SnapKit/SnapKit "SnapKit/SnapKit") - DSL to make Auto Layout easy.
+- [ObjectMapper](https://github.com/tristanhimmelman/ObjectMapper "tristanhimmelman/ObjectMapper") - used to convert JSON to model objects.
 
 ## Contributing
 Coming soon!
