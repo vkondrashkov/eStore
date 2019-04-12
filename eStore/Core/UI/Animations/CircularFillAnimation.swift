@@ -37,8 +37,10 @@ extension CircularFillAnimation: CAAnimationDelegate {
 // MARK: - Animation implementation
 extension CircularFillAnimation: Animation {
     func run(completion: @escaping () -> Void) {
+        let maxSideSize = max(snapshot.bounds.width, snapshot.bounds.height)
+
         let path = UIBezierPath(rect: snapshot.bounds)
-        path.addArc(withCenter: position, radius: 500, startAngle: 0.0, endAngle: CGFloat(2 * Double.pi), clockwise: true)
+        path.addArc(withCenter: position, radius: maxSideSize, startAngle: 0.0, endAngle: CGFloat(2 * Double.pi), clockwise: true)
 
         let scale = CABasicAnimation(keyPath: "path")
         scale.toValue = path.cgPath
