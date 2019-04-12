@@ -13,5 +13,5 @@ enum AnimationContextType {
 
 protocol Animation {
     func prepare()
-    func run(completion: @escaping () -> Void)
+    func run(completion: (() -> Void)?)
 }

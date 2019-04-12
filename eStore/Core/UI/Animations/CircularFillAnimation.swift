@@ -16,6 +16,8 @@ class CircularFillAnimation: NSObject {
     private let maskLayer = CAShapeLayer()
     private var snapshot: UIView!
 
+    private var completion: (() -> Void)?
+
     init(view: UIView,
          position: CGPoint,
          contextType: AnimationContextType) {
@@ -31,12 +33,14 @@ class CircularFillAnimation: NSObject {
 extension CircularFillAnimation: CAAnimationDelegate {
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         self.snapshot.removeFromSuperview()
+        completion?()
     }
 }
 
 // MARK: - Animation implementation
 extension CircularFillAnimation: Animation {
-    func run(completion: @escaping () -> Void) {
+    func run(completion: (() -> Void)?) {
+        self.completion = completion
         let maxSideSize = max(snapshot.bounds.width, snapshot.bounds.height)
 
         let path = UIBezierPath(rect: snapshot.bounds)
