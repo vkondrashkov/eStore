@@ -1,4 +1,5 @@
 # eStore
+![Language](https://img.shields.io/badge/swift-4.2-orange.svg)
 [![License](https://img.shields.io/github/license/vkondrashkov/eStore.svg)](https://github.com/vkondrashkov/eStore/blob/Develop/LICENSE)
 
 __eStore__ – simple online store mobile application, that fetches
@@ -15,7 +16,7 @@ These instructions will get you a copy of the project up and running on your loc
 - Git client
 
 ### Installing
-1. Clone or download this repository [Develop](https://github.com/vkondrashkov/eStore/tree/Develop "eStore Develop") branch
+1. Clone or download this repository [develop](https://github.com/vkondrashkov/eStore/tree/develop "eStore/develop") branch
 2. In terminal switch to your repository with project
 3. Run `pod install` command
 4. Now you can install application from Xcode to your device or simulator
@@ -23,7 +24,7 @@ These instructions will get you a copy of the project up and running on your loc
 ## Tests
 Oops, they have gone somewhere, let's wait for them!
 
-## Build with
+## Dependencies
 - [SnapKit](https://github.com/SnapKit/SnapKit "SnapKit/SnapKit") - DSL to make Auto Layout easy.
 - [ObjectMapper](https://github.com/tristanhimmelman/ObjectMapper "tristanhimmelman/ObjectMapper") - used to convert JSON to model objects.
 
