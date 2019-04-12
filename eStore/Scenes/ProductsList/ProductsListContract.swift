@@ -29,7 +29,7 @@ protocol ProductsListRouter: AnyObject {
     func showProductDescription(for storeItem: StoreItem)
 }
 
-protocol ProductsListView: AnyObject {
+protocol ProductsListView: AnyObject, ThemeSupportable {
     func showActivityIndicator()
     func hideActivityIndicator()
     func display(storeItemList: [StoreItem])

@@ -30,9 +30,12 @@ extension ProductsListBuilderImpl: ProductsListBuilder {
         let coordinator = ProductsListCoordinator(scene: scene,
                                                   show: view,
                                                   productDescriptionBuilder: productDescriptionBuilder)
-        let presenter = ProductsListPresenterImpl(view: view,
-                                                  router: coordinator,
-                                                  productType: productType)
+        let presenter = ProductsListPresenterImpl(
+            view: view,
+            router: coordinator,
+            productType: productType,
+            themeManager: dependency.themeManager
+        )
         view.presenter = presenter
         return coordinator
     }
