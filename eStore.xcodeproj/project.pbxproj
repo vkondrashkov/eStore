@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		9C1C9622225F590F0055EE46 /* ThemeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C9621225F590F0055EE46 /* ThemeBuilder.swift */; };
 		9C1C9624225F5C550055EE46 /* ThemeSupportable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C9623225F5C550055EE46 /* ThemeSupportable.swift */; };
+		9C415BF92260856D00658A2B /* TransitionAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C415BF82260856D00658A2B /* TransitionAnimations.swift */; };
+		9C415BFC2260868300658A2B /* CircularFillAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C415BFB2260868300658A2B /* CircularFillAnimation.swift */; };
+		9C415BFE226086B100658A2B /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C415BFD226086B100658A2B /* Animation.swift */; };
 		9C452FAE2242DAEF00924FA5 /* CartContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452FAD2242DAEF00924FA5 /* CartContract.swift */; };
 		9C452FB02242DAF800924FA5 /* CartComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452FAF2242DAF800924FA5 /* CartComponent.swift */; };
 		9C452FB22242DB0000924FA5 /* CartBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452FB12242DB0000924FA5 /* CartBuilder.swift */; };
@@ -148,6 +151,9 @@
 		9636105CD80314886F52C479 /* Pods-eStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eStore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eStore/Pods-eStore.debug.xcconfig"; sourceTree = "<group>"; };
 		9C1C9621225F590F0055EE46 /* ThemeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeBuilder.swift; sourceTree = "<group>"; };
 		9C1C9623225F5C550055EE46 /* ThemeSupportable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSupportable.swift; sourceTree = "<group>"; };
+		9C415BF82260856D00658A2B /* TransitionAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimations.swift; sourceTree = "<group>"; };
+		9C415BFB2260868300658A2B /* CircularFillAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularFillAnimation.swift; sourceTree = "<group>"; };
+		9C415BFD226086B100658A2B /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		9C452FAD2242DAEF00924FA5 /* CartContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartContract.swift; sourceTree = "<group>"; };
 		9C452FAF2242DAF800924FA5 /* CartComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartComponent.swift; sourceTree = "<group>"; };
 		9C452FB12242DB0000924FA5 /* CartBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBuilder.swift; sourceTree = "<group>"; };
@@ -304,6 +310,16 @@
 			path = Themes;
 			sourceTree = "<group>";
 		};
+		9C415BFA2260865E00658A2B /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				9C415BF82260856D00658A2B /* TransitionAnimations.swift */,
+				9C415BFB2260868300658A2B /* CircularFillAnimation.swift */,
+				9C415BFD226086B100658A2B /* Animation.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		9C452FAA2242DAB300924FA5 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +347,7 @@
 		9C56E0FA225A745C00E72428 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9C415BFA2260865E00658A2B /* Animations */,
 				9C56E0FB225A747100E72428 /* Color.swift */,
 				9C56E116225B5FA200E72428 /* Theme.swift */,
 				9C56E118225B605000E72428 /* DarkTheme.swift */,
@@ -916,6 +933,7 @@
 				9CC46C2822180B9F005E24F5 /* ProfileView.swift in Sources */,
 				9CC46BD42215392A005E24F5 /* SignUpView.swift in Sources */,
 				9CC46C172216982E005E24F5 /* KeyboardManager.swift in Sources */,
+				9C415BFE226086B100658A2B /* Animation.swift in Sources */,
 				9CA41926222324E800BAF215 /* ProductsListComponent.swift in Sources */,
 				9C9C73CF223EB18000C4B5EE /* ProfileCategoryTableViewDataSource.swift in Sources */,
 				9CA418D6221D883700BAF215 /* Smartphone.swift in Sources */,
@@ -953,6 +971,7 @@
 				9CA418E3221D8CEC00BAF215 /* CatalogContract.swift in Sources */,
 				9CBC281C223BC5A70091082B /* UIImageView+Downloaded.swift in Sources */,
 				9CC46C2022180B7B005E24F5 /* ProfileComponent.swift in Sources */,
+				9C415BFC2260868300658A2B /* CircularFillAnimation.swift in Sources */,
 				9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */,
 				9CA4193422251C5600BAF215 /* ProductsListTableViewCell.swift in Sources */,
 				9C452FBA2242DB1E00924FA5 /* CartPresenter.swift in Sources */,
@@ -983,6 +1002,7 @@
 				9CC46BCE2215390F005E24F5 /* SignUpScene.swift in Sources */,
 				9CA418EF221D8D1F00BAF215 /* CatalogPresenter.swift in Sources */,
 				9C76ABAF223588D900FB39DA /* ProductType.swift in Sources */,
+				9C415BF92260856D00658A2B /* TransitionAnimations.swift in Sources */,
 				9CC46C2622180B95005E24F5 /* ProfileCoordinator.swift in Sources */,
 				9CC5526B220AFCC30004ACC4 /* RootBuilder.swift in Sources */,
 				9CC46BB52214C3B7005E24F5 /* AuthComponent.swift in Sources */,
