@@ -62,7 +62,7 @@ final class ProfileWarningCategoryTableViewCell: UITableViewCell {
 
 // MARK: - ThemeSupportable implementation
 extension ProfileWarningCategoryTableViewCell: ThemeSupportable {
-    func apply(theme: Theme) {
+    func apply(theme: Theme, animated: Bool) {
         contentView.backgroundColor = theme.foregroundColor
         titleLabel.textColor = Color.cinnabar
     }

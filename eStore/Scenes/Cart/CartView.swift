@@ -105,7 +105,7 @@ extension CartViewImpl: CartView {
 
 // MARK: - ThemeSupportable implementation
 extension CartViewImpl: ThemeSupportable {
-    func apply(theme: Theme) {
+    func apply(theme: Theme, animated: Bool) {
         view.backgroundColor = theme.backgroundColor
         navigationController?.navigationBar.tintColor = theme.tintColor
         navigationController?.navigationBar.barTintColor = theme.barColor

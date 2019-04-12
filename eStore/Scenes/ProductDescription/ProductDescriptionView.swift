@@ -45,7 +45,7 @@ extension ProductDescriptionViewImpl: ProductDescriptionView { }
 
 // MARK: - ThemeSupportable implementation
 extension ProductDescriptionViewImpl: ThemeSupportable {
-    func apply(theme: Theme) {
+    func apply(theme: Theme, animated: Bool) {
         view.backgroundColor = theme.backgroundColor
         descriptionTableView.separatorColor = theme.borderColor
         descriptionTableView.reloadData()

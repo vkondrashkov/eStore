@@ -20,7 +20,7 @@ class ProductDescriptionTableViewDataSource: NSObject, UITableViewDataSource {
         if indexPath.row == 0 {
             let header = tableView.dequeueReusableCell(withIdentifier: ProductDescriptionTableHeaderCell.reuseIdentifier, for: indexPath) as! ProductDescriptionTableHeaderCell
             header.display(title: "\(item.brand) \(item.name)", imageUrl: item.imageUrl)
-            header.apply(theme: themeManager.currentTheme)
+            header.apply(theme: themeManager.currentTheme, animated: false)
             header.isUserInteractionEnabled = false
             return header
         }
@@ -31,7 +31,7 @@ class ProductDescriptionTableViewDataSource: NSObject, UITableViewDataSource {
             price.display(price: "Price: \(item.price) BYN")
             price.display(cartAddButtonText: "Add to cart", isAvailable: isAvailable)
             price.display(stockAvailableText: stockAvailableText, isAvailable: isAvailable)
-            price.apply(theme: themeManager.currentTheme)
+            price.apply(theme: themeManager.currentTheme, animated: false)
             price.isUserInteractionEnabled = false
             return price
         }
@@ -51,7 +51,7 @@ class ProductDescriptionTableViewDataSource: NSObject, UITableViewDataSource {
         default:
             value = "unknown"
         }
-        cell.apply(theme: themeManager.currentTheme)
+        cell.apply(theme: themeManager.currentTheme, animated: false)
         cell.display(name: specification.name, value: value)
         cell.isUserInteractionEnabled = false
         return cell

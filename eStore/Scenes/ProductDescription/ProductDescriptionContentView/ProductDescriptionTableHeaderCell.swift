@@ -63,7 +63,7 @@ final class ProductDescriptionTableHeaderCell: UITableViewCell {
 
 // MARK: - ThemeSupportable implementation
 extension ProductDescriptionTableHeaderCell: ThemeSupportable {
-    func apply(theme: Theme) {
+    func apply(theme: Theme, animated: Bool) {
         contentView.backgroundColor = theme.foregroundColor
         productTitleLabel.textColor = theme.textColor
     }

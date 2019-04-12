@@ -60,7 +60,7 @@ extension DashboardViewImpl: DashboardView { }
 
 // MARK: - ThemeSupportable implementation
 extension DashboardViewImpl: ThemeSupportable {
-    func apply(theme: Theme) {
+    func apply(theme: Theme, animated: Bool) {
         view.backgroundColor = theme.backgroundColor
         tabBar.tintColor = theme.tintColor
         tabBar.barTintColor = theme.barColor

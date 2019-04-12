@@ -32,7 +32,7 @@ final class ProductsListPresenterImpl {
 // MARK: - ProductsListPresenter implementation
 extension ProductsListPresenterImpl: ProductsListPresenter {
     func handleLoadView() {
-        view.apply(theme: themeManager.currentTheme)
+        view.apply(theme: themeManager.currentTheme, animated: false)
         view.showActivityIndicator()
         // TODO: Dependency injection
         let service = ProductsServiceImpl()
@@ -76,6 +76,6 @@ extension ProductsListPresenterImpl: ProductsListPresenter {
 // MARK: - ThemeObserver implementation
 extension ProductsListPresenterImpl: ThemeObserver {
     func didChangedTheme(_ theme: Theme) {
-        view.apply(theme: theme)
+        view.apply(theme: theme, animated: true)
     }
 }

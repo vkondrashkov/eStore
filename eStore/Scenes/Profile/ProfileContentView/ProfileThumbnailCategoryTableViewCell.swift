@@ -65,7 +65,7 @@ final class ProfileThumbnailCategoryTableViewCell: UITableViewCell {
 
 // MARK: - ThemeSupportable implementation
 extension ProfileThumbnailCategoryTableViewCell: ThemeSupportable {
-    func apply(theme: Theme) {
+    func apply(theme: Theme, animated: Bool) {
         contentView.backgroundColor = theme.foregroundColor
         thumbnailImageView.layer.borderColor = theme.borderColor.cgColor
         titleLabel.textColor = theme.textColor

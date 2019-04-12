@@ -23,14 +23,14 @@ final class ProductDescriptionPresenterImpl {
 // MARK: - ProductDescriptionPresenter implementation
 extension ProductDescriptionPresenterImpl: ProductDescriptionPresenter {
     func handleLoadView() {
-        view.apply(theme: themeManager.currentTheme)
+        view.apply(theme: themeManager.currentTheme, animated: false)
     }
 }
 
 // MARK: - ThemeObserver implementation
 extension ProductDescriptionPresenterImpl: ThemeObserver {
     func didChangedTheme(_ theme: Theme) {
-        view.apply(theme: theme)
+        view.apply(theme: theme, animated: true)
     }
 }
 

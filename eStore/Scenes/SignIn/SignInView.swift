@@ -176,7 +176,7 @@ extension SignInViewImpl: SignInView {
 
 // MARK: - ThemeSupportable implementation
 extension SignInViewImpl: ThemeSupportable {
-    func apply(theme: Theme) {
+    func apply(theme: Theme, animated: Bool) {
         view.backgroundColor = theme.backgroundColor
         emailCaption.textColor = theme.textColor
         emailTextField.backgroundColor = theme.foregroundColor

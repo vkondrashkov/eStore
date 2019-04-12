@@ -62,7 +62,7 @@ final class ProductsListTableViewCell: UITableViewCell {
 
 // MARK: - ThemeSupportable implementation
 extension ProductsListTableViewCell: ThemeSupportable {
-    func apply(theme: Theme) {
+    func apply(theme: Theme, animated: Bool) {
         contentView.backgroundColor = theme.foregroundColor
         productTitleLabel.textColor = theme.textColor
     }

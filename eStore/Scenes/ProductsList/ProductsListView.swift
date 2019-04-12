@@ -68,7 +68,7 @@ final class ProductsListViewImpl: UIViewController {
 
 // MARK: - ThemeSupportable implementation
 extension ProductsListViewImpl: ThemeSupportable {
-    func apply(theme: Theme) {
+    func apply(theme: Theme, animated: Bool) {
         view.backgroundColor = theme.backgroundColor
         productsTableView.separatorColor = theme.borderColor
         productsTableView.reloadData()

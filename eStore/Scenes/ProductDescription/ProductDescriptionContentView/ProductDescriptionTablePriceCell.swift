@@ -93,7 +93,7 @@ final class ProductDescriptionTablePriceCell: UITableViewCell {
 
 // MARK: - ThemeSupportable implementation
 extension ProductDescriptionTablePriceCell: ThemeSupportable {
-    func apply(theme: Theme) {
+    func apply(theme: Theme, animated: Bool) {
         contentView.backgroundColor = theme.foregroundColor
         priceLabel.textColor = theme.textColor
     }

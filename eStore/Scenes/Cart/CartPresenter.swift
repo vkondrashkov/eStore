@@ -28,7 +28,7 @@ final class CartPresenterImpl {
 // MARK: - CartPresenter implementation
 extension CartPresenterImpl: CartPresenter {
     func handleLoadView() {
-        view.apply(theme: themeManager.currentTheme)
+        view.apply(theme: themeManager.currentTheme, animated: false)
         view.showActivityIndicator()
         let service = ProductsServiceImpl()
         service.getSmartphone(completion: { [weak self] result in
@@ -47,6 +47,6 @@ extension CartPresenterImpl: CartPresenter {
 // MARK: - ThemeObserver implementation
 extension CartPresenterImpl: ThemeObserver {
     func didChangedTheme(_ theme: Theme) {
-        view.apply(theme: theme)
+        view.apply(theme: theme, animated: true)
     }
 }

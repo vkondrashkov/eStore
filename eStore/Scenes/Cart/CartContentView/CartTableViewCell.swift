@@ -65,7 +65,7 @@ final class CartTableViewCell: UITableViewCell {
 
 // MARK: - ThemeSupportable implementation
 extension CartTableViewCell: ThemeSupportable {
-    func apply(theme: Theme) {
+    func apply(theme: Theme, animated: Bool) {
         contentView.backgroundColor = theme.foregroundColor
         productPriceLabel.textColor = theme.textColor
         productTitleLabel.textColor = theme.textColor

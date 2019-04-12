@@ -27,7 +27,7 @@ final class SignUpPresenterImpl {
 // MARK: - SignUpPresenter implementation
 extension SignUpPresenterImpl: SignUpPresenter {
     func shouldViewAppear() {
-        view.apply(theme: themeManager.currentTheme)
+        view.apply(theme: themeManager.currentTheme, animated: false)
         
         view.display(rightBarButton: "Sign In")
         view.display(emailCaption: "Email:")
@@ -54,7 +54,7 @@ extension SignUpPresenterImpl: SignUpPresenter {
 // MARK: - ThemeObserver implementation
 extension SignUpPresenterImpl: ThemeObserver {
     func didChangedTheme(_ theme: Theme) {
-        view.apply(theme: theme)
+        view.apply(theme: theme, animated: true)
     }
 }
 

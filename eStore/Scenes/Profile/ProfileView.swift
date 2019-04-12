@@ -69,17 +69,17 @@ extension ProfileViewImpl: ProfileView {
 
 // MARK: - ThemeSupportable implementation
 extension ProfileViewImpl: ThemeSupportable {
-    func apply(theme: Theme) {
-        // TEMP
-        guard let navigation = tabBarController else {
-            return
+    func apply(theme: Theme, animated: Bool) {
+        var animation: CircularFillAnimation?
+        if animated, let navigation = tabBarController {
+            animation = CircularFillAnimation(
+                view: navigation.view,
+                position: CGPoint(x: 300, y: 545),
+                contextType: .window
+            )
+            animation?.prepare()
         }
-        let animation = CircularFillAnimation(
-            view: navigation.view,
-            position: CGPoint(x: 300, y: 545),
-            contextType: .window
-        )
-        animation.prepare()
+
         view.backgroundColor = theme.backgroundColor
         navigationController?.navigationBar.tintColor = theme.tintColor
         navigationController?.navigationBar.barTintColor = theme.barColor
@@ -88,9 +88,7 @@ extension ProfileViewImpl: ThemeSupportable {
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: theme.textColor]
         profileTableView.separatorColor = theme.borderColor
         profileTableView.reloadData()
-        animation.run {
-            
-        }
+        animation?.run(completion: nil)
     }
 }
 

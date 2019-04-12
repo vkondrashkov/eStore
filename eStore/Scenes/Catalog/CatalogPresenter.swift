@@ -27,7 +27,7 @@ final class CatalogPresenterImpl {
 // MARK: - CatalogPresenter implementation
 extension CatalogPresenterImpl: CatalogPresenter {
     func handleLoadView() {
-        view.apply(theme: themeManager.currentTheme)
+        view.apply(theme: themeManager.currentTheme, animated: false)
     }
     
     // TEMP
@@ -39,6 +39,6 @@ extension CatalogPresenterImpl: CatalogPresenter {
 // MARK: - ThemeObserver implementation
 extension CatalogPresenterImpl: ThemeObserver {
     func didChangedTheme(_ theme: Theme) {
-        view.apply(theme: theme)
+        view.apply(theme: theme, animated: true)
     }
 }

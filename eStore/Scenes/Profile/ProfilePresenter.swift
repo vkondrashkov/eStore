@@ -61,7 +61,7 @@ final class ProfilePresenterImpl {
 // MARK: - ProfilePresenter implementation
 extension ProfilePresenterImpl: ProfilePresenter {
     func handleLoadView() {
-        view.apply(theme: themeManager.currentTheme)
+        view.apply(theme: themeManager.currentTheme, animated: false)
         view.display(rightBarButton: "Edit")
 
         let userCategory = ProfileCategoryImpl(name: "Vladislav Kondrashkov", iconUrl: "https://pp.userapi.com/c846420/v846420977/17f606/5X3A9gQCaY8.jpg?ava=1", type: .thumbnail, onTapAction: nil)
@@ -113,6 +113,6 @@ extension ProfilePresenterImpl: ProfilePresenter {
 // MARK: - ThemeObserver implementation
 extension ProfilePresenterImpl: ThemeObserver {
     func didChangedTheme(_ theme: Theme) {
-        view.apply(theme: theme)
+        view.apply(theme: theme, animated: true)
     }
 }

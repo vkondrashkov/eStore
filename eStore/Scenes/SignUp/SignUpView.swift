@@ -142,7 +142,7 @@ final class SignUpViewImpl: UIViewController {
 
 // MARK: - ThemeSupportable implementation
 extension SignUpViewImpl: ThemeSupportable {
-    func apply(theme: Theme) {
+    func apply(theme: Theme, animated: Bool) {
         view.backgroundColor = theme.backgroundColor
         emailCaption.textColor = theme.textColor
         emailTextField.backgroundColor = theme.foregroundColor

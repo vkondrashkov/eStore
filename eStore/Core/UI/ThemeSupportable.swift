@@ -7,5 +7,5 @@
 //
 
 protocol ThemeSupportable {
-    func apply(theme: Theme)
+    func apply(theme: Theme, animated: Bool)
 }

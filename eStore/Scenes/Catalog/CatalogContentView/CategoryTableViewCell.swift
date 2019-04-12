@@ -51,7 +51,7 @@ class CategoryTableViewCell: UITableViewCell {
 
 // MARK: - ThemeSupportable implementation
 extension CategoryTableViewCell: ThemeSupportable {
-    func apply(theme: Theme) {
+    func apply(theme: Theme, animated: Bool) {
         contentView.backgroundColor = theme.foregroundColor
         descriptionLabel.textColor = theme.textColor
         iconImageView.tintColor = theme.tintColor

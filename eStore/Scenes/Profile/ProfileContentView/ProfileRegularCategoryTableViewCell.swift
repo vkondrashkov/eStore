@@ -61,7 +61,7 @@ final class ProfileRegularCategoryTableViewCell: UITableViewCell {
 
 // MARK: - ThemeSupportable implementation
 extension ProfileRegularCategoryTableViewCell: ThemeSupportable {
-    func apply(theme: Theme) {
+    func apply(theme: Theme, animated: Bool) {
         contentView.backgroundColor = theme.foregroundColor
         titleLabel.textColor = theme.textColor
         iconImageView.tintColor = theme.tintColor

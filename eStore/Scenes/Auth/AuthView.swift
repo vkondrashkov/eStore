@@ -24,7 +24,7 @@ extension AuthViewImpl: AuthView { }
 
 // MARK: - ThemeSupportable implementation
 extension AuthViewImpl: ThemeSupportable {
-    func apply(theme: Theme) {
+    func apply(theme: Theme, animated: Bool) {
         view.backgroundColor = theme.backgroundColor
         navigationBar.tintColor = theme.tintColor
         navigationBar.barTintColor = theme.barColor
