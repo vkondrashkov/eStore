@@ -20,7 +20,6 @@ final class CartTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
-        contentView.backgroundColor = Color.foreground
 
         setupProductImageView()
         setupProductPriceLabel()
@@ -37,7 +36,6 @@ final class CartTableViewCell: UITableViewCell {
         productPriceLabel = UILabel()
         productPriceLabel.font = .boldSystemFont(ofSize: 17)
         productPriceLabel.textAlignment = .right
-        productPriceLabel.textColor = Color.text
         contentView.addSubview(productPriceLabel)
         activateProductPriceLabelConstraints(view: productPriceLabel, anchorView: productImageView)
     }
@@ -46,7 +44,6 @@ final class CartTableViewCell: UITableViewCell {
         productTitleLabel = UILabel()
         productTitleLabel.font = .boldSystemFont(ofSize: 17)
         productTitleLabel.numberOfLines = 0
-        productTitleLabel.textColor = Color.text
         contentView.addSubview(productTitleLabel)
         activateProductTitleLabelConstraints(view: productTitleLabel, anchorView: productImageView)
     }
@@ -63,6 +60,15 @@ final class CartTableViewCell: UITableViewCell {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - ThemeSupportable implementation
+extension CartTableViewCell: ThemeSupportable {
+    func apply(theme: Theme) {
+        contentView.backgroundColor = theme.foregroundColor
+        productPriceLabel.textColor = theme.textColor
+        productTitleLabel.textColor = theme.textColor
     }
 }
 

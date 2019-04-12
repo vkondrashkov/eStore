@@ -14,22 +14,25 @@ final class AuthViewImpl: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         modalTransitionStyle = .crossDissolve
-        view.backgroundColor = Color.background
-        navigationBar.tintColor = Color.shamrock
-        navigationBar.barTintColor = Color.navigationBar
-        navigationBar.titleTextAttributes = [.foregroundColor: Color.text]
-        navigationBar.largeTitleTextAttributes = [.foregroundColor: Color.text]
         navigationBar.prefersLargeTitles = true
-        navigationBar.barStyle = Themes.value(from: [.light: .default, .dark: .black])
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        presenter.handleLoadView()
     }
 }
 
 // MARK: - AuthView implementation
 extension AuthViewImpl: AuthView { }
+
+// MARK: - ThemeSupportable implementation
+extension AuthViewImpl: ThemeSupportable {
+    func apply(theme: Theme) {
+        // TODO: navigationController?.navigationBar.barStyle = theme.barColor
+        view.backgroundColor = theme.backgroundColor
+        navigationBar.tintColor = theme.tintColor
+        navigationBar.barTintColor = theme.barColor
+        navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
+        navigationBar.largeTitleTextAttributes = [.foregroundColor: theme.textColor]
+    }
+}
 
 // MARK: - AuthShow implementation
 extension AuthViewImpl: AuthShow {

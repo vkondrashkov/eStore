@@ -48,15 +48,9 @@ final class CartViewImpl: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Color.background
-        navigationController?.navigationBar.tintColor = Color.shamrock
-        navigationController?.navigationBar.barTintColor = Color.navigationBar
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Color.text]
-        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: Color.text]
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.barStyle = Themes.value(from: [.light: .default, .dark: .black])
         title = "Cart"
-
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         loadingView.isHidden = true
 
         fadeMaskView.backgroundColor = Color.silver
@@ -65,7 +59,6 @@ final class CartViewImpl: UIViewController {
 
         cartTableView.tableFooterView = UIView()
         cartTableView.backgroundColor = .clear
-        cartTableView.separatorColor = Color.border
         cartTableView.register(CartTableViewCell.self, forCellReuseIdentifier: CartTableViewCell.reuseIdentifier)
         cartTableView.dataSource = cartTableViewDataSource
         cartTableView.delegate = self
@@ -106,6 +99,20 @@ extension CartViewImpl: CartView {
 
     func display(storeItemList: [StoreItem]) {
         cartTableViewDataSource.items = storeItemList
+        cartTableView.reloadData()
+    }
+}
+
+// MARK: - ThemeSupportable implementation
+extension CartViewImpl: ThemeSupportable {
+    func apply(theme: Theme) {
+        // TODO: navigationController?.navigationBar.barStyle = theme.barColor
+        view.backgroundColor = theme.backgroundColor
+        navigationController?.navigationBar.tintColor = theme.tintColor
+        navigationController?.navigationBar.barTintColor = theme.barColor
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: theme.textColor]
+        cartTableView.separatorColor = theme.borderColor
         cartTableView.reloadData()
     }
 }

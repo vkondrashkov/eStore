@@ -35,7 +35,7 @@ protocol SignUpListener: AnyObject {
     func signUp()
 }
 
-protocol SignUpView: AnyObject {
+protocol SignUpView: AnyObject, ThemeSupportable {
     func display(rightBarButton: String)
     func display(emailCaption: String)
     func display(passwordCaption: String)

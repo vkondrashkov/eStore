@@ -11,23 +11,34 @@ import Foundation
 final class CatalogPresenterImpl {
     private unowned let view: CatalogView
     private unowned let router: CatalogRouter
+    private unowned let themeManager: ThemeManager
     
     init(view: CatalogView,
-         router: CatalogRouter) {
+         router: CatalogRouter,
+         themeManager: ThemeManager) {
         
         self.view = view
         self.router = router
+        self.themeManager = themeManager
+        self.themeManager.add(observer: self)
     }
 }
 
 // MARK: - CatalogPresenter implementation
 extension CatalogPresenterImpl: CatalogPresenter {
     func handleLoadView() {
-        
+        view.apply(theme: themeManager.currentTheme)
     }
     
     // TEMP
     func handleCategoryPress(title: String) {
         router.showProductsList(title: title)
+    }
+}
+
+// MARK: - ThemeObserver implementation
+extension CatalogPresenterImpl: ThemeObserver {
+    func didChangedTheme(_ theme: Theme) {
+        view.apply(theme: theme)
     }
 }

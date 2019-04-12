@@ -20,7 +20,6 @@ final class ProductDescriptionTableHeaderCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
-        contentView.backgroundColor = Color.foreground
         
         setupContainerView()
         setupProductImageView()
@@ -44,7 +43,6 @@ final class ProductDescriptionTableHeaderCell: UITableViewCell {
         productTitleLabel.font = .boldSystemFont(ofSize: 22)
         productTitleLabel.numberOfLines = 0
         productTitleLabel.textAlignment = .center
-        productTitleLabel.textColor = Color.text
         containerView.addSubview(productTitleLabel)
         activateProductTitleLabelConstraints(view: productTitleLabel, anchorView: productImageView)
     }
@@ -60,6 +58,14 @@ final class ProductDescriptionTableHeaderCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - ThemeSupportable implementation
+extension ProductDescriptionTableHeaderCell: ThemeSupportable {
+    func apply(theme: Theme) {
+        contentView.backgroundColor = theme.foregroundColor
+        productTitleLabel.textColor = theme.textColor
     }
 }
 

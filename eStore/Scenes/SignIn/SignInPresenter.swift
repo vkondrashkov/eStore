@@ -11,11 +11,16 @@ import Foundation
 final class SignInPresenterImpl {
     private unowned let view: SignInView
     private unowned let router: SignInRouter
+    private unowned let themeManager: ThemeManager
 
     init(view: SignInView,
-         router: SignInRouter) {
+         router: SignInRouter,
+         themeManager: ThemeManager) {
+
         self.view = view
         self.router = router
+        self.themeManager = themeManager
+        self.themeManager.add(observer: self)
     }
 }
 
@@ -49,10 +54,19 @@ extension SignInPresenterImpl: SignInPresenter {
     }
 
     func shouldViewAppear() {
+        view.apply(theme: themeManager.currentTheme)
+        
         view.display(rightBarButton: "Sign Up")
         view.display(emailCaption: "Email:")
         view.display(passwordCaption: "Password:")
         view.display(signInButton: "Sign In")
         view.display(forgotPasswordButton: "Forgot password?")
+    }
+}
+
+// MARK: - ThemeObserver implementation
+extension SignInPresenterImpl: ThemeObserver {
+    func didChangedTheme(_ theme: Theme) {
+        view.apply(theme: theme)
     }
 }

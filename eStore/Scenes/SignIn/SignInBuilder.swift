@@ -24,8 +24,11 @@ extension SignInBuilderImpl: SignInBuilder {
         let coordinator = SignInCoordinator(scene: scene,
                                             show: view,
                                             listener: listener)
-        let presenter = SignInPresenterImpl(view: view,
-                                            router: coordinator)
+        let presenter = SignInPresenterImpl(
+            view: view,
+            router: coordinator,
+            themeManager: dependency.themeManager
+        )
         view.presenter = presenter
         return coordinator
     }

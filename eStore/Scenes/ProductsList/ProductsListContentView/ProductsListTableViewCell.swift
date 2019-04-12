@@ -20,7 +20,6 @@ final class ProductsListTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
-        contentView.backgroundColor = Color.foreground
         
         setupContainerView()
         setupProductImageView()
@@ -43,7 +42,6 @@ final class ProductsListTableViewCell: UITableViewCell {
         productTitleLabel = UILabel()
         productTitleLabel.font = .boldSystemFont(ofSize: 17)
         productTitleLabel.numberOfLines = 0
-        productTitleLabel.textColor = Color.text
         containerView.addSubview(productTitleLabel)
         activateProductTitleLabelConstraints(view: productTitleLabel, anchorView: productImageView)
     }
@@ -59,6 +57,14 @@ final class ProductsListTableViewCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - ThemeSupportable implementation
+extension ProductsListTableViewCell: ThemeSupportable {
+    func apply(theme: Theme) {
+        contentView.backgroundColor = theme.foregroundColor
+        productTitleLabel.textColor = theme.textColor
     }
 }
 

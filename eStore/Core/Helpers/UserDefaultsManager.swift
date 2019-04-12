@@ -13,22 +13,12 @@ struct UserDefaultsKeys {
 }
 
 struct UserDefaultsManager {
-    static var theme: Theme {
+    static var theme: ThemeType {
         get {
-            guard let data = UserDefaults.standard.object(forKey: UserDefaultsKeys.theme) as? Data,
-                let themeValue = try? NSKeyedUnarchiver.unarchivedObject(ofClass: Theme.self, from: data),
-                let theme = themeValue else {
-                    assertionFailure("Cant load")
-                    return LightTheme()
-            }
-            return theme
+            return ThemeType(rawValue: UserDefaults.standard.integer(forKey: UserDefaultsKeys.theme)) ?? .light
         }
         set {
-            guard let data = try? NSKeyedArchiver.archivedData(withRootObject: newValue, requiringSecureCoding: true) else {
-                assertionFailure("Cant save")
-                return
-            }
-            UserDefaults.standard.set(data, forKey: UserDefaultsKeys.theme)
+            UserDefaults.standard.set(newValue.rawValue, forKey: UserDefaultsKeys.theme)
         }
     }
 }

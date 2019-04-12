@@ -12,18 +12,23 @@ import Foundation
 final class CartPresenterImpl {
     private unowned let view: CartView
     private unowned let router: CartRouter
+    private unowned let themeManager: ThemeManager
 
     init(view: CartView,
-         router: CartRouter) {
+         router: CartRouter,
+         themeManager: ThemeManager) {
 
         self.view = view
         self.router = router
+        self.themeManager = themeManager
+        self.themeManager.add(observer: self)
     }
 }
 
 // MARK: - CartPresenter implementation
 extension CartPresenterImpl: CartPresenter {
     func handleLoadView() {
+        view.apply(theme: themeManager.currentTheme)
         view.showActivityIndicator()
         let service = ProductsServiceImpl()
         service.getSmartphone(completion: { [weak self] result in
@@ -37,4 +42,11 @@ extension CartPresenterImpl: CartPresenter {
     }
 
     func handleProductPress(storeItem: StoreItem) { }
+}
+
+// MARK: - ThemeObserver implementation
+extension CartPresenterImpl: ThemeObserver {
+    func didChangedTheme(_ theme: Theme) {
+        view.apply(theme: theme)
+    }
 }

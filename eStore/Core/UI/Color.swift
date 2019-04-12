@@ -32,26 +32,3 @@ struct Color {
     static let grey = UIColor(white: 0.5, alpha: 1.0)
     static let cinnabar = UIColor(red: 231.0 / 255.0, green: 76.0 / 255.0, blue: 60.0 / 255.0, alpha: 1.0)
 }
-
-// TODO: REMOVE
-extension Color {
-    static var navigationBar: UIColor {
-        return Themes.value(from: [.light: Color.whiteLilac, .dark: Color.nero])
-    }
-
-    static var text: UIColor {
-        return Themes.value(from: [.light: Color.black, .dark: Color.white])
-    }
-
-    static var background: UIColor {
-        return Themes.value(from: [.light: Color.solitude, .dark: Color.black])
-    }
-
-    static var foreground: UIColor {
-        return Themes.value(from: [.light: Color.white, .dark: Color.nightRider])
-    }
-
-    static var border: UIColor {
-        return Themes.value(from: [.light: Color.silver, .dark: Color.codGrey])
-    }
-}

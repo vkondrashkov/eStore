@@ -26,7 +26,10 @@ extension ProductDescriptionBuilderImpl: ProductDescriptionBuilder {
         let scene = ProductDescriptionSceneImpl(navigation: dependency.navigation)
         let coordinator = ProductDescriptionCoordinator(scene: scene,
                                                         show: view)
-        let presenter = ProductDescriptionPresenterImpl(view: view)
+        let presenter = ProductDescriptionPresenterImpl(
+            view: view,
+            themeManager: dependency.themeManager
+        )
         view.presenter = presenter
         return coordinator
     }

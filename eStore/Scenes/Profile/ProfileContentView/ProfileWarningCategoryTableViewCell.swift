@@ -20,7 +20,6 @@ final class ProfileWarningCategoryTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
-        contentView.backgroundColor = Color.foreground
 
         setupContainerView()
         setupIconImageView()
@@ -42,7 +41,6 @@ final class ProfileWarningCategoryTableViewCell: UITableViewCell {
     private func setupTitleLabel() {
         titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 17)
-        titleLabel.textColor = Color.cinnabar
         containerView.addSubview(titleLabel)
         activateTitleLabelConstraints(view: titleLabel, anchorView: iconImageView)
     }
@@ -59,6 +57,14 @@ final class ProfileWarningCategoryTableViewCell: UITableViewCell {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - ThemeSupportable implementation
+extension ProfileWarningCategoryTableViewCell: ThemeSupportable {
+    func apply(theme: Theme) {
+        contentView.backgroundColor = theme.foregroundColor
+        titleLabel.textColor = Color.cinnabar
     }
 }
 

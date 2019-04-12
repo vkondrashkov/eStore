@@ -24,8 +24,11 @@ extension SignUpBuilderImpl: SignUpBuilder {
         let coordinator = SignUpCoordinator(scene: scene,
                                             show: view,
                                             listener: listener)
-        let presenter = SignUpPresenterImpl(view: view,
-                                            router: coordinator)
+        let presenter = SignUpPresenterImpl(
+            view: view,
+            router: coordinator,
+            themeManager: dependency.themeManager
+        )
         view.presenter = presenter
         return coordinator
     }

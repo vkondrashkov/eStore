@@ -32,8 +32,11 @@ extension AuthBuilderImpl: AuthBuilder {
                                           signUpBuilder: signUpBuilder,
                                           signInBuilder: signInBuilder,
                                           listener: listener)
-        let presenter = AuthPresenterImpl(view: view,
-                                          router: coordinator)
+        let presenter = AuthPresenterImpl(
+            view: view,
+            router: coordinator,
+            themeManager: dependency.themeManager
+        )
         view.presenter = presenter
         return coordinator
     }

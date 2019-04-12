@@ -18,7 +18,6 @@ final class ProductDescriptionTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
-        contentView.backgroundColor = Color.foreground
         
         setupContainerView()
         setupPropertyNameLabel()
@@ -34,7 +33,6 @@ final class ProductDescriptionTableViewCell: UITableViewCell {
     private func setupPropertyNameLabel() {
         propertyNameLabel = UILabel()
         propertyNameLabel.font = .boldSystemFont(ofSize: 17)
-        propertyNameLabel.textColor = Color.text
         containerView.addSubview(propertyNameLabel)
         activatePropertyNameLabelConstraints(view: propertyNameLabel)
     }
@@ -42,7 +40,6 @@ final class ProductDescriptionTableViewCell: UITableViewCell {
     private func setupPropertyValueLabel() {
         propertyValueLabel = UILabel()
         propertyValueLabel.font = .systemFont(ofSize: 17)
-        propertyValueLabel.textColor = Color.text
         containerView.addSubview(propertyValueLabel)
         activatePropertyValueLabelConstraints(view: propertyValueLabel, anchorView: propertyNameLabel)
     }
@@ -54,6 +51,15 @@ final class ProductDescriptionTableViewCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - ThemeSupportable implementation
+extension ProductDescriptionTableViewCell: ThemeSupportable {
+    func apply(theme: Theme) {
+        contentView.backgroundColor = theme.foregroundColor
+        propertyNameLabel.textColor = theme.textColor
+        propertyValueLabel.textColor = theme.textColor
     }
 }
 

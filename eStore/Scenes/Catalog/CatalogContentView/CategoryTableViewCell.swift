@@ -18,7 +18,6 @@ class CategoryTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         backgroundColor = .clear
-        contentView.backgroundColor = Color.foreground
         setupIconImageView()
         setupDescriptionLabel()
     }
@@ -32,7 +31,6 @@ class CategoryTableViewCell: UITableViewCell {
     private func setupDescriptionLabel() {
         descriptionLabel = UILabel()
         descriptionLabel.font = .boldSystemFont(ofSize: 17)
-        descriptionLabel.textColor = Color.text
         contentView.addSubview(descriptionLabel)
         activateDescriptionLabelConstraints(view: descriptionLabel, anchorView: iconImageView)
     }
@@ -44,11 +42,19 @@ class CategoryTableViewCell: UITableViewCell {
         } else {
             iconImageView.image = UIImage(named: "error-icon")!.withRenderingMode(.alwaysTemplate)
         }
-        iconImageView.tintColor = Color.shamrock
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - ThemeSupportable implementation
+extension CategoryTableViewCell: ThemeSupportable {
+    func apply(theme: Theme) {
+        contentView.backgroundColor = theme.foregroundColor
+        descriptionLabel.textColor = theme.textColor
+        iconImageView.tintColor = theme.tintColor
     }
 }
 

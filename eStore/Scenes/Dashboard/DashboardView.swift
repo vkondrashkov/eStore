@@ -25,10 +25,12 @@ final class DashboardViewImpl: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        tabBar.tintColor = Color.shamrock
-        tabBar.barTintColor = Color.navigationBar
         modalTransitionStyle = .crossDissolve
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.shouldViewAppear()
     }
 
     func setupTabs() {
@@ -55,6 +57,15 @@ final class DashboardViewImpl: UITabBarController {
 
 // MARK: - DashboardView implementation
 extension DashboardViewImpl: DashboardView { }
+
+// MARK: - ThemeSupportable implementation
+extension DashboardViewImpl: ThemeSupportable {
+    func apply(theme: Theme) {
+        view.backgroundColor = theme.backgroundColor
+        tabBar.tintColor = theme.tintColor
+        tabBar.barTintColor = theme.barColor
+    }
+}
 
 // MARK: - DashboardShow implementation
 extension DashboardViewImpl: DashboardShow {

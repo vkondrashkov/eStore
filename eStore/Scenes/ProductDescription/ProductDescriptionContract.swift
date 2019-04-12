@@ -25,9 +25,7 @@ protocol ProductDescriptionShow: AnyObject {
     var rootViewController: UIViewController { get }
 }
 
-protocol ProductDescriptionView: AnyObject {
-    
-}
+protocol ProductDescriptionView: AnyObject, ThemeSupportable { }
 
 protocol ProductDescriptionPresenter: AnyObject {
     func handleLoadView()

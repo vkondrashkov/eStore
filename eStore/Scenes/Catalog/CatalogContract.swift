@@ -30,7 +30,7 @@ protocol CatalogRouter: AnyObject {
     func showProductsList(title: String)
 }
 
-protocol CatalogView: AnyObject { }
+protocol CatalogView: AnyObject, ThemeSupportable { }
 
 protocol CatalogPresenter: AnyObject {
     func handleLoadView()

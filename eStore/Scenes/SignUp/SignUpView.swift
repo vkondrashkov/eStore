@@ -98,33 +98,23 @@ final class SignUpViewImpl: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = Color.background
         title = "Sign Up"
         navigationController?.navigationBar.tintColor = Color.shamrock
 
         emailCaption.font = .boldSystemFont(ofSize: 17)
-        emailCaption.textColor = Color.text
 
         emailTextField.borderStyle = .roundedRect
         emailTextField.keyboardType = .emailAddress
-        emailTextField.backgroundColor = Color.foreground
-        emailTextField.textColor = Color.text
 
         passwordCaption.font = .boldSystemFont(ofSize: 17)
-        passwordCaption.textColor = Color.text
 
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.isSecureTextEntry = true
-        passwordTextField.backgroundColor = Color.foreground
-        passwordTextField.textColor = Color.text
 
         confirmPasswordCaption.font = .boldSystemFont(ofSize: 17)
-        confirmPasswordCaption.textColor = Color.text
 
         confirmPasswordTextField.borderStyle = .roundedRect
         confirmPasswordTextField.isSecureTextEntry = true
-        confirmPasswordTextField.backgroundColor = Color.foreground
-        confirmPasswordTextField.textColor = Color.text
 
         signUpButton.addTarget(self, action: #selector(signUpButtonDidPressed), for: .touchUpInside)
         signUpButton.layer.cornerRadius = 5
@@ -147,6 +137,22 @@ final class SignUpViewImpl: UIViewController {
 
     @objc func signUpButtonDidPressed() {
         presenter.handleSignUpButtonPress()
+    }
+}
+
+// MARK: - ThemeSupportable implementation
+extension SignUpViewImpl: ThemeSupportable {
+    func apply(theme: Theme) {
+        view.backgroundColor = theme.backgroundColor
+        emailCaption.textColor = theme.textColor
+        emailTextField.backgroundColor = theme.foregroundColor
+        emailTextField.textColor = theme.textColor
+        passwordCaption.textColor = theme.textColor
+        passwordTextField.backgroundColor = theme.foregroundColor
+        passwordTextField.textColor = theme.textColor
+        confirmPasswordCaption.textColor = theme.textColor
+        confirmPasswordTextField.backgroundColor = theme.foregroundColor
+        confirmPasswordTextField.textColor = theme.textColor
     }
 }
 

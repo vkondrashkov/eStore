@@ -26,24 +26,32 @@ final class ProductDescriptionViewImpl: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = Color.background
         title = "Description"
-        navigationController?.navigationBar.tintColor = Color.shamrock
 
         descriptionTableView.tableFooterView = UIView()
         descriptionTableView.backgroundColor = .clear
-        descriptionTableView.separatorColor = Color.border
         descriptionTableView.register(ProductDescriptionTableViewCell.self, forCellReuseIdentifier: ProductDescriptionTableViewCell.reuseIdentifier)
         descriptionTableView.register(ProductDescriptionTableHeaderCell.self, forCellReuseIdentifier: ProductDescriptionTableHeaderCell.reuseIdentifier)
         descriptionTableView.register(ProductDescriptionTablePriceCell.self, forCellReuseIdentifier: ProductDescriptionTablePriceCell.reuseIdentifier)
         descriptionTableView.dataSource = dataSource
         descriptionTableView.delegate = self
+
+        presenter.handleLoadView()
     }
 }
 
 // MARK: - ProductDescriptionView implementation
 extension ProductDescriptionViewImpl: ProductDescriptionView { }
+
+// MARK: - ThemeSupportable implementation
+extension ProductDescriptionViewImpl: ThemeSupportable {
+    func apply(theme: Theme) {
+        // TODO: navigationController?.navigationBar.barStyle = theme.barColor
+        view.backgroundColor = theme.backgroundColor
+        descriptionTableView.separatorColor = theme.borderColor
+        descriptionTableView.reloadData()
+    }
+}
 
 // MARK: - ProductDescriptionShow implementation
 extension ProductDescriptionViewImpl: ProductDescriptionShow {

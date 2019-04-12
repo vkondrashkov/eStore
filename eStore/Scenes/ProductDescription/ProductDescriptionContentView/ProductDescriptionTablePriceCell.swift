@@ -27,7 +27,6 @@ final class ProductDescriptionTablePriceCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
-        contentView.backgroundColor = Color.foreground
         
         setupContainerView()
         setupPriceLabel()
@@ -45,7 +44,6 @@ final class ProductDescriptionTablePriceCell: UITableViewCell {
         priceLabel = UILabel()
         priceLabel.font = .boldSystemFont(ofSize: 17)
         priceLabel.textAlignment = .center
-        priceLabel.textColor = Color.text
         containerView.addSubview(priceLabel)
         activatePriceLabelConstraints(view: priceLabel)
     }
@@ -90,6 +88,14 @@ final class ProductDescriptionTablePriceCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - ThemeSupportable implementation
+extension ProductDescriptionTablePriceCell: ThemeSupportable {
+    func apply(theme: Theme) {
+        contentView.backgroundColor = theme.foregroundColor
+        priceLabel.textColor = theme.textColor
     }
 }
 

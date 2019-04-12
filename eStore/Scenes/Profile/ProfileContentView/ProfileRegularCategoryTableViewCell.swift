@@ -20,7 +20,6 @@ final class ProfileRegularCategoryTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
-        contentView.backgroundColor = Color.foreground
 
         setupContainerView()
         setupIconImageView()
@@ -42,7 +41,6 @@ final class ProfileRegularCategoryTableViewCell: UITableViewCell {
     private func setupTitleLabel() {
         titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 17)
-        titleLabel.textColor = Color.text
         containerView.addSubview(titleLabel)
         activateTitleLabelConstraints(view: titleLabel, anchorView: iconImageView)
     }
@@ -53,12 +51,20 @@ final class ProfileRegularCategoryTableViewCell: UITableViewCell {
         } else {
             iconImageView.image = UIImage(named: "error-icon")!.withRenderingMode(.alwaysTemplate)
         }
-        iconImageView.tintColor = Color.shamrock
         titleLabel.text = title
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - ThemeSupportable implementation
+extension ProfileRegularCategoryTableViewCell: ThemeSupportable {
+    func apply(theme: Theme) {
+        contentView.backgroundColor = theme.foregroundColor
+        titleLabel.textColor = theme.textColor
+        iconImageView.tintColor = theme.tintColor
     }
 }
 

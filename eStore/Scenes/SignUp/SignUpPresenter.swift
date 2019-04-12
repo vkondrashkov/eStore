@@ -11,17 +11,24 @@ import Foundation
 final class SignUpPresenterImpl {
     private unowned let view: SignUpView
     private unowned let router: SignUpRouter
+    private unowned let themeManager: ThemeManager
 
     init(view: SignUpView,
-         router: SignUpRouter) {
+         router: SignUpRouter,
+         themeManager: ThemeManager) {
+
         self.view = view
         self.router = router
+        self.themeManager = themeManager
+        self.themeManager.add(observer: self)
     }
 }
 
 // MARK: - SignUpPresenter implementation
 extension SignUpPresenterImpl: SignUpPresenter {
     func shouldViewAppear() {
+        view.apply(theme: themeManager.currentTheme)
+        
         view.display(rightBarButton: "Sign In")
         view.display(emailCaption: "Email:")
         view.display(passwordCaption: "Password:")
@@ -42,5 +49,12 @@ extension SignUpPresenterImpl: SignUpPresenter {
             self?.router.completeSignUp()
         })
     }
-    
 }
+
+// MARK: - ThemeObserver implementation
+extension SignUpPresenterImpl: ThemeObserver {
+    func didChangedTheme(_ theme: Theme) {
+        view.apply(theme: theme)
+    }
+}
+

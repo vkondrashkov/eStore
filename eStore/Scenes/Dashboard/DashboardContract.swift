@@ -32,6 +32,8 @@ protocol DashboardListener: AnyObject {
     func logout() // TODO: Make method more functional
 }
 
-protocol DashboardView: AnyObject { }
+protocol DashboardView: AnyObject, ThemeSupportable { }
 
-protocol DashboardPresenter: AnyObject { }
+protocol DashboardPresenter: AnyObject {
+    func shouldViewAppear()
+}

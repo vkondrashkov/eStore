@@ -44,8 +44,11 @@ extension DashboardBuilderImpl: DashboardBuilder {
                                                cartBuilder: cartBuilder,
                                                catalogBuilder: catalogBuilder,
                                                listener: listener)
-        let presenter = DashboardPresenterImpl(view: view,
-                                               router: coordinator)
+        let presenter = DashboardPresenterImpl(
+            view: view,
+            router: coordinator,
+            themeManager: dependency.themeManager
+        )
         view.presenter = presenter
         return coordinator
     }

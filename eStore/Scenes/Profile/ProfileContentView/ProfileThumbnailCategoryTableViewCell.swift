@@ -20,7 +20,6 @@ final class ProfileThumbnailCategoryTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
-        contentView.backgroundColor = Color.foreground
 
         setupContainerView()
         setupThumbnailImageView()
@@ -39,7 +38,6 @@ final class ProfileThumbnailCategoryTableViewCell: UITableViewCell {
         thumbnailImageView.contentMode = .center
         thumbnailImageView.layer.cornerRadius = thumbnailImageSize / 2
         thumbnailImageView.layer.borderWidth = 1.0
-        thumbnailImageView.layer.borderColor = Color.border.cgColor
         containerView.addSubview(thumbnailImageView)
         activateThumbnailImageViewConstraints(view: thumbnailImageView)
     }
@@ -47,7 +45,6 @@ final class ProfileThumbnailCategoryTableViewCell: UITableViewCell {
     private func setupTitleLabel() {
         titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 20)
-        titleLabel.textColor = Color.text
         containerView.addSubview(titleLabel)
         activateTitleLabelConstraints(view: titleLabel, anchorView: thumbnailImageView)
     }
@@ -63,6 +60,15 @@ final class ProfileThumbnailCategoryTableViewCell: UITableViewCell {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - ThemeSupportable implementation
+extension ProfileThumbnailCategoryTableViewCell: ThemeSupportable {
+    func apply(theme: Theme) {
+        contentView.backgroundColor = theme.foregroundColor
+        thumbnailImageView.layer.borderColor = theme.borderColor.cgColor
+        titleLabel.textColor = theme.textColor
     }
 }
 

@@ -48,8 +48,6 @@ final class ProductsListViewImpl: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Color.background
-        navigationController?.navigationBar.tintColor = Color.shamrock
         navigationItem.largeTitleDisplayMode = .never
 
         loadingView.isHidden = true
@@ -60,12 +58,21 @@ final class ProductsListViewImpl: UIViewController {
 
         productsTableView.tableFooterView = UIView()
         productsTableView.backgroundColor = .clear
-        productsTableView.separatorColor = Color.border
         productsTableView.register(ProductsListTableViewCell.self, forCellReuseIdentifier: ProductsListTableViewCell.reuseIdentifier)
         productsTableView.dataSource = productsTableViewDataSource
         productsTableView.delegate = self
 
         presenter.handleLoadView()
+    }
+}
+
+// MARK: - ThemeSupportable implementation
+extension ProductsListViewImpl: ThemeSupportable {
+    func apply(theme: Theme) {
+        view.backgroundColor = theme.backgroundColor
+        navigationController?.navigationBar.tintColor = theme.tintColor
+        productsTableView.separatorColor = theme.borderColor
+        productsTableView.reloadData()
     }
 }
 

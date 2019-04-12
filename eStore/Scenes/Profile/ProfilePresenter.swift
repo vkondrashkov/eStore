@@ -9,7 +9,7 @@
 final class ProfilePresenterImpl {
     private unowned let view: ProfileView
     private unowned let router: ProfileRouter
-    private weak var themeManager: ThemeManager?
+    private unowned let themeManager: ThemeManager
 
     init(view: ProfileView,
          router: ProfileRouter,
@@ -18,7 +18,7 @@ final class ProfilePresenterImpl {
         self.view = view
         self.router = router
         self.themeManager = themeManager
-        self.themeManager?.add(observer: self)
+        self.themeManager.add(observer: self)
     }
 
     private func handleCartCategoryPress() {
@@ -61,6 +61,7 @@ final class ProfilePresenterImpl {
 // MARK: - ProfilePresenter implementation
 extension ProfilePresenterImpl: ProfilePresenter {
     func handleLoadView() {
+        view.apply(theme: themeManager.currentTheme)
         view.display(rightBarButton: "Edit")
 
         let userCategory = ProfileCategoryImpl(name: "Vladislav Kondrashkov", iconUrl: "https://pp.userapi.com/c846420/v846420977/17f606/5X3A9gQCaY8.jpg?ava=1", type: .thumbnail, onTapAction: nil)
@@ -79,10 +80,10 @@ extension ProfilePresenterImpl: ProfilePresenter {
         })
         let themeCategory = ProfileCategoryImpl(name: "Theme", iconUrl: "settings-icon", onTapAction: { [weak self] in
             guard let self = self else { return }
-            let test = ThemeManagerImpl()
-            test.add(observer: self)
-            test.applyTheme(LightTheme())
-//            UserDefaultsManager.theme = Themes.currentTheme == .light ? .dark : .light
+            let newThemeType: ThemeType = self.themeManager.currentTheme.type == .light ? .dark : .light
+            let newTheme = ThemeBuilderImpl().build(type: newThemeType)
+            UserDefaultsManager.theme = newThemeType
+            self.themeManager.applyTheme(newTheme)
         })
         let helpSection = ProfileSection(name: "Help", categories: [settingsCategory, contactCategory, themeCategory])
 
@@ -93,7 +94,6 @@ extension ProfilePresenterImpl: ProfilePresenter {
 
         let sections = [userSection,cartSection, helpSection, logoutSection]
         view.display(sections: sections)
-        view.update(theme: themeManager?.currentTheme ?? LightTheme())
     }
 
     func handleRightBarButtonPress() {
@@ -113,6 +113,6 @@ extension ProfilePresenterImpl: ProfilePresenter {
 // MARK: - ThemeObserver implementation
 extension ProfilePresenterImpl: ThemeObserver {
     func didChangedTheme(_ theme: Theme) {
-        view.update(theme: theme)
+        view.apply(theme: theme)
     }
 }

@@ -9,6 +9,7 @@
 import UIKit
 
 class ProductsListTableViewDataSource: NSObject, UITableViewDataSource {
+    private let themeManager = ThemeManagerImpl() // TODO: dependency injection
     var items: [StoreItem] = []
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -18,7 +19,8 @@ class ProductsListTableViewDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ProductsListTableViewCell.reuseIdentifier, for: indexPath) as! ProductsListTableViewCell
         let item = items[indexPath.row]
-        cell.display(imageUrl: item.imageUrl, title: "\(item.brand) \(item.name)") // TODO: implement display(_:) method
+        cell.apply(theme: themeManager.currentTheme)
+        cell.display(imageUrl: item.imageUrl, title: "\(item.brand) \(item.name)")
         return cell
     }
 }

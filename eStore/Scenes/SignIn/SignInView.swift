@@ -90,24 +90,17 @@ final class SignInViewImpl: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Color.background
         title = "Sign In"
 
         emailCaption.font = .boldSystemFont(ofSize: 17)
-        emailCaption.textColor = Color.text
 
         emailTextField.borderStyle = .roundedRect
         emailTextField.keyboardType = .emailAddress
-        emailTextField.backgroundColor = Color.foreground
-        emailTextField.textColor = Color.text
 
         passwordCaption.font = .boldSystemFont(ofSize: 17)
-        passwordCaption.textColor = Color.text
 
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.isSecureTextEntry = true
-        passwordTextField.backgroundColor = Color.foreground
-        passwordTextField.textColor = Color.text
 
         signInButton.addTarget(self, action: #selector(signInButtonDidPressed), for: .touchUpInside)
         signInButton.layer.cornerRadius = 5
@@ -178,6 +171,19 @@ extension SignInViewImpl: SignInView {
 
     func hideActivityIndicator() {
         activityIndicator.stopAnimating()
+    }
+}
+
+// MARK: - ThemeSupportable implementation
+extension SignInViewImpl: ThemeSupportable {
+    func apply(theme: Theme) {
+        view.backgroundColor = theme.backgroundColor
+        emailCaption.textColor = theme.textColor
+        emailTextField.backgroundColor = theme.foregroundColor
+        emailTextField.textColor = theme.textColor
+        passwordCaption.textColor = theme.textColor
+        passwordTextField.backgroundColor = theme.foregroundColor
+        passwordTextField.textColor = theme.textColor
     }
 }
 

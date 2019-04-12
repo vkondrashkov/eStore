@@ -26,10 +26,9 @@ final class ProfileViewImpl: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        update(theme: ThemeManagerImpl().currentTheme) // Temp
         title = "Profile"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.barStyle = Themes.value(from: [.light: .default, .dark: .black])
+        //TODO: navigationController?.navigationBar.barStyle = Themes.value(from: [.light: .default, .dark: .black])
 
         profileTableView.tableFooterView = UIView() // Is needed to remove unnecessary separators
         profileTableView.backgroundColor = .clear
@@ -66,8 +65,11 @@ extension ProfileViewImpl: ProfileView {
         let alertController = AlertFactory().make(alert: alert)
         present(alertController, animated: true, completion: nil)
     }
+}
 
-    func update(theme: Theme) {
+// MARK: - ThemeSupportable implementation
+extension ProfileViewImpl: ThemeSupportable {
+    func apply(theme: Theme) {
         // TODO: navigationController?.navigationBar.barStyle = theme.barColor
         view.backgroundColor = theme.backgroundColor
         navigationController?.navigationBar.tintColor = theme.tintColor
@@ -75,6 +77,7 @@ extension ProfileViewImpl: ProfileView {
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: theme.textColor]
         profileTableView.separatorColor = theme.borderColor
+        profileTableView.reloadData()
     }
 }
 

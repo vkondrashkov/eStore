@@ -27,8 +27,11 @@ extension CartBuilderImpl: CartBuilder {
         let scene = CartSceneImpl(navigation: dependency.cartNavigation)
         let coordinator = CartCoordinator(scene: scene,
                                           show: view)
-        let presenter = CartPresenterImpl(view: view,
-                                          router: coordinator)
+        let presenter = CartPresenterImpl(
+            view: view,
+            router: coordinator,
+            themeManager: dependency.themeManager
+        )
         view.presenter = presenter
         return coordinator
     }

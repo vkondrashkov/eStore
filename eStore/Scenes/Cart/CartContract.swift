@@ -29,7 +29,7 @@ protocol CartRouter: AnyObject {
     func showProductDescription(for storeItem: StoreItem)
 }
 
-protocol CartView: AnyObject {
+protocol CartView: AnyObject, ThemeSupportable {
     func showActivityIndicator()
     func hideActivityIndicator()
     func display(storeItemList: [StoreItem])

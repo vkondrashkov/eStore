@@ -17,11 +17,11 @@ final class ThemeManagerImpl: ThemeManager {
     private var observers: [WeakRef<AnyObject>] = []
 
     var currentTheme: Theme {
-        return UserDefaultsManager.theme
+        return ThemeBuilderImpl().build(type: UserDefaultsManager.theme)
     }
 
     func applyTheme(_ theme: Theme) {
-        UserDefaultsManager.theme = theme
+        UserDefaultsManager.theme = theme.type
         for weakObserver in observers {
             guard let observer = weakObserver.value as? ThemeObserver else { continue }
             observer.didChangedTheme(theme)

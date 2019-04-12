@@ -29,8 +29,11 @@ extension CatalogBuilderImpl: CatalogBuilder {
         let coordinator = CatalogCoordinator(scene: scene,
                                              show: view,
                                              productsListBuilder: productsListBuilder)
-        let presenter = CatalogPresenterImpl(view: view,
-                                             router: coordinator)
+        let presenter = CatalogPresenterImpl(
+            view: view,
+            router: coordinator,
+            themeManager: dependency.themeManager
+        )
         view.presenter = presenter
         return coordinator
     }
