@@ -28,7 +28,6 @@ final class ProfileViewImpl: UIViewController {
         super.viewDidLoad()
         title = "Profile"
         navigationController?.navigationBar.prefersLargeTitles = true
-        //TODO: navigationController?.navigationBar.barStyle = Themes.value(from: [.light: .default, .dark: .black])
 
         profileTableView.tableFooterView = UIView() // Is needed to remove unnecessary separators
         profileTableView.backgroundColor = .clear
