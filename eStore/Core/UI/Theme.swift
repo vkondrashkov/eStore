@@ -11,6 +11,7 @@ import UIKit
 class Theme {
     var type: ThemeType
     var barColor: UIColor
+    var barStyle: UIBarStyle
     var backgroundColor: UIColor
     var foregroundColor: UIColor
     var borderColor: UIColor
@@ -20,6 +21,7 @@ class Theme {
     init() {
         type = .clear
         barColor = .clear
+        barStyle = .default
         backgroundColor = .clear
         foregroundColor = .clear
         borderColor = .clear

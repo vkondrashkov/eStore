@@ -46,7 +46,6 @@ extension ProductDescriptionViewImpl: ProductDescriptionView { }
 // MARK: - ThemeSupportable implementation
 extension ProductDescriptionViewImpl: ThemeSupportable {
     func apply(theme: Theme) {
-        // TODO: navigationController?.navigationBar.barStyle = theme.barColor
         view.backgroundColor = theme.backgroundColor
         descriptionTableView.separatorColor = theme.borderColor
         descriptionTableView.reloadData()

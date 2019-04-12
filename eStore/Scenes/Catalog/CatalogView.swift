@@ -45,10 +45,10 @@ extension CatalogViewImpl: CatalogView { }
 // MARK: - ThemeSupportable implementation
 extension CatalogViewImpl: ThemeSupportable {
     func apply(theme: Theme) {
-        // TODO: navigationController?.navigationBar.barStyle = theme.barColor
         view.backgroundColor = theme.backgroundColor
         navigationController?.navigationBar.tintColor = theme.tintColor
         navigationController?.navigationBar.barTintColor = theme.barColor
+        navigationController?.navigationBar.barStyle = theme.barStyle
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: theme.textColor]
         categoryTableView.separatorColor = theme.borderColor

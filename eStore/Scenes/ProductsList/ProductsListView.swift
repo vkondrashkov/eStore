@@ -70,7 +70,6 @@ final class ProductsListViewImpl: UIViewController {
 extension ProductsListViewImpl: ThemeSupportable {
     func apply(theme: Theme) {
         view.backgroundColor = theme.backgroundColor
-        navigationController?.navigationBar.tintColor = theme.tintColor
         productsTableView.separatorColor = theme.borderColor
         productsTableView.reloadData()
     }

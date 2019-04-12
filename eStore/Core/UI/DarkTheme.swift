@@ -13,6 +13,7 @@ final class DarkTheme: Theme {
         super.init()
         type = .dark
         barColor = Color.nero
+        barStyle = .black
         backgroundColor = Color.black
         foregroundColor = Color.nightRider
         borderColor = Color.codGrey

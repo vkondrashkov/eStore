@@ -13,6 +13,7 @@ final class LightTheme: Theme {
         super.init()
         type = .light
         barColor = Color.whiteLilac
+        barStyle = .default
         backgroundColor = Color.solitude
         foregroundColor = Color.white
         borderColor = Color.silver
