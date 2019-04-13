@@ -9,15 +9,12 @@
 import UIKit
 
 final class DarkTheme: Theme {
-    override init() {
-        super.init()
-        type = .dark
-        barColor = Color.nero
-        barStyle = .black
-        backgroundColor = Color.black
-        foregroundColor = Color.nightRider
-        borderColor = Color.codGrey
-        textColor = Color.white
-        tintColor = Color.shamrock
-    }
+    let type: ThemeType = .dark
+    let barColor = Color.nero
+    let barStyle: UIBarStyle = .black
+    let backgroundColor = Color.black
+    let foregroundColor = Color.nightRider
+    let borderColor = Color.codGrey
+    let textColor = Color.white
+    let tintColor = Color.shamrock
 }

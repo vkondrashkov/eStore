@@ -9,5 +9,4 @@
 enum ThemeType: Int {
     case light
     case dark
-    case clear
 }

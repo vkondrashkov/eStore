@@ -18,8 +18,6 @@ class ThemeBuilderImpl: ThemeBuilder {
             theme = DarkTheme()
         case .light:
             theme = LightTheme()
-        case .clear: // TODO: Make an error here
-            theme = Theme()
         }
         return theme
     }

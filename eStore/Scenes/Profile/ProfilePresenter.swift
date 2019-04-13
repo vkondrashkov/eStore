@@ -79,6 +79,7 @@ extension ProfilePresenterImpl: ProfilePresenter {
             self?.handleContactCategoryPress()
         })
         let themeCategory = ProfileCategoryImpl(name: "Theme", iconUrl: "settings-icon", onTapAction: { [weak self] in
+            // TODO: Make routing to ThemeSettings
             guard let self = self else { return }
             let newThemeType: ThemeType = self.themeManager.currentTheme.type == .light ? .dark : .light
             let newTheme = ThemeBuilderImpl().build(type: newThemeType)

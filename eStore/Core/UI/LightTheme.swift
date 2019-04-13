@@ -9,15 +9,12 @@
 import UIKit
 
 final class LightTheme: Theme {
-    override init() {
-        super.init()
-        type = .light
-        barColor = Color.whiteLilac
-        barStyle = .default
-        backgroundColor = Color.solitude
-        foregroundColor = Color.white
-        borderColor = Color.silver
-        textColor = Color.black
-        tintColor = Color.shamrock
-    }
+    let type: ThemeType = .light
+    let barColor = Color.whiteLilac
+    let barStyle: UIBarStyle = .default
+    let backgroundColor = Color.solitude
+    let foregroundColor = Color.white
+    let borderColor = Color.silver
+    let textColor = Color.black
+    let tintColor = Color.shamrock
 }

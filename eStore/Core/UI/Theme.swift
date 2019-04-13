@@ -8,24 +8,13 @@
 
 import UIKit
 
-class Theme {
-    var type: ThemeType
-    var barColor: UIColor
-    var barStyle: UIBarStyle
-    var backgroundColor: UIColor
-    var foregroundColor: UIColor
-    var borderColor: UIColor
-    var textColor: UIColor
-    var tintColor: UIColor
-
-    init() {
-        type = .clear
-        barColor = .clear
-        barStyle = .default
-        backgroundColor = .clear
-        foregroundColor = .clear
-        borderColor = .clear
-        textColor = .clear
-        tintColor = .clear
-    }
+protocol Theme {
+    var type: ThemeType { get }
+    var barColor: UIColor { get }
+    var barStyle: UIBarStyle { get }
+    var backgroundColor: UIColor { get }
+    var foregroundColor: UIColor { get }
+    var borderColor: UIColor { get }
+    var textColor: UIColor { get }
+    var tintColor: UIColor { get }
 }
