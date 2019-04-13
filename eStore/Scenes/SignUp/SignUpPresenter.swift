@@ -27,8 +27,6 @@ final class SignUpPresenterImpl {
 // MARK: - SignUpPresenter implementation
 extension SignUpPresenterImpl: SignUpPresenter {
     func shouldViewAppear() {
-        view.apply(theme: themeManager.currentTheme, animated: false)
-        
         view.display(rightBarButton: "Sign In")
         view.display(emailCaption: "Email:")
         view.display(passwordCaption: "Password:")

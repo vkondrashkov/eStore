@@ -20,6 +20,7 @@ final class AuthBuilderImpl {
 extension AuthBuilderImpl: AuthBuilder {
     func build(with listener: AuthListener) -> AuthCoordinator {
         let view = AuthViewImpl()
+        view.theme = dependency.themeManager.currentTheme
         let component = AuthComponent(
             rootViewController: view,
             themeManager: dependency.themeManager

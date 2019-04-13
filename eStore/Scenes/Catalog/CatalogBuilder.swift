@@ -20,6 +20,7 @@ final class CatalogBuilderImpl {
 extension CatalogBuilderImpl: CatalogBuilder {
     func build() -> CatalogCoordinator {
         let view = CatalogViewImpl()
+        view.theme = dependency.themeManager.currentTheme
         let component = CatalogComponent(
             navigation: dependency.catalogNavigation,
             themeManager: dependency.themeManager

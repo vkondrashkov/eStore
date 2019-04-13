@@ -10,6 +10,7 @@ import UIKit
 
 final class CatalogViewImpl: UIViewController {
     var presenter: CatalogPresenter!
+    var theme: Theme!
 
     private let categoryTableViewDataSource = CategoryTableViewDataSource()
     private var categoryTableView: UITableView!
@@ -29,12 +30,15 @@ final class CatalogViewImpl: UIViewController {
         title = "Catalog"
         navigationController?.navigationBar.prefersLargeTitles = true
 
+        categoryTableViewDataSource.theme = theme
+
         categoryTableView.tableFooterView = UIView() // Is needed to remove unnecessary separators
         categoryTableView.backgroundColor = .clear
         categoryTableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.reuseIdentifier)
         categoryTableView.dataSource = categoryTableViewDataSource
         categoryTableView.delegate = self
 
+        apply(theme: theme, animated: false)
         presenter.handleLoadView()
     }
 }
@@ -45,6 +49,9 @@ extension CatalogViewImpl: CatalogView { }
 // MARK: - ThemeSupportable implementation
 extension CatalogViewImpl: ThemeSupportable {
     func apply(theme: Theme, animated: Bool) {
+        self.theme = theme
+        categoryTableViewDataSource.theme = theme
+
         view.backgroundColor = theme.backgroundColor
         navigationController?.navigationBar.tintColor = theme.tintColor
         navigationController?.navigationBar.barTintColor = theme.barColor

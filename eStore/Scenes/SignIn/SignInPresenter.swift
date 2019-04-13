@@ -54,8 +54,6 @@ extension SignInPresenterImpl: SignInPresenter {
     }
 
     func shouldViewAppear() {
-        view.apply(theme: themeManager.currentTheme, animated: false)
-        
         view.display(rightBarButton: "Sign Up")
         view.display(emailCaption: "Email:")
         view.display(passwordCaption: "Password:")

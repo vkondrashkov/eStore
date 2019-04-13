@@ -10,11 +10,14 @@ import UIKit
 
 final class AuthViewImpl: UINavigationController {
     var presenter: AuthPresenter!
+    var theme: Theme!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         modalTransitionStyle = .crossDissolve
         navigationBar.prefersLargeTitles = true
+
+        apply(theme: theme, animated: false)
         presenter.handleLoadView()
     }
 }
@@ -25,6 +28,8 @@ extension AuthViewImpl: AuthView { }
 // MARK: - ThemeSupportable implementation
 extension AuthViewImpl: ThemeSupportable {
     func apply(theme: Theme, animated: Bool) {
+        self.theme = theme
+
         view.backgroundColor = theme.backgroundColor
         navigationBar.tintColor = theme.tintColor
         navigationBar.barTintColor = theme.barColor

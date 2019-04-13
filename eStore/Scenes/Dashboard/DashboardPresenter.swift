@@ -24,9 +24,7 @@ final class DashboardPresenterImpl {
 
 // MARK: - DashboardPresenter implementation
 extension DashboardPresenterImpl: DashboardPresenter {
-    func shouldViewAppear() {
-        view.apply(theme: themeManager.currentTheme, animated: false)
-    }
+    func shouldViewAppear() { }
 }
 
 // MARK: - ThemeObserver implementation

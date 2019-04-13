@@ -32,7 +32,6 @@ final class ProductsListPresenterImpl {
 // MARK: - ProductsListPresenter implementation
 extension ProductsListPresenterImpl: ProductsListPresenter {
     func handleLoadView() {
-        view.apply(theme: themeManager.currentTheme, animated: false)
         view.showActivityIndicator()
         // TODO: Dependency injection
         let service = ProductsServiceImpl()

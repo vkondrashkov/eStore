@@ -10,6 +10,7 @@ import UIKit
 
 final class ProductDescriptionViewImpl: UIViewController {
     var presenter: ProductDescriptionPresenter!
+    var theme: Theme!
     var dataSource: ProductDescriptionTableViewDataSource!
 
     private var descriptionTableView: UITableView!
@@ -28,6 +29,8 @@ final class ProductDescriptionViewImpl: UIViewController {
         super.viewDidLoad()
         title = "Description"
 
+        dataSource.theme = theme
+
         descriptionTableView.tableFooterView = UIView()
         descriptionTableView.backgroundColor = .clear
         descriptionTableView.register(ProductDescriptionTableViewCell.self, forCellReuseIdentifier: ProductDescriptionTableViewCell.reuseIdentifier)
@@ -36,6 +39,7 @@ final class ProductDescriptionViewImpl: UIViewController {
         descriptionTableView.dataSource = dataSource
         descriptionTableView.delegate = self
 
+        apply(theme: theme, animated: false)
         presenter.handleLoadView()
     }
 }
@@ -46,6 +50,9 @@ extension ProductDescriptionViewImpl: ProductDescriptionView { }
 // MARK: - ThemeSupportable implementation
 extension ProductDescriptionViewImpl: ThemeSupportable {
     func apply(theme: Theme, animated: Bool) {
+        self.theme = theme
+        dataSource.theme = theme
+
         view.backgroundColor = theme.backgroundColor
         descriptionTableView.separatorColor = theme.borderColor
         descriptionTableView.reloadData()

@@ -10,6 +10,7 @@ import UIKit
 
 final class ProductsListViewImpl: UIViewController {
     var presenter: ProductsListPresenter!
+    var theme: Theme!
     
     private var loadingView: UIView!
     private var fadeMaskView: UIView!
@@ -56,12 +57,15 @@ final class ProductsListViewImpl: UIViewController {
 
         activityIndicator.style = .white
 
+        productsTableViewDataSource.theme = theme
+
         productsTableView.tableFooterView = UIView()
         productsTableView.backgroundColor = .clear
         productsTableView.register(ProductsListTableViewCell.self, forCellReuseIdentifier: ProductsListTableViewCell.reuseIdentifier)
         productsTableView.dataSource = productsTableViewDataSource
         productsTableView.delegate = self
 
+        apply(theme: theme, animated: false)
         presenter.handleLoadView()
     }
 }
@@ -69,6 +73,9 @@ final class ProductsListViewImpl: UIViewController {
 // MARK: - ThemeSupportable implementation
 extension ProductsListViewImpl: ThemeSupportable {
     func apply(theme: Theme, animated: Bool) {
+        self.theme = theme
+        productsTableViewDataSource.theme = theme
+
         view.backgroundColor = theme.backgroundColor
         productsTableView.separatorColor = theme.borderColor
         productsTableView.reloadData()

@@ -10,6 +10,7 @@ import UIKit
 
 final class DashboardViewImpl: UITabBarController {
     var presenter: DashboardPresenter!
+    var theme: Theme!
 
     var catalogNavigation: UINavigationController!
     var cartNavigation: UINavigationController!
@@ -30,6 +31,8 @@ final class DashboardViewImpl: UITabBarController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        apply(theme: theme, animated: false)
         presenter.shouldViewAppear()
     }
 
@@ -61,6 +64,8 @@ extension DashboardViewImpl: DashboardView { }
 // MARK: - ThemeSupportable implementation
 extension DashboardViewImpl: ThemeSupportable {
     func apply(theme: Theme, animated: Bool) {
+        self.theme = theme
+
         view.backgroundColor = theme.backgroundColor
         tabBar.tintColor = theme.tintColor
         tabBar.barTintColor = theme.barColor

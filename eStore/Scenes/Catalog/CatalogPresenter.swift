@@ -26,9 +26,7 @@ final class CatalogPresenterImpl {
 
 // MARK: - CatalogPresenter implementation
 extension CatalogPresenterImpl: CatalogPresenter {
-    func handleLoadView() {
-        view.apply(theme: themeManager.currentTheme, animated: false)
-    }
+    func handleLoadView() { }
     
     // TEMP
     func handleCategoryPress(title: String) {

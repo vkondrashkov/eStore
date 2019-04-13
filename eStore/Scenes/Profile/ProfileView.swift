@@ -10,6 +10,7 @@ import UIKit
 
 final class ProfileViewImpl: UIViewController {
     var presenter: ProfilePresenter!
+    var theme: Theme!
 
     private var profileTableViewDataSource = ProfileCategoryTableViewDataSource()
     private var profileTableView: UITableView!
@@ -29,6 +30,8 @@ final class ProfileViewImpl: UIViewController {
         title = "Profile"
         navigationController?.navigationBar.prefersLargeTitles = true
 
+        profileTableViewDataSource.theme = theme
+
         profileTableView.tableFooterView = UIView() // Is needed to remove unnecessary separators
         profileTableView.backgroundColor = .clear
         profileTableView.register(ProfileRegularCategoryTableViewCell.self, forCellReuseIdentifier: ProfileRegularCategoryTableViewCell.reuseIdentifier)
@@ -37,6 +40,7 @@ final class ProfileViewImpl: UIViewController {
         profileTableView.dataSource = profileTableViewDataSource
         profileTableView.delegate = self
 
+        apply(theme: theme, animated: false)
         presenter.handleLoadView()
     }
 
@@ -69,6 +73,9 @@ extension ProfileViewImpl: ProfileView {
 // MARK: - ThemeSupportable implementation
 extension ProfileViewImpl: ThemeSupportable {
     func apply(theme: Theme, animated: Bool) {
+        self.theme = theme
+        profileTableViewDataSource.theme = theme
+
         var animation: CircularFillAnimation?
         if animated, let navigation = tabBarController {
             animation = CircularFillAnimation(

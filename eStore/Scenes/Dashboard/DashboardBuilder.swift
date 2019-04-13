@@ -23,6 +23,7 @@ extension DashboardBuilderImpl: DashboardBuilder {
         let cartNavigation = UINavigationController()
         let profileNavigation = UINavigationController()
         let view = DashboardViewImpl()
+        view.theme = dependency.themeManager.currentTheme
         view.catalogNavigation = catalogNavigation
         view.cartNavigation = cartNavigation
         view.profileNavigation = profileNavigation

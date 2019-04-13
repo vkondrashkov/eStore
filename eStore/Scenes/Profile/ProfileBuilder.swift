@@ -20,6 +20,7 @@ final class ProfileBuilderImpl {
 extension ProfileBuilderImpl: ProfileBuilder {
     func build(with listener: ProfileListener) -> ProfileCoordinator {
         let view = ProfileViewImpl()
+        view.theme = dependency.themeManager.currentTheme
         let component = ProfileComponent(
             rootViewController: view,
             themeManager: dependency.themeManager

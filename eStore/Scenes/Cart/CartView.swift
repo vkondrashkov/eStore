@@ -10,6 +10,7 @@ import UIKit
 
 final class CartViewImpl: UIViewController {
     var presenter: CartPresenter!
+    var theme: Theme!
 
     private var loadingView: UIView!
     private var fadeMaskView: UIView!
@@ -57,12 +58,15 @@ final class CartViewImpl: UIViewController {
 
         activityIndicator.style = .white
 
+        cartTableViewDataSource.theme = theme
+
         cartTableView.tableFooterView = UIView()
         cartTableView.backgroundColor = .clear
         cartTableView.register(CartTableViewCell.self, forCellReuseIdentifier: CartTableViewCell.reuseIdentifier)
         cartTableView.dataSource = cartTableViewDataSource
         cartTableView.delegate = self
 
+        apply(theme: theme, animated: false)
         presenter.handleLoadView()
     }
 }
@@ -106,6 +110,9 @@ extension CartViewImpl: CartView {
 // MARK: - ThemeSupportable implementation
 extension CartViewImpl: ThemeSupportable {
     func apply(theme: Theme, animated: Bool) {
+        self.theme = theme
+        cartTableViewDataSource.theme = theme
+
         view.backgroundColor = theme.backgroundColor
         navigationController?.navigationBar.tintColor = theme.tintColor
         navigationController?.navigationBar.barTintColor = theme.barColor

@@ -25,7 +25,6 @@ final class AuthPresenterImpl {
 // MARK: - AuthPresenter implementation
 extension AuthPresenterImpl: AuthPresenter {
     func handleLoadView() {
-        view.apply(theme: themeManager.currentTheme, animated: false)
         router.routeSignUp()
     }
 }

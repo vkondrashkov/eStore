@@ -22,9 +22,7 @@ final class ProductDescriptionPresenterImpl {
 
 // MARK: - ProductDescriptionPresenter implementation
 extension ProductDescriptionPresenterImpl: ProductDescriptionPresenter {
-    func handleLoadView() {
-        view.apply(theme: themeManager.currentTheme, animated: false)
-    }
+    func handleLoadView() { }
 }
 
 // MARK: - ThemeObserver implementation

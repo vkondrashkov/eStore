@@ -21,6 +21,7 @@ extension ProductsListBuilderImpl: ProductsListBuilder {
     func build(with productType: ProductType) -> ProductsListCoordinator {
         let view = ProductsListViewImpl()
         view.title = productType.rawValue
+        view.theme = dependency.themeManager.currentTheme
         let component = ProductsListComponent(
             navigation: dependency.navigation,
             themeManager: dependency.themeManager

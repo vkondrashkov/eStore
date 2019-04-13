@@ -20,6 +20,7 @@ final class SignInBuilderImpl {
 extension SignInBuilderImpl: SignInBuilder {
     func build(with listener: SignInListener) -> SignInCoordinator {
         let view = SignInViewImpl()
+        view.theme = dependency.themeManager.currentTheme
         let scene = SignInSceneImpl(navViewController: dependency.parent)
         let coordinator = SignInCoordinator(scene: scene,
                                             show: view,

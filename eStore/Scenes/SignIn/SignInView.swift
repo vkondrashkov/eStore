@@ -10,6 +10,7 @@ import UIKit
 
 final class SignInViewImpl: UIViewController {
     var presenter: SignInPresenter!
+    var theme: Theme!
 
     private var containerView: UIView!
     private var emailCaption: UILabel!
@@ -113,6 +114,7 @@ final class SignInViewImpl: UIViewController {
 
         activityIndicator.style = .white
 
+        apply(theme: theme, animated: false)
         keyboardManager.hideKeyboardWhenTappedAround()
     }
 
@@ -177,6 +179,8 @@ extension SignInViewImpl: SignInView {
 // MARK: - ThemeSupportable implementation
 extension SignInViewImpl: ThemeSupportable {
     func apply(theme: Theme, animated: Bool) {
+        self.theme = theme
+
         view.backgroundColor = theme.backgroundColor
         emailCaption.textColor = theme.textColor
         emailTextField.backgroundColor = theme.foregroundColor

@@ -9,7 +9,7 @@
 import UIKit
 
 class CategoryTableViewDataSource: NSObject, UITableViewDataSource {
-    private let themeManager = ThemeManagerImpl() // TODO: dependency injection
+    var theme: Theme!
     var categories: [Category] = [
         Category(iconUrl: "smartphone-icon", name: "Smartphone"),
         Category(iconUrl: "tv-icon", name: "TV"),
@@ -23,7 +23,7 @@ class CategoryTableViewDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = CategoryTableViewCell()
         cell.display(iconUrl: categories[indexPath.row].iconUrl, description: categories[indexPath.row].name)
-        cell.apply(theme: themeManager.currentTheme, animated: false)
+        cell.apply(theme: theme, animated: false)
         return cell
     }
 }
