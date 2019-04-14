@@ -10,6 +10,7 @@ import UIKit
 
 protocol AuthDependency: AnyObject {
     var parent: UIViewController { get }
+    var themeManager: ThemeManager { get }
 }
 
 protocol AuthBuilder: AnyObject {
@@ -34,8 +35,8 @@ protocol AuthListener: AnyObject {
     func authenticate() // TODO: Make method more functional
 }
 
-protocol AuthView: AnyObject { }
+protocol AuthView: AnyObject, ThemeUpdatable { }
 
 protocol AuthPresenter: AnyObject {
-    func handleViewAppear()
+    func handleLoadView()
 }

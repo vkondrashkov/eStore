@@ -17,7 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
-        let component = AppComponent(window: window)
+        let themeManager = ThemeManagerImpl()
+        let component = AppComponent(
+            window: window,
+            themeManager: themeManager
+        )
         let builder = RootBuilderImpl(dependency: component)
 
         rootCoordinator = builder.build()

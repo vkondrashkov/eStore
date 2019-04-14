@@ -16,11 +16,10 @@ final class ProductsListTableViewCell: UITableViewCell {
     private var productTitleLabel: UILabel!
     
     private let thumbnailSize: CGFloat = 100
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .white
+        backgroundColor = .clear
         
         setupContainerView()
         setupProductImageView()
@@ -30,13 +29,19 @@ final class ProductsListTableViewCell: UITableViewCell {
     private func setupContainerView() {
         containerView = UIView()
         contentView.addSubview(containerView)
-        activateContainerViewConstraints(view: containerView)
+        containerView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
     private func setupProductImageView() {
         productImageView = UIImageView()
         containerView.addSubview(productImageView)
-        activateProductImageViewConstraints(view: productImageView)
+        productImageView.snp.makeConstraints { make in
+            make.width.height.equalTo(thumbnailSize)
+            make.top.leading.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview().offset(-10)
+        }
     }
     
     private func setupProductTitleLabel() {
@@ -44,7 +49,16 @@ final class ProductsListTableViewCell: UITableViewCell {
         productTitleLabel.font = .boldSystemFont(ofSize: 17)
         productTitleLabel.numberOfLines = 0
         containerView.addSubview(productTitleLabel)
-        activateProductTitleLabelConstraints(view: productTitleLabel, anchorView: productImageView)
+        productTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(productImageView.snp.top)
+            make.leading.equalTo(productImageView.snp.trailing).offset(10)
+            make.trailing.equalToSuperview().offset(-10)
+        }
+    }
+
+    func apply(theme: Theme) {
+        contentView.backgroundColor = theme.foregroundColor
+        productTitleLabel.textColor = theme.textColor
     }
     
     func display(imageUrl: String?, title: String) {
@@ -58,41 +72,5 @@ final class ProductsListTableViewCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-// MARK: - Constraints
-private extension ProductsListTableViewCell {
-    func activateContainerViewConstraints(view: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: superview.topAnchor),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
-            ])
-    }
-    
-    func activateProductImageViewConstraints(view: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.widthAnchor.constraint(equalToConstant: thumbnailSize),
-            view.heightAnchor.constraint(equalToConstant: thumbnailSize),
-            view.topAnchor.constraint(equalTo: superview.topAnchor, constant: 10),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 10),
-            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -10)
-            ])
-    }
-    
-    func activateProductTitleLabelConstraints(view: UIView, anchorView: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: anchorView.topAnchor),
-            view.leadingAnchor.constraint(equalTo: anchorView.trailingAnchor, constant: 10),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -10)
-            ])
     }
 }

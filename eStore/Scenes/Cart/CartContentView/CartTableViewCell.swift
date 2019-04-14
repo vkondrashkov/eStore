@@ -16,11 +16,10 @@ final class CartTableViewCell: UITableViewCell {
     private var productTitleLabel: UILabel!
 
     private let thumbnailSize: CGFloat = 100
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .white
+        backgroundColor = .clear
 
         setupProductImageView()
         setupProductPriceLabel()
@@ -30,7 +29,11 @@ final class CartTableViewCell: UITableViewCell {
     private func setupProductImageView() {
         productImageView = UIImageView()
         contentView.addSubview(productImageView)
-        activateProductImageViewConstraints(view: productImageView)
+        productImageView.snp.makeConstraints { make in
+            make.width.height.equalTo(thumbnailSize)
+            make.top.leading.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview().offset(-10)
+        }
     }
 
     private func setupProductPriceLabel() {
@@ -38,7 +41,10 @@ final class CartTableViewCell: UITableViewCell {
         productPriceLabel.font = .boldSystemFont(ofSize: 17)
         productPriceLabel.textAlignment = .right
         contentView.addSubview(productPriceLabel)
-        activateProductPriceLabelConstraints(view: productPriceLabel, anchorView: productImageView)
+        productPriceLabel.snp.makeConstraints { make in
+            make.leading.equalTo(productImageView).offset(10)
+            make.trailing.bottom.equalToSuperview().offset(-10)
+        }
     }
 
     private func setupProductTitleLabel() {
@@ -46,7 +52,18 @@ final class CartTableViewCell: UITableViewCell {
         productTitleLabel.font = .boldSystemFont(ofSize: 17)
         productTitleLabel.numberOfLines = 0
         contentView.addSubview(productTitleLabel)
-        activateProductTitleLabelConstraints(view: productTitleLabel, anchorView: productImageView)
+        productTitleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.leading.equalTo(productImageView.snp.trailing).offset(10)
+            make.trailing.equalToSuperview().offset(-10)
+            make.bottom.equalTo(productPriceLabel.snp.top).offset(-10)
+        }
+    }
+
+    func apply(theme: Theme) {
+        contentView.backgroundColor = theme.foregroundColor
+        productPriceLabel.textColor = theme.textColor
+        productTitleLabel.textColor = theme.textColor
     }
 
     func display(imageUrl: String?, title: String, price: String) {
@@ -61,40 +78,5 @@ final class CartTableViewCell: UITableViewCell {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-// MARK: - Constraints
-private extension CartTableViewCell {
-    func activateProductImageViewConstraints(view: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.widthAnchor.constraint(equalToConstant: thumbnailSize),
-            view.heightAnchor.constraint(equalToConstant: thumbnailSize),
-            view.topAnchor.constraint(equalTo: superview.topAnchor, constant: 10),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 10),
-            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -10)
-            ])
-    }
-
-    func activateProductPriceLabelConstraints(view: UIView, anchorView: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.leadingAnchor.constraint(equalTo: anchorView.trailingAnchor, constant: 10),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -10),
-            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -10)
-            ])
-    }
-
-    func activateProductTitleLabelConstraints(view: UIView, anchorView: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: anchorView.topAnchor),
-            view.leadingAnchor.constraint(equalTo: anchorView.trailingAnchor, constant: 10),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -10)
-            ])
     }
 }

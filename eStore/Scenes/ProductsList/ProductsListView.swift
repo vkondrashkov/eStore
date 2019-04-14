@@ -10,6 +10,7 @@ import UIKit
 
 final class ProductsListViewImpl: UIViewController {
     var presenter: ProductsListPresenter!
+    var theme: Theme!
     
     private var loadingView: UIView!
     private var fadeMaskView: UIView!
@@ -17,9 +18,6 @@ final class ProductsListViewImpl: UIViewController {
     
     private var productsTableViewDataSource = ProductsListTableViewDataSource()
     private var productsTableView: UITableView!
-    
-    private let productsListBackgroundColor = UIColor(red: 242.0 / 255.0, green: 241.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
 
     override func loadView() {
         view = UIView()
@@ -51,8 +49,6 @@ final class ProductsListViewImpl: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = productsListBackgroundColor
-        navigationController?.navigationBar.tintColor = customTintColor
         navigationItem.largeTitleDisplayMode = .never
 
         loadingView.isHidden = true
@@ -61,13 +57,44 @@ final class ProductsListViewImpl: UIViewController {
 
         activityIndicator.style = .white
 
+        productsTableViewDataSource.theme = theme
+
         productsTableView.tableFooterView = UIView()
         productsTableView.backgroundColor = .clear
         productsTableView.register(ProductsListTableViewCell.self, forCellReuseIdentifier: ProductsListTableViewCell.reuseIdentifier)
         productsTableView.dataSource = productsTableViewDataSource
         productsTableView.delegate = self
 
+        apply(theme: theme)
         presenter.handleLoadView()
+    }
+
+    private func apply(theme: Theme) {
+        view.backgroundColor = theme.backgroundColor
+        productsTableView.separatorColor = theme.borderColor
+    }
+}
+
+// MARK: - ThemeUpdatable implementation
+extension ProductsListViewImpl: ThemeUpdatable {
+    func update(theme: Theme, animated: Bool) {
+        self.theme = theme
+        productsTableViewDataSource.theme = theme
+
+        var animation: CircularFillAnimation?
+        if animated {
+            animation = CircularFillAnimation(
+                view: view,
+                position: CGPoint(x: 300, y: 545), // TODO: make tap recognizier
+                contextType: .window
+            )
+            animation?.prepare()
+        }
+
+        apply(theme: theme)
+        productsTableView.reloadData()
+
+        animation?.run(completion: nil)
     }
 }
 

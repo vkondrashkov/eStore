@@ -10,6 +10,7 @@ import UIKit
 
 final class CartViewImpl: UIViewController {
     var presenter: CartPresenter!
+    var theme: Theme!
 
     private var loadingView: UIView!
     private var fadeMaskView: UIView!
@@ -17,9 +18,6 @@ final class CartViewImpl: UIViewController {
 
     private var cartTableViewDataSource = CartTableViewDataSource()
     private var cartTableView: UITableView!
-
-    private let productsListBackgroundColor = UIColor(red: 242.0 / 255.0, green: 241.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
 
     override func loadView() {
         view = UIView()
@@ -51,16 +49,16 @@ final class CartViewImpl: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = productsListBackgroundColor
-        navigationController?.navigationBar.tintColor = customTintColor
-        navigationController?.navigationBar.prefersLargeTitles = true
         title = "Cart"
-
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         loadingView.isHidden = true
 
-        fadeMaskView.backgroundColor = UIColor(white: 0.0, alpha: 0.2)
+        fadeMaskView.backgroundColor = Color.silver
 
         activityIndicator.style = .white
+
+        cartTableViewDataSource.theme = theme
 
         cartTableView.tableFooterView = UIView()
         cartTableView.backgroundColor = .clear
@@ -68,7 +66,18 @@ final class CartViewImpl: UIViewController {
         cartTableView.dataSource = cartTableViewDataSource
         cartTableView.delegate = self
 
+        apply(theme: theme)
         presenter.handleLoadView()
+    }
+
+    private func apply(theme: Theme) {
+        view.backgroundColor = theme.backgroundColor
+        navigationController?.navigationBar.tintColor = theme.tintColor
+        navigationController?.navigationBar.barTintColor = theme.barColor
+        navigationController?.navigationBar.barStyle = theme.barStyle
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: theme.textColor]
+        cartTableView.separatorColor = theme.borderColor
     }
 }
 
@@ -105,6 +114,29 @@ extension CartViewImpl: CartView {
     func display(storeItemList: [StoreItem]) {
         cartTableViewDataSource.items = storeItemList
         cartTableView.reloadData()
+    }
+}
+
+// MARK: - ThemeUpdatable implementation
+extension CartViewImpl: ThemeUpdatable {
+    func update(theme: Theme, animated: Bool) {
+        self.theme = theme
+        cartTableViewDataSource.theme = theme
+
+        var animation: CircularFillAnimation?
+        if animated {
+            animation = CircularFillAnimation(
+                view: view,
+                position: CGPoint(x: 300, y: 545), // TODO: make tap recognizier
+                contextType: .window
+            )
+            animation?.prepare()
+        }
+
+        apply(theme: theme)
+        cartTableView.reloadData()
+
+        animation?.run(completion: nil)
     }
 }
 

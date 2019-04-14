@@ -10,12 +10,10 @@ import UIKit
 
 final class ProfileViewImpl: UIViewController {
     var presenter: ProfilePresenter!
+    var theme: Theme!
 
     private var profileTableViewDataSource = ProfileCategoryTableViewDataSource()
     private var profileTableView: UITableView!
-
-    private let profileBackgroundColor = UIColor(red: 242.0 / 255.0, green: 241.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
 
     override func loadView() {
         view = UIView()
@@ -29,10 +27,10 @@ final class ProfileViewImpl: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = profileBackgroundColor
         title = "Profile"
-        navigationController?.navigationBar.tintColor = customTintColor
         navigationController?.navigationBar.prefersLargeTitles = true
+
+        profileTableViewDataSource.theme = theme
 
         profileTableView.tableFooterView = UIView() // Is needed to remove unnecessary separators
         profileTableView.backgroundColor = .clear
@@ -42,11 +40,22 @@ final class ProfileViewImpl: UIViewController {
         profileTableView.dataSource = profileTableViewDataSource
         profileTableView.delegate = self
 
+        apply(theme: theme)
         presenter.handleLoadView()
     }
 
     @objc private func rightBarButtonDidPressed() {
         presenter.handleRightBarButtonPress()
+    }
+
+    private func apply(theme: Theme) {
+        view.backgroundColor = theme.backgroundColor
+        navigationController?.navigationBar.tintColor = theme.tintColor
+        navigationController?.navigationBar.barTintColor = theme.barColor
+        navigationController?.navigationBar.barStyle = theme.barStyle
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: theme.textColor]
+        profileTableView.separatorColor = theme.borderColor
     }
 }
 
@@ -68,6 +77,29 @@ extension ProfileViewImpl: ProfileView {
     func display(alert: Alert) {
         let alertController = AlertFactory().make(alert: alert)
         present(alertController, animated: true, completion: nil)
+    }
+}
+
+// MARK: - ThemeUpdatable implementation
+extension ProfileViewImpl: ThemeUpdatable {
+    func update(theme: Theme, animated: Bool) {
+        self.theme = theme
+        profileTableViewDataSource.theme = theme
+
+        var animation: CircularFillAnimation?
+        if animated {
+            animation = CircularFillAnimation(
+                view: view,
+                position: CGPoint(x: 300, y: 545), // TODO: make tap recognizier
+                contextType: .window
+            )
+            animation?.prepare()
+        }
+
+        apply(theme: theme)
+        profileTableView.reloadData()
+
+        animation?.run(completion: nil)
     }
 }
 

@@ -12,16 +12,20 @@ import Foundation
 final class ProductsListPresenterImpl {
     private unowned let view: ProductsListView
     private unowned let router: ProductsListRouter
+    private unowned let themeManager: ThemeManager
     
     private let productType: ProductType
     
     init(view: ProductsListView,
          router: ProductsListRouter,
-         productType: ProductType) {
+         productType: ProductType,
+         themeManager: ThemeManager) {
         
         self.view = view
         self.router = router
         self.productType = productType
+        self.themeManager = themeManager
+        self.themeManager.add(observer: self)
     }
 }
 
@@ -65,5 +69,12 @@ extension ProductsListPresenterImpl: ProductsListPresenter {
     
     func handleProductPress(storeItem: StoreItem) {
         router.showProductDescription(for: storeItem)
+    }
+}
+
+// MARK: - ThemeObserver implementation
+extension ProductsListPresenterImpl: ThemeObserver {
+    func didChangedTheme(_ theme: Theme) {
+        view.update(theme: theme, animated: true)
     }
 }

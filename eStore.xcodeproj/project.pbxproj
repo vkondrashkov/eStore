@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C1C9622225F590F0055EE46 /* ThemeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C9621225F590F0055EE46 /* ThemeBuilder.swift */; };
+		9C1C9624225F5C550055EE46 /* ThemeUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C9623225F5C550055EE46 /* ThemeUpdatable.swift */; };
+		9C415BFC2260868300658A2B /* CircularFillAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C415BFB2260868300658A2B /* CircularFillAnimation.swift */; };
+		9C415BFE226086B100658A2B /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C415BFD226086B100658A2B /* Animation.swift */; };
 		9C452FAE2242DAEF00924FA5 /* CartContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452FAD2242DAEF00924FA5 /* CartContract.swift */; };
 		9C452FB02242DAF800924FA5 /* CartComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452FAF2242DAF800924FA5 /* CartComponent.swift */; };
 		9C452FB22242DB0000924FA5 /* CartBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452FB12242DB0000924FA5 /* CartBuilder.swift */; };
@@ -16,6 +20,22 @@
 		9C452FBA2242DB1E00924FA5 /* CartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452FB92242DB1E00924FA5 /* CartPresenter.swift */; };
 		9C452FBD2242E07F00924FA5 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452FBC2242E07F00924FA5 /* CartTableViewCell.swift */; };
 		9C452FBF2242E08B00924FA5 /* CartTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C452FBE2242E08B00924FA5 /* CartTableViewDataSource.swift */; };
+		9C56E0FC225A747100E72428 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E0FB225A747100E72428 /* Color.swift */; };
+		9C56E0FE225A76B100E72428 /* ThemeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E0FD225A76B100E72428 /* ThemeType.swift */; };
+		9C56E101225A93C000E72428 /* ThemeSettingsContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E100225A93C000E72428 /* ThemeSettingsContract.swift */; };
+		9C56E103225A93C700E72428 /* ThemeSettingsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E102225A93C700E72428 /* ThemeSettingsComponent.swift */; };
+		9C56E105225A93CE00E72428 /* ThemeSettingsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E104225A93CD00E72428 /* ThemeSettingsBuilder.swift */; };
+		9C56E107225A93D200E72428 /* ThemeSettingsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E106225A93D200E72428 /* ThemeSettingsScene.swift */; };
+		9C56E109225A93D900E72428 /* ThemeSettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E108225A93D900E72428 /* ThemeSettingsCoordinator.swift */; };
+		9C56E10B225A93E000E72428 /* ThemeSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E10A225A93E000E72428 /* ThemeSettingsView.swift */; };
+		9C56E10D225A93E700E72428 /* ThemeSettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E10C225A93E700E72428 /* ThemeSettingsPresenter.swift */; };
+		9C56E10F225A950A00E72428 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E10E225A950A00E72428 /* UserDefaultsManager.swift */; };
+		9C56E111225B5EF800E72428 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E110225B5EF800E72428 /* ThemeManager.swift */; };
+		9C56E113225B5F0200E72428 /* ThemeObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E112225B5F0200E72428 /* ThemeObserver.swift */; };
+		9C56E115225B5F0A00E72428 /* WeakRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E114225B5F0A00E72428 /* WeakRef.swift */; };
+		9C56E117225B5FA200E72428 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E116225B5FA200E72428 /* Theme.swift */; };
+		9C56E119225B605000E72428 /* DarkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E118225B605000E72428 /* DarkTheme.swift */; };
+		9C56E11B225B692200E72428 /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56E11A225B692200E72428 /* LightTheme.swift */; };
 		9C76ABAD22357FCC00FB39DA /* Specification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76ABAC22357FCC00FB39DA /* Specification.swift */; };
 		9C76ABAF223588D900FB39DA /* ProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76ABAE223588D900FB39DA /* ProductType.swift */; };
 		9C76ABB122359F8400FB39DA /* ProductsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C76ABB022359F8400FB39DA /* ProductsService.swift */; };
@@ -128,6 +148,10 @@
 		54FCAB27BD45A8EE1C80EED6 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		729C066A86EECB57EB23A9B3 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9636105CD80314886F52C479 /* Pods-eStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eStore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eStore/Pods-eStore.debug.xcconfig"; sourceTree = "<group>"; };
+		9C1C9621225F590F0055EE46 /* ThemeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeBuilder.swift; sourceTree = "<group>"; };
+		9C1C9623225F5C550055EE46 /* ThemeUpdatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeUpdatable.swift; sourceTree = "<group>"; };
+		9C415BFB2260868300658A2B /* CircularFillAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularFillAnimation.swift; sourceTree = "<group>"; };
+		9C415BFD226086B100658A2B /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		9C452FAD2242DAEF00924FA5 /* CartContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartContract.swift; sourceTree = "<group>"; };
 		9C452FAF2242DAF800924FA5 /* CartComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartComponent.swift; sourceTree = "<group>"; };
 		9C452FB12242DB0000924FA5 /* CartBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBuilder.swift; sourceTree = "<group>"; };
@@ -137,6 +161,22 @@
 		9C452FB92242DB1E00924FA5 /* CartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPresenter.swift; sourceTree = "<group>"; };
 		9C452FBC2242E07F00924FA5 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
 		9C452FBE2242E08B00924FA5 /* CartTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewDataSource.swift; sourceTree = "<group>"; };
+		9C56E0FB225A747100E72428 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		9C56E0FD225A76B100E72428 /* ThemeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeType.swift; sourceTree = "<group>"; };
+		9C56E100225A93C000E72428 /* ThemeSettingsContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsContract.swift; sourceTree = "<group>"; };
+		9C56E102225A93C700E72428 /* ThemeSettingsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsComponent.swift; sourceTree = "<group>"; };
+		9C56E104225A93CD00E72428 /* ThemeSettingsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsBuilder.swift; sourceTree = "<group>"; };
+		9C56E106225A93D200E72428 /* ThemeSettingsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsScene.swift; sourceTree = "<group>"; };
+		9C56E108225A93D900E72428 /* ThemeSettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsCoordinator.swift; sourceTree = "<group>"; };
+		9C56E10A225A93E000E72428 /* ThemeSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsView.swift; sourceTree = "<group>"; };
+		9C56E10C225A93E700E72428 /* ThemeSettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsPresenter.swift; sourceTree = "<group>"; };
+		9C56E10E225A950A00E72428 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		9C56E110225B5EF800E72428 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		9C56E112225B5F0200E72428 /* ThemeObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeObserver.swift; sourceTree = "<group>"; };
+		9C56E114225B5F0A00E72428 /* WeakRef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRef.swift; sourceTree = "<group>"; };
+		9C56E116225B5FA200E72428 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		9C56E118225B605000E72428 /* DarkTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkTheme.swift; sourceTree = "<group>"; };
+		9C56E11A225B692200E72428 /* LightTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightTheme.swift; sourceTree = "<group>"; };
 		9C76ABAC22357FCC00FB39DA /* Specification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Specification.swift; sourceTree = "<group>"; };
 		9C76ABAE223588D900FB39DA /* ProductType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductType.swift; sourceTree = "<group>"; };
 		9C76ABB022359F8400FB39DA /* ProductsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsService.swift; sourceTree = "<group>"; };
@@ -258,6 +298,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C1C9620225F58C50055EE46 /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				9C56E0FD225A76B100E72428 /* ThemeType.swift */,
+				9C56E110225B5EF800E72428 /* ThemeManager.swift */,
+				9C1C9621225F590F0055EE46 /* ThemeBuilder.swift */,
+			);
+			path = Themes;
+			sourceTree = "<group>";
+		};
+		9C415BFA2260865E00658A2B /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				9C415BFB2260868300658A2B /* CircularFillAnimation.swift */,
+				9C415BFD226086B100658A2B /* Animation.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		9C452FAA2242DAB300924FA5 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +339,33 @@
 				9C452FBE2242E08B00924FA5 /* CartTableViewDataSource.swift */,
 			);
 			path = CartContentView;
+			sourceTree = "<group>";
+		};
+		9C56E0FA225A745C00E72428 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9C415BFA2260865E00658A2B /* Animations */,
+				9C56E0FB225A747100E72428 /* Color.swift */,
+				9C56E116225B5FA200E72428 /* Theme.swift */,
+				9C56E118225B605000E72428 /* DarkTheme.swift */,
+				9C56E11A225B692200E72428 /* LightTheme.swift */,
+				9C1C9623225F5C550055EE46 /* ThemeUpdatable.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		9C56E0FF225A937000E72428 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				9C56E100225A93C000E72428 /* ThemeSettingsContract.swift */,
+				9C56E102225A93C700E72428 /* ThemeSettingsComponent.swift */,
+				9C56E104225A93CD00E72428 /* ThemeSettingsBuilder.swift */,
+				9C56E106225A93D200E72428 /* ThemeSettingsScene.swift */,
+				9C56E108225A93D900E72428 /* ThemeSettingsCoordinator.swift */,
+				9C56E10A225A93E000E72428 /* ThemeSettingsView.swift */,
+				9C56E10C225A93E700E72428 /* ThemeSettingsPresenter.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		9C83BB95222A9CD400CBB1FF /* Networking */ = {
@@ -461,8 +547,12 @@
 		9CC46C1822176B28005E24F5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				9C1C9620225F58C50055EE46 /* Themes */,
 				9CC46C162216982E005E24F5 /* KeyboardManager.swift */,
 				9CC46C1922176B39005E24F5 /* AlertFactory.swift */,
+				9C56E10E225A950A00E72428 /* UserDefaultsManager.swift */,
+				9C56E112225B5F0200E72428 /* ThemeObserver.swift */,
+				9C56E114225B5F0A00E72428 /* WeakRef.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -516,11 +606,12 @@
 				9CC46BFD221614CD005E24F5 /* SignIn */,
 				9CC46BC02215387B005E24F5 /* SignUp */,
 				9CC5525B220AFB810004ACC4 /* Dashboard */,
-				9CC5525D220AFBB00004ACC4 /* Profile */,
 				9CA418E1221D8CD300BAF215 /* Catalog */,
 				9CA41922222324AF00BAF215 /* ProductsList */,
 				9C83BBFD222EAEAC00CBB1FF /* ProductDescription */,
 				9C452FAA2242DAB300924FA5 /* Cart */,
+				9CC5525D220AFBB00004ACC4 /* Profile */,
+				9C56E0FF225A937000E72428 /* Theme */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -532,6 +623,7 @@
 				9CA418D2221D878500BAF215 /* Entities */,
 				9CC46C1822176B28005E24F5 /* Helpers */,
 				9CC46BAE2214719D005E24F5 /* Module */,
+				9C56E0FA225A745C00E72428 /* UI */,
 				9CC55259220AF93A0004ACC4 /* Services */,
 				9CBC281A223BC5850091082B /* Utils */,
 			);
@@ -794,6 +886,8 @@
 				9CA418E5221D8CF400BAF215 /* CatalogComponent.swift in Sources */,
 				9CC46BD622153932005E24F5 /* SignUpPresenter.swift in Sources */,
 				9CA419202222D6E900BAF215 /* Category.swift in Sources */,
+				9C56E11B225B692200E72428 /* LightTheme.swift in Sources */,
+				9C56E113225B5F0200E72428 /* ThemeObserver.swift in Sources */,
 				9CA418DA221D884900BAF215 /* Laptop.swift in Sources */,
 				9CA418D4221D879C00BAF215 /* StoreItem.swift in Sources */,
 				9C452FB22242DB0000924FA5 /* CartBuilder.swift in Sources */,
@@ -812,11 +906,13 @@
 				9CC46BA02214107A005E24F5 /* DashboardCoordinator.swift in Sources */,
 				9C9C73D3223EBFC400C4B5EE /* ProfileSection.swift in Sources */,
 				9C9C73D5223EC1AC00C4B5EE /* ProfileCategoryType.swift in Sources */,
+				9C56E115225B5F0A00E72428 /* WeakRef.swift in Sources */,
 				9C83BBFF222EAECF00CBB1FF /* ProductDescriptionContract.swift in Sources */,
 				9C452FB02242DAF800924FA5 /* CartComponent.swift in Sources */,
 				9CC46BBD2214C41B005E24F5 /* AuthView.swift in Sources */,
 				9CC46BBB2214C412005E24F5 /* AuthCoordinator.swift in Sources */,
 				9CC46B9E22141072005E24F5 /* DashboardScene.swift in Sources */,
+				9C56E111225B5EF800E72428 /* ThemeManager.swift in Sources */,
 				9CA4192E2223250A00BAF215 /* ProductsListView.swift in Sources */,
 				9CC46C2222180B83005E24F5 /* ProfileBuilder.swift in Sources */,
 				9CC55244220AF8510004ACC4 /* AppDelegate.swift in Sources */,
@@ -827,20 +923,25 @@
 				9CC46BC8221538F8005E24F5 /* SignUpContract.swift in Sources */,
 				9CC46B89221405C6005E24F5 /* RootComponent.swift in Sources */,
 				9C452FB42242DB0700924FA5 /* CartScene.swift in Sources */,
+				9C56E103225A93C700E72428 /* ThemeSettingsComponent.swift in Sources */,
 				9CA418ED221D8D1600BAF215 /* CatalogView.swift in Sources */,
 				9CC46C0922161559005E24F5 /* SignInView.swift in Sources */,
 				9CC46B9822141058005E24F5 /* DashboardContract.swift in Sources */,
 				9CC46C2822180B9F005E24F5 /* ProfileView.swift in Sources */,
 				9CC46BD42215392A005E24F5 /* SignUpView.swift in Sources */,
 				9CC46C172216982E005E24F5 /* KeyboardManager.swift in Sources */,
+				9C415BFE226086B100658A2B /* Animation.swift in Sources */,
 				9CA41926222324E800BAF215 /* ProductsListComponent.swift in Sources */,
 				9C9C73CF223EB18000C4B5EE /* ProfileCategoryTableViewDataSource.swift in Sources */,
 				9CA418D6221D883700BAF215 /* Smartphone.swift in Sources */,
 				9CA4192C2223250200BAF215 /* ProductsListCoordinator.swift in Sources */,
+				9C56E107225A93D200E72428 /* ThemeSettingsScene.swift in Sources */,
 				9CA4192A222324F800BAF215 /* ProductsListScene.swift in Sources */,
 				9CC46C2A22180BAD005E24F5 /* ProfilePresenter.swift in Sources */,
 				9CA41928222324EF00BAF215 /* ProductsListBuilder.swift in Sources */,
 				9CC46B9C2214106B005E24F5 /* DashboardBuilder.swift in Sources */,
+				9C56E0FE225A76B100E72428 /* ThemeType.swift in Sources */,
+				9C1C9624225F5C550055EE46 /* ThemeUpdatable.swift in Sources */,
 				9C83BC03222EAEE100CBB1FF /* ProductDescriptionBuilder.swift in Sources */,
 				9CA418DE221D898300BAF215 /* Display.swift in Sources */,
 				9CA418E9221D8D0500BAF215 /* CatalogScene.swift in Sources */,
@@ -849,11 +950,14 @@
 				9C9C73D1223EB25400C4B5EE /* ProfileCategory.swift in Sources */,
 				9C83BC01222EAED800CBB1FF /* ProductDescriptionComponent.swift in Sources */,
 				9CA4191B2222CC9500BAF215 /* CategoryTableViewCell.swift in Sources */,
+				9C56E105225A93CE00E72428 /* ThemeSettingsBuilder.swift in Sources */,
 				9CA418D8221D883F00BAF215 /* TV.swift in Sources */,
 				9CC46BBF2214C425005E24F5 /* AuthPresenter.swift in Sources */,
 				9C83BC05222EAEEB00CBB1FF /* ProductDescriptionScene.swift in Sources */,
 				9CC46C0722161550005E24F5 /* SignInCoordinator.swift in Sources */,
 				9C83BB94222A591A00CBB1FF /* ProductsListTableViewDataSource.swift in Sources */,
+				9C56E10F225A950A00E72428 /* UserDefaultsManager.swift in Sources */,
+				9C56E117225B5FA200E72428 /* Theme.swift in Sources */,
 				9CA418E0221D8A0900BAF215 /* OperatingSystem.swift in Sources */,
 				9CC46BFF22161529005E24F5 /* SignInContract.swift in Sources */,
 				9C83BC09222EAEFF00CBB1FF /* ProductDescriptionView.swift in Sources */,
@@ -864,6 +968,7 @@
 				9CA418E3221D8CEC00BAF215 /* CatalogContract.swift in Sources */,
 				9CBC281C223BC5A70091082B /* UIImageView+Downloaded.swift in Sources */,
 				9CC46C2022180B7B005E24F5 /* ProfileComponent.swift in Sources */,
+				9C415BFC2260868300658A2B /* CircularFillAnimation.swift in Sources */,
 				9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */,
 				9CA4193422251C5600BAF215 /* ProductsListTableViewCell.swift in Sources */,
 				9C452FBA2242DB1E00924FA5 /* CartPresenter.swift in Sources */,
@@ -874,16 +979,23 @@
 				9C452FB82242DB1500924FA5 /* CartView.swift in Sources */,
 				9CA4191E2222CF0B00BAF215 /* CategoryTableViewDataSource.swift in Sources */,
 				9CC46C032216153A005E24F5 /* SignInBuilder.swift in Sources */,
+				9C56E109225A93D900E72428 /* ThemeSettingsCoordinator.swift in Sources */,
 				9CBC2819223B839D0091082B /* ProductDescriptionTableHeaderCell.swift in Sources */,
 				9CA419302223251200BAF215 /* ProductsListPresenter.swift in Sources */,
+				9C56E101225A93C000E72428 /* ThemeSettingsContract.swift in Sources */,
+				9C56E10D225A93E700E72428 /* ThemeSettingsPresenter.swift in Sources */,
 				9CC46C2422180B8C005E24F5 /* ProfileScene.swift in Sources */,
 				9CC46BCC22153908005E24F5 /* SignUpBuilder.swift in Sources */,
 				9CA418E7221D8CFC00BAF215 /* CatalogBuilder.swift in Sources */,
+				9C56E0FC225A747100E72428 /* Color.swift in Sources */,
 				9C76ABB122359F8400FB39DA /* ProductsService.swift in Sources */,
+				9C56E119225B605000E72428 /* DarkTheme.swift in Sources */,
 				9C9C73CD223EB17100C4B5EE /* ProfileRegularCategoryTableViewCell.swift in Sources */,
 				9C76ABAD22357FCC00FB39DA /* Specification.swift in Sources */,
 				9CC46B9122140623005E24F5 /* RootPresenter.swift in Sources */,
 				9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */,
+				9C1C9622225F590F0055EE46 /* ThemeBuilder.swift in Sources */,
+				9C56E10B225A93E000E72428 /* ThemeSettingsView.swift in Sources */,
 				9CC46BCE2215390F005E24F5 /* SignUpScene.swift in Sources */,
 				9CA418EF221D8D1F00BAF215 /* CatalogPresenter.swift in Sources */,
 				9C76ABAF223588D900FB39DA /* ProductType.swift in Sources */,

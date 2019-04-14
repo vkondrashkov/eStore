@@ -19,8 +19,6 @@ final class DashboardCoordinator {
     private let catalogBuilder: CatalogBuilder
     private var catalogCoordinator: CatalogCoordinator?
 
-    // TODO: Change contract between Dash or Auth screen
-    // with its Root module
     private weak var listener: DashboardListener?
 
     init(scene: DashboardScene,

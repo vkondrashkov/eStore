@@ -10,6 +10,7 @@ import UIKit
 
 protocol ProductDescriptionDependency: AnyObject {
     var navigation: UINavigationController { get }
+    var themeManager: ThemeManager { get }
 }
 
 protocol ProductDescriptionBuilder: AnyObject {
@@ -24,9 +25,7 @@ protocol ProductDescriptionShow: AnyObject {
     var rootViewController: UIViewController { get }
 }
 
-protocol ProductDescriptionView: AnyObject {
-    
-}
+protocol ProductDescriptionView: AnyObject, ThemeUpdatable { }
 
 protocol ProductDescriptionPresenter: AnyObject {
     func handleLoadView()

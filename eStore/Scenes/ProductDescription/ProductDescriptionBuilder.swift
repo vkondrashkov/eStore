@@ -23,10 +23,14 @@ extension ProductDescriptionBuilderImpl: ProductDescriptionBuilder {
         dataSource.item = storeItem
         let view = ProductDescriptionViewImpl()
         view.dataSource = dataSource
+        view.theme = dependency.themeManager.currentTheme
         let scene = ProductDescriptionSceneImpl(navigation: dependency.navigation)
         let coordinator = ProductDescriptionCoordinator(scene: scene,
                                                         show: view)
-        let presenter = ProductDescriptionPresenterImpl(view: view)
+        let presenter = ProductDescriptionPresenterImpl(
+            view: view,
+            themeManager: dependency.themeManager
+        )
         view.presenter = presenter
         return coordinator
     }

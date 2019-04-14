@@ -10,15 +10,25 @@ import Foundation
 
 final class ProductDescriptionPresenterImpl {
     private unowned let view: ProductDescriptionView
+    private unowned let themeManager: ThemeManager
     
-    init(view: ProductDescriptionView) {
+    init(view: ProductDescriptionView,
+         themeManager: ThemeManager) {
         self.view = view
+        self.themeManager = themeManager
+        self.themeManager.add(observer: self)
     }
 }
 
 // MARK: - ProductDescriptionPresenter implementation
 extension ProductDescriptionPresenterImpl: ProductDescriptionPresenter {
-    func handleLoadView() {
-        
+    func handleLoadView() { }
+}
+
+// MARK: - ThemeObserver implementation
+extension ProductDescriptionPresenterImpl: ThemeObserver {
+    func didChangedTheme(_ theme: Theme) {
+        view.update(theme: theme, animated: true)
     }
 }
+

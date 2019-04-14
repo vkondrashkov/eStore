@@ -10,6 +10,7 @@ import UIKit
 
 final class SignUpViewImpl: UIViewController {
     var presenter: SignUpPresenter!
+    var theme: Theme!
 
     private var containerView: UIView!
     private var emailCaption: UILabel!
@@ -20,9 +21,6 @@ final class SignUpViewImpl: UIViewController {
     private var confirmPasswordTextField: UITextField!
     private var signUpButton: UIButton!
     private var activityIndicator: UIActivityIndicatorView!
-
-    private let signUpButtonBackgroundColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
 
     private lazy var keyboardManager = KeyboardManager(viewController: self)
 
@@ -101,9 +99,8 @@ final class SignUpViewImpl: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
         title = "Sign Up"
-        navigationController?.navigationBar.tintColor = customTintColor
+        navigationController?.navigationBar.tintColor = Color.shamrock
 
         emailCaption.font = .boldSystemFont(ofSize: 17)
 
@@ -123,10 +120,11 @@ final class SignUpViewImpl: UIViewController {
         signUpButton.addTarget(self, action: #selector(signUpButtonDidPressed), for: .touchUpInside)
         signUpButton.layer.cornerRadius = 5
         signUpButton.layer.masksToBounds = true
-        signUpButton.backgroundColor = signUpButtonBackgroundColor
+        signUpButton.backgroundColor = Color.shamrock
 
         activityIndicator.style = .white
 
+        apply(theme: theme)
         keyboardManager.hideKeyboardWhenTappedAround()
     }
 
@@ -135,12 +133,46 @@ final class SignUpViewImpl: UIViewController {
         presenter.shouldViewAppear()
     }
 
-    @objc func rightBarButtonDidPressed() {
+    @objc private func rightBarButtonDidPressed() {
         presenter.handleRightBarButtonPress()
     }
 
-    @objc func signUpButtonDidPressed() {
+    @objc private func signUpButtonDidPressed() {
         presenter.handleSignUpButtonPress()
+    }
+
+    private func apply(theme: Theme) {
+        view.backgroundColor = theme.backgroundColor
+        emailCaption.textColor = theme.textColor
+        emailTextField.backgroundColor = theme.foregroundColor
+        emailTextField.textColor = theme.textColor
+        passwordCaption.textColor = theme.textColor
+        passwordTextField.backgroundColor = theme.foregroundColor
+        passwordTextField.textColor = theme.textColor
+        confirmPasswordCaption.textColor = theme.textColor
+        confirmPasswordTextField.backgroundColor = theme.foregroundColor
+        confirmPasswordTextField.textColor = theme.textColor
+    }
+}
+
+// MARK: - ThemeUpdatable implementation
+extension SignUpViewImpl: ThemeUpdatable {
+    func update(theme: Theme, animated: Bool) {
+        self.theme = theme
+
+        var animation: CircularFillAnimation?
+        if animated {
+            animation = CircularFillAnimation(
+                view: view,
+                position: CGPoint(x: 300, y: 545), // TODO: make tap recognizier
+                contextType: .window
+            )
+            animation?.prepare()
+        }
+
+        apply(theme: theme)
+
+        animation?.run(completion: nil)
     }
 }
 

@@ -10,6 +10,7 @@ import UIKit
 
 final class SignInViewImpl: UIViewController {
     var presenter: SignInPresenter!
+    var theme: Theme!
 
     private var containerView: UIView!
     private var emailCaption: UILabel!
@@ -21,11 +22,6 @@ final class SignInViewImpl: UIViewController {
     private var signInButton: UIButton!
     private var forgotPasswordButton: UIButton!
     private var activityIndicator: UIActivityIndicatorView!
-
-    private let signInButtonBackgroundColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-    private let forgotPasswordButtonRegularColor = UIColor(white: 0.5, alpha: 1.0)
-    private let forgotPasswordButtonHighlightedColor = UIColor(white: 0.75, alpha: 1.0)
 
     private lazy var keyboardManager = KeyboardManager(viewController: self)
 
@@ -95,9 +91,7 @@ final class SignInViewImpl: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         title = "Sign In"
-        navigationController?.navigationBar.tintColor = customTintColor
 
         emailCaption.font = .boldSystemFont(ofSize: 17)
 
@@ -112,14 +106,15 @@ final class SignInViewImpl: UIViewController {
         signInButton.addTarget(self, action: #selector(signInButtonDidPressed), for: .touchUpInside)
         signInButton.layer.cornerRadius = 5
         signInButton.layer.masksToBounds = true
-        signInButton.backgroundColor = signInButtonBackgroundColor
+        signInButton.backgroundColor = Color.shamrock
 
-        forgotPasswordButton.setTitleColor(forgotPasswordButtonRegularColor, for: .normal)
-        forgotPasswordButton.setTitleColor(forgotPasswordButtonHighlightedColor, for: .highlighted)
+        forgotPasswordButton.setTitleColor(Color.grey, for: .normal)
+        forgotPasswordButton.setTitleColor(Color.silver, for: .highlighted)
         forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonDidPressed), for: .touchUpInside)
 
         activityIndicator.style = .white
 
+        apply(theme: theme)
         keyboardManager.hideKeyboardWhenTappedAround()
     }
 
@@ -128,16 +123,26 @@ final class SignInViewImpl: UIViewController {
         presenter.shouldViewAppear()
     }
 
-    @objc func rightBarButtonDidPressed() {
+    @objc private func rightBarButtonDidPressed() {
         presenter.handleRightBarButtonPress()
     }
 
-    @objc func signInButtonDidPressed() {
+    @objc private func signInButtonDidPressed() {
         presenter.handleSignInButtonPress()
     }
 
-    @objc func forgotPasswordButtonDidPressed() {
+    @objc private func forgotPasswordButtonDidPressed() {
         presenter.handleForgotPasswordPress()
+    }
+
+    private func apply(theme: Theme) {
+        view.backgroundColor = theme.backgroundColor
+        emailCaption.textColor = theme.textColor
+        emailTextField.backgroundColor = theme.foregroundColor
+        emailTextField.textColor = theme.textColor
+        passwordCaption.textColor = theme.textColor
+        passwordTextField.backgroundColor = theme.foregroundColor
+        passwordTextField.textColor = theme.textColor
     }
 }
 
@@ -178,6 +183,27 @@ extension SignInViewImpl: SignInView {
 
     func hideActivityIndicator() {
         activityIndicator.stopAnimating()
+    }
+}
+
+// MARK: - ThemeUpdatable implementation
+extension SignInViewImpl: ThemeUpdatable {
+    func update(theme: Theme, animated: Bool) {
+        self.theme = theme
+
+        var animation: CircularFillAnimation?
+        if animated {
+            animation = CircularFillAnimation(
+                view: view,
+                position: CGPoint(x: 300, y: 545), // TODO: make tap recognizier
+                contextType: .window
+            )
+            animation?.prepare()
+        }
+
+        apply(theme: theme)
+
+        animation?.run(completion: nil)
     }
 }
 

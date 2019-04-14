@@ -10,6 +10,7 @@ import UIKit
 
 protocol CartDependency: AnyObject {
     var cartNavigation: UINavigationController { get }
+    var themeManager: ThemeManager { get }
 }
 
 protocol CartBuilder: AnyObject {
@@ -28,7 +29,7 @@ protocol CartRouter: AnyObject {
     func showProductDescription(for storeItem: StoreItem)
 }
 
-protocol CartView: AnyObject {
+protocol CartView: AnyObject, ThemeUpdatable {
     func showActivityIndicator()
     func hideActivityIndicator()
     func display(storeItemList: [StoreItem])

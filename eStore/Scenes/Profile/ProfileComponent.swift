@@ -10,8 +10,12 @@ import UIKit
 
 final class ProfileComponent {
     let rootViewController: UIViewController
+    let themeManager: ThemeManager
 
-    init(rootViewController: UIViewController) {
+    init(rootViewController: UIViewController,
+         themeManager: ThemeManager) {
+
         self.rootViewController = rootViewController
+        self.themeManager = themeManager
     }
 }

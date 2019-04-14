@@ -10,6 +10,7 @@ import UIKit
 
 protocol ProductsListDependency: AnyObject {
     var navigation: UINavigationController { get }
+    var themeManager: ThemeManager { get }
 }
 
 protocol ProductsListBuilder: AnyObject {
@@ -28,7 +29,7 @@ protocol ProductsListRouter: AnyObject {
     func showProductDescription(for storeItem: StoreItem)
 }
 
-protocol ProductsListView: AnyObject {
+protocol ProductsListView: AnyObject, ThemeUpdatable {
     func showActivityIndicator()
     func hideActivityIndicator()
     func display(storeItemList: [StoreItem])

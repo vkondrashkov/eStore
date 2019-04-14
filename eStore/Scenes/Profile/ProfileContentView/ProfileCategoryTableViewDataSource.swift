@@ -9,6 +9,7 @@
 import UIKit
 
 class ProfileCategoryTableViewDataSource: NSObject, UITableViewDataSource {
+    var theme: Theme!
     var items: [ProfileSection] = []
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -29,14 +30,17 @@ class ProfileCategoryTableViewDataSource: NSObject, UITableViewDataSource {
         case .regular:
             let cell = tableView.dequeueReusableCell(withIdentifier: ProfileRegularCategoryTableViewCell.reuseIdentifier, for: indexPath) as! ProfileRegularCategoryTableViewCell
             cell.display(iconImageUrl: item.iconUrl, title: item.name)
+            cell.apply(theme: theme)
             return cell
         case .thumbnail:
             let cell = tableView.dequeueReusableCell(withIdentifier: ProfileThumbnailCategoryTableViewCell.reuseIdentifier, for: indexPath) as! ProfileThumbnailCategoryTableViewCell
             cell.display(thumbnailImageUrl: item.iconUrl, title: item.name)
+            cell.apply(theme: theme)
             return cell
         case .warning:
             let cell = tableView.dequeueReusableCell(withIdentifier: ProfileWarningCategoryTableViewCell.reuseIdentifier, for: indexPath) as! ProfileWarningCategoryTableViewCell
             cell.display(iconImageUrl: item.iconUrl, title: item.name)
+            cell.apply(theme: theme)
             return cell
         }
     }

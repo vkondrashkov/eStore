@@ -21,15 +21,22 @@ extension ProductsListBuilderImpl: ProductsListBuilder {
     func build(with productType: ProductType) -> ProductsListCoordinator {
         let view = ProductsListViewImpl()
         view.title = productType.rawValue
-        let component = ProductsListComponent(navigation: dependency.navigation)
+        view.theme = dependency.themeManager.currentTheme
+        let component = ProductsListComponent(
+            navigation: dependency.navigation,
+            themeManager: dependency.themeManager
+        )
         let scene = ProductsListSceneImpl(navigation: dependency.navigation)
         let productDescriptionBuilder = ProductDescriptionBuilderImpl(dependency: component)
         let coordinator = ProductsListCoordinator(scene: scene,
                                                   show: view,
                                                   productDescriptionBuilder: productDescriptionBuilder)
-        let presenter = ProductsListPresenterImpl(view: view,
-                                                  router: coordinator,
-                                                  productType: productType)
+        let presenter = ProductsListPresenterImpl(
+            view: view,
+            router: coordinator,
+            productType: productType,
+            themeManager: dependency.themeManager
+        )
         view.presenter = presenter
         return coordinator
     }

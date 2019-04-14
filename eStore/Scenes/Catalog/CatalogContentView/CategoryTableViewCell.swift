@@ -14,12 +14,10 @@ class CategoryTableViewCell: UITableViewCell {
     private var iconImageView: UIImageView!
     private var descriptionLabel: UILabel!
 
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        contentView.backgroundColor = .white
+        backgroundColor = .clear
         setupIconImageView()
         setupDescriptionLabel()
     }
@@ -27,15 +25,28 @@ class CategoryTableViewCell: UITableViewCell {
     private func setupIconImageView() {
         iconImageView = UIImageView()
         contentView.addSubview(iconImageView)
-        activateIconImageViewConstraints(view: iconImageView)
+        iconImageView.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview().offset(-10)
+            make.width.equalTo(iconImageView.snp.height)
+        }
     }
 
     private func setupDescriptionLabel() {
         descriptionLabel = UILabel()
         descriptionLabel.font = .boldSystemFont(ofSize: 17)
-        descriptionLabel.textColor = .black
         contentView.addSubview(descriptionLabel)
-        activateDescriptionLabelConstraints(view: descriptionLabel, anchorView: iconImageView)
+        descriptionLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.leading.equalTo(iconImageView.snp.trailing).offset(10)
+            make.trailing.bottom.equalToSuperview().offset(-10)
+        }
+    }
+
+    func apply(theme: Theme) {
+        contentView.backgroundColor = theme.foregroundColor
+        descriptionLabel.textColor = theme.textColor
+        iconImageView.tintColor = theme.tintColor
     }
 
     func display(iconUrl: String?, description: String) {
@@ -45,35 +56,9 @@ class CategoryTableViewCell: UITableViewCell {
         } else {
             iconImageView.image = UIImage(named: "error-icon")!.withRenderingMode(.alwaysTemplate)
         }
-        iconImageView.tintColor = customTintColor
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-// MARK: - Constraints
-private extension CategoryTableViewCell {
-    func activateIconImageViewConstraints(view: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: superview.topAnchor, constant: 10),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 10),
-            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -10),
-            view.widthAnchor.constraint(equalTo: view.heightAnchor)
-            ])
-    }
-
-    func activateDescriptionLabelConstraints(view: UIView, anchorView: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: superview.topAnchor, constant: 10),
-            view.leadingAnchor.constraint(equalTo: anchorView.trailingAnchor, constant: 10),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -10),
-            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -10)
-            ])
     }
 }

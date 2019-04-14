@@ -10,9 +10,9 @@ import UIKit
 
 final class CatalogViewImpl: UIViewController {
     var presenter: CatalogPresenter!
+    var theme: Theme!
 
     private let categoryTableViewDataSource = CategoryTableViewDataSource()
-    private let catalogBackgroundColor = UIColor(red: 242.0 / 255.0, green: 241.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
     private var categoryTableView: UITableView!
 
     override func loadView() {
@@ -27,20 +27,57 @@ final class CatalogViewImpl: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = catalogBackgroundColor
         title = "Catalog"
         navigationController?.navigationBar.prefersLargeTitles = true
+
+        categoryTableViewDataSource.theme = theme
 
         categoryTableView.tableFooterView = UIView() // Is needed to remove unnecessary separators
         categoryTableView.backgroundColor = .clear
         categoryTableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.reuseIdentifier)
         categoryTableView.dataSource = categoryTableViewDataSource
         categoryTableView.delegate = self
+
+        apply(theme: theme)
+        presenter.handleLoadView()
+    }
+
+    private func apply(theme: Theme) {
+        view.backgroundColor = theme.backgroundColor
+        navigationController?.navigationBar.tintColor = theme.tintColor
+        navigationController?.navigationBar.barTintColor = theme.barColor
+        navigationController?.navigationBar.barStyle = theme.barStyle
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: theme.textColor]
+        categoryTableView.separatorColor = theme.borderColor
     }
 }
 
 // MARK: - CatalogView implementation
 extension CatalogViewImpl: CatalogView { }
+
+// MARK: - ThemeUpdatable implementation
+extension CatalogViewImpl: ThemeUpdatable {
+    func update(theme: Theme, animated: Bool) {
+        self.theme = theme
+        categoryTableViewDataSource.theme = theme
+
+        var animation: CircularFillAnimation?
+        if animated {
+            animation = CircularFillAnimation(
+                view: view,
+                position: CGPoint(x: 300, y: 545), // TODO: make tap recognizier
+                contextType: .window
+            )
+            animation?.prepare()
+        }
+
+        apply(theme: theme)
+        categoryTableView.reloadData()
+
+        animation?.run(completion: nil)
+    }
+}
 
 // MARK: - CatalogShow implementation
 extension CatalogViewImpl: CatalogShow {

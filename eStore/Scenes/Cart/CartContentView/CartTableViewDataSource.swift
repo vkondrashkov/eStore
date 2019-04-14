@@ -9,6 +9,7 @@
 import UIKit
 
 class CartTableViewDataSource: NSObject, UITableViewDataSource {
+    var theme: Theme!
     var items: [StoreItem] = []
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -18,6 +19,7 @@ class CartTableViewDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CartTableViewCell.reuseIdentifier, for: indexPath) as! CartTableViewCell
         let item = items[indexPath.row]
+        cell.apply(theme: theme)
         cell.display(
             imageUrl: item.imageUrl,
             title: "\(item.brand) \(item.name)",

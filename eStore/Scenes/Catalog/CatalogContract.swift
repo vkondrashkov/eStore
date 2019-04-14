@@ -10,6 +10,7 @@ import UIKit
 
 protocol CatalogDependency: AnyObject {
     var catalogNavigation: UINavigationController { get }
+    var themeManager: ThemeManager { get }
 }
 
 protocol CatalogBuilder: AnyObject {
@@ -29,7 +30,7 @@ protocol CatalogRouter: AnyObject {
     func showProductsList(title: String)
 }
 
-protocol CatalogView: AnyObject { }
+protocol CatalogView: AnyObject, ThemeUpdatable { }
 
 protocol CatalogPresenter: AnyObject {
     func handleLoadView()

@@ -8,7 +8,6 @@
 
 import ObjectMapper
 
-// TODO: Expand class fields
 class TV: ImmutableMappable {
     let id: String
     let imageUrl: String?

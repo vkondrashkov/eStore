@@ -20,7 +20,10 @@ final class RootBuilderImpl {
 extension RootBuilderImpl: RootBuilder {
     func build() -> RootCoordinator {
         let view = RootViewImpl()
-        let component = RootComponent(rootViewController: view)
+        let component = RootComponent(
+            rootViewController: view,
+            themeManager: dependency.themeManager
+        )
         let scene = RootSceneImpl(window: dependency.parent)
         let authBuilder = AuthBuilderImpl(dependency: component)
         let dashboardBuilder = DashboardBuilderImpl(dependency: component)

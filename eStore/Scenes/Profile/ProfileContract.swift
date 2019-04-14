@@ -10,6 +10,7 @@ import UIKit
 
 protocol ProfileDependency: AnyObject {
     var profileNavigation: UINavigationController { get }
+    var themeManager: ThemeManager { get }
 }
 
 protocol ProfileBuilder: AnyObject {
@@ -35,7 +36,7 @@ protocol ProfileListener: AnyObject {
     func logout()
 }
 
-protocol ProfileView: AnyObject {
+protocol ProfileView: AnyObject, ThemeUpdatable {
     func display(rightBarButton: String)
     func display(sections: [ProfileSection])
     func display(alert: Alert)

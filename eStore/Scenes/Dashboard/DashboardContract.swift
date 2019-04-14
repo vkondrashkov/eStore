@@ -10,6 +10,7 @@ import UIKit
 
 protocol DashboardDependency: AnyObject {
     var parent: UIViewController { get }
+    var themeManager: ThemeManager { get }
 }
 
 protocol DashboardBuilder: AnyObject {
@@ -31,6 +32,8 @@ protocol DashboardListener: AnyObject {
     func logout() // TODO: Make method more functional
 }
 
-protocol DashboardView: AnyObject { }
+protocol DashboardView: AnyObject, ThemeUpdatable { }
 
-protocol DashboardPresenter: AnyObject { }
+protocol DashboardPresenter: AnyObject {
+    func shouldViewAppear()
+}

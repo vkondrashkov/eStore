@@ -23,14 +23,18 @@ extension DashboardBuilderImpl: DashboardBuilder {
         let cartNavigation = UINavigationController()
         let profileNavigation = UINavigationController()
         let view = DashboardViewImpl()
+        view.theme = dependency.themeManager.currentTheme
         view.catalogNavigation = catalogNavigation
         view.cartNavigation = cartNavigation
         view.profileNavigation = profileNavigation
         view.setupTabs()
-        let component = DashboardComponent(rootViewController: view,
-                                           catalogNavigation: catalogNavigation,
-                                           cartNavigation: cartNavigation,
-                                           profileNavigation: profileNavigation)
+        let component = DashboardComponent(
+            rootViewController: view,
+            catalogNavigation: catalogNavigation,
+            cartNavigation: cartNavigation,
+            profileNavigation: profileNavigation,
+            themeManager: dependency.themeManager
+        )
         let scene = DashboardSceneImpl(rootViewController: dependency.parent)
         let profileBuilder = ProfileBuilderImpl(dependency: component)
         let cartBuilder = CartBuilderImpl(dependency: component)
@@ -41,8 +45,11 @@ extension DashboardBuilderImpl: DashboardBuilder {
                                                cartBuilder: cartBuilder,
                                                catalogBuilder: catalogBuilder,
                                                listener: listener)
-        let presenter = DashboardPresenterImpl(view: view,
-                                               router: coordinator)
+        let presenter = DashboardPresenterImpl(
+            view: view,
+            router: coordinator,
+            themeManager: dependency.themeManager
+        )
         view.presenter = presenter
         return coordinator
     }

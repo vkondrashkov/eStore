@@ -9,12 +9,16 @@
 final class ProfilePresenterImpl {
     private unowned let view: ProfileView
     private unowned let router: ProfileRouter
+    private unowned let themeManager: ThemeManager
 
     init(view: ProfileView,
-         router: ProfileRouter) {
+         router: ProfileRouter,
+         themeManager: ThemeManager) {
 
         self.view = view
         self.router = router
+        self.themeManager = themeManager
+        self.themeManager.add(observer: self)
     }
 
     private func handleCartCategoryPress() {
@@ -73,7 +77,15 @@ extension ProfilePresenterImpl: ProfilePresenter {
         let contactCategory = ProfileCategoryImpl(name: "Contact us", iconUrl: "help-icon", onTapAction: { [weak self] in
             self?.handleContactCategoryPress()
         })
-        let helpSection = ProfileSection(name: "Help", categories: [settingsCategory, contactCategory])
+        let themeCategory = ProfileCategoryImpl(name: "Theme", iconUrl: "settings-icon", onTapAction: { [weak self] in
+            // TODO: Make routing to ThemeSettings
+            guard let self = self else { return }
+            let newThemeType: ThemeType = self.themeManager.currentTheme.type == .light ? .dark : .light
+            let newTheme = ThemeBuilderImpl().build(type: newThemeType)
+            UserDefaultsManager.theme = newThemeType
+            self.themeManager.applyTheme(newTheme)
+        })
+        let helpSection = ProfileSection(name: "Help", categories: [settingsCategory, contactCategory, themeCategory])
 
         let logoutCategory = ProfileCategoryImpl(name: "Log out", iconUrl: "exit-icon", type: .warning, onTapAction: { [weak self] in
             self?.handleLogoutCategoryPress()
@@ -95,5 +107,12 @@ extension ProfilePresenterImpl: ProfilePresenter {
             secondaryAction: nil
         )
         view.display(alert: alert)
+    }
+}
+
+// MARK: - ThemeObserver implementation
+extension ProfilePresenterImpl: ThemeObserver {
+    func didChangedTheme(_ theme: Theme) {
+        view.update(theme: theme, animated: true)
     }
 }

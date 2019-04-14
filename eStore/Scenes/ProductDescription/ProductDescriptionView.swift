@@ -10,12 +10,10 @@ import UIKit
 
 final class ProductDescriptionViewImpl: UIViewController {
     var presenter: ProductDescriptionPresenter!
+    var theme: Theme!
     var dataSource: ProductDescriptionTableViewDataSource!
 
     private var descriptionTableView: UITableView!
-
-    private let productDescriptionBackgroundColor = UIColor(red: 242.0 / 255.0, green: 241.0 / 255.0, blue: 246.0 / 255.0, alpha: 1.0)
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
 
     override func loadView() {
         view = UIView()
@@ -29,10 +27,9 @@ final class ProductDescriptionViewImpl: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = productDescriptionBackgroundColor
         title = "Description"
-        navigationController?.navigationBar.tintColor = customTintColor
+
+        dataSource.theme = theme
 
         descriptionTableView.tableFooterView = UIView()
         descriptionTableView.backgroundColor = .clear
@@ -41,11 +38,42 @@ final class ProductDescriptionViewImpl: UIViewController {
         descriptionTableView.register(ProductDescriptionTablePriceCell.self, forCellReuseIdentifier: ProductDescriptionTablePriceCell.reuseIdentifier)
         descriptionTableView.dataSource = dataSource
         descriptionTableView.delegate = self
+
+        apply(theme: theme)
+        presenter.handleLoadView()
+    }
+
+    private func apply(theme: Theme) {
+        view.backgroundColor = theme.backgroundColor
+        descriptionTableView.separatorColor = theme.borderColor
     }
 }
 
 // MARK: - ProductDescriptionView implementation
 extension ProductDescriptionViewImpl: ProductDescriptionView { }
+
+// MARK: - ThemeUpdatable implementation
+extension ProductDescriptionViewImpl: ThemeUpdatable {
+    func update(theme: Theme, animated: Bool) {
+        self.theme = theme
+        dataSource.theme = theme
+
+        var animation: CircularFillAnimation?
+        if animated {
+            animation = CircularFillAnimation(
+                view: view,
+                position: CGPoint(x: 300, y: 545), // TODO: make tap recognizier
+                contextType: .window
+            )
+            animation?.prepare()
+        }
+
+        apply(theme: theme)
+        descriptionTableView.reloadData()
+
+        animation?.run(completion: nil)
+    }
+}
 
 // MARK: - ProductDescriptionShow implementation
 extension ProductDescriptionViewImpl: ProductDescriptionShow {
@@ -55,6 +83,4 @@ extension ProductDescriptionViewImpl: ProductDescriptionShow {
 }
 
 // MARK: - UITableViewDelegate implementation
-extension ProductDescriptionViewImpl: UITableViewDelegate {
-
-}
+extension ProductDescriptionViewImpl: UITableViewDelegate { }

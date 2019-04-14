@@ -11,11 +11,16 @@ import Foundation
 final class SignUpPresenterImpl {
     private unowned let view: SignUpView
     private unowned let router: SignUpRouter
+    private unowned let themeManager: ThemeManager
 
     init(view: SignUpView,
-         router: SignUpRouter) {
+         router: SignUpRouter,
+         themeManager: ThemeManager) {
+
         self.view = view
         self.router = router
+        self.themeManager = themeManager
+        self.themeManager.add(observer: self)
     }
 }
 
@@ -42,5 +47,12 @@ extension SignUpPresenterImpl: SignUpPresenter {
             self?.router.completeSignUp()
         })
     }
-    
 }
+
+// MARK: - ThemeObserver implementation
+extension SignUpPresenterImpl: ThemeObserver {
+    func didChangedTheme(_ theme: Theme) {
+        view.update(theme: theme, animated: true)
+    }
+}
+

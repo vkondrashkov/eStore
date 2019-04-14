@@ -20,7 +20,11 @@ final class AuthBuilderImpl {
 extension AuthBuilderImpl: AuthBuilder {
     func build(with listener: AuthListener) -> AuthCoordinator {
         let view = AuthViewImpl()
-        let component = AuthComponent(rootViewController: view)
+        view.theme = dependency.themeManager.currentTheme
+        let component = AuthComponent(
+            rootViewController: view,
+            themeManager: dependency.themeManager
+        )
         let scene = AuthSceneImpl(rootViewController: dependency.parent)
         let signUpBuilder = SignUpBuilderImpl(dependency: component)
         let signInBuilder = SignInBuilderImpl(dependency: component)
@@ -29,8 +33,11 @@ extension AuthBuilderImpl: AuthBuilder {
                                           signUpBuilder: signUpBuilder,
                                           signInBuilder: signInBuilder,
                                           listener: listener)
-        let presenter = AuthPresenterImpl(view: view,
-                                          router: coordinator)
+        let presenter = AuthPresenterImpl(
+            view: view,
+            router: coordinator,
+            themeManager: dependency.themeManager
+        )
         view.presenter = presenter
         return coordinator
     }
