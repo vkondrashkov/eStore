@@ -11,7 +11,6 @@ import UIKit
 final class ProfileWarningCategoryTableViewCell: UITableViewCell {
     static var reuseIdentifier = "ProfileWarningCategoryTableViewCellReuseIdentifier"
 
-    private var containerView: UIView!
     private var iconImageView: UIImageView!
     private var titleLabel: UILabel!
 
@@ -21,33 +20,35 @@ final class ProfileWarningCategoryTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
 
-        setupContainerView()
         setupIconImageView()
         setupTitleLabel()
     }
 
-    private func setupContainerView() {
-        containerView = UIView()
-        contentView.addSubview(containerView)
-        activateContainerViewConstraints(view: containerView)
-    }
-
     private func setupIconImageView() {
         iconImageView = UIImageView()
-        containerView.addSubview(iconImageView)
-        activateIconImageViewConstraints(view: iconImageView)
+        contentView.addSubview(iconImageView)
+        iconImageView.snp.makeConstraints { make in
+            make.width.height.equalTo(iconImageSize)
+            make.top.leading.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview().offset(-10)
+        }
     }
 
     private func setupTitleLabel() {
         titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 17)
-        containerView.addSubview(titleLabel)
-        activateTitleLabelConstraints(view: titleLabel, anchorView: iconImageView)
+        contentView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(iconImageView.snp.centerY)
+            make.leading.equalTo(iconImageView.snp.trailing).offset(10)
+            make.trailing.equalToSuperview().offset(-10)
+        }
     }
 
     func apply(theme: Theme) {
         contentView.backgroundColor = theme.foregroundColor
         titleLabel.textColor = Color.cinnabar
+        iconImageView.tintColor = Color.cinnabar
     }
 
     func display(iconImageUrl: String?, title: String) {
@@ -56,47 +57,10 @@ final class ProfileWarningCategoryTableViewCell: UITableViewCell {
         } else {
             iconImageView.image = UIImage(named: "error-icon")!.withRenderingMode(.alwaysTemplate)
         }
-        iconImageView.tintColor = Color.cinnabar
         titleLabel.text = title
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-// MARK: - Constraints
-private extension ProfileWarningCategoryTableViewCell {
-    func activateContainerViewConstraints(view: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: superview.topAnchor),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
-            ])
-    }
-
-    func activateIconImageViewConstraints(view: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.widthAnchor.constraint(equalToConstant: iconImageSize),
-            view.heightAnchor.constraint(equalToConstant: iconImageSize),
-            view.topAnchor.constraint(equalTo: superview.topAnchor, constant: 10),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 10),
-            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -10)
-            ])
-    }
-
-    func activateTitleLabelConstraints(view: UIView, anchorView: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.centerYAnchor.constraint(equalTo: anchorView.centerYAnchor),
-            view.leadingAnchor.constraint(equalTo: anchorView.trailingAnchor, constant: 10),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -10)
-            ])
     }
 }

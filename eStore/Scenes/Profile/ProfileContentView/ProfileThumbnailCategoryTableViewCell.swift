@@ -11,7 +11,6 @@ import UIKit
 final class ProfileThumbnailCategoryTableViewCell: UITableViewCell {
     static var reuseIdentifier = "ProfileThumbnailCategoryTableViewCellReuseIdentifier"
 
-    private var containerView: UIView!
     private var thumbnailImageView: UIImageView!
     private var titleLabel: UILabel!
 
@@ -19,17 +18,9 @@ final class ProfileThumbnailCategoryTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .clear
 
-        setupContainerView()
         setupThumbnailImageView()
         setupTitleLabel()
-    }
-
-    private func setupContainerView() {
-        containerView = UIView()
-        contentView.addSubview(containerView)
-        activateContainerViewConstraints(view: containerView)
     }
 
     private func setupThumbnailImageView() {
@@ -38,18 +29,27 @@ final class ProfileThumbnailCategoryTableViewCell: UITableViewCell {
         thumbnailImageView.contentMode = .center
         thumbnailImageView.layer.cornerRadius = thumbnailImageSize / 2
         thumbnailImageView.layer.borderWidth = 1.0
-        containerView.addSubview(thumbnailImageView)
-        activateThumbnailImageViewConstraints(view: thumbnailImageView)
+        contentView.addSubview(thumbnailImageView)
+        thumbnailImageView.snp.makeConstraints { make in
+            make.width.height.equalTo(thumbnailImageSize)
+            make.top.leading.equalToSuperview().offset(10)
+            make.bottom.equalToSuperview().offset(-10)
+        }
     }
 
     private func setupTitleLabel() {
         titleLabel = UILabel()
         titleLabel.font = .systemFont(ofSize: 20)
-        containerView.addSubview(titleLabel)
-        activateTitleLabelConstraints(view: titleLabel, anchorView: thumbnailImageView)
+        contentView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(thumbnailImageView.snp.centerY)
+            make.leading.equalTo(thumbnailImageView.snp.trailing).offset(10)
+            make.trailing.equalToSuperview().offset(-10)
+        }
     }
 
     func apply(theme: Theme) {
+        backgroundColor = theme.foregroundColor
         contentView.backgroundColor = theme.foregroundColor
         thumbnailImageView.layer.borderColor = theme.borderColor.cgColor
         titleLabel.textColor = theme.textColor
@@ -66,41 +66,5 @@ final class ProfileThumbnailCategoryTableViewCell: UITableViewCell {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-// MARK: - Constraints
-private extension ProfileThumbnailCategoryTableViewCell {
-    func activateContainerViewConstraints(view: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: superview.topAnchor),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
-            ])
-    }
-
-    func activateThumbnailImageViewConstraints(view: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.widthAnchor.constraint(equalToConstant: thumbnailImageSize),
-            view.heightAnchor.constraint(equalToConstant: thumbnailImageSize),
-            view.topAnchor.constraint(equalTo: superview.topAnchor, constant: 10),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 10),
-            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: -10)
-            ])
-    }
-
-    func activateTitleLabelConstraints(view: UIView, anchorView: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.centerYAnchor.constraint(equalTo: anchorView.centerYAnchor),
-            view.leadingAnchor.constraint(equalTo: anchorView.trailingAnchor, constant: 10),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -10)
-            ])
     }
 }
