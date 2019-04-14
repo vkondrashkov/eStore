@@ -65,20 +65,36 @@ final class ProductsListViewImpl: UIViewController {
         productsTableView.dataSource = productsTableViewDataSource
         productsTableView.delegate = self
 
-        apply(theme: theme, animated: false)
+        apply(theme: theme)
         presenter.handleLoadView()
+    }
+
+    private func apply(theme: Theme) {
+        view.backgroundColor = theme.backgroundColor
+        productsTableView.separatorColor = theme.borderColor
     }
 }
 
-// MARK: - ThemeSupportable implementation
-extension ProductsListViewImpl: ThemeSupportable {
-    func apply(theme: Theme, animated: Bool) {
+// MARK: - ThemeUpdatable implementation
+extension ProductsListViewImpl: ThemeUpdatable {
+    func update(theme: Theme, animated: Bool) {
         self.theme = theme
         productsTableViewDataSource.theme = theme
 
-        view.backgroundColor = theme.backgroundColor
-        productsTableView.separatorColor = theme.borderColor
+        var animation: CircularFillAnimation?
+        if animated {
+            animation = CircularFillAnimation(
+                view: view,
+                position: CGPoint(x: 300, y: 545), // TODO: make tap recognizier
+                contextType: .window
+            )
+            animation?.prepare()
+        }
+
+        apply(theme: theme)
         productsTableView.reloadData()
+
+        animation?.run(completion: nil)
     }
 }
 

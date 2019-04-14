@@ -36,7 +36,7 @@ protocol ProfileListener: AnyObject {
     func logout()
 }
 
-protocol ProfileView: AnyObject, ThemeSupportable {
+protocol ProfileView: AnyObject, ThemeUpdatable {
     func display(rightBarButton: String)
     func display(sections: [ProfileSection])
     func display(alert: Alert)

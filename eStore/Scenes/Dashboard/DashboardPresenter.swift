@@ -30,6 +30,6 @@ extension DashboardPresenterImpl: DashboardPresenter {
 // MARK: - ThemeObserver implementation
 extension DashboardPresenterImpl: ThemeObserver {
     func didChangedTheme(_ theme: Theme) {
-        view.apply(theme: theme, animated: true)
+        view.update(theme: theme, animated: true)
     }
 }

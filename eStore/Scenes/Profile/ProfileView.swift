@@ -40,12 +40,22 @@ final class ProfileViewImpl: UIViewController {
         profileTableView.dataSource = profileTableViewDataSource
         profileTableView.delegate = self
 
-        apply(theme: theme, animated: false)
+        apply(theme: theme)
         presenter.handleLoadView()
     }
 
     @objc private func rightBarButtonDidPressed() {
         presenter.handleRightBarButtonPress()
+    }
+
+    private func apply(theme: Theme) {
+        view.backgroundColor = theme.backgroundColor
+        navigationController?.navigationBar.tintColor = theme.tintColor
+        navigationController?.navigationBar.barTintColor = theme.barColor
+        navigationController?.navigationBar.barStyle = theme.barStyle
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: theme.textColor]
+        profileTableView.separatorColor = theme.borderColor
     }
 }
 
@@ -70,30 +80,25 @@ extension ProfileViewImpl: ProfileView {
     }
 }
 
-// MARK: - ThemeSupportable implementation
-extension ProfileViewImpl: ThemeSupportable {
-    func apply(theme: Theme, animated: Bool) {
+// MARK: - ThemeUpdatable implementation
+extension ProfileViewImpl: ThemeUpdatable {
+    func update(theme: Theme, animated: Bool) {
         self.theme = theme
         profileTableViewDataSource.theme = theme
 
         var animation: CircularFillAnimation?
-        if animated, let navigation = tabBarController {
+        if animated {
             animation = CircularFillAnimation(
-                view: navigation.view,
-                position: CGPoint(x: 300, y: 545),
+                view: view,
+                position: CGPoint(x: 300, y: 545), // TODO: make tap recognizier
                 contextType: .window
             )
             animation?.prepare()
         }
 
-        view.backgroundColor = theme.backgroundColor
-        navigationController?.navigationBar.tintColor = theme.tintColor
-        navigationController?.navigationBar.barTintColor = theme.barColor
-        navigationController?.navigationBar.barStyle = theme.barStyle
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
-        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: theme.textColor]
-        profileTableView.separatorColor = theme.borderColor
+        apply(theme: theme)
         profileTableView.reloadData()
+
         animation?.run(completion: nil)
     }
 }

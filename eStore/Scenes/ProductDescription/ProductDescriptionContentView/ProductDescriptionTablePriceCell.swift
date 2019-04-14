@@ -66,6 +66,11 @@ final class ProductDescriptionTablePriceCell: UITableViewCell {
         containerView.addSubview(stockAvailableLabel)
         activateStockAvailableLabelConstraints(view: stockAvailableLabel, anchorView: cartAddButton)
     }
+
+    func apply(theme: Theme) {
+        contentView.backgroundColor = theme.foregroundColor
+        priceLabel.textColor = theme.textColor
+    }
     
     func display(price: String) {
         priceLabel.text = price
@@ -88,14 +93,6 @@ final class ProductDescriptionTablePriceCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-// MARK: - ThemeSupportable implementation
-extension ProductDescriptionTablePriceCell: ThemeSupportable {
-    func apply(theme: Theme, animated: Bool) {
-        contentView.backgroundColor = theme.foregroundColor
-        priceLabel.textColor = theme.textColor
     }
 }
 

@@ -23,7 +23,7 @@ class CategoryTableViewDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = CategoryTableViewCell()
         cell.display(iconUrl: categories[indexPath.row].iconUrl, description: categories[indexPath.row].name)
-        cell.apply(theme: theme, animated: false)
+        cell.apply(theme: theme)
         return cell
     }
 }

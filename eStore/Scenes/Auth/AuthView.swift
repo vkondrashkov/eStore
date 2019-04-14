@@ -17,25 +17,41 @@ final class AuthViewImpl: UINavigationController {
         modalTransitionStyle = .crossDissolve
         navigationBar.prefersLargeTitles = true
 
-        apply(theme: theme, animated: false)
+        apply(theme: theme)
         presenter.handleLoadView()
     }
-}
 
-// MARK: - AuthView implementation
-extension AuthViewImpl: AuthView { }
-
-// MARK: - ThemeSupportable implementation
-extension AuthViewImpl: ThemeSupportable {
-    func apply(theme: Theme, animated: Bool) {
-        self.theme = theme
-
+    private func apply(theme: Theme) {
         view.backgroundColor = theme.backgroundColor
         navigationBar.tintColor = theme.tintColor
         navigationBar.barTintColor = theme.barColor
         navigationBar.barStyle = theme.barStyle
         navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
         navigationBar.largeTitleTextAttributes = [.foregroundColor: theme.textColor]
+    }
+}
+
+// MARK: - AuthView implementation
+extension AuthViewImpl: AuthView { }
+
+// MARK: - ThemeUpdatable implementation
+extension AuthViewImpl: ThemeUpdatable {
+    func update(theme: Theme, animated: Bool) {
+        self.theme = theme
+
+        var animation: CircularFillAnimation?
+        if animated {
+            animation = CircularFillAnimation(
+                view: view,
+                position: CGPoint(x: 300, y: 545), // TODO: make tap recognizier
+                contextType: .window
+            )
+            animation?.prepare()
+        }
+
+        apply(theme: theme)
+
+        animation?.run(completion: nil)
     }
 }
 

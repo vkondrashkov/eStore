@@ -38,20 +38,11 @@ final class CatalogViewImpl: UIViewController {
         categoryTableView.dataSource = categoryTableViewDataSource
         categoryTableView.delegate = self
 
-        apply(theme: theme, animated: false)
+        apply(theme: theme)
         presenter.handleLoadView()
     }
-}
 
-// MARK: - CatalogView implementation
-extension CatalogViewImpl: CatalogView { }
-
-// MARK: - ThemeSupportable implementation
-extension CatalogViewImpl: ThemeSupportable {
-    func apply(theme: Theme, animated: Bool) {
-        self.theme = theme
-        categoryTableViewDataSource.theme = theme
-
+    private func apply(theme: Theme) {
         view.backgroundColor = theme.backgroundColor
         navigationController?.navigationBar.tintColor = theme.tintColor
         navigationController?.navigationBar.barTintColor = theme.barColor
@@ -59,7 +50,32 @@ extension CatalogViewImpl: ThemeSupportable {
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: theme.textColor]
         categoryTableView.separatorColor = theme.borderColor
+    }
+}
+
+// MARK: - CatalogView implementation
+extension CatalogViewImpl: CatalogView { }
+
+// MARK: - ThemeUpdatable implementation
+extension CatalogViewImpl: ThemeUpdatable {
+    func update(theme: Theme, animated: Bool) {
+        self.theme = theme
+        categoryTableViewDataSource.theme = theme
+
+        var animation: CircularFillAnimation?
+        if animated {
+            animation = CircularFillAnimation(
+                view: view,
+                position: CGPoint(x: 300, y: 545), // TODO: make tap recognizier
+                contextType: .window
+            )
+            animation?.prepare()
+        }
+
+        apply(theme: theme)
         categoryTableView.reloadData()
+
+        animation?.run(completion: nil)
     }
 }
 

@@ -28,7 +28,7 @@ extension ProductDescriptionPresenterImpl: ProductDescriptionPresenter {
 // MARK: - ThemeObserver implementation
 extension ProductDescriptionPresenterImpl: ThemeObserver {
     func didChangedTheme(_ theme: Theme) {
-        view.apply(theme: theme, animated: true)
+        view.update(theme: theme, animated: true)
     }
 }
 

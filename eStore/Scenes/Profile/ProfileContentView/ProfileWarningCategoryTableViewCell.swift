@@ -45,6 +45,11 @@ final class ProfileWarningCategoryTableViewCell: UITableViewCell {
         activateTitleLabelConstraints(view: titleLabel, anchorView: iconImageView)
     }
 
+    func apply(theme: Theme) {
+        contentView.backgroundColor = theme.foregroundColor
+        titleLabel.textColor = Color.cinnabar
+    }
+
     func display(iconImageUrl: String?, title: String) {
         if let url = iconImageUrl, let icon = UIImage(named: url) {
             iconImageView.image = icon.withRenderingMode(.alwaysTemplate)
@@ -57,14 +62,6 @@ final class ProfileWarningCategoryTableViewCell: UITableViewCell {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-// MARK: - ThemeSupportable implementation
-extension ProfileWarningCategoryTableViewCell: ThemeSupportable {
-    func apply(theme: Theme, animated: Bool) {
-        contentView.backgroundColor = theme.foregroundColor
-        titleLabel.textColor = Color.cinnabar
     }
 }
 

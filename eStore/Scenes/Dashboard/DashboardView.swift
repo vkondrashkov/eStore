@@ -32,7 +32,7 @@ final class DashboardViewImpl: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        apply(theme: theme, animated: false)
+        apply(theme: theme)
         presenter.shouldViewAppear()
     }
 
@@ -56,19 +56,35 @@ final class DashboardViewImpl: UITabBarController {
 
         viewControllers = tabs
     }
+
+    private func apply(theme: Theme) {
+        view.backgroundColor = theme.backgroundColor
+        tabBar.tintColor = theme.tintColor
+        tabBar.barTintColor = theme.barColor
+    }
 }
 
 // MARK: - DashboardView implementation
 extension DashboardViewImpl: DashboardView { }
 
-// MARK: - ThemeSupportable implementation
-extension DashboardViewImpl: ThemeSupportable {
-    func apply(theme: Theme, animated: Bool) {
+// MARK: - ThemeUpdatable implementation
+extension DashboardViewImpl: ThemeUpdatable {
+    func update(theme: Theme, animated: Bool) {
         self.theme = theme
 
-        view.backgroundColor = theme.backgroundColor
-        tabBar.tintColor = theme.tintColor
-        tabBar.barTintColor = theme.barColor
+        var animation: CircularFillAnimation?
+        if animated {
+            animation = CircularFillAnimation(
+                view: view,
+                position: CGPoint(x: 300, y: 545), // TODO: make tap recognizier
+                contextType: .window
+            )
+            animation?.prepare()
+        }
+
+        apply(theme: theme)
+
+        animation?.run(completion: nil)
     }
 }
 

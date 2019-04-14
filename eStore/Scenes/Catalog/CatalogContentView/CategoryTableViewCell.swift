@@ -35,6 +35,12 @@ class CategoryTableViewCell: UITableViewCell {
         activateDescriptionLabelConstraints(view: descriptionLabel, anchorView: iconImageView)
     }
 
+    func apply(theme: Theme) {
+        contentView.backgroundColor = theme.foregroundColor
+        descriptionLabel.textColor = theme.textColor
+        iconImageView.tintColor = theme.tintColor
+    }
+
     func display(iconUrl: String?, description: String) {
         descriptionLabel.text = description
         if let url = iconUrl, let icon = UIImage(named: url) {
@@ -46,15 +52,6 @@ class CategoryTableViewCell: UITableViewCell {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-// MARK: - ThemeSupportable implementation
-extension CategoryTableViewCell: ThemeSupportable {
-    func apply(theme: Theme, animated: Bool) {
-        contentView.backgroundColor = theme.foregroundColor
-        descriptionLabel.textColor = theme.textColor
-        iconImageView.tintColor = theme.tintColor
     }
 }
 

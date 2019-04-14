@@ -39,23 +39,39 @@ final class ProductDescriptionViewImpl: UIViewController {
         descriptionTableView.dataSource = dataSource
         descriptionTableView.delegate = self
 
-        apply(theme: theme, animated: false)
+        apply(theme: theme)
         presenter.handleLoadView()
+    }
+
+    private func apply(theme: Theme) {
+        view.backgroundColor = theme.backgroundColor
+        descriptionTableView.separatorColor = theme.borderColor
     }
 }
 
 // MARK: - ProductDescriptionView implementation
 extension ProductDescriptionViewImpl: ProductDescriptionView { }
 
-// MARK: - ThemeSupportable implementation
-extension ProductDescriptionViewImpl: ThemeSupportable {
-    func apply(theme: Theme, animated: Bool) {
+// MARK: - ThemeUpdatable implementation
+extension ProductDescriptionViewImpl: ThemeUpdatable {
+    func update(theme: Theme, animated: Bool) {
         self.theme = theme
         dataSource.theme = theme
 
-        view.backgroundColor = theme.backgroundColor
-        descriptionTableView.separatorColor = theme.borderColor
+        var animation: CircularFillAnimation?
+        if animated {
+            animation = CircularFillAnimation(
+                view: view,
+                position: CGPoint(x: 300, y: 545), // TODO: make tap recognizier
+                contextType: .window
+            )
+            animation?.prepare()
+        }
+
+        apply(theme: theme)
         descriptionTableView.reloadData()
+
+        animation?.run(completion: nil)
     }
 }
 

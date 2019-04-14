@@ -46,6 +46,11 @@ final class ProductDescriptionTableHeaderCell: UITableViewCell {
         containerView.addSubview(productTitleLabel)
         activateProductTitleLabelConstraints(view: productTitleLabel, anchorView: productImageView)
     }
+
+    func apply(theme: Theme) {
+        contentView.backgroundColor = theme.foregroundColor
+        productTitleLabel.textColor = theme.textColor
+    }
     
     func display(title: String, imageUrl: String?) {
         if let url = imageUrl {
@@ -58,14 +63,6 @@ final class ProductDescriptionTableHeaderCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-// MARK: - ThemeSupportable implementation
-extension ProductDescriptionTableHeaderCell: ThemeSupportable {
-    func apply(theme: Theme, animated: Bool) {
-        contentView.backgroundColor = theme.foregroundColor
-        productTitleLabel.textColor = theme.textColor
     }
 }
 

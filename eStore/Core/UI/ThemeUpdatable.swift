@@ -7,5 +7,5 @@
 //
 
 protocol ThemeUpdatable {
-    func apply(theme: Theme, animated: Bool)
+    func update(theme: Theme, animated: Bool)
 }

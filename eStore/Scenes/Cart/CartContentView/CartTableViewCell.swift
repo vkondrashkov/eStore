@@ -48,6 +48,12 @@ final class CartTableViewCell: UITableViewCell {
         activateProductTitleLabelConstraints(view: productTitleLabel, anchorView: productImageView)
     }
 
+    func apply(theme: Theme) {
+        contentView.backgroundColor = theme.foregroundColor
+        productPriceLabel.textColor = theme.textColor
+        productTitleLabel.textColor = theme.textColor
+    }
+
     func display(imageUrl: String?, title: String, price: String) {
         if let url = imageUrl {
             productImageView.downloaded(from: url)
@@ -60,15 +66,6 @@ final class CartTableViewCell: UITableViewCell {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-// MARK: - ThemeSupportable implementation
-extension CartTableViewCell: ThemeSupportable {
-    func apply(theme: Theme, animated: Bool) {
-        contentView.backgroundColor = theme.foregroundColor
-        productPriceLabel.textColor = theme.textColor
-        productTitleLabel.textColor = theme.textColor
     }
 }
 

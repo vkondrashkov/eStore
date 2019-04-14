@@ -124,7 +124,7 @@ final class SignUpViewImpl: UIViewController {
 
         activityIndicator.style = .white
 
-        apply(theme: theme, animated: false)
+        apply(theme: theme)
         keyboardManager.hideKeyboardWhenTappedAround()
     }
 
@@ -133,20 +133,15 @@ final class SignUpViewImpl: UIViewController {
         presenter.shouldViewAppear()
     }
 
-    @objc func rightBarButtonDidPressed() {
+    @objc private func rightBarButtonDidPressed() {
         presenter.handleRightBarButtonPress()
     }
 
-    @objc func signUpButtonDidPressed() {
+    @objc private func signUpButtonDidPressed() {
         presenter.handleSignUpButtonPress()
     }
-}
 
-// MARK: - ThemeSupportable implementation
-extension SignUpViewImpl: ThemeSupportable {
-    func apply(theme: Theme, animated: Bool) {
-        self.theme = theme
-
+    private func apply(theme: Theme) {
         view.backgroundColor = theme.backgroundColor
         emailCaption.textColor = theme.textColor
         emailTextField.backgroundColor = theme.foregroundColor
@@ -157,6 +152,27 @@ extension SignUpViewImpl: ThemeSupportable {
         confirmPasswordCaption.textColor = theme.textColor
         confirmPasswordTextField.backgroundColor = theme.foregroundColor
         confirmPasswordTextField.textColor = theme.textColor
+    }
+}
+
+// MARK: - ThemeUpdatable implementation
+extension SignUpViewImpl: ThemeUpdatable {
+    func update(theme: Theme, animated: Bool) {
+        self.theme = theme
+
+        var animation: CircularFillAnimation?
+        if animated {
+            animation = CircularFillAnimation(
+                view: view,
+                position: CGPoint(x: 300, y: 545), // TODO: make tap recognizier
+                contextType: .window
+            )
+            animation?.prepare()
+        }
+
+        apply(theme: theme)
+
+        animation?.run(completion: nil)
     }
 }
 

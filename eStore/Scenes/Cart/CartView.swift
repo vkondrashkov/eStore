@@ -66,8 +66,18 @@ final class CartViewImpl: UIViewController {
         cartTableView.dataSource = cartTableViewDataSource
         cartTableView.delegate = self
 
-        apply(theme: theme, animated: false)
+        apply(theme: theme)
         presenter.handleLoadView()
+    }
+
+    private func apply(theme: Theme) {
+        view.backgroundColor = theme.backgroundColor
+        navigationController?.navigationBar.tintColor = theme.tintColor
+        navigationController?.navigationBar.barTintColor = theme.barColor
+        navigationController?.navigationBar.barStyle = theme.barStyle
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: theme.textColor]
+        cartTableView.separatorColor = theme.borderColor
     }
 }
 
@@ -107,20 +117,26 @@ extension CartViewImpl: CartView {
     }
 }
 
-// MARK: - ThemeSupportable implementation
-extension CartViewImpl: ThemeSupportable {
-    func apply(theme: Theme, animated: Bool) {
+// MARK: - ThemeUpdatable implementation
+extension CartViewImpl: ThemeUpdatable {
+    func update(theme: Theme, animated: Bool) {
         self.theme = theme
         cartTableViewDataSource.theme = theme
 
-        view.backgroundColor = theme.backgroundColor
-        navigationController?.navigationBar.tintColor = theme.tintColor
-        navigationController?.navigationBar.barTintColor = theme.barColor
-        navigationController?.navigationBar.barStyle = theme.barStyle
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
-        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: theme.textColor]
-        cartTableView.separatorColor = theme.borderColor
+        var animation: CircularFillAnimation?
+        if animated {
+            animation = CircularFillAnimation(
+                view: view,
+                position: CGPoint(x: 300, y: 545), // TODO: make tap recognizier
+                contextType: .window
+            )
+            animation?.prepare()
+        }
+
+        apply(theme: theme)
         cartTableView.reloadData()
+
+        animation?.run(completion: nil)
     }
 }
 

@@ -114,7 +114,7 @@ final class SignInViewImpl: UIViewController {
 
         activityIndicator.style = .white
 
-        apply(theme: theme, animated: false)
+        apply(theme: theme)
         keyboardManager.hideKeyboardWhenTappedAround()
     }
 
@@ -123,16 +123,26 @@ final class SignInViewImpl: UIViewController {
         presenter.shouldViewAppear()
     }
 
-    @objc func rightBarButtonDidPressed() {
+    @objc private func rightBarButtonDidPressed() {
         presenter.handleRightBarButtonPress()
     }
 
-    @objc func signInButtonDidPressed() {
+    @objc private func signInButtonDidPressed() {
         presenter.handleSignInButtonPress()
     }
 
-    @objc func forgotPasswordButtonDidPressed() {
+    @objc private func forgotPasswordButtonDidPressed() {
         presenter.handleForgotPasswordPress()
+    }
+
+    private func apply(theme: Theme) {
+        view.backgroundColor = theme.backgroundColor
+        emailCaption.textColor = theme.textColor
+        emailTextField.backgroundColor = theme.foregroundColor
+        emailTextField.textColor = theme.textColor
+        passwordCaption.textColor = theme.textColor
+        passwordTextField.backgroundColor = theme.foregroundColor
+        passwordTextField.textColor = theme.textColor
     }
 }
 
@@ -176,18 +186,24 @@ extension SignInViewImpl: SignInView {
     }
 }
 
-// MARK: - ThemeSupportable implementation
-extension SignInViewImpl: ThemeSupportable {
-    func apply(theme: Theme, animated: Bool) {
+// MARK: - ThemeUpdatable implementation
+extension SignInViewImpl: ThemeUpdatable {
+    func update(theme: Theme, animated: Bool) {
         self.theme = theme
 
-        view.backgroundColor = theme.backgroundColor
-        emailCaption.textColor = theme.textColor
-        emailTextField.backgroundColor = theme.foregroundColor
-        emailTextField.textColor = theme.textColor
-        passwordCaption.textColor = theme.textColor
-        passwordTextField.backgroundColor = theme.foregroundColor
-        passwordTextField.textColor = theme.textColor
+        var animation: CircularFillAnimation?
+        if animated {
+            animation = CircularFillAnimation(
+                view: view,
+                position: CGPoint(x: 300, y: 545), // TODO: make tap recognizier
+                contextType: .window
+            )
+            animation?.prepare()
+        }
+
+        apply(theme: theme)
+
+        animation?.run(completion: nil)
     }
 }
 

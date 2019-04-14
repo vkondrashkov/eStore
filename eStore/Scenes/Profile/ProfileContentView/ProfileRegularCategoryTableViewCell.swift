@@ -45,6 +45,12 @@ final class ProfileRegularCategoryTableViewCell: UITableViewCell {
         activateTitleLabelConstraints(view: titleLabel, anchorView: iconImageView)
     }
 
+    func apply(theme: Theme) {
+        contentView.backgroundColor = theme.foregroundColor
+        titleLabel.textColor = theme.textColor
+        iconImageView.tintColor = theme.tintColor
+    }
+
     func display(iconImageUrl: String?, title: String) {
         if let url = iconImageUrl, let icon = UIImage(named: url) {
             iconImageView.image = icon.withRenderingMode(.alwaysTemplate)
@@ -56,15 +62,6 @@ final class ProfileRegularCategoryTableViewCell: UITableViewCell {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-// MARK: - ThemeSupportable implementation
-extension ProfileRegularCategoryTableViewCell: ThemeSupportable {
-    func apply(theme: Theme, animated: Bool) {
-        contentView.backgroundColor = theme.foregroundColor
-        titleLabel.textColor = theme.textColor
-        iconImageView.tintColor = theme.tintColor
     }
 }
 

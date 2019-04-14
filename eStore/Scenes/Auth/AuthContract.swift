@@ -35,7 +35,7 @@ protocol AuthListener: AnyObject {
     func authenticate() // TODO: Make method more functional
 }
 
-protocol AuthView: AnyObject, ThemeSupportable { }
+protocol AuthView: AnyObject, ThemeUpdatable { }
 
 protocol AuthPresenter: AnyObject {
     func handleLoadView()

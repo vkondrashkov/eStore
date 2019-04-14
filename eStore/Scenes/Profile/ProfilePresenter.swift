@@ -113,6 +113,6 @@ extension ProfilePresenterImpl: ProfilePresenter {
 // MARK: - ThemeObserver implementation
 extension ProfilePresenterImpl: ThemeObserver {
     func didChangedTheme(_ theme: Theme) {
-        view.apply(theme: theme, animated: true)
+        view.update(theme: theme, animated: true)
     }
 }

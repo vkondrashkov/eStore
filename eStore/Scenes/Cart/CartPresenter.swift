@@ -46,6 +46,6 @@ extension CartPresenterImpl: CartPresenter {
 // MARK: - ThemeObserver implementation
 extension CartPresenterImpl: ThemeObserver {
     func didChangedTheme(_ theme: Theme) {
-        view.apply(theme: theme, animated: true)
+        view.update(theme: theme, animated: true)
     }
 }

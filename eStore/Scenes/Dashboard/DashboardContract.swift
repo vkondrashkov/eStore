@@ -32,7 +32,7 @@ protocol DashboardListener: AnyObject {
     func logout() // TODO: Make method more functional
 }
 
-protocol DashboardView: AnyObject, ThemeSupportable { }
+protocol DashboardView: AnyObject, ThemeUpdatable { }
 
 protocol DashboardPresenter: AnyObject {
     func shouldViewAppear()

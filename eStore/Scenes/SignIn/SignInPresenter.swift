@@ -65,6 +65,6 @@ extension SignInPresenterImpl: SignInPresenter {
 // MARK: - ThemeObserver implementation
 extension SignInPresenterImpl: ThemeObserver {
     func didChangedTheme(_ theme: Theme) {
-        view.apply(theme: theme, animated: true)
+        view.update(theme: theme, animated: true)
     }
 }

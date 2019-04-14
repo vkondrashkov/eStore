@@ -49,6 +49,12 @@ final class ProfileThumbnailCategoryTableViewCell: UITableViewCell {
         activateTitleLabelConstraints(view: titleLabel, anchorView: thumbnailImageView)
     }
 
+    func apply(theme: Theme) {
+        contentView.backgroundColor = theme.foregroundColor
+        thumbnailImageView.layer.borderColor = theme.borderColor.cgColor
+        titleLabel.textColor = theme.textColor
+    }
+
     func display(thumbnailImageUrl: String?, title: String) {
         if let url = thumbnailImageUrl {
             thumbnailImageView.downloaded(from: url) // Temp
@@ -60,15 +66,6 @@ final class ProfileThumbnailCategoryTableViewCell: UITableViewCell {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-// MARK: - ThemeSupportable implementation
-extension ProfileThumbnailCategoryTableViewCell: ThemeSupportable {
-    func apply(theme: Theme, animated: Bool) {
-        contentView.backgroundColor = theme.foregroundColor
-        thumbnailImageView.layer.borderColor = theme.borderColor.cgColor
-        titleLabel.textColor = theme.textColor
     }
 }
 
