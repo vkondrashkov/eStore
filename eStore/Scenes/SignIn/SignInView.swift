@@ -106,7 +106,6 @@ final class SignInViewImpl: UIViewController {
         signInButton.addTarget(self, action: #selector(signInButtonDidPressed), for: .touchUpInside)
         signInButton.layer.cornerRadius = 5
         signInButton.layer.masksToBounds = true
-        signInButton.backgroundColor = Color.shamrock
 
         forgotPasswordButton.setTitleColor(Color.grey, for: .normal)
         forgotPasswordButton.setTitleColor(Color.silver, for: .highlighted)
@@ -143,6 +142,7 @@ final class SignInViewImpl: UIViewController {
         passwordCaption.textColor = theme.textColor
         passwordTextField.backgroundColor = theme.foregroundColor
         passwordTextField.textColor = theme.textColor
+        signInButton.backgroundColor = theme.tintColor
     }
 }
 

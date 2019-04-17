@@ -100,7 +100,6 @@ final class SignUpViewImpl: UIViewController {
         super.viewDidLoad()
 
         title = "Sign Up"
-        navigationController?.navigationBar.tintColor = Color.shamrock
 
         emailCaption.font = .boldSystemFont(ofSize: 17)
 
@@ -120,7 +119,6 @@ final class SignUpViewImpl: UIViewController {
         signUpButton.addTarget(self, action: #selector(signUpButtonDidPressed), for: .touchUpInside)
         signUpButton.layer.cornerRadius = 5
         signUpButton.layer.masksToBounds = true
-        signUpButton.backgroundColor = Color.shamrock
 
         activityIndicator.style = .white
 
@@ -152,6 +150,7 @@ final class SignUpViewImpl: UIViewController {
         confirmPasswordCaption.textColor = theme.textColor
         confirmPasswordTextField.backgroundColor = theme.foregroundColor
         confirmPasswordTextField.textColor = theme.textColor
+        signUpButton.backgroundColor = theme.tintColor
     }
 }
 
