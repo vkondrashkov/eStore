@@ -8,7 +8,6 @@
 
 import UIKit
 
-// TODO: Move to separate files
 enum SectionedMenuRowType {
     case thumbnail
     case regular
@@ -43,9 +42,16 @@ final class SectionedMenuView: UITableView {
 
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
+
+        register(SectionedMenuRegularCell.self, forCellReuseIdentifier: SectionedMenuRegularCell.reuseIdentifier)
+        register(SectionedMenuThumbnailCell.self, forCellReuseIdentifier: SectionedMenuThumbnailCell.reuseIdentifier)
+        
         delegate = self
         dataSource = self
-        let sectionedMenuGestureRecognizer = UIGestureRecognizer(target: self, action: #selector(sectionedMenuDidTap(sender:)))
+
+
+        let sectionedMenuGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sectionedMenuDidTap(sender:)))
+        sectionedMenuGestureRecognizer.cancelsTouchesInView = false
         addGestureRecognizer(sectionedMenuGestureRecognizer)
     }
 
@@ -58,7 +64,6 @@ final class SectionedMenuView: UITableView {
         guard let indexPath = indexPathForRow(at: location) else {
             return
         }
-        selectRow(at: indexPath, animated: true, scrollPosition: .none)
         sections[indexPath.section].items[indexPath.row].action?(location)
     }
 }
@@ -91,13 +96,13 @@ extension SectionedMenuView: UITableViewDataSource {
         switch item.type {
         case .regular:
             let cell = tableView.dequeueReusableCell(withIdentifier: SectionedMenuRegularCell.reuseIdentifier, for: indexPath) as! SectionedMenuRegularCell
-            cell.display(iconImageUrl: item.imageUrl, title: item.title)
             cell.apply(theme: theme)
+            cell.display(iconImageUrl: item.imageUrl, title: item.title)
             return cell
         case .thumbnail:
             let cell = tableView.dequeueReusableCell(withIdentifier: SectionedMenuThumbnailCell.reuseIdentifier, for: indexPath) as! SectionedMenuThumbnailCell
-            cell.display(thumbnailImageUrl: item.imageUrl, title: item.title)
             cell.apply(theme: theme)
+            cell.display(thumbnailImageUrl: item.imageUrl, title: item.title)
             return cell
         }
     }

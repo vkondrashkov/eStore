@@ -49,6 +49,9 @@ final class SectionedMenuRegularCell: UITableViewCell {
         contentView.backgroundColor = theme.foregroundColor
         titleLabel.textColor = theme.textColor
         iconImageView.tintColor = theme.tintColor
+        let selectedView = UIView()
+        selectedView.backgroundColor = theme.textColor.withAlphaComponent(0.20)
+        selectedBackgroundView = selectedView
     }
 
     func display(iconImageUrl: String?, title: String?) {

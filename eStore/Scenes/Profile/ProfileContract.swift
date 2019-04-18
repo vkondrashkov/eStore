@@ -38,7 +38,7 @@ protocol ProfileListener: AnyObject {
 
 protocol ProfileView: AnyObject, ThemeUpdatable {
     func display(rightBarButton: String)
-    func display(sections: [ProfileSection])
+    func display(sections: [SectionedMenuSection])
     func display(alert: Alert)
 }
 
