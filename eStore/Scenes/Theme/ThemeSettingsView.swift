@@ -59,6 +59,26 @@ extension ThemeSettingsViewImpl: ThemeSettingsView {
         let alertController = AlertFactory().make(alert: alert)
         present(alertController, animated: true, completion: nil)
     }
+
+    func update(theme: Theme, from point: CGPoint, animated: Bool) {
+        self.theme = theme
+        themeSectionedMenu.theme = theme
+
+        var animation: CircularFillAnimation?
+        if animated {
+            animation = CircularFillAnimation(
+                view: view,
+                position: point,
+                contextType: .window
+            )
+            animation?.prepare()
+        }
+
+        apply(theme: theme)
+        themeSectionedMenu.reloadData()
+
+        animation?.run(completion: nil)
+    }
 }
 
 // MARK: - ThemeUpdatable implementation
@@ -71,7 +91,7 @@ extension ThemeSettingsViewImpl: ThemeUpdatable {
         if animated {
             animation = CircularFillAnimation(
                 view: view,
-                position: CGPoint(x: 300, y: 545), // TODO: make tap recognizier
+                position: CGPoint(x: 300, y: 545),
                 contextType: .window
             )
             animation?.prepare()

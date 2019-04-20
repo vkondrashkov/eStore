@@ -30,6 +30,8 @@ protocol ThemeSettingsRouter: AnyObject { }
 protocol ThemeSettingsView: AnyObject, ThemeUpdatable {
     func display(sections: [SectionedMenuSection])
     func display(alert: Alert)
+
+    func update(theme: Theme, from point: CGPoint, animated: Bool)
 }
 
 protocol ThemeSettingsPresenter: AnyObject {

@@ -64,7 +64,8 @@ final class SectionedMenuView: UITableView {
         guard let indexPath = indexPathForRow(at: location) else {
             return
         }
-        sections[indexPath.section].items[indexPath.row].action?(location)
+        let windowPoint = self.convert(location, to: self.window)
+        sections[indexPath.section].items[indexPath.row].action?(windowPoint)
     }
 }
 
