@@ -32,6 +32,6 @@ extension AuthPresenterImpl: AuthPresenter {
 // MARK: - ThemeObserver implementation
 extension AuthPresenterImpl: ThemeObserver {
     func didChangedTheme(_ theme: Theme) {
-        view.update(theme: theme, animated: true)
+        view.update(theme: theme, animated: false)
     }
 }

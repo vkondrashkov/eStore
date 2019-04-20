@@ -6,4 +6,17 @@
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+final class ThemeSettingsComponent {
+    let navigation: UINavigationController
+    let themeManager: ThemeManager
+
+    init(navigation: UINavigationController,
+         themeManager: ThemeManager) {
+
+        self.navigation = navigation
+        self.themeManager = themeManager
+    }
+}
+

@@ -30,6 +30,7 @@ protocol ProfileRouter: AnyObject {
     func showSettings()
     func showCart()
     func showContact()
+    func showThemeSettings()
 }
 
 protocol ProfileListener: AnyObject {

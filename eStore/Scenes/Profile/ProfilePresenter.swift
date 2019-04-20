@@ -56,6 +56,10 @@ final class ProfilePresenterImpl {
         )
         view.display(alert: alert)
     }
+
+    private func handleThemeSettingsCategoryPress() {
+        router.showThemeSettings()
+    }
 }
 
 // MARK: - ProfilePresenter implementation
@@ -97,12 +101,8 @@ extension ProfilePresenterImpl: ProfilePresenter {
         let themeRow = SectionedMenuRow(
             imageUrl: nil,
             title: "Theme",
-            action: { [weak self] tapPoint in
-                guard let self = self else { return }
-                let newThemeType: ThemeType = self.themeManager.currentTheme.type == .light ? .dark : .light
-                let newTheme = ThemeBuilderImpl().build(type: newThemeType)
-                UserDefaultsManager.theme = newThemeType
-                self.themeManager.applyTheme(newTheme)
+            action: { [weak self] _ in
+                self?.handleThemeSettingsCategoryPress()
             }
         )
         let helpSection = SectionedMenuSection(title: "Help", items: [settingsRow, contactsRow, themeRow])
@@ -137,6 +137,6 @@ extension ProfilePresenterImpl: ProfilePresenter {
 // MARK: - ThemeObserver implementation
 extension ProfilePresenterImpl: ThemeObserver {
     func didChangedTheme(_ theme: Theme) {
-        view.update(theme: theme, animated: true)
+        view.update(theme: theme, animated: false)
     }
 }

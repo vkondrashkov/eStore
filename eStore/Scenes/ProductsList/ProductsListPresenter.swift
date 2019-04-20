@@ -75,6 +75,6 @@ extension ProductsListPresenterImpl: ProductsListPresenter {
 // MARK: - ThemeObserver implementation
 extension ProductsListPresenterImpl: ThemeObserver {
     func didChangedTheme(_ theme: Theme) {
-        view.update(theme: theme, animated: true)
+        view.update(theme: theme, animated: false)
     }
 }

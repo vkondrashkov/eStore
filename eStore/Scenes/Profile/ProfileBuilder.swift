@@ -22,13 +22,17 @@ extension ProfileBuilderImpl: ProfileBuilder {
         let view = ProfileViewImpl()
         view.theme = dependency.themeManager.currentTheme
         let component = ProfileComponent(
-            rootViewController: view,
+            navigation: dependency.profileNavigation,
             themeManager: dependency.themeManager
         )
+        let themeSettingsBuilder = ThemeSettingsBuilderImpl(dependency: component)
         let scene = ProfileSceneImpl(rootViewController: dependency.profileNavigation)
-        let coordinator = ProfileCoordinator(scene: scene,
-                                             show: view,
-                                             listener: listener)
+        let coordinator = ProfileCoordinator(
+            scene: scene,
+            show: view,
+            themeSettingsBuilder: themeSettingsBuilder,
+            listener: listener
+        )
         let presenter = ProfilePresenterImpl(
             view: view,
             router: coordinator,

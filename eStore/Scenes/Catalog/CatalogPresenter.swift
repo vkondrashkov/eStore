@@ -37,6 +37,6 @@ extension CatalogPresenterImpl: CatalogPresenter {
 // MARK: - ThemeObserver implementation
 extension CatalogPresenterImpl: ThemeObserver {
     func didChangedTheme(_ theme: Theme) {
-        view.update(theme: theme, animated: true)
+        view.update(theme: theme, animated: false)
     }
 }

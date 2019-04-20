@@ -13,12 +13,17 @@ final class ProfileCoordinator {
     private let show: ProfileShow
     private weak var listener: ProfileListener?
 
+    private let themeSettingsBuilder: ThemeSettingsBuilder
+    private var themeSettingsCoordinator: ThemeSettingsCoordinator?
+
     init(scene: ProfileScene,
          show: ProfileShow,
+         themeSettingsBuilder: ThemeSettingsBuilder,
          listener: ProfileListener) {
 
         self.scene = scene
         self.show = show
+        self.themeSettingsBuilder = themeSettingsBuilder
         self.listener = listener
     }
 }
@@ -52,5 +57,10 @@ extension ProfileCoordinator: ProfileRouter {
     func showContact() {
         guard let url = URL(string: "https://github.com/vkondrashkov/eStore") else { return }
         UIApplication.shared.open(url)
+    }
+
+    func showThemeSettings() {
+        themeSettingsCoordinator = themeSettingsBuilder.build()
+        themeSettingsCoordinator?.start()
     }
 }

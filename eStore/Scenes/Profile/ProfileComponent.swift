@@ -9,13 +9,16 @@
 import UIKit
 
 final class ProfileComponent {
-    let rootViewController: UIViewController
+    let navigation: UINavigationController
     let themeManager: ThemeManager
 
-    init(rootViewController: UIViewController,
+    init(navigation: UINavigationController,
          themeManager: ThemeManager) {
 
-        self.rootViewController = rootViewController
+        self.navigation = navigation
         self.themeManager = themeManager
     }
 }
+
+// MARK: - ThemeSettingsDependency implementation
+extension ProfileComponent: ThemeSettingsDependency { }
