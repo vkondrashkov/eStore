@@ -16,5 +16,8 @@ final class LightTheme: Theme {
     let foregroundColor = Color.white
     let borderColor = Color.silver
     let textColor = Color.black
-    let tintColor = Color.azraqBlue
+    var tintColorType: TintColorType = .azraqBlue
+    var tintColor: UIColor {
+        return tintColorType.color
+    }
 }

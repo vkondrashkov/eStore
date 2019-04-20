@@ -10,6 +10,7 @@ import Foundation
 
 struct UserDefaultsKeys {
     static var theme = "Theme"
+    static var tintColor = "TintColor"
 }
 
 struct UserDefaultsManager {
@@ -19,6 +20,15 @@ struct UserDefaultsManager {
         }
         set {
             UserDefaults.standard.set(newValue.rawValue, forKey: UserDefaultsKeys.theme)
+        }
+    }
+
+    static var tintColor: TintColorType {
+        get {
+            return TintColorType(rawValue: UserDefaults.standard.integer(forKey: UserDefaultsKeys.tintColor)) ?? .azraqBlue
+        }
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: UserDefaultsKeys.tintColor)
         }
     }
 }

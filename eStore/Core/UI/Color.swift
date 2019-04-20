@@ -23,4 +23,5 @@ struct Color {
     static let saturatedSky = UIColor(red: 83.0 / 255.0, green: 82.0 / 255.0, blue: 237.0 / 255.0, alpha: 1.0)
     static let riseAndShine = UIColor(red: 251.0 / 255.0, green: 197.0 / 255.0, blue: 49.0 / 255.0, alpha: 1.0)
     static let azraqBlue = UIColor(red: 74.0 / 255.0, green: 105.0 / 255.0, blue: 189.0 / 255.0, alpha: 1.0)
+    static let picoPink = UIColor(red: 253.0 / 255.0, green: 121.0 / 255.0, blue: 168.0 / 255.0, alpha: 1.0)
 }

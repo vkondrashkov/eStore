@@ -27,7 +27,8 @@ extension ThemeSettingsPresenterImpl: ThemeSettingsPresenter {
             action: { [weak self] tapPoint in
                 guard let self = self else { return }
                 guard self.themeManager.currentTheme.type != .dark else { return }
-                let newTheme = ThemeBuilderImpl().build(type: .dark)
+                let currentTheme = self.themeManager.currentTheme
+                let newTheme = ThemeBuilderImpl().build(type: .dark, tintColorType: currentTheme.tintColorType)
                 UserDefaultsManager.theme = .dark
                 self.themeManager.applyTheme(newTheme)
                 self.view.update(theme: newTheme, from: tapPoint, animated: true)
@@ -39,7 +40,8 @@ extension ThemeSettingsPresenterImpl: ThemeSettingsPresenter {
             action: { [weak self] tapPoint in
                 guard let self = self else { return }
                 guard self.themeManager.currentTheme.type != .light else { return }
-                let newTheme = ThemeBuilderImpl().build(type: .light)
+                let currentTheme = self.themeManager.currentTheme
+                let newTheme = ThemeBuilderImpl().build(type: .light, tintColorType: currentTheme.tintColorType)
                 UserDefaultsManager.theme = .light
                 self.themeManager.applyTheme(newTheme)
                 self.view.update(theme: newTheme, from: tapPoint, animated: true)
