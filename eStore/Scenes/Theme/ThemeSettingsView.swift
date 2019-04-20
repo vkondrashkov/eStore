@@ -13,6 +13,7 @@ final class ThemeSettingsViewImpl: UIViewController {
     var theme: Theme!
 
     private var themeSectionedMenu: SectionedMenuView!
+    private var colorPickerItems: [TintColorType] = []
 
     override func loadView() {
         view = UIView()
@@ -58,6 +59,35 @@ extension ThemeSettingsViewImpl: ThemeSettingsView {
     func display(alert: Alert) {
         let alertController = AlertFactory().make(alert: alert)
         present(alertController, animated: true, completion: nil)
+    }
+
+    func display(colorPickerItems: [TintColorType]) {
+        self.colorPickerItems = colorPickerItems
+
+        let alertController = UIAlertController(title: "Pick an Accent Color", message: nil, preferredStyle: .actionSheet)
+
+        let colorPickerLayout = UICollectionViewFlowLayout()
+        colorPickerLayout.itemSize = CGSize(width: 64, height: 64)
+        let colorPickerView = ThemeSettingsColorPickerView(
+            frame: .zero,
+            collectionViewLayout: colorPickerLayout
+        )
+        colorPickerView.delegate = self
+        colorPickerView.items = colorPickerItems
+
+        alertController.view.addSubview(colorPickerView)
+        colorPickerView.snp.makeConstraints { make in // TODO: Change to relative constraints
+            make.top.equalToSuperview().offset(45)
+            make.leading.equalToSuperview().offset(10)
+            make.trailing.equalToSuperview().offset(-10)
+            make.bottom.equalToSuperview().offset(-80)
+            make.height.equalTo(140)
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 
     func update(theme: Theme, from point: CGPoint, animated: Bool) {
@@ -108,5 +138,13 @@ extension ThemeSettingsViewImpl: ThemeUpdatable {
 extension ThemeSettingsViewImpl: ThemeSettingsShow {
     var viewController: UIViewController {
         return self
+    }
+}
+
+// MARK: - UICollectionViewDelegate implementation
+extension ThemeSettingsViewImpl: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard !colorPickerItems.isEmpty else { return }
+        presenter.handlePickedTintColor(tintColorType: colorPickerItems[indexPath.row])
     }
 }

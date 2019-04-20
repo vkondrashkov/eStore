@@ -51,6 +51,8 @@
 		9C83BC12222EFCC300CBB1FF /* ProductDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C83BC11222EFCC300CBB1FF /* ProductDescriptionTableViewCell.swift */; };
 		9C8FEBFE226B89A5007C30EB /* TintColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FEBFD226B89A5007C30EB /* TintColorType.swift */; };
 		9C8FEC00226B8EF7007C30EB /* SectionedMenuColorPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FEBFF226B8EF7007C30EB /* SectionedMenuColorPickerCell.swift */; };
+		9C8FEC03226B952A007C30EB /* ThemeSettingsColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FEC02226B952A007C30EB /* ThemeSettingsColorPickerView.swift */; };
+		9C8FEC07226B9553007C30EB /* ThemeSettingsColorPickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FEC06226B9553007C30EB /* ThemeSettingsColorPickerViewCell.swift */; };
 		9C9C73CA223CF92A00C4B5EE /* ProductDescriptionTablePriceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9C73C9223CF92A00C4B5EE /* ProductDescriptionTablePriceCell.swift */; };
 		9CA418D4221D879C00BAF215 /* StoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D3221D879C00BAF215 /* StoreItem.swift */; };
 		9CA418D6221D883700BAF215 /* Smartphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA418D5221D883700BAF215 /* Smartphone.swift */; };
@@ -192,6 +194,8 @@
 		9C83BC11222EFCC300CBB1FF /* ProductDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		9C8FEBFD226B89A5007C30EB /* TintColorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TintColorType.swift; sourceTree = "<group>"; };
 		9C8FEBFF226B8EF7007C30EB /* SectionedMenuColorPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedMenuColorPickerCell.swift; sourceTree = "<group>"; };
+		9C8FEC02226B952A007C30EB /* ThemeSettingsColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsColorPickerView.swift; sourceTree = "<group>"; };
+		9C8FEC06226B9553007C30EB /* ThemeSettingsColorPickerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsColorPickerViewCell.swift; sourceTree = "<group>"; };
 		9C9C73C9223CF92A00C4B5EE /* ProductDescriptionTablePriceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDescriptionTablePriceCell.swift; sourceTree = "<group>"; };
 		9CA418D3221D879C00BAF215 /* StoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItem.swift; sourceTree = "<group>"; };
 		9CA418D5221D883700BAF215 /* Smartphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Smartphone.swift; sourceTree = "<group>"; };
@@ -355,6 +359,7 @@
 		9C56E0FF225A937000E72428 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
+				9C8FEC01226B9517007C30EB /* ThemeSettingsContentView */,
 				9C56E100225A93C000E72428 /* ThemeSettingsContract.swift */,
 				9C56E102225A93C700E72428 /* ThemeSettingsComponent.swift */,
 				9C56E104225A93CD00E72428 /* ThemeSettingsBuilder.swift */,
@@ -406,6 +411,15 @@
 				9C9C73C9223CF92A00C4B5EE /* ProductDescriptionTablePriceCell.swift */,
 			);
 			path = ProductDescriptionContentView;
+			sourceTree = "<group>";
+		};
+		9C8FEC01226B9517007C30EB /* ThemeSettingsContentView */ = {
+			isa = PBXGroup;
+			children = (
+				9C8FEC02226B952A007C30EB /* ThemeSettingsColorPickerView.swift */,
+				9C8FEC06226B9553007C30EB /* ThemeSettingsColorPickerViewCell.swift */,
+			);
+			path = ThemeSettingsContentView;
 			sourceTree = "<group>";
 		};
 		9CA418D2221D878500BAF215 /* Entities */ = {
@@ -881,6 +895,7 @@
 				9CC46BD622153932005E24F5 /* SignUpPresenter.swift in Sources */,
 				9CA419202222D6E900BAF215 /* Category.swift in Sources */,
 				9C56E11B225B692200E72428 /* LightTheme.swift in Sources */,
+				9C8FEC03226B952A007C30EB /* ThemeSettingsColorPickerView.swift in Sources */,
 				9C56E113225B5F0200E72428 /* ThemeObserver.swift in Sources */,
 				9CA418DA221D884900BAF215 /* Laptop.swift in Sources */,
 				9CA418D4221D879C00BAF215 /* StoreItem.swift in Sources */,
@@ -974,6 +989,7 @@
 				9CC46C032216153A005E24F5 /* SignInBuilder.swift in Sources */,
 				9C56E109225A93D900E72428 /* ThemeSettingsCoordinator.swift in Sources */,
 				9CBC2819223B839D0091082B /* ProductDescriptionTableHeaderCell.swift in Sources */,
+				9C8FEC07226B9553007C30EB /* ThemeSettingsColorPickerViewCell.swift in Sources */,
 				9CA419302223251200BAF215 /* ProductsListPresenter.swift in Sources */,
 				9C56E101225A93C000E72428 /* ThemeSettingsContract.swift in Sources */,
 				9C56E10D225A93E700E72428 /* ThemeSettingsPresenter.swift in Sources */,

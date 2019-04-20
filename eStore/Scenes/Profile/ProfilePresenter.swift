@@ -99,7 +99,7 @@ extension ProfilePresenterImpl: ProfilePresenter {
             }
         )
         let themeRow = SectionedMenuRow(
-            imageUrl: nil,
+            imageUrl: "theme-settings-icon",
             title: "Theme",
             action: { [weak self] _ in
                 self?.handleThemeSettingsCategoryPress()

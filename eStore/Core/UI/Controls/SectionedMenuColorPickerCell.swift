@@ -25,6 +25,21 @@ final class SectionedMenuColorPickerCell: UITableViewCell {
         setupTitleLabel()
     }
 
+    // Due to Selection and Highlight change colors for all
+    // subviews we have to store color for PickedColorView
+    // and set it instantly after Selection or Highlight
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        let pickedColorViewColor = pickedColorView.backgroundColor
+        super.setSelected(selected, animated: animated)
+        pickedColorView.backgroundColor = pickedColorViewColor
+    }
+
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        let pickedColorViewColor = pickedColorView.backgroundColor
+        super.setHighlighted(highlighted, animated: animated)
+        pickedColorView.backgroundColor = pickedColorViewColor
+    }
+
     private func setupIconImageView() {
         iconImageView = UIImageView()
         contentView.addSubview(iconImageView)

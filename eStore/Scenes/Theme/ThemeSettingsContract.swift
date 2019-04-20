@@ -31,9 +31,12 @@ protocol ThemeSettingsView: AnyObject, ThemeUpdatable {
     func display(sections: [SectionedMenuSection])
     func display(alert: Alert)
 
+    func display(colorPickerItems: [TintColorType])
+
     func update(theme: Theme, from point: CGPoint, animated: Bool)
 }
 
 protocol ThemeSettingsPresenter: AnyObject {
     func handleLoadView()
+    func handlePickedTintColor(tintColorType: TintColorType)
 }

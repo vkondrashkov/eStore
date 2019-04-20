@@ -12,6 +12,7 @@ final class ThemeSettingsPresenterImpl {
 
     init(view: ThemeSettingsView,
          themeManager: ThemeManager) {
+
         self.view = view
         self.themeManager = themeManager
         self.themeManager.add(observer: self)
@@ -22,7 +23,7 @@ final class ThemeSettingsPresenterImpl {
 extension ThemeSettingsPresenterImpl: ThemeSettingsPresenter {
     func handleLoadView() {
         let darkThemeRow = SectionedMenuRow(
-            imageUrl: nil,
+            imageUrl: "dark-theme-icon",
             title: "Dark",
             action: { [weak self] tapPoint in
                 guard let self = self else { return }
@@ -34,7 +35,7 @@ extension ThemeSettingsPresenterImpl: ThemeSettingsPresenter {
             }
         )
         let lightThemeRow = SectionedMenuRow(
-            imageUrl: nil,
+            imageUrl: "light-theme-icon",
             title: "Light",
             action: { [weak self] tapPoint in
                 guard let self = self else { return }
@@ -48,23 +49,24 @@ extension ThemeSettingsPresenterImpl: ThemeSettingsPresenter {
         let themeSection = SectionedMenuSection(title: "Color theme", items: [darkThemeRow, lightThemeRow])
 
         let colorPickerRow = SectionedMenuRow(
-            imageUrl: nil,
+            imageUrl: "color-picker-icon",
             title: "Accent color",
             type: .colorPicker,
-            action: { [weak self] tapPoint in
-                guard let self = self else { return }
-                let currentTheme = self.themeManager.currentTheme
-
-                let newTintColorType: TintColorType = currentTheme.tintColorType == .azraqBlue ? .picoPink : .azraqBlue
-                let newTheme = ThemeBuilderImpl().build(type: currentTheme.type, tintColorType: newTintColorType)
-                self.themeManager.applyTheme(newTheme)
-                self.view.update(theme: newTheme, from: tapPoint, animated: false)
+            action: { [weak self] _ in
+                self?.view.display(colorPickerItems: [.shamrock, .cinnabar, .saturatedSky, .riseAndShine, .azraqBlue, .picoPink])
             }
         )
         let colorPickerSection = SectionedMenuSection(title: nil, items: [colorPickerRow])
 
         let sections = [themeSection, colorPickerSection]
         view.display(sections: sections)
+    }
+
+    func handlePickedTintColor(tintColorType: TintColorType) {
+        let currentTheme = self.themeManager.currentTheme
+        let newTheme = ThemeBuilderImpl().build(type: currentTheme.type, tintColorType: tintColorType)
+        self.themeManager.applyTheme(newTheme)
+        self.view.update(theme: newTheme, animated: false)
     }
 }
 
