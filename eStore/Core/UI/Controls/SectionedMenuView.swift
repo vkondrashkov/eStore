@@ -11,6 +11,7 @@ import UIKit
 enum SectionedMenuRowType {
     case thumbnail
     case regular
+    case colorPicker
 }
 
 struct SectionedMenuSection {
@@ -44,6 +45,7 @@ final class SectionedMenuView: UITableView {
         super.init(frame: frame, style: style)
 
         register(SectionedMenuRegularCell.self, forCellReuseIdentifier: SectionedMenuRegularCell.reuseIdentifier)
+        register(SectionedMenuColorPickerCell.self, forCellReuseIdentifier: SectionedMenuColorPickerCell.reuseIdentifier)
         register(SectionedMenuThumbnailCell.self, forCellReuseIdentifier: SectionedMenuThumbnailCell.reuseIdentifier)
         
         delegate = self
@@ -97,6 +99,11 @@ extension SectionedMenuView: UITableViewDataSource {
         switch item.type {
         case .regular:
             let cell = tableView.dequeueReusableCell(withIdentifier: SectionedMenuRegularCell.reuseIdentifier, for: indexPath) as! SectionedMenuRegularCell
+            cell.apply(theme: theme)
+            cell.display(iconImageUrl: item.imageUrl, title: item.title)
+            return cell
+        case .colorPicker:
+            let cell = tableView.dequeueReusableCell(withIdentifier: SectionedMenuColorPickerCell.reuseIdentifier, for: indexPath) as! SectionedMenuColorPickerCell
             cell.apply(theme: theme)
             cell.display(iconImageUrl: item.imageUrl, title: item.title)
             return cell
