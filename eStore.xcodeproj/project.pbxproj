@@ -133,6 +133,7 @@
 		9CD6A85D226E033700DF4C65 /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD6A85C226E033700DF4C65 /* ReuseIdentifiable.swift */; };
 		9CD6A85F226E034C00DF4C65 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD6A85E226E034C00DF4C65 /* NibLoadable.swift */; };
 		9CD6A861226E047800DF4C65 /* UICollectionView+Generic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD6A860226E047800DF4C65 /* UICollectionView+Generic.swift */; };
+		9CD6A863226E06DE00DF4C65 /* SectionedMenuTableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD6A862226E06DE00DF4C65 /* SectionedMenuTableViewAdapter.swift */; };
 		B67E8CAE13B88E6B24FADB3F /* Pods_eStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D504EA2333F7424597DD971 /* Pods_eStore.framework */; };
 		C2B154AE864ADDB701A619CB /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 729C066A86EECB57EB23A9B3 /* Pods_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -282,6 +283,7 @@
 		9CD6A85C226E033700DF4C65 /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
 		9CD6A85E226E034C00DF4C65 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		9CD6A860226E047800DF4C65 /* UICollectionView+Generic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Generic.swift"; sourceTree = "<group>"; };
+		9CD6A862226E06DE00DF4C65 /* SectionedMenuTableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedMenuTableViewAdapter.swift; sourceTree = "<group>"; };
 		D5EFADDB5B92B2711B865C84 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		FA60869693AB83607A90AED6 /* Pods-eStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eStore.release.xcconfig"; path = "Pods/Target Support Files/Pods-eStore/Pods-eStore.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -498,6 +500,7 @@
 			isa = PBXGroup;
 			children = (
 				9CBBF7F72267676C00424E37 /* SectionedMenuView.swift */,
+				9CD6A862226E06DE00DF4C65 /* SectionedMenuTableViewAdapter.swift */,
 				9CBBF7FA22676B1E00424E37 /* SectionedMenuRegularCell.swift */,
 				9C8FEBFF226B8EF7007C30EB /* SectionedMenuColorPickerCell.swift */,
 				9CBBF8032267D68100424E37 /* SectionedMenuThumbnailCell.swift */,
@@ -955,6 +958,7 @@
 				9CD6A85D226E033700DF4C65 /* ReuseIdentifiable.swift in Sources */,
 				9CA41926222324E800BAF215 /* ProductsListComponent.swift in Sources */,
 				9CA418D6221D883700BAF215 /* Smartphone.swift in Sources */,
+				9CD6A863226E06DE00DF4C65 /* SectionedMenuTableViewAdapter.swift in Sources */,
 				9CA4192C2223250200BAF215 /* ProductsListCoordinator.swift in Sources */,
 				9C56E107225A93D200E72428 /* ThemeSettingsScene.swift in Sources */,
 				9CA4192A222324F800BAF215 /* ProductsListScene.swift in Sources */,

@@ -30,7 +30,7 @@ final class ThemeSettingsViewImpl: UIViewController {
         title = "Theme settings"
         navigationItem.largeTitleDisplayMode = .never
 
-        themeSectionedMenu.tableFooterView = UIView() // Is needed to remove unnecessary separators
+        themeSectionedMenu.tableFooterView = UIView()
         themeSectionedMenu.backgroundColor = .clear
         themeSectionedMenu.theme = theme
 

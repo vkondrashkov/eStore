@@ -38,19 +38,30 @@ struct SectionedMenuRow {
 }
 
 final class SectionedMenuView: UITableView {
-    var theme: Theme!
-    var sections: [SectionedMenuSection] = []
+    private var adapter = SectionedMenuTableViewAdapter()
+    
+    var theme: Theme! {
+        didSet {
+            adapter.theme = self.theme
+        }
+    }
+
+    var sections: [SectionedMenuSection] {
+        didSet {
+            adapter.sections = self.sections
+        }
+    }
 
     override init(frame: CGRect, style: UITableView.Style) {
+        sections = []
         super.init(frame: frame, style: style)
 
         register(SectionedMenuRegularCell.self)
         register(SectionedMenuColorPickerCell.self)
         register(SectionedMenuThumbnailCell.self)
         
-        delegate = self
-        dataSource = self
-
+        delegate = adapter
+        dataSource = adapter
 
         let sectionedMenuGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sectionedMenuDidTap(sender:)))
         sectionedMenuGestureRecognizer.cancelsTouchesInView = false
@@ -62,56 +73,11 @@ final class SectionedMenuView: UITableView {
     }
 
     @objc func sectionedMenuDidTap(sender: UITapGestureRecognizer) {
-        let location = sender.location(in: self) // point of touch in tableView
-        guard let indexPath = indexPathForRow(at: location) else {
+        let tableTapPoint = sender.location(in: self)
+        guard let indexPath = indexPathForRow(at: tableTapPoint) else {
             return
         }
-        let windowPoint = self.convert(location, to: self.window)
-        sections[indexPath.section].items[indexPath.row].action?(windowPoint)
-    }
-}
-
-// MARK: - UITableViewDelegate implementation
-// TODO: Make proxying if needed
-extension SectionedMenuView: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-}
-
-// MARK: - UITableViewDataSource implementation
-// TODO: Make proxying if needed
-extension SectionedMenuView: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sections[section].items.count
-    }
-
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section].title
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = sections[indexPath.section].items[indexPath.row]
-        switch item.type {
-        case .regular:
-            let cell = tableView.dequeueReusableCell(withIdentifier: SectionedMenuRegularCell.reuseIdentifier, for: indexPath) as! SectionedMenuRegularCell
-            cell.apply(theme: theme)
-            cell.display(iconImageUrl: item.imageUrl, title: item.title)
-            return cell
-        case .colorPicker:
-            let cell = tableView.dequeueReusableCell(withIdentifier: SectionedMenuColorPickerCell.reuseIdentifier, for: indexPath) as! SectionedMenuColorPickerCell
-            cell.apply(theme: theme)
-            cell.display(iconImageUrl: item.imageUrl, title: item.title)
-            return cell
-        case .thumbnail:
-            let cell = tableView.dequeueReusableCell(withIdentifier: SectionedMenuThumbnailCell.reuseIdentifier, for: indexPath) as! SectionedMenuThumbnailCell
-            cell.apply(theme: theme)
-            cell.display(thumbnailImageUrl: item.imageUrl, title: item.title)
-            return cell
-        }
+        let windowTapPoint = self.convert(tableTapPoint, to: self.window)
+        sections[indexPath.section].items[indexPath.row].action?(windowTapPoint)
     }
 }

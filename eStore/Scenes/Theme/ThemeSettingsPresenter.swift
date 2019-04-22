@@ -72,5 +72,7 @@ extension ThemeSettingsPresenterImpl: ThemeSettingsPresenter {
 
 // MARK: - ThemeObserver implementation
 extension ThemeSettingsPresenterImpl: ThemeObserver {
+    // Observer can't get point of touch, so
+    // presenter would update theme by itself
     func didChangedTheme(_ theme: Theme) { }
 }

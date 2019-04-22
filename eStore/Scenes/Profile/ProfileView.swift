@@ -29,7 +29,7 @@ final class ProfileViewImpl: UIViewController {
         title = "Profile"
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        profileSectionedMenu.tableFooterView = UIView() // Is needed to remove unnecessary separators
+        profileSectionedMenu.tableFooterView = UIView()
         profileSectionedMenu.backgroundColor = .clear
         profileSectionedMenu.theme = theme
 
