@@ -8,9 +8,7 @@
 
 import UIKit
 
-final class SectionedMenuRegularCell: UITableViewCell {
-    static var reuseIdentifier = "SectionedMenuRegularCellReuseIdentifier"
-
+final class SectionedMenuRegularCell: UITableViewCell, ReuseIdentifiable {
     private var iconImageView: UIImageView!
     private var titleLabel: UILabel!
 

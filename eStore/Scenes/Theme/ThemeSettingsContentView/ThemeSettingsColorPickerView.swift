@@ -15,7 +15,7 @@ final class ThemeSettingsColorPickerView: UICollectionView {
         super.init(frame: frame, collectionViewLayout: layout)
         backgroundColor = .clear
 
-        register(ThemeSettingsColorPickerViewCell.self, forCellWithReuseIdentifier: ThemeSettingsColorPickerViewCell.reuseIdentifier)
+        register(ThemeSettingsColorPickerViewCell.self)
 
         dataSource = self
     }
@@ -32,7 +32,7 @@ extension ThemeSettingsColorPickerView: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThemeSettingsColorPickerViewCell.reuseIdentifier, for: indexPath) as! ThemeSettingsColorPickerViewCell
+        let cell: ThemeSettingsColorPickerViewCell = collectionView.dequeueReusableCell(for: indexPath)
         cell.display(color: items[indexPath.row].color)
         return cell
     }

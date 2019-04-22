@@ -8,9 +8,7 @@
 
 import UIKit
 
-final class ThemeSettingsColorPickerViewCell: UICollectionViewCell {
-    static var reuseIdentifier = "ThemeSettingsColorPickerViewCellReuseIdentifier"
-
+final class ThemeSettingsColorPickerViewCell: UICollectionViewCell, ReuseIdentifiable {
     private var colorPick: UIView!
 
     override init(frame: CGRect) {

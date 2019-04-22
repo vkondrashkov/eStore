@@ -8,9 +8,7 @@
 
 import UIKit
 
-final class SectionedMenuColorPickerCell: UITableViewCell {
-    static var reuseIdentifier = "SectionedMenuColorPickerCellReuseIdentifier"
-
+final class SectionedMenuColorPickerCell: UITableViewCell, ReuseIdentifiable {
     private var iconImageView: UIImageView!
     private var titleLabel: UILabel!
     private var pickedColorView: UIView!

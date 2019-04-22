@@ -44,9 +44,9 @@ final class SectionedMenuView: UITableView {
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
 
-        register(SectionedMenuRegularCell.self, forCellReuseIdentifier: SectionedMenuRegularCell.reuseIdentifier)
-        register(SectionedMenuColorPickerCell.self, forCellReuseIdentifier: SectionedMenuColorPickerCell.reuseIdentifier)
-        register(SectionedMenuThumbnailCell.self, forCellReuseIdentifier: SectionedMenuThumbnailCell.reuseIdentifier)
+        register(SectionedMenuRegularCell.self)
+        register(SectionedMenuColorPickerCell.self)
+        register(SectionedMenuThumbnailCell.self)
         
         delegate = self
         dataSource = self

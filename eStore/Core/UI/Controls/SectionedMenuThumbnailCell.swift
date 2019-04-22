@@ -8,9 +8,7 @@
 
 import UIKit
 
-final class SectionedMenuThumbnailCell: UITableViewCell {
-    static var reuseIdentifier = "SectionedMenuThumbnailCellReuseIdentifier"
-
+final class SectionedMenuThumbnailCell: UITableViewCell, ReuseIdentifiable {
     private var thumbnailImageView: UIImageView!
     private var titleLabel: UILabel!
 

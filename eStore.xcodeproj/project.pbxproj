@@ -129,6 +129,10 @@
 		9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55266220AFC8C0004ACC4 /* AppComponent.swift */; };
 		9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55268220AFCBC0004ACC4 /* RootCoordinator.swift */; };
 		9CC5526B220AFCC30004ACC4 /* RootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5526A220AFCC30004ACC4 /* RootBuilder.swift */; };
+		9CD6A85B226E030900DF4C65 /* UITableView+Generic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD6A85A226E030900DF4C65 /* UITableView+Generic.swift */; };
+		9CD6A85D226E033700DF4C65 /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD6A85C226E033700DF4C65 /* ReuseIdentifiable.swift */; };
+		9CD6A85F226E034C00DF4C65 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD6A85E226E034C00DF4C65 /* NibLoadable.swift */; };
+		9CD6A861226E047800DF4C65 /* UICollectionView+Generic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD6A860226E047800DF4C65 /* UICollectionView+Generic.swift */; };
 		B67E8CAE13B88E6B24FADB3F /* Pods_eStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D504EA2333F7424597DD971 /* Pods_eStore.framework */; };
 		C2B154AE864ADDB701A619CB /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 729C066A86EECB57EB23A9B3 /* Pods_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -274,6 +278,10 @@
 		9CC55266220AFC8C0004ACC4 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
 		9CC55268220AFCBC0004ACC4 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		9CC5526A220AFCC30004ACC4 /* RootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootBuilder.swift; sourceTree = "<group>"; };
+		9CD6A85A226E030900DF4C65 /* UITableView+Generic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Generic.swift"; sourceTree = "<group>"; };
+		9CD6A85C226E033700DF4C65 /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
+		9CD6A85E226E034C00DF4C65 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
+		9CD6A860226E047800DF4C65 /* UICollectionView+Generic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Generic.swift"; sourceTree = "<group>"; };
 		D5EFADDB5B92B2711B865C84 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		FA60869693AB83607A90AED6 /* Pods-eStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eStore.release.xcconfig"; path = "Pods/Target Support Files/Pods-eStore/Pods-eStore.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -501,6 +509,10 @@
 			isa = PBXGroup;
 			children = (
 				9CBC281B223BC5A70091082B /* UIImageView+Downloaded.swift */,
+				9CD6A85A226E030900DF4C65 /* UITableView+Generic.swift */,
+				9CD6A860226E047800DF4C65 /* UICollectionView+Generic.swift */,
+				9CD6A85C226E033700DF4C65 /* ReuseIdentifiable.swift */,
+				9CD6A85E226E034C00DF4C65 /* NibLoadable.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -935,10 +947,12 @@
 				9CA418ED221D8D1600BAF215 /* CatalogView.swift in Sources */,
 				9CC46C0922161559005E24F5 /* SignInView.swift in Sources */,
 				9CC46B9822141058005E24F5 /* DashboardContract.swift in Sources */,
+				9CD6A85F226E034C00DF4C65 /* NibLoadable.swift in Sources */,
 				9CC46C2822180B9F005E24F5 /* ProfileView.swift in Sources */,
 				9CC46BD42215392A005E24F5 /* SignUpView.swift in Sources */,
 				9CC46C172216982E005E24F5 /* KeyboardManager.swift in Sources */,
 				9C415BFE226086B100658A2B /* Animation.swift in Sources */,
+				9CD6A85D226E033700DF4C65 /* ReuseIdentifiable.swift in Sources */,
 				9CA41926222324E800BAF215 /* ProductsListComponent.swift in Sources */,
 				9CA418D6221D883700BAF215 /* Smartphone.swift in Sources */,
 				9CA4192C2223250200BAF215 /* ProductsListCoordinator.swift in Sources */,
@@ -982,6 +996,7 @@
 				9C452FBA2242DB1E00924FA5 /* CartPresenter.swift in Sources */,
 				9C83BC0B222EAF0700CBB1FF /* ProductDescriptionPresenter.swift in Sources */,
 				9CC46C1A22176B39005E24F5 /* AlertFactory.swift in Sources */,
+				9CD6A861226E047800DF4C65 /* UICollectionView+Generic.swift in Sources */,
 				9C9C73CA223CF92A00C4B5EE /* ProductDescriptionTablePriceCell.swift in Sources */,
 				9C83BC0E222EF5D100CBB1FF /* ProductDescriptionTableViewDataSource.swift in Sources */,
 				9C452FB82242DB1500924FA5 /* CartView.swift in Sources */,
@@ -993,6 +1008,7 @@
 				9CA419302223251200BAF215 /* ProductsListPresenter.swift in Sources */,
 				9C56E101225A93C000E72428 /* ThemeSettingsContract.swift in Sources */,
 				9C56E10D225A93E700E72428 /* ThemeSettingsPresenter.swift in Sources */,
+				9CD6A85B226E030900DF4C65 /* UITableView+Generic.swift in Sources */,
 				9CC46C2422180B8C005E24F5 /* ProfileScene.swift in Sources */,
 				9CC46BCC22153908005E24F5 /* SignUpBuilder.swift in Sources */,
 				9CA418E7221D8CFC00BAF215 /* CatalogBuilder.swift in Sources */,
