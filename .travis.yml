@@ -1,0 +1,8 @@
+os: osx
+osx_image: xcode10
+language: swift
+
+script:
+  - set -o pipefail && xcodebuild -scheme eStore -workspace eStore.xcworkspace -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=12.0' build test | xcpretty --color
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
