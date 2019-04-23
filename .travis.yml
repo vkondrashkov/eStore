@@ -7,7 +7,8 @@ cache:
  - cocoapods
 
 before_install:
-  - gem install -v 2.0.1 bundler --no-rdoc --no-ri
+ - gem install -v 2.0.1 bundler --no-rdoc --no-ri
+ - gem install -v 1.6.1 cocoapods
 
 install:
  - bundle install --path vendor/bundle
