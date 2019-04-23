@@ -1,20 +1,28 @@
 PODS:
+  - Nimble (8.0.1)
   - ObjectMapper (3.4.2)
+  - Quick (2.0.0)
   - SnapKit (4.0.1)
 
 DEPENDENCIES:
+  - Nimble
   - ObjectMapper (~> 3.4)
+  - Quick
   - SnapKit (~> 4.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Nimble
     - ObjectMapper
+    - Quick
     - SnapKit
 
 SPEC CHECKSUMS:
+  Nimble: 45f786ae66faa9a709624227fae502db55a8bdd0
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
+  Quick: ce1276c7c27ba2da3cb2fd0cde053c3648b3b22d
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
-PODFILE CHECKSUM: 6511876c77e409c785e417ba56b061ee76747cdd
+PODFILE CHECKSUM: 57895471fc99c738886096c35b8df6472d37ed26
 
 COCOAPODS: 1.6.1

@@ -7,5 +7,8 @@ target 'eStore' do
     pod 'SnapKit', '~> 4.0.0'
     target 'Tests' do
         inherit! :search_paths
+
+	pod 'Quick'
+	pod 'Nimble'
     end
 end
