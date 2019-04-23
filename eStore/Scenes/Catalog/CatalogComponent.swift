@@ -10,11 +10,18 @@ import UIKit
 
 final class CatalogComponent {
     let navigation: UINavigationController
+    let themeManager: ThemeManager
+    let alertFactory: AlertFactory
+    
+    init(navigation: UINavigationController,
+         themeManager: ThemeManager,
+         alertFactory: AlertFactory) {
 
-    init(navigation: UINavigationController) {
         self.navigation = navigation
+        self.themeManager = themeManager
+        self.alertFactory = alertFactory
     }
 }
 
-// MARK: - GoodsListDependency implementation
-extension CatalogComponent: GoodsListDependency { }
+// MARK: - ProductsListDependency implementation
+extension CatalogComponent: ProductsListDependency { }

@@ -10,9 +10,16 @@ import UIKit
 
 final class AppComponent {
     let window: UIWindow
+    let themeManager: ThemeManager
+    let alertFactory: AlertFactory
 
-    init(window: UIWindow) {
+    init(window: UIWindow,
+         themeManager: ThemeManager,
+         alertFactory: AlertFactory) {
+
         self.window = window
+        self.themeManager = themeManager
+        self.alertFactory = alertFactory
     }
 }
 

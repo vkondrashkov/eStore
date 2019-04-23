@@ -20,12 +20,16 @@ final class SignUpBuilderImpl {
 extension SignUpBuilderImpl: SignUpBuilder {
     func build(with listener: SignUpListener) -> SignUpCoordinator {
         let view = SignUpViewImpl()
+        view.theme = dependency.themeManager.currentTheme
         let scene = SignUpSceneImpl(navViewController: dependency.parent)
         let coordinator = SignUpCoordinator(scene: scene,
                                             show: view,
                                             listener: listener)
-        let presenter = SignUpPresenterImpl(view: view,
-                                            router: coordinator)
+        let presenter = SignUpPresenterImpl(
+            view: view,
+            router: coordinator,
+            themeManager: dependency.themeManager
+        )
         view.presenter = presenter
         return coordinator
     }

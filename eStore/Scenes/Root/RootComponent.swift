@@ -10,9 +10,16 @@ import UIKit
 
 final class RootComponent {
     let rootViewController: UIViewController
+    let themeManager: ThemeManager
+    let alertFactory: AlertFactory
 
-    init(rootViewController: UIViewController) {
+    init(rootViewController: UIViewController,
+         themeManager: ThemeManager,
+         alertFactory: AlertFactory) {
+
         self.rootViewController = rootViewController
+        self.themeManager = themeManager
+        self.alertFactory = alertFactory
     }
 }
 

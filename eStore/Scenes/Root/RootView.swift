@@ -13,7 +13,7 @@ final class RootViewImpl: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .white // TODO:
     }
 
     override func viewDidAppear(_ animated: Bool) {

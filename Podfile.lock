@@ -1,16 +1,20 @@
 PODS:
   - ObjectMapper (3.4.2)
+  - SnapKit (4.0.1)
 
 DEPENDENCIES:
   - ObjectMapper (~> 3.4)
+  - SnapKit (~> 4.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - ObjectMapper
+    - SnapKit
 
 SPEC CHECKSUMS:
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
-PODFILE CHECKSUM: 7640025dadddb56015a75b17643266d69bfacfff
+PODFILE CHECKSUM: 6511876c77e409c785e417ba56b061ee76747cdd
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

@@ -8,22 +8,24 @@
 
 import ObjectMapper
 
-// TODO: Add StockCount property
 class Smartphone: ImmutableMappable {
     let id: String
+    let imageUrl: String?
     let name: String
     let brand: String
     let operatingSystem: OperatingSystem
     let display: Display
-    let ram: String
-    let flashMemory: String
+    let ram: Int
+    let flashMemory: Int
     let processor: String
     let color: String
     let batteryCapacity: Int
     let price: Int
+    let stockCount: Int
 
     required init(map: Map) throws {
         id = try map.value("id")
+        imageUrl = try? map.value("imageUrl")
         name = try map.value("name")
         brand = try map.value("brand")
         operatingSystem = try OperatingSystem(rawValue: map.value("operatingSystem")) ?? .unknown
@@ -34,10 +36,12 @@ class Smartphone: ImmutableMappable {
         color = try map.value("color")
         batteryCapacity = try map.value("batteryCapacity")
         price = try map.value("price")
+        stockCount = try map.value("stockCount")
     }
 
     func mapping(map: Map) {
         id >>> map["id"]
+        imageUrl >>> map["imageUrl"]
         name >>> map["name"]
         brand >>> map["brand"]
         operatingSystem.rawValue >>> map["operatingSystem"]
@@ -49,6 +53,7 @@ class Smartphone: ImmutableMappable {
         color >>> map["color"]
         batteryCapacity >>> map["batteryCapacity"]
         price >>> map["price"]
+        stockCount >>> map["stockCount"]
     }
 }
 
@@ -58,18 +63,20 @@ extension Smartphone: StoreItemConvertible {
         var specifications: [Specification] = []
         specifications.append(Specification(name: "Operating system", value: operatingSystem))
         specifications.append(Specification(name: "Display", value: display))
-        specifications.append(Specification(name: "RAM", value: ram))
-        specifications.append(Specification(name: "Flash memory", value: flashMemory))
+        specifications.append(Specification(name: "RAM", value: "\(ram) GB"))
+        specifications.append(Specification(name: "Flash memory", value: "\(flashMemory) GB"))
         specifications.append(Specification(name: "Processor", value: processor))
         specifications.append(Specification(name: "Color", value: color))
-        specifications.append(Specification(name: "Battery capacity", value: batteryCapacity))
+        specifications.append(Specification(name: "Battery capacity", value: "\(batteryCapacity) mAh"))
         let storeItem = StoreItem(
             id: id,
+            imageUrl: imageUrl,
             name: name,
             brand: brand,
             type: .Smartphone,
             specifications: specifications,
-            price: price
+            price: price,
+            stockCount: stockCount
         )
         return storeItem
     }

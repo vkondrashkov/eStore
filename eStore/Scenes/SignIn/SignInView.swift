@@ -10,6 +10,8 @@ import UIKit
 
 final class SignInViewImpl: UIViewController {
     var presenter: SignInPresenter!
+    var alertFactory: AlertFactory!
+    var theme: Theme!
 
     private var containerView: UIView!
     private var emailCaption: UILabel!
@@ -22,91 +24,98 @@ final class SignInViewImpl: UIViewController {
     private var forgotPasswordButton: UIButton!
     private var activityIndicator: UIActivityIndicatorView!
 
-    private let signInButtonBackgroundColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
-    private let forgotPasswordButtonRegularColor = UIColor(white: 0.5, alpha: 1.0)
-    private let forgotPasswordButtonHighlightedColor = UIColor(white: 0.75, alpha: 1.0)
-
     private lazy var keyboardManager = KeyboardManager(viewController: self)
 
     override func loadView() {
-        super.loadView()
-        view.backgroundColor = .white
-        title = "Sign In"
-        navigationController?.navigationBar.tintColor = customTintColor
+        view = UIView()
+
         containerView = UIView()
-
-        setupEmailCaption()
-        setupEmailTextField()
-        setupPasswordCaption()
-        setupPasswordTextField()
-        setupSignInButton()
-        setupForgotPasswordButton()
-        setupActivityIndicator()
-
         view.addSubview(containerView)
-        activateContainerViewConstraints(view: containerView)
+        containerView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(50)
+            make.width.equalTo(300)
+            make.leading.greaterThanOrEqualToSuperview().offset(10)
+            make.trailing.lessThanOrEqualToSuperview().offset(-10)
+        }
+
+        emailCaption = UILabel()
+        containerView.addSubview(emailCaption)
+        emailCaption.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+        }
+
+        emailTextField = UITextField()
+        containerView.addSubview(emailTextField)
+        emailTextField.snp.makeConstraints { make in
+            make.top.equalTo(emailCaption.snp.bottom).offset(10)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(40)
+        }
+
+        passwordCaption = UILabel()
+        containerView.addSubview(passwordCaption)
+        passwordCaption.snp.makeConstraints { make in
+            make.top.equalTo(emailTextField.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview()
+        }
+
+        passwordTextField = UITextField()
+        containerView.addSubview(passwordTextField)
+        passwordTextField.snp.makeConstraints { make in
+            make.top.equalTo(passwordCaption.snp.bottom).offset(10)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(40)
+        }
+
+        signInButton = UIButton()
+        containerView.addSubview(signInButton)
+        signInButton.snp.makeConstraints { make in
+            make.top.equalTo(passwordTextField.snp.bottom).offset(20)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(40)
+        }
+
+        forgotPasswordButton = UIButton()
+        containerView.addSubview(forgotPasswordButton)
+        forgotPasswordButton.snp.makeConstraints { make in
+            make.top.equalTo(signInButton.snp.bottom).offset(10)
+            make.centerX.bottom.equalToSuperview()
+        }
+
+        activityIndicator = UIActivityIndicatorView()
+        signInButton.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        keyboardManager.hideKeyboardWhenTappedAround()
-    }
+        title = "Sign In"
 
-    private func setupEmailCaption() {
-        emailCaption = UILabel()
         emailCaption.font = .boldSystemFont(ofSize: 17)
-        containerView.addSubview(emailCaption)
-        activateEmailCaptionConstraints(view: emailCaption)
-    }
 
-    private func setupEmailTextField() {
-        emailTextField = UITextField()
         emailTextField.borderStyle = .roundedRect
         emailTextField.keyboardType = .emailAddress
-        containerView.addSubview(emailTextField)
-        activateEmailTextFieldConstraints(view: emailTextField, anchorView: emailCaption)
-    }
 
-    private func setupPasswordCaption() {
-        passwordCaption = UILabel()
         passwordCaption.font = .boldSystemFont(ofSize: 17)
-        containerView.addSubview(passwordCaption)
-        activatePasswordCaptionConstraints(view: passwordCaption, anchorView: emailTextField)
-    }
 
-    private func setupPasswordTextField() {
-        passwordTextField = UITextField()
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.isSecureTextEntry = true
-        containerView.addSubview(passwordTextField)
-        activatePasswordTextFieldConstraints(view: passwordTextField, anchorView: passwordCaption)
-    }
 
-    private func setupSignInButton() {
-        signInButton = UIButton()
         signInButton.addTarget(self, action: #selector(signInButtonDidPressed), for: .touchUpInside)
         signInButton.layer.cornerRadius = 5
         signInButton.layer.masksToBounds = true
-        signInButton.backgroundColor = signInButtonBackgroundColor
-        containerView.addSubview(signInButton)
-        activateSignInButtonConstraints(view: signInButton, anchorView: passwordTextField)
-    }
 
-    private func setupForgotPasswordButton() {
-        forgotPasswordButton = UIButton()
-        forgotPasswordButton.setTitleColor(forgotPasswordButtonRegularColor, for: .normal)
-        forgotPasswordButton.setTitleColor(forgotPasswordButtonHighlightedColor, for: .highlighted)
+        forgotPasswordButton.setTitleColor(Color.grey, for: .normal)
+        forgotPasswordButton.setTitleColor(Color.silver, for: .highlighted)
         forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonDidPressed), for: .touchUpInside)
-        containerView.addSubview(forgotPasswordButton)
-        activateForgotPasswordButtonConstraints(view: forgotPasswordButton, anchorView: signInButton)
-    }
 
-    private func setupActivityIndicator() {
-        activityIndicator = UIActivityIndicatorView()
         activityIndicator.style = .white
-        signInButton.addSubview(activityIndicator)
-        activateActivityIndicatorConstraints(view: activityIndicator)
+
+        apply(theme: theme)
+        keyboardManager.hideKeyboardWhenTappedAround()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -114,16 +123,27 @@ final class SignInViewImpl: UIViewController {
         presenter.shouldViewAppear()
     }
 
-    @objc func rightBarButtonDidPressed() {
+    @objc private func rightBarButtonDidPressed() {
         presenter.handleRightBarButtonPress()
     }
 
-    @objc func signInButtonDidPressed() {
+    @objc private func signInButtonDidPressed() {
         presenter.handleSignInButtonPress()
     }
 
-    @objc func forgotPasswordButtonDidPressed() {
+    @objc private func forgotPasswordButtonDidPressed() {
         presenter.handleForgotPasswordPress()
+    }
+
+    private func apply(theme: Theme) {
+        view.backgroundColor = theme.backgroundColor
+        emailCaption.textColor = theme.textColor
+        emailTextField.backgroundColor = theme.foregroundColor
+        emailTextField.textColor = theme.textColor
+        passwordCaption.textColor = theme.textColor
+        passwordTextField.backgroundColor = theme.foregroundColor
+        passwordTextField.textColor = theme.textColor
+        signInButton.backgroundColor = theme.tintColor
     }
 }
 
@@ -154,7 +174,7 @@ extension SignInViewImpl: SignInView {
     }
 
     func display(alert: Alert) {
-        let alertController = AlertFactory().make(alert: alert)
+        let alertController = alertFactory.make(alert: alert)
         present(alertController, animated: true, completion: nil)
     }
 
@@ -167,94 +187,30 @@ extension SignInViewImpl: SignInView {
     }
 }
 
+// MARK: - ThemeUpdatable implementation
+extension SignInViewImpl: ThemeUpdatable {
+    func update(theme: Theme, animated: Bool) {
+        self.theme = theme
+
+        var animation: CircularFillAnimation?
+        if animated {
+            animation = CircularFillAnimation(
+                view: view,
+                position: CGPoint(x: 300, y: 545), // TODO: make tap recognizier
+                contextType: .window
+            )
+            animation?.prepare()
+        }
+
+        apply(theme: theme)
+
+        animation?.run(completion: nil)
+    }
+}
+
 // MARK: - SignInShow implementation
 extension SignInViewImpl: SignInShow {
     var rootViewController: UIViewController {
         return self
-    }
-}
-
-// MARK: - Constraints
-private extension SignInViewImpl {
-    func activateEmailCaptionConstraints(view: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: superview.topAnchor),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor)
-            ])
-    }
-
-    func activateEmailTextFieldConstraints(view: UIView, anchorView: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: anchorView.bottomAnchor, constant: 10),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-            view.heightAnchor.constraint(equalToConstant: 40)
-            ])
-    }
-
-    func activatePasswordCaptionConstraints(view: UIView, anchorView: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: anchorView.bottomAnchor, constant: 20),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor)
-            ])
-    }
-
-    func activatePasswordTextFieldConstraints(view: UIView, anchorView: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: anchorView.bottomAnchor, constant: 10),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-            view.heightAnchor.constraint(equalToConstant: 40)
-            ])
-    }
-
-    func activateSignInButtonConstraints(view: UIView, anchorView: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: anchorView.bottomAnchor, constant: 20),
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
-            view.heightAnchor.constraint(equalToConstant: 40)
-            ])
-    }
-
-    func activateForgotPasswordButtonConstraints(view: UIView, anchorView: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: anchorView.bottomAnchor, constant: 10),
-            view.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
-            view.bottomAnchor.constraint(equalTo: superview.bottomAnchor),
-            ])
-    }
-
-    func activateActivityIndicatorConstraints(view: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.centerYAnchor.constraint(equalTo: superview.centerYAnchor),
-            view.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
-            ])
-    }
-
-    func activateContainerViewConstraints(view: UIView) {
-        guard let superview = view.superview else { return }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
-            view.topAnchor.constraint(equalTo: superview.safeAreaLayoutGuide.topAnchor, constant: 50),
-            view.widthAnchor.constraint(equalToConstant: 300)
-            ])
     }
 }

@@ -10,6 +10,8 @@ import UIKit
 
 protocol SignUpDependency: AnyObject {
     var parent: UINavigationController { get }
+    var themeManager: ThemeManager { get }
+    var alertFactory: AlertFactory { get }
 }
 
 protocol SignUpBuilder: AnyObject {
@@ -34,7 +36,7 @@ protocol SignUpListener: AnyObject {
     func signUp()
 }
 
-protocol SignUpView: AnyObject {
+protocol SignUpView: AnyObject, ThemeUpdatable {
     func display(rightBarButton: String)
     func display(emailCaption: String)
     func display(passwordCaption: String)

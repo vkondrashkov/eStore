@@ -10,6 +10,8 @@ import UIKit
 
 protocol ProfileDependency: AnyObject {
     var profileNavigation: UINavigationController { get }
+    var themeManager: ThemeManager { get }
+    var alertFactory: AlertFactory { get }
 }
 
 protocol ProfileBuilder: AnyObject {
@@ -26,22 +28,23 @@ protocol ProfileShow: AnyObject {
 
 protocol ProfileRouter: AnyObject {
     func logout()
+    func showSettings()
+    func showCart()
+    func showContact()
+    func showThemeSettings()
 }
 
 protocol ProfileListener: AnyObject {
     func logout()
 }
 
-protocol ProfileView: AnyObject {
+protocol ProfileView: AnyObject, ThemeUpdatable {
     func display(rightBarButton: String)
-    func display(emailCaption: String)
-    func display(emailLabel: String)
-    func display(logoutButton: String)
+    func display(sections: [SectionedMenuSection])
     func display(alert: Alert)
 }
 
 protocol ProfilePresenter: AnyObject {
     func handleLoadView()
     func handleRightBarButtonPress()
-    func handleLogoutButtonPress()
 }

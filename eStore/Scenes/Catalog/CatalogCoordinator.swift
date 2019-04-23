@@ -9,17 +9,17 @@
 final class CatalogCoordinator {
     private let scene: CatalogScene
     private let show: CatalogShow
-
-    private let goodsListBuilder: GoodsListBuilder
-    private var goodsListCoordinator: GoodsListCoordinator?
-
+    
+    private let productsListBuilder: ProductsListBuilder
+    private var productsListCoordinator: ProductsListCoordinator?
+    
     init(scene: CatalogScene,
          show: CatalogShow,
-         goodsListBuilder: GoodsListBuilder) {
-
+         productsListBuilder: ProductsListBuilder) {
+        
         self.scene = scene
         self.show = show
-        self.goodsListBuilder = goodsListBuilder
+        self.productsListBuilder = productsListBuilder
     }
 }
 
@@ -28,7 +28,7 @@ extension CatalogCoordinator: Coordinator {
     func start() {
         scene.play(catalogShow: show)
     }
-
+    
     func stop(completion: (() -> Void)?) {
         completion?()
     }
@@ -36,9 +36,9 @@ extension CatalogCoordinator: Coordinator {
 
 // MARK: - CatalogRouter implementation
 extension CatalogCoordinator: CatalogRouter {
-    func showGoodsList(title: String) {
+    func showProductsList(title: String) {
         guard let productType = ProductType(rawValue: title) else { return }
-        goodsListCoordinator = goodsListBuilder.build(with: productType)
-        goodsListCoordinator?.start()
+        productsListCoordinator = productsListBuilder.build(with: productType)
+        productsListCoordinator?.start()
     }
 }

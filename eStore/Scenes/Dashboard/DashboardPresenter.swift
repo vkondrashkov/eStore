@@ -9,13 +9,27 @@
 final class DashboardPresenterImpl {
     private unowned let view: DashboardView
     private unowned let router: DashboardRouter
+    private unowned let themeManager: ThemeManager
 
     init(view: DashboardView,
-         router: DashboardRouter) {
+         router: DashboardRouter,
+         themeManager: ThemeManager) {
+
         self.view = view
         self.router = router
+        self.themeManager = themeManager
+        self.themeManager.add(observer: self)
     }
 }
 
 // MARK: - DashboardPresenter implementation
-extension DashboardPresenterImpl: DashboardPresenter { }
+extension DashboardPresenterImpl: DashboardPresenter {
+    func shouldViewAppear() { }
+}
+
+// MARK: - ThemeObserver implementation
+extension DashboardPresenterImpl: ThemeObserver {
+    func didChangedTheme(_ theme: Theme) {
+        view.update(theme: theme, animated: false)
+    }
+}

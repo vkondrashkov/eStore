@@ -10,28 +10,30 @@ import UIKit
 
 final class DashboardViewImpl: UITabBarController {
     var presenter: DashboardPresenter!
+    var theme: Theme!
 
     var catalogNavigation: UINavigationController!
+    var cartNavigation: UINavigationController!
     var profileNavigation: UINavigationController!
-
-    private let customTintColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
 
     var tabs: [UIViewController] {
         return [
             catalogNavigation,
+            cartNavigation,
             profileNavigation
         ]
-    }
-
-    override func loadView() {
-        super.loadView()
-        view.backgroundColor = .white
-        tabBar.tintColor = customTintColor
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         modalTransitionStyle = .crossDissolve
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        apply(theme: theme)
+        presenter.shouldViewAppear()
     }
 
     func setupTabs() {
@@ -41,6 +43,10 @@ final class DashboardViewImpl: UITabBarController {
             tag: 0
         )
         catalogNavigation.tabBarItem = catalogTabBarItem
+
+        let cartTabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
+        cartNavigation.tabBarItem = cartTabBarItem
+
         let profileTabBarItem = UITabBarItem(
             title: "Profile",
             image: UIImage(named: "profile-icon"),
@@ -50,10 +56,37 @@ final class DashboardViewImpl: UITabBarController {
 
         viewControllers = tabs
     }
+
+    private func apply(theme: Theme) {
+        view.backgroundColor = theme.backgroundColor
+        tabBar.tintColor = theme.tintColor
+        tabBar.barTintColor = theme.barColor
+    }
 }
 
 // MARK: - DashboardView implementation
 extension DashboardViewImpl: DashboardView { }
+
+// MARK: - ThemeUpdatable implementation
+extension DashboardViewImpl: ThemeUpdatable {
+    func update(theme: Theme, animated: Bool) {
+        self.theme = theme
+
+        var animation: CircularFillAnimation?
+        if animated {
+            animation = CircularFillAnimation(
+                view: view,
+                position: CGPoint(x: 300, y: 545), // TODO: make tap recognizier
+                contextType: .window
+            )
+            animation?.prepare()
+        }
+
+        apply(theme: theme)
+
+        animation?.run(completion: nil)
+    }
+}
 
 // MARK: - DashboardShow implementation
 extension DashboardViewImpl: DashboardShow {
