@@ -31,12 +31,12 @@ final class SectionedMenuTableViewAdapter: NSObject, UITableViewDataSource, UITa
         case .regular:
             let cell = tableView.dequeueReusableCell(withIdentifier: SectionedMenuRegularCell.reuseIdentifier, for: indexPath) as! SectionedMenuRegularCell
             cell.apply(theme: theme)
-            cell.display(iconName: item.imageUrl ?? "", title: item.title)
+            cell.display(iconName: item.imageUrl, title: item.title)
             return cell
         case .colorPicker:
             let cell = tableView.dequeueReusableCell(withIdentifier: SectionedMenuColorPickerCell.reuseIdentifier, for: indexPath) as! SectionedMenuColorPickerCell
             cell.apply(theme: theme)
-            cell.display(iconName: item.imageUrl ?? "", title: item.title)
+            cell.display(iconName: item.imageUrl, title: item.title)
             return cell
         case .thumbnail:
             let cell = tableView.dequeueReusableCell(withIdentifier: SectionedMenuThumbnailCell.reuseIdentifier, for: indexPath) as! SectionedMenuThumbnailCell

@@ -82,8 +82,10 @@ final class SectionedMenuColorPickerCell: UITableViewCell, ReuseIdentifiable {
         selectedBackgroundView = selectedView
     }
 
-    func display(iconName: String, title: String?) {
-        iconImageView.image = UIImage(named: iconName)!.withRenderingMode(.alwaysTemplate)
+    func display(iconName: String?, title: String?) {
+        if let name = iconName {
+            iconImageView.image = UIImage(named: name)!.withRenderingMode(.alwaysTemplate)
+        }
         titleLabel.text = title
     }
 
