@@ -734,6 +734,7 @@
 				9C83BBE5222C2D1500CBB1FF /* Sources */,
 				9C83BBE6222C2D1500CBB1FF /* Frameworks */,
 				9C83BBE7222C2D1500CBB1FF /* Resources */,
+				7CDF3D7EACE3DA6487D6D1F8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -845,6 +846,30 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-eStore/Pods-eStore-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7CDF3D7EACE3DA6487D6D1F8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tests/Pods-Tests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tests/Pods-Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E3F727956F3C3FFC22D354FC /* [CP] Check Pods Manifest.lock */ = {
