@@ -16,5 +16,11 @@ final class DarkTheme: Theme {
     let foregroundColor = Color.nightRider
     let borderColor = Color.codGrey
     let textColor = Color.white
-    let tintColor = Color.azraqBlue
+    let tintColorType: TintColorType
+    let tintColor: UIColor
+
+    init(tintColorType: TintColorType) {
+        self.tintColorType = tintColorType
+        self.tintColor = tintColorType.color
+    }
 }

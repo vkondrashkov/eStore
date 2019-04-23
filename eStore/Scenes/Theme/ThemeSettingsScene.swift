@@ -6,4 +6,19 @@
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+final class ThemeSettingsSceneImpl {
+    let navigation: UINavigationController
+
+    init(navigation: UINavigationController) {
+        self.navigation = navigation
+    }
+}
+
+// MARK: - ThemeSettingsScene implementation
+extension ThemeSettingsSceneImpl: ThemeSettingsScene {
+    func play(themeSettingsShow: ThemeSettingsShow) {
+        navigation.pushViewController(themeSettingsShow.viewController, animated: true)
+    }
+}

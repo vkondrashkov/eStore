@@ -11,6 +11,7 @@ import UIKit
 protocol SignUpDependency: AnyObject {
     var parent: UINavigationController { get }
     var themeManager: ThemeManager { get }
+    var alertFactory: AlertFactory { get }
 }
 
 protocol SignUpBuilder: AnyObject {

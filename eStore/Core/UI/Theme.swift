@@ -16,5 +16,6 @@ protocol Theme {
     var foregroundColor: UIColor { get }
     var borderColor: UIColor { get }
     var textColor: UIColor { get }
+    var tintColorType: TintColorType { get }
     var tintColor: UIColor { get }
 }

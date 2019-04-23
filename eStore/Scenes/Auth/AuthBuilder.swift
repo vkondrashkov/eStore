@@ -23,7 +23,8 @@ extension AuthBuilderImpl: AuthBuilder {
         view.theme = dependency.themeManager.currentTheme
         let component = AuthComponent(
             rootViewController: view,
-            themeManager: dependency.themeManager
+            themeManager: dependency.themeManager,
+            alertFactory: dependency.alertFactory
         )
         let scene = AuthSceneImpl(rootViewController: dependency.parent)
         let signUpBuilder = SignUpBuilderImpl(dependency: component)

@@ -23,7 +23,11 @@ struct Alert {
     let secondaryAction: (() -> Void)?
 }
 
-class AlertFactory {
+protocol AlertFactory {
+    func make(alert: Alert) -> UIAlertController
+}
+
+class AlertFactoryImpl: AlertFactory {
     func make(alert: Alert) -> UIAlertController {
         let alertController = UIAlertController(
             title: alert.title,

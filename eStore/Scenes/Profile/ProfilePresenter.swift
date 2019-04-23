@@ -56,43 +56,67 @@ final class ProfilePresenterImpl {
         )
         view.display(alert: alert)
     }
+
+    private func handleThemeSettingsCategoryPress() {
+        router.showThemeSettings()
+    }
 }
 
 // MARK: - ProfilePresenter implementation
 extension ProfilePresenterImpl: ProfilePresenter {
     func handleLoadView() {
         view.display(rightBarButton: "Edit")
+        
+        let userRow = SectionedMenuRow(
+            imageUrl: "https://pp.userapi.com/c846420/v846420977/17f606/5X3A9gQCaY8.jpg?ava=1",
+            title: "Vladislav Kondrashkov",
+            type: .thumbnail,
+            action: nil
+        )
+        let userSection = SectionedMenuSection(title: nil, items: [userRow])
 
-        let userCategory = ProfileCategoryImpl(name: "Vladislav Kondrashkov", iconUrl: "https://pp.userapi.com/c846420/v846420977/17f606/5X3A9gQCaY8.jpg?ava=1", type: .thumbnail, onTapAction: nil)
-        let userSection = ProfileSection(name: nil, categories: [userCategory])
+        let cartRow = SectionedMenuRow(
+            imageUrl: "cart-icon",
+            title: "Cart",
+            action: { [weak self] _ in
+                self?.handleCartCategoryPress()
+            }
+        )
+        let cartSection = SectionedMenuSection(title: "Cart", items: [cartRow])
 
-        let cartCategory = ProfileCategoryImpl(name: "Cart", iconUrl: "cart-icon", onTapAction: { [weak self] in
-            self?.handleCartCategoryPress()
-        })
-        let cartSection = ProfileSection(name: "Cart", categories: [cartCategory])
+        let settingsRow = SectionedMenuRow(
+            imageUrl: "settings-icon",
+            title: "Settings",
+            action: { [weak self] _ in
+                self?.handleSettingsCategoryPress()
+            }
+        )
+        let contactsRow = SectionedMenuRow(
+            imageUrl: "help-icon",
+            title: "Contact us",
+            action: { [weak self] _ in
+                self?.handleContactCategoryPress()
+            }
+        )
+        let themeRow = SectionedMenuRow(
+            imageUrl: "theme-settings-icon",
+            title: "Appearance",
+            action: { [weak self] _ in
+                self?.handleThemeSettingsCategoryPress()
+            }
+        )
+        let helpSection = SectionedMenuSection(title: "Help", items: [settingsRow, contactsRow, themeRow])
 
-        let settingsCategory = ProfileCategoryImpl(name: "Settings", iconUrl: "settings-icon", onTapAction: { [weak self] in
-            self?.handleSettingsCategoryPress()
-        })
-        let contactCategory = ProfileCategoryImpl(name: "Contact us", iconUrl: "help-icon", onTapAction: { [weak self] in
-            self?.handleContactCategoryPress()
-        })
-        let themeCategory = ProfileCategoryImpl(name: "Theme", iconUrl: "settings-icon", onTapAction: { [weak self] in
-            // TODO: Make routing to ThemeSettings
-            guard let self = self else { return }
-            let newThemeType: ThemeType = self.themeManager.currentTheme.type == .light ? .dark : .light
-            let newTheme = ThemeBuilderImpl().build(type: newThemeType)
-            UserDefaultsManager.theme = newThemeType
-            self.themeManager.applyTheme(newTheme)
-        })
-        let helpSection = ProfileSection(name: "Help", categories: [settingsCategory, contactCategory, themeCategory])
+        let logoutRow = SectionedMenuRow(
+            imageUrl: "exit-icon",
+            title: "Log out",
+            action: { [weak self] _ in
+                self?.handleLogoutCategoryPress()
+            }
+        )
+        let logoutSection = SectionedMenuSection(title: nil, items: [logoutRow])
 
-        let logoutCategory = ProfileCategoryImpl(name: "Log out", iconUrl: "exit-icon", type: .warning, onTapAction: { [weak self] in
-            self?.handleLogoutCategoryPress()
-        })
-        let logoutSection = ProfileSection(name: nil, categories: [logoutCategory])
-
-        let sections = [userSection,cartSection, helpSection, logoutSection]
+        let sections = [userSection, cartSection, helpSection, logoutSection]
         view.display(sections: sections)
     }
 
@@ -113,6 +137,6 @@ extension ProfilePresenterImpl: ProfilePresenter {
 // MARK: - ThemeObserver implementation
 extension ProfilePresenterImpl: ThemeObserver {
     func didChangedTheme(_ theme: Theme) {
-        view.update(theme: theme, animated: true)
+        view.update(theme: theme, animated: false)
     }
 }

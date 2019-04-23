@@ -32,7 +32,7 @@ final class CatalogViewImpl: UIViewController {
 
         categoryTableViewDataSource.theme = theme
 
-        categoryTableView.tableFooterView = UIView() // Is needed to remove unnecessary separators
+        categoryTableView.tableFooterView = UIView()
         categoryTableView.backgroundColor = .clear
         categoryTableView.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.reuseIdentifier)
         categoryTableView.dataSource = categoryTableViewDataSource

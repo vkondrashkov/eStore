@@ -18,9 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
         let themeManager = ThemeManagerImpl()
+        let alertFactory = AlertFactoryImpl()
+
         let component = AppComponent(
             window: window,
-            themeManager: themeManager
+            themeManager: themeManager,
+            alertFactory: alertFactory
         )
         let builder = RootBuilderImpl(dependency: component)
 

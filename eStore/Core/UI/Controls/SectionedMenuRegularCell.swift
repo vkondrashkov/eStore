@@ -1,16 +1,14 @@
 //
-//  ProfileWarningCategoryTableViewCell.swift
+//  SectionedMenuRegularCell.swift
 //  eStore
 //
-//  Created by Vladislav Kondrashkov on 3/17/19.
+//  Created by Vladislav Kondrashkov on 4/17/19.
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
 //
 
 import UIKit
 
-final class ProfileWarningCategoryTableViewCell: UITableViewCell {
-    static var reuseIdentifier = "ProfileWarningCategoryTableViewCellReuseIdentifier"
-
+final class SectionedMenuRegularCell: UITableViewCell, ReuseIdentifiable {
     private var iconImageView: UIImageView!
     private var titleLabel: UILabel!
 
@@ -18,7 +16,6 @@ final class ProfileWarningCategoryTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .clear
 
         setupIconImageView()
         setupTitleLabel()
@@ -46,16 +43,18 @@ final class ProfileWarningCategoryTableViewCell: UITableViewCell {
     }
 
     func apply(theme: Theme) {
+        backgroundColor = theme.foregroundColor
         contentView.backgroundColor = theme.foregroundColor
-        titleLabel.textColor = Color.cinnabar
-        iconImageView.tintColor = Color.cinnabar
+        titleLabel.textColor = theme.textColor
+        iconImageView.tintColor = theme.tintColor
+        let selectedView = UIView()
+        selectedView.backgroundColor = theme.textColor.withAlphaComponent(0.20)
+        selectedBackgroundView = selectedView
     }
 
-    func display(iconImageUrl: String?, title: String) {
-        if let url = iconImageUrl, let icon = UIImage(named: url) {
-            iconImageView.image = icon.withRenderingMode(.alwaysTemplate)
-        } else {
-            iconImageView.image = UIImage(named: "error-icon")!.withRenderingMode(.alwaysTemplate)
+    func display(iconName: String?, title: String?) {
+        if let name = iconName {
+            iconImageView.image = UIImage(named: name)!.withRenderingMode(.alwaysTemplate)
         }
         titleLabel.text = title
     }

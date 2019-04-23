@@ -10,6 +10,7 @@ import UIKit
 
 final class SignInViewImpl: UIViewController {
     var presenter: SignInPresenter!
+    var alertFactory: AlertFactory!
     var theme: Theme!
 
     private var containerView: UIView!
@@ -173,7 +174,7 @@ extension SignInViewImpl: SignInView {
     }
 
     func display(alert: Alert) {
-        let alertController = AlertFactory().make(alert: alert)
+        let alertController = alertFactory.make(alert: alert)
         present(alertController, animated: true, completion: nil)
     }
 

@@ -14,18 +14,21 @@ final class DashboardComponent {
     let cartNavigation: UINavigationController
     let profileNavigation: UINavigationController
     let themeManager: ThemeManager
+    let alertFactory: AlertFactory
 
     init(rootViewController: UITabBarController,
          catalogNavigation: UINavigationController,
          cartNavigation: UINavigationController,
          profileNavigation: UINavigationController,
-         themeManager: ThemeManager) {
+         themeManager: ThemeManager,
+         alertFactory: AlertFactory) {
 
         self.rootViewController = rootViewController
         self.catalogNavigation = catalogNavigation
         self.cartNavigation = cartNavigation
         self.profileNavigation = profileNavigation
         self.themeManager = themeManager
+        self.alertFactory = alertFactory
     }
 }
 

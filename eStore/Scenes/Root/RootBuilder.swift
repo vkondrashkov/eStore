@@ -22,7 +22,8 @@ extension RootBuilderImpl: RootBuilder {
         let view = RootViewImpl()
         let component = RootComponent(
             rootViewController: view,
-            themeManager: dependency.themeManager
+            themeManager: dependency.themeManager,
+            alertFactory: dependency.alertFactory
         )
         let scene = RootSceneImpl(window: dependency.parent)
         let authBuilder = AuthBuilderImpl(dependency: component)

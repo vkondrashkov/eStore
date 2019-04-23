@@ -11,6 +11,7 @@ import UIKit
 protocol ProductDescriptionDependency: AnyObject {
     var navigation: UINavigationController { get }
     var themeManager: ThemeManager { get }
+    var alertFactory: AlertFactory { get }
 }
 
 protocol ProductDescriptionBuilder: AnyObject {

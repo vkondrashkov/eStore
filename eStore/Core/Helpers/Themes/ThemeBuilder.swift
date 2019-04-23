@@ -7,17 +7,17 @@
 //
 
 protocol ThemeBuilder {
-    func build(type: ThemeType) -> Theme
+    func build(type: ThemeType, tintColorType: TintColorType) -> Theme
 }
 
 class ThemeBuilderImpl: ThemeBuilder {
-    func build(type: ThemeType) -> Theme {
+    func build(type: ThemeType, tintColorType: TintColorType) -> Theme {
         let theme: Theme
         switch type {
         case .dark:
-            theme = DarkTheme()
+            theme = DarkTheme(tintColorType: tintColorType)
         case .light:
-            theme = LightTheme()
+            theme = LightTheme(tintColorType: tintColorType)
         }
         return theme
     }

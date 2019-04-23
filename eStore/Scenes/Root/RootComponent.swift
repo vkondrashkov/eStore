@@ -11,12 +11,15 @@ import UIKit
 final class RootComponent {
     let rootViewController: UIViewController
     let themeManager: ThemeManager
+    let alertFactory: AlertFactory
 
     init(rootViewController: UIViewController,
-         themeManager: ThemeManager) {
+         themeManager: ThemeManager,
+         alertFactory: AlertFactory) {
 
         self.rootViewController = rootViewController
         self.themeManager = themeManager
+        self.alertFactory = alertFactory
     }
 }
 

@@ -52,7 +52,7 @@ extension SignUpPresenterImpl: SignUpPresenter {
 // MARK: - ThemeObserver implementation
 extension SignUpPresenterImpl: ThemeObserver {
     func didChangedTheme(_ theme: Theme) {
-        view.update(theme: theme, animated: true)
+        view.update(theme: theme, animated: false)
     }
 }
 

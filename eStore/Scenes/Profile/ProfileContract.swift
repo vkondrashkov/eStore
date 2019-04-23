@@ -11,6 +11,7 @@ import UIKit
 protocol ProfileDependency: AnyObject {
     var profileNavigation: UINavigationController { get }
     var themeManager: ThemeManager { get }
+    var alertFactory: AlertFactory { get }
 }
 
 protocol ProfileBuilder: AnyObject {
@@ -30,6 +31,7 @@ protocol ProfileRouter: AnyObject {
     func showSettings()
     func showCart()
     func showContact()
+    func showThemeSettings()
 }
 
 protocol ProfileListener: AnyObject {
@@ -38,7 +40,7 @@ protocol ProfileListener: AnyObject {
 
 protocol ProfileView: AnyObject, ThemeUpdatable {
     func display(rightBarButton: String)
-    func display(sections: [ProfileSection])
+    func display(sections: [SectionedMenuSection])
     func display(alert: Alert)
 }
 

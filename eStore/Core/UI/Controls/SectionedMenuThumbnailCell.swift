@@ -1,16 +1,14 @@
 //
-//  ProfileThumbnailCategoryTableViewCell.swift
+//  SectionedMenuThumbnailCell.swift
 //  eStore
 //
-//  Created by Vladislav Kondrashkov on 3/17/19.
+//  Created by Vladislav Kondrashkov on 4/18/19.
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
 //
 
 import UIKit
 
-final class ProfileThumbnailCategoryTableViewCell: UITableViewCell {
-    static var reuseIdentifier = "ProfileThumbnailCategoryTableViewCellReuseIdentifier"
-
+final class SectionedMenuThumbnailCell: UITableViewCell, ReuseIdentifiable {
     private var thumbnailImageView: UIImageView!
     private var titleLabel: UILabel!
 
@@ -55,9 +53,9 @@ final class ProfileThumbnailCategoryTableViewCell: UITableViewCell {
         titleLabel.textColor = theme.textColor
     }
 
-    func display(thumbnailImageUrl: String?, title: String) {
+    func display(thumbnailImageUrl: String?, title: String?) {
         if let url = thumbnailImageUrl {
-            thumbnailImageView.downloaded(from: url) // Temp
+            thumbnailImageView.downloaded(from: url)
         } else {
             thumbnailImageView.image = UIImage(named: "default-user-icon")
         }

@@ -11,6 +11,7 @@ import UIKit
 protocol CartDependency: AnyObject {
     var cartNavigation: UINavigationController { get }
     var themeManager: ThemeManager { get }
+    var alertFactory: AlertFactory { get }
 }
 
 protocol CartBuilder: AnyObject {

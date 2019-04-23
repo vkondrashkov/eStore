@@ -21,10 +21,6 @@ extension CartBuilderImpl: CartBuilder {
     func build() -> CartCoordinator {
         let view = CartViewImpl()
         view.theme = dependency.themeManager.currentTheme
-        let component = CartComponent(
-            navigation: dependency.cartNavigation,
-            themeManager: dependency.themeManager
-        )
         let scene = CartSceneImpl(navigation: dependency.cartNavigation)
         let coordinator = CartCoordinator(scene: scene,
                                           show: view)

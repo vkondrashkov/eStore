@@ -10,17 +10,17 @@ import UIKit
 
 final class ProfileViewImpl: UIViewController {
     var presenter: ProfilePresenter!
+    var alertFactory: AlertFactory!
     var theme: Theme!
-
-    private var profileTableViewDataSource = ProfileCategoryTableViewDataSource()
-    private var profileTableView: UITableView!
+    
+    private var profileSectionedMenu: SectionedMenuView!
 
     override func loadView() {
         view = UIView()
 
-        profileTableView = UITableView(frame: .zero, style: .grouped)
-        view.addSubview(profileTableView)
-        profileTableView.snp.makeConstraints { make in
+        profileSectionedMenu = SectionedMenuView(frame: .zero, style: .grouped)
+        view.addSubview(profileSectionedMenu)
+        profileSectionedMenu.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
@@ -30,15 +30,9 @@ final class ProfileViewImpl: UIViewController {
         title = "Profile"
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        profileTableViewDataSource.theme = theme
-
-        profileTableView.tableFooterView = UIView() // Is needed to remove unnecessary separators
-        profileTableView.backgroundColor = .clear
-        profileTableView.register(ProfileRegularCategoryTableViewCell.self, forCellReuseIdentifier: ProfileRegularCategoryTableViewCell.reuseIdentifier)
-        profileTableView.register(ProfileThumbnailCategoryTableViewCell.self, forCellReuseIdentifier: ProfileThumbnailCategoryTableViewCell.reuseIdentifier)
-        profileTableView.register(ProfileWarningCategoryTableViewCell.self, forCellReuseIdentifier: ProfileWarningCategoryTableViewCell.reuseIdentifier)
-        profileTableView.dataSource = profileTableViewDataSource
-        profileTableView.delegate = self
+        profileSectionedMenu.tableFooterView = UIView()
+        profileSectionedMenu.backgroundColor = .clear
+        profileSectionedMenu.theme = theme
 
         apply(theme: theme)
         presenter.handleLoadView()
@@ -55,7 +49,7 @@ final class ProfileViewImpl: UIViewController {
         navigationController?.navigationBar.barStyle = theme.barStyle
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: theme.textColor]
-        profileTableView.separatorColor = theme.borderColor
+        profileSectionedMenu.separatorColor = theme.borderColor
     }
 }
 
@@ -69,13 +63,13 @@ extension ProfileViewImpl: ProfileView {
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 
-    func display(sections: [ProfileSection]) {
-        profileTableViewDataSource.items = sections
-        profileTableView.reloadData()
+    func display(sections: [SectionedMenuSection]) {
+        profileSectionedMenu.sections = sections
+        profileSectionedMenu.reloadData()
     }
 
     func display(alert: Alert) {
-        let alertController = AlertFactory().make(alert: alert)
+        let alertController = alertFactory.make(alert: alert)
         present(alertController, animated: true, completion: nil)
     }
 }
@@ -84,7 +78,7 @@ extension ProfileViewImpl: ProfileView {
 extension ProfileViewImpl: ThemeUpdatable {
     func update(theme: Theme, animated: Bool) {
         self.theme = theme
-        profileTableViewDataSource.theme = theme
+        profileSectionedMenu.theme = theme
 
         var animation: CircularFillAnimation?
         if animated {
@@ -97,7 +91,7 @@ extension ProfileViewImpl: ThemeUpdatable {
         }
 
         apply(theme: theme)
-        profileTableView.reloadData()
+        profileSectionedMenu.reloadData()
 
         animation?.run(completion: nil)
     }
@@ -107,14 +101,5 @@ extension ProfileViewImpl: ThemeUpdatable {
 extension ProfileViewImpl: ProfileShow {
     var viewController: UIViewController {
         return self
-    }
-}
-
-// MARK: - UITableViewDelegate implementation
-extension ProfileViewImpl: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let category = profileTableViewDataSource.items[indexPath.section].categories[indexPath.row]
-        category.action()
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
