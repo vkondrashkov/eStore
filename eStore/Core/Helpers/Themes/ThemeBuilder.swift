@@ -12,14 +12,13 @@ protocol ThemeBuilder {
 
 class ThemeBuilderImpl: ThemeBuilder {
     func build(type: ThemeType, tintColorType: TintColorType) -> Theme {
-        var theme: Theme
+        let theme: Theme
         switch type {
         case .dark:
-            theme = DarkTheme()
+            theme = DarkTheme(tintColorType: tintColorType)
         case .light:
-            theme = LightTheme()
+            theme = LightTheme(tintColorType: tintColorType)
         }
-        theme.tintColorType = tintColorType
         return theme
     }
 }
