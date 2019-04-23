@@ -10,6 +10,7 @@ import UIKit
 
 final class ProfileViewImpl: UIViewController {
     var presenter: ProfilePresenter!
+    var alertFactory: AlertFactory!
     var theme: Theme!
     
     private var profileSectionedMenu: SectionedMenuView!
@@ -68,7 +69,7 @@ extension ProfileViewImpl: ProfileView {
     }
 
     func display(alert: Alert) {
-        let alertController = AlertFactory().make(alert: alert)
+        let alertController = alertFactory.make(alert: alert)
         present(alertController, animated: true, completion: nil)
     }
 }

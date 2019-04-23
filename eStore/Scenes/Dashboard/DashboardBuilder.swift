@@ -33,7 +33,8 @@ extension DashboardBuilderImpl: DashboardBuilder {
             catalogNavigation: catalogNavigation,
             cartNavigation: cartNavigation,
             profileNavigation: profileNavigation,
-            themeManager: dependency.themeManager
+            themeManager: dependency.themeManager,
+            alertFactory: dependency.alertFactory
         )
         let scene = DashboardSceneImpl(rootViewController: dependency.parent)
         let profileBuilder = ProfileBuilderImpl(dependency: component)

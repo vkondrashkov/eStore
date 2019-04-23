@@ -23,7 +23,8 @@ extension CatalogBuilderImpl: CatalogBuilder {
         view.theme = dependency.themeManager.currentTheme
         let component = CatalogComponent(
             navigation: dependency.catalogNavigation,
-            themeManager: dependency.themeManager
+            themeManager: dependency.themeManager,
+            alertFactory: dependency.alertFactory
         )
         let scene = CatalogSceneImpl(rootViewController: dependency.catalogNavigation)
         let productsListBuilder = ProductsListBuilderImpl(dependency: component)

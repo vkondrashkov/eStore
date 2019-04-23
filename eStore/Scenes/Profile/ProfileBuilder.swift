@@ -20,10 +20,12 @@ final class ProfileBuilderImpl {
 extension ProfileBuilderImpl: ProfileBuilder {
     func build(with listener: ProfileListener) -> ProfileCoordinator {
         let view = ProfileViewImpl()
+        view.alertFactory = dependency.alertFactory
         view.theme = dependency.themeManager.currentTheme
         let component = ProfileComponent(
             navigation: dependency.profileNavigation,
-            themeManager: dependency.themeManager
+            themeManager: dependency.themeManager,
+            alertFactory: dependency.alertFactory
         )
         let themeSettingsBuilder = ThemeSettingsBuilderImpl(dependency: component)
         let scene = ProfileSceneImpl(rootViewController: dependency.profileNavigation)

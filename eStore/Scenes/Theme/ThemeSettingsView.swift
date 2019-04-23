@@ -10,6 +10,7 @@ import UIKit
 
 final class ThemeSettingsViewImpl: UIViewController {
     var presenter: ThemeSettingsPresenter!
+    var alertFactory: AlertFactory!
     var theme: Theme!
 
     private var themeSectionedMenu: SectionedMenuView!
@@ -57,7 +58,7 @@ extension ThemeSettingsViewImpl: ThemeSettingsView {
     }
 
     func display(alert: Alert) {
-        let alertController = AlertFactory().make(alert: alert)
+        let alertController = alertFactory.make(alert: alert)
         present(alertController, animated: true, completion: nil)
     }
 

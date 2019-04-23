@@ -11,6 +11,7 @@ import UIKit
 protocol CatalogDependency: AnyObject {
     var catalogNavigation: UINavigationController { get }
     var themeManager: ThemeManager { get }
+    var alertFactory: AlertFactory { get }
 }
 
 protocol CatalogBuilder: AnyObject {

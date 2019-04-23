@@ -20,6 +20,7 @@ final class ThemeSettingsBuilderImpl {
 extension ThemeSettingsBuilderImpl: ThemeSettingsBuilder {
     func build() -> ThemeSettingsCoordinator {
         let view = ThemeSettingsViewImpl()
+        view.alertFactory = dependency.alertFactory
         view.theme = dependency.themeManager.currentTheme
         let scene = ThemeSettingsSceneImpl(navigation: dependency.navigation)
         let coordinator = ThemeSettingsCoordinator(

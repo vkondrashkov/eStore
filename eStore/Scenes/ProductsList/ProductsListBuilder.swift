@@ -24,7 +24,8 @@ extension ProductsListBuilderImpl: ProductsListBuilder {
         view.theme = dependency.themeManager.currentTheme
         let component = ProductsListComponent(
             navigation: dependency.navigation,
-            themeManager: dependency.themeManager
+            themeManager: dependency.themeManager,
+            alertFactory: dependency.alertFactory
         )
         let scene = ProductsListSceneImpl(navigation: dependency.navigation)
         let productDescriptionBuilder = ProductDescriptionBuilderImpl(dependency: component)

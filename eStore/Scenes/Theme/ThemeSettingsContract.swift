@@ -11,6 +11,7 @@ import UIKit
 protocol ThemeSettingsDependency: AnyObject {
     var navigation: UINavigationController { get }
     var themeManager: ThemeManager { get }
+    var alertFactory: AlertFactory { get }
 }
 
 protocol ThemeSettingsBuilder: AnyObject {

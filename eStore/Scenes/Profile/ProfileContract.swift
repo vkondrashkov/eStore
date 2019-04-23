@@ -11,6 +11,7 @@ import UIKit
 protocol ProfileDependency: AnyObject {
     var profileNavigation: UINavigationController { get }
     var themeManager: ThemeManager { get }
+    var alertFactory: AlertFactory { get }
 }
 
 protocol ProfileBuilder: AnyObject {
