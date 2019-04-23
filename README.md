@@ -1,7 +1,7 @@
 # eStore
 [![Build Status](https://travis-ci.org/vkondrashkov/eStore.svg?branch=develop)](https://travis-ci.org/vkondrashkov/eStore)
 [![codecov](https://codecov.io/gh/vkondrashkov/eStore/branch/develop/graph/badge.svg)](https://codecov.io/gh/vkondrashkov/eStore)
-![Language](https://img.shields.io/badge/swift-4.2-orange.svg)
+![Language](https://img.shields.io/badge/swift-5-orange.svg)
 [![License](https://img.shields.io/github/license/vkondrashkov/eStore.svg)](https://github.com/vkondrashkov/eStore/blob/Develop/LICENSE)
 
 __eStore__ – simple online store mobile application, that fetches
