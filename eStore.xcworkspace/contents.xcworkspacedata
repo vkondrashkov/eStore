@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:TempTest.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Tests/TempTest.swift">
-   </FileRef>
-   <FileRef
       location = "group:eStore.xcodeproj">
    </FileRef>
    <FileRef
