@@ -44,13 +44,17 @@ final class DashboardViewImpl: UITabBarController {
         )
         catalogNavigation.tabBarItem = catalogTabBarItem
 
-        let cartTabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
+        let cartTabBarItem = UITabBarItem(
+            title: "Cart",
+            image: UIImage(named: "cart-tab-icon"),
+            tag: 1
+        )
         cartNavigation.tabBarItem = cartTabBarItem
 
         let profileTabBarItem = UITabBarItem(
             title: "Profile",
             image: UIImage(named: "profile-icon"),
-            tag: 1
+            tag: 2
         )
         profileNavigation.tabBarItem = profileTabBarItem
 
