@@ -22,7 +22,9 @@ extension ProductDescriptionBuilderImpl: ProductDescriptionBuilder {
         let dataSource = ProductDescriptionTableViewDataSource()
         dataSource.item = storeItem
         let view = ProductDescriptionViewImpl()
+        dataSource.delegate = view
         view.dataSource = dataSource
+        view.alertFactory = dependency.alertFactory
         view.theme = dependency.themeManager.currentTheme
         let scene = ProductDescriptionSceneImpl(navigation: dependency.navigation)
         let coordinator = ProductDescriptionCoordinator(scene: scene,

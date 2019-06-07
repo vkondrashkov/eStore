@@ -57,11 +57,6 @@ extension ThemeSettingsViewImpl: ThemeSettingsView {
         themeSectionedMenu.reloadData()
     }
 
-    func display(alert: Alert) {
-        let alertController = alertFactory.make(alert: alert)
-        present(alertController, animated: true, completion: nil)
-    }
-
     func display(colorPickerItems: [TintColorType]) {
         self.colorPickerItems = colorPickerItems
 
@@ -109,6 +104,14 @@ extension ThemeSettingsViewImpl: ThemeSettingsView {
         themeSectionedMenu.reloadData()
 
         animation?.run(completion: nil)
+    }
+}
+
+// MARK: - AlertDisplayable implementation
+extension ThemeSettingsViewImpl: AlertDisplayable {
+    func display(alert: Alert) {
+        let alertController = alertFactory.make(alert: alert)
+        present(alertController, animated: true, completion: nil)
     }
 }
 

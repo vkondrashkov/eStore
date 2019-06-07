@@ -173,17 +173,20 @@ extension SignInViewImpl: SignInView {
         self.forgotPasswordButton.setTitle(forgotPasswordButton, for: .normal)
     }
 
-    func display(alert: Alert) {
-        let alertController = alertFactory.make(alert: alert)
-        present(alertController, animated: true, completion: nil)
-    }
-
     func showActivityIndicator() {
         activityIndicator.startAnimating()
     }
 
     func hideActivityIndicator() {
         activityIndicator.stopAnimating()
+    }
+}
+
+// MARK: - AlertDisplayable implementation
+extension SignInViewImpl: AlertDisplayable {
+    func display(alert: Alert) {
+        let alertController = alertFactory.make(alert: alert)
+        present(alertController, animated: true, completion: nil)
     }
 }
 

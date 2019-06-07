@@ -67,7 +67,10 @@ extension ProfileViewImpl: ProfileView {
         profileSectionedMenu.sections = sections
         profileSectionedMenu.reloadData()
     }
+}
 
+// MARK: - AlertDisplayable implementation
+extension ProfileViewImpl: AlertDisplayable {
     func display(alert: Alert) {
         let alertController = alertFactory.make(alert: alert)
         present(alertController, animated: true, completion: nil)

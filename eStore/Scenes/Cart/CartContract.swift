@@ -30,7 +30,7 @@ protocol CartRouter: AnyObject {
     func showProductDescription(for storeItem: StoreItem)
 }
 
-protocol CartView: AnyObject, ThemeUpdatable {
+protocol CartView: AnyObject, ThemeUpdatable, AlertDisplayable {
     func showActivityIndicator()
     func hideActivityIndicator()
     func display(storeItemList: [StoreItem])

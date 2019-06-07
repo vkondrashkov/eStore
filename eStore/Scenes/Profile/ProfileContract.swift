@@ -38,10 +38,9 @@ protocol ProfileListener: AnyObject {
     func logout()
 }
 
-protocol ProfileView: AnyObject, ThemeUpdatable {
+protocol ProfileView: AnyObject, ThemeUpdatable, AlertDisplayable {
     func display(rightBarButton: String)
     func display(sections: [SectionedMenuSection])
-    func display(alert: Alert)
 }
 
 protocol ProfilePresenter: AnyObject {

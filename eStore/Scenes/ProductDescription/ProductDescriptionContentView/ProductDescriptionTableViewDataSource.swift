@@ -11,6 +11,8 @@ import UIKit
 class ProductDescriptionTableViewDataSource: NSObject, UITableViewDataSource {
     var theme: Theme!
     var item: StoreItem!
+
+    weak var delegate: ProductDescriptionTablePriceCellDelegate?
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return item.specifications.count + 2
@@ -21,7 +23,7 @@ class ProductDescriptionTableViewDataSource: NSObject, UITableViewDataSource {
             let header = tableView.dequeueReusableCell(withIdentifier: ProductDescriptionTableHeaderCell.reuseIdentifier, for: indexPath) as! ProductDescriptionTableHeaderCell
             header.apply(theme: theme)
             header.display(title: "\(item.brand) \(item.name)", imageUrl: item.imageUrl)
-            header.isUserInteractionEnabled = false
+            header.selectionStyle = .none
             return header
         }
         if indexPath.row == 1 {
@@ -29,10 +31,11 @@ class ProductDescriptionTableViewDataSource: NSObject, UITableViewDataSource {
             let isAvailable = item.stockCount != 0
             let stockAvailableText = isAvailable ? "Available" : "Not available"
             price.apply(theme: theme)
+            price.delegate = delegate
             price.display(price: "Price: \(item.price) BYN")
             price.display(cartAddButtonText: "Add to cart", isAvailable: isAvailable)
             price.display(stockAvailableText: stockAvailableText, isAvailable: isAvailable)
-            price.isUserInteractionEnabled = false
+            price.selectionStyle = .none
             return price
         }
         
@@ -53,7 +56,7 @@ class ProductDescriptionTableViewDataSource: NSObject, UITableViewDataSource {
         }
         cell.apply(theme: theme)
         cell.display(name: specification.name, value: value)
-        cell.isUserInteractionEnabled = false
+        cell.selectionStyle = .none
         return cell
     }
 }
