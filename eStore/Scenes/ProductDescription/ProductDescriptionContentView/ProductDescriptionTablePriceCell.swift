@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ProductDescriptionTablePriceCellDelegate: AnyObject {
+    func cartAddButtonDidPress(_ cell: ProductDescriptionTablePriceCell)
+}
+
 final class ProductDescriptionTablePriceCell: UITableViewCell {
     static var reuseIdentifier = "ProductDescriptionTablePriceCellReuseIdentifier"
 
@@ -22,6 +26,8 @@ final class ProductDescriptionTablePriceCell: UITableViewCell {
     private let stockAvailableLabelActiveColor = UIColor(red: 46.0 / 255.0, green: 204.0 / 255.0, blue: 113.0 / 255.0, alpha: 1.0)
     
     private let cartAddButtonContentInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+
+    weak var delegate: ProductDescriptionTablePriceCellDelegate?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -43,9 +49,10 @@ final class ProductDescriptionTablePriceCell: UITableViewCell {
     }
     
     private func setupCartAddButton() {
-        cartAddButton = UIButton()
+        cartAddButton = UIButton(type: .system)
         cartAddButton.layer.cornerRadius = 8
         cartAddButton.contentEdgeInsets = cartAddButtonContentInset
+        cartAddButton.setTitleColor(.white, for: .normal)
         cartAddButton.backgroundColor = cartAddButtonDisabledBackgroundColor
         cartAddButton.addTarget(self, action: #selector(cartAddButtonDidPress), for: .touchUpInside)
         contentView.addSubview(cartAddButton)
@@ -91,7 +98,7 @@ final class ProductDescriptionTablePriceCell: UITableViewCell {
     }
     
     @objc private func cartAddButtonDidPress() {
-        
+        delegate?.cartAddButtonDidPress(self)
     }
     
     required init?(coder aDecoder: NSCoder) {

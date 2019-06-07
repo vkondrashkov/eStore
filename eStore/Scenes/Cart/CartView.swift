@@ -10,6 +10,7 @@ import UIKit
 
 final class CartViewImpl: UIViewController {
     var presenter: CartPresenter!
+    var alertFactory: AlertFactory!
     var theme: Theme!
 
     private var loadingView: UIView!
@@ -137,6 +138,14 @@ extension CartViewImpl: ThemeUpdatable {
         cartTableView.reloadData()
 
         animation?.run(completion: nil)
+    }
+}
+
+// MARK: - AlertDisplayable implementation
+extension CartViewImpl: AlertDisplayable {
+    func display(alert: Alert) {
+        let alertController = alertFactory.make(alert: alert)
+        present(alertController, animated: true, completion: nil)
     }
 }
 

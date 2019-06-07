@@ -10,6 +10,7 @@ import UIKit
 
 final class ProductDescriptionViewImpl: UIViewController {
     var presenter: ProductDescriptionPresenter!
+    var alertFactory: AlertFactory!
     var theme: Theme!
     var dataSource: ProductDescriptionTableViewDataSource!
 
@@ -75,6 +76,14 @@ extension ProductDescriptionViewImpl: ThemeUpdatable {
     }
 }
 
+// MARK: - AlertDisplayable implementation
+extension ProductDescriptionViewImpl: AlertDisplayable {
+    func display(alert: Alert) {
+        let alertController = alertFactory.make(alert: alert)
+        present(alertController, animated: true, completion: nil)
+    }
+}
+
 // MARK: - ProductDescriptionShow implementation
 extension ProductDescriptionViewImpl: ProductDescriptionShow {
     var rootViewController: UIViewController {
@@ -84,3 +93,10 @@ extension ProductDescriptionViewImpl: ProductDescriptionShow {
 
 // MARK: - UITableViewDelegate implementation
 extension ProductDescriptionViewImpl: UITableViewDelegate { }
+
+// MARK: - ProductDescriptionTablePriceCellDelegate implementation
+extension ProductDescriptionViewImpl: ProductDescriptionTablePriceCellDelegate {
+    func cartAddButtonDidPress(_ cell: ProductDescriptionTablePriceCell) {
+        presenter.cartAddButtonDidPress()
+    }
+}

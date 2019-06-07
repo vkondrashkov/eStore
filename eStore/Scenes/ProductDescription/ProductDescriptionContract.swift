@@ -26,8 +26,9 @@ protocol ProductDescriptionShow: AnyObject {
     var rootViewController: UIViewController { get }
 }
 
-protocol ProductDescriptionView: AnyObject, ThemeUpdatable { }
+protocol ProductDescriptionView: AnyObject, ThemeUpdatable, AlertDisplayable { }
 
 protocol ProductDescriptionPresenter: AnyObject {
     func handleLoadView()
+    func cartAddButtonDidPress()
 }

@@ -28,12 +28,9 @@ protocol ThemeSettingsShow: AnyObject {
 
 protocol ThemeSettingsRouter: AnyObject { }
 
-protocol ThemeSettingsView: AnyObject, ThemeUpdatable {
+protocol ThemeSettingsView: AnyObject, ThemeUpdatable, AlertDisplayable {
     func display(sections: [SectionedMenuSection])
-    func display(alert: Alert)
-
     func display(colorPickerItems: [TintColorType])
-
     func update(theme: Theme, from point: CGPoint, animated: Bool)
 }
 

@@ -36,13 +36,12 @@ protocol SignInListener: AnyObject {
     func signIn()
 }
 
-protocol SignInView: AnyObject, ThemeUpdatable {
+protocol SignInView: AnyObject, ThemeUpdatable, AlertDisplayable {
     func display(rightBarButton: String)
     func display(emailCaption: String)
     func display(passwordCaption: String)
     func display(signInButton: String)
     func display(forgotPasswordButton: String)
-    func display(alert: Alert)
     func showActivityIndicator()
     func hideActivityIndicator()
 }

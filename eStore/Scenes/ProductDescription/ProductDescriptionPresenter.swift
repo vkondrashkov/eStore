@@ -23,6 +23,19 @@ final class ProductDescriptionPresenterImpl {
 // MARK: - ProductDescriptionPresenter implementation
 extension ProductDescriptionPresenterImpl: ProductDescriptionPresenter {
     func handleLoadView() { }
+
+    func cartAddButtonDidPress() {
+        let alert = Alert(
+            title: "Oops...",
+            message: "Unfortunately this feature is unavailable, try again later.",
+            alertType: .singleAction,
+            primaryCaption: "OK",
+            primaryAction: nil,
+            secondaryCaption: nil,
+            secondaryAction: nil
+        )
+        view.display(alert: alert)
+    }
 }
 
 // MARK: - ThemeObserver implementation
