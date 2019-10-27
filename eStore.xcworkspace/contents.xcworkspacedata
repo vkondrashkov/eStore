@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:eStore-Core/eStore-Core.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:eStore.xcodeproj">
    </FileRef>
    <FileRef
