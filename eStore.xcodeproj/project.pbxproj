@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9C1C322D236ECAD30039ECDA /* CredentialsValidatorUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C322C236ECAD30039ECDA /* CredentialsValidatorUseCase.swift */; };
 		9C1C322F236ED9900039ECDA /* CredentialsValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C322E236ED9900039ECDA /* CredentialsValidatorTests.swift */; };
+		9C1C3235236F37BD0039ECDA /* ThemeManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C3234236F37BD0039ECDA /* ThemeManagerSpec.swift */; };
 		9C1C9622225F590F0055EE46 /* ThemeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C9621225F590F0055EE46 /* ThemeBuilder.swift */; };
 		9C1C9624225F5C550055EE46 /* ThemeUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C9623225F5C550055EE46 /* ThemeUpdatable.swift */; };
 		9C415BFC2260868300658A2B /* CircularFillAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C415BFB2260868300658A2B /* CircularFillAnimation.swift */; };
@@ -158,6 +159,7 @@
 		9636105CD80314886F52C479 /* Pods-eStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eStore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eStore/Pods-eStore.debug.xcconfig"; sourceTree = "<group>"; };
 		9C1C322C236ECAD30039ECDA /* CredentialsValidatorUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsValidatorUseCase.swift; sourceTree = "<group>"; };
 		9C1C322E236ED9900039ECDA /* CredentialsValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsValidatorTests.swift; sourceTree = "<group>"; };
+		9C1C3234236F37BD0039ECDA /* ThemeManagerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManagerSpec.swift; sourceTree = "<group>"; };
 		9C1C9621225F590F0055EE46 /* ThemeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeBuilder.swift; sourceTree = "<group>"; };
 		9C1C9623225F5C550055EE46 /* ThemeUpdatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeUpdatable.swift; sourceTree = "<group>"; };
 		9C415BFB2260868300658A2B /* CircularFillAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularFillAnimation.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 			children = (
 				9C83BBED222C2D1500CBB1FF /* Info.plist */,
 				9C1C322E236ED9900039ECDA /* CredentialsValidatorTests.swift */,
+				9C1C3234236F37BD0039ECDA /* ThemeManagerSpec.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -940,6 +943,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C1C3235236F37BD0039ECDA /* ThemeManagerSpec.swift in Sources */,
 				9C1C322F236ED9900039ECDA /* CredentialsValidatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
