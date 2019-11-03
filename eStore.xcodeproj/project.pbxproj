@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C1C322D236ECAD30039ECDA /* CredentialsValidatorUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C322C236ECAD30039ECDA /* CredentialsValidatorUseCase.swift */; };
 		9C1C9622225F590F0055EE46 /* ThemeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C9621225F590F0055EE46 /* ThemeBuilder.swift */; };
 		9C1C9624225F5C550055EE46 /* ThemeUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1C9623225F5C550055EE46 /* ThemeUpdatable.swift */; };
 		9C3E6255226F8D4900C7DF40 /* TempTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3E6254226F8D4800C7DF40 /* TempTest.swift */; };
@@ -155,6 +156,7 @@
 		54FCAB27BD45A8EE1C80EED6 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		729C066A86EECB57EB23A9B3 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9636105CD80314886F52C479 /* Pods-eStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eStore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eStore/Pods-eStore.debug.xcconfig"; sourceTree = "<group>"; };
+		9C1C322C236ECAD30039ECDA /* CredentialsValidatorUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsValidatorUseCase.swift; sourceTree = "<group>"; };
 		9C1C9621225F590F0055EE46 /* ThemeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeBuilder.swift; sourceTree = "<group>"; };
 		9C1C9623225F5C550055EE46 /* ThemeUpdatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeUpdatable.swift; sourceTree = "<group>"; };
 		9C3E6254226F8D4800C7DF40 /* TempTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempTest.swift; sourceTree = "<group>"; };
@@ -312,6 +314,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C1C322B236ECAAD0039ECDA /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				9C1C322C236ECAD30039ECDA /* CredentialsValidatorUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
 		9C1C9620225F58C50055EE46 /* Themes */ = {
 			isa = PBXGroup;
 			children = (
@@ -653,6 +663,7 @@
 				9CA418D2221D878500BAF215 /* Entities */,
 				9CC46C1822176B28005E24F5 /* Helpers */,
 				9CC46BAE2214719D005E24F5 /* Module */,
+				9C1C322B236ECAAD0039ECDA /* UseCases */,
 				9C56E0FA225A745C00E72428 /* UI */,
 				9CC55259220AF93A0004ACC4 /* Services */,
 				9CBC281A223BC5850091082B /* Utils */,
@@ -980,6 +991,7 @@
 				9C56E103225A93C700E72428 /* ThemeSettingsComponent.swift in Sources */,
 				9C8FEC00226B8EF7007C30EB /* SectionedMenuColorPickerCell.swift in Sources */,
 				9CA418ED221D8D1600BAF215 /* CatalogView.swift in Sources */,
+				9C1C322D236ECAD30039ECDA /* CredentialsValidatorUseCase.swift in Sources */,
 				9CC46C0922161559005E24F5 /* SignInView.swift in Sources */,
 				9CC46B9822141058005E24F5 /* DashboardContract.swift in Sources */,
 				9CD6A85F226E034C00DF4C65 /* NibLoadable.swift in Sources */,
