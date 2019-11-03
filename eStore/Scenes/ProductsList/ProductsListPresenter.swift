@@ -8,21 +8,23 @@
 
 import Foundation
 
-// TODO: Add networking service to initializier
 final class ProductsListPresenterImpl {
     private unowned let view: ProductsListView
     private unowned let router: ProductsListRouter
+    private let productsService: ProductsService
     private unowned let themeManager: ThemeManager
     
     private let productType: ProductType
     
     init(view: ProductsListView,
          router: ProductsListRouter,
+         productsService: ProductsService,
          productType: ProductType,
          themeManager: ThemeManager) {
         
         self.view = view
         self.router = router
+        self.productsService = productsService
         self.productType = productType
         self.themeManager = themeManager
         self.themeManager.add(observer: self)
@@ -33,12 +35,10 @@ final class ProductsListPresenterImpl {
 extension ProductsListPresenterImpl: ProductsListPresenter {
     func handleLoadView() {
         view.showActivityIndicator()
-        // TODO: Dependency injection
-        let service = ProductsServiceImpl()
         
         switch productType {
         case .Smartphone:
-            service.getSmartphone(completion: { [weak self] result in
+            productsService.getSmartphone(completion: { [weak self] result in
                 guard let storeItemList = result else {
                     // TODO: Error handling
                     return
@@ -47,7 +47,7 @@ extension ProductsListPresenterImpl: ProductsListPresenter {
                 self?.view.hideActivityIndicator()
             })
         case .Laptop:
-            service.getLaptops(completion: { [weak self] result in
+            productsService.getLaptops(completion: { [weak self] result in
                 guard let storeItemList = result else {
                     // TODO: Error handling
                     return
@@ -56,7 +56,7 @@ extension ProductsListPresenterImpl: ProductsListPresenter {
                 self?.view.hideActivityIndicator()
             })
         case .TV:
-            service.getTV(completion: { [weak self] result in
+            productsService.getTV(completion: { [weak self] result in
                 guard let storeItemList = result else {
                     // TODO: Error handling
                     return

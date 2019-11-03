@@ -29,12 +29,15 @@ extension ProductsListBuilderImpl: ProductsListBuilder {
         )
         let scene = ProductsListSceneImpl(navigation: dependency.navigation)
         let productDescriptionBuilder = ProductDescriptionBuilderImpl(dependency: component)
-        let coordinator = ProductsListCoordinator(scene: scene,
-                                                  show: view,
-                                                  productDescriptionBuilder: productDescriptionBuilder)
+        let coordinator = ProductsListCoordinator(
+            scene: scene,
+            show: view,
+            productDescriptionBuilder: productDescriptionBuilder
+        )
         let presenter = ProductsListPresenterImpl(
             view: view,
             router: coordinator,
+            productsService: dependency.productsService,
             productType: productType,
             themeManager: dependency.themeManager
         )
