@@ -177,4 +177,94 @@ class CredentialsValidatorTests: XCTestCase {
         // Then
         XCTAssert(validationResult, "Password 'this$#@123Pass' should be valid. Special characters are allowed in password.")
     }
+
+    // MARK: - Credit card validation
+
+    func testSuccessfullSpacedCreditCardValidation() {
+        // Given
+        let creditCardNumber = "1111 2222 3333 4444"
+
+        // When
+        let validationResult = validator.validate(creditCardNumber: creditCardNumber)
+
+        // Then
+        XCTAssert(validationResult, "Credit card '1111 2222 3333 4444' should be valid.")
+    }
+
+    func testSuccessfullTrimmedCreditCardValidation() {
+        // Given
+        let creditCardNumber = "1111222233334444"
+
+        // When
+        let validationResult = validator.validate(creditCardNumber: creditCardNumber)
+
+        // Then
+        XCTAssert(validationResult, "Credit card '1111222233334444' should be valid.")
+    }
+
+    func testSymbolSpacedCreditCardValidation() {
+        // Given
+        let creditCardNumber = "!111 2@22 33#3 444$"
+
+        // When
+        let validationResult = validator.validate(creditCardNumber: creditCardNumber)
+
+        // Then
+        XCTAssert(!validationResult, "Credit card '!111 2@22 33#3 444$' shouldn't be valid. Only digits are allowed.")
+    }
+
+    func testSymbolTrimmedCreditCardValidation() {
+        // Given
+        let creditCardNumber = "!1112@2233#3444$"
+
+        // When
+        let validationResult = validator.validate(creditCardNumber: creditCardNumber)
+
+        // Then
+        XCTAssert(!validationResult, "Credit card '!1112@2233#3444$' shouldn't be valid. Only digits are allowed.")
+    }
+
+    func testShortSpacedCreditCardValidation() {
+        // Given
+        let creditCardNumber = "1111 2222 3333 444"
+
+        // When
+        let validationResult = validator.validate(creditCardNumber: creditCardNumber)
+
+        // Then
+        XCTAssert(!validationResult, "Credit card '1111 2222 3333 444' shouldn't be valid. Not enough digits.")
+    }
+
+    func testShortTrimmedCreditCardValidation() {
+        // Given
+        let creditCardNumber = "111122223333444"
+
+        // When
+        let validationResult = validator.validate(creditCardNumber: creditCardNumber)
+
+        // Then
+        XCTAssert(!validationResult, "Credit card '111122223333444' shouldn't be valid. Not enough digits.")
+    }
+
+    func testLongSpacedCreditCardValidation() {
+        // Given
+        let creditCardNumber = "1111 2222 3333 4444 5"
+
+        // When
+        let validationResult = validator.validate(creditCardNumber: creditCardNumber)
+
+        // Then
+        XCTAssert(!validationResult, "Credit card '1111 2222 3333 4444 5' shouldn't be valid. A lot of digits.")
+    }
+
+    func testLongTrimmedCreditCardValidation() {
+        // Given
+        let creditCardNumber = "11112222333344445"
+
+        // When
+        let validationResult = validator.validate(creditCardNumber: creditCardNumber)
+
+        // Then
+        XCTAssert(!validationResult, "Credit card '11112222333344445' shouldn't be valid. A lot of digits.")
+    }
 }
