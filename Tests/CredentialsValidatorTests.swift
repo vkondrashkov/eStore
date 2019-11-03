@@ -28,7 +28,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(username: username)
 
         // Then
-        XCTAssert(validationResult, "Username 'declipz' should be valid.")
+        XCTAssertTrue(validationResult)
     }
 
     func testDefaultUsernameValidation() {
@@ -39,7 +39,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(username: username)
 
         // Then
-        XCTAssert(!validationResult, "Username 'user123' shouldn't be valid. Simillar to default usernames.")
+        XCTAssertFalse(validationResult)
     }
 
     func testShortUsernameValidation() {
@@ -50,7 +50,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(username: username)
 
         // Then
-        XCTAssert(!validationResult, "Username 'us' shouldn't be valid. Too short.")
+        XCTAssertFalse(validationResult)
     }
 
     func testLongUsernameValidation() {
@@ -61,7 +61,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(username: username)
 
         // Then
-        XCTAssert(!validationResult, "Username 'usernameWhichContainsTooSymbolsThatAreNotFitString' shouldn't be valid. Too long.")
+        XCTAssertFalse(validationResult)
     }
 
     func testSpecialCharactersUsernameValidation() {
@@ -72,7 +72,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(username: username)
 
         // Then
-        XCTAssert(!validationResult, "Username 'd3cl!p$' shouldn't be valid. Special characters are not allowed in username.")
+        XCTAssertFalse(validationResult)
     }
 
     // MARK: - Email validation
@@ -85,7 +85,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(email: email)
 
         // Then
-        XCTAssert(validationResult, "Email 'example@domain.com' should be valid.")
+        XCTAssertTrue(validationResult)
     }
 
     func testNotEmailValidation() {
@@ -96,7 +96,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(email: email)
 
         // Then
-        XCTAssert(!validationResult, "Email 'somethingThatCant@beEmail' shouldn't be valid. Doesn't contain domain.")
+        XCTAssertFalse(validationResult)
     }
 
     func testShortEmailValidation() {
@@ -107,7 +107,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(email: email)
 
         // Then
-        XCTAssert(!validationResult, "Email 'sh@or.t' shouldn't be valid. Too short.")
+        XCTAssertFalse(validationResult)
     }
 
     // MARK: - Password validation
@@ -120,7 +120,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(password: password)
 
         // Then
-        XCTAssert(validationResult, "Password 'fooBar123456' should be valid.")
+        XCTAssertTrue(validationResult)
     }
 
     func testShortPasswordValidation() {
@@ -131,7 +131,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(password: password)
 
         // Then
-        XCTAssert(!validationResult, "Password 'foo' shouldn't be valid. Too short.")
+        XCTAssertFalse(validationResult)
     }
 
     func testLongPasswordValidation() {
@@ -142,7 +142,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(password: password)
 
         // Then
-        XCTAssert(!validationResult, "Password 'thisIsToo123LongPassword123AndShouldntBeValid' shouldn't be valid. Too long.")
+        XCTAssertFalse(validationResult)
     }
 
     func testOnlySymbolPasswordValidation() {
@@ -153,7 +153,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(password: password)
 
         // Then
-        XCTAssert(!validationResult, "Password 'onlySymbolPass' shouldn't be valid. Doesn't contain digits.")
+        XCTAssertFalse(validationResult)
     }
 
     func testOnlyDigitPasswordValidation() {
@@ -164,7 +164,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(password: password)
 
         // Then
-        XCTAssert(!validationResult, "Password '123456789' shouldn't be valid. Doesn't contain symbols.")
+        XCTAssertFalse(validationResult)
     }
 
     func testSpecialCharactersPasswordValidation() {
@@ -175,7 +175,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(password: password)
 
         // Then
-        XCTAssert(validationResult, "Password 'this$#@123Pass' should be valid. Special characters are allowed in password.")
+        XCTAssertTrue(validationResult)
     }
 
     // MARK: - Credit card validation
@@ -188,7 +188,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(creditCardNumber: creditCardNumber)
 
         // Then
-        XCTAssert(validationResult, "Credit card '1111 2222 3333 4444' should be valid.")
+        XCTAssertTrue(validationResult)
     }
 
     func testSuccessfullTrimmedCreditCardValidation() {
@@ -199,7 +199,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(creditCardNumber: creditCardNumber)
 
         // Then
-        XCTAssert(validationResult, "Credit card '1111222233334444' should be valid.")
+        XCTAssertTrue(validationResult)
     }
 
     func testSymbolSpacedCreditCardValidation() {
@@ -210,7 +210,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(creditCardNumber: creditCardNumber)
 
         // Then
-        XCTAssert(!validationResult, "Credit card '!111 2@22 33#3 444$' shouldn't be valid. Only digits are allowed.")
+        XCTAssertFalse(validationResult)
     }
 
     func testSymbolTrimmedCreditCardValidation() {
@@ -221,7 +221,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(creditCardNumber: creditCardNumber)
 
         // Then
-        XCTAssert(!validationResult, "Credit card '!1112@2233#3444$' shouldn't be valid. Only digits are allowed.")
+        XCTAssertFalse(validationResult)
     }
 
     func testShortSpacedCreditCardValidation() {
@@ -232,7 +232,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(creditCardNumber: creditCardNumber)
 
         // Then
-        XCTAssert(!validationResult, "Credit card '1111 2222 3333 444' shouldn't be valid. Not enough digits.")
+        XCTAssertFalse(validationResult)
     }
 
     func testShortTrimmedCreditCardValidation() {
@@ -243,7 +243,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(creditCardNumber: creditCardNumber)
 
         // Then
-        XCTAssert(!validationResult, "Credit card '111122223333444' shouldn't be valid. Not enough digits.")
+        XCTAssertFalse(validationResult)
     }
 
     func testLongSpacedCreditCardValidation() {
@@ -254,7 +254,7 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(creditCardNumber: creditCardNumber)
 
         // Then
-        XCTAssert(!validationResult, "Credit card '1111 2222 3333 4444 5' shouldn't be valid. A lot of digits.")
+        XCTAssertFalse(validationResult)
     }
 
     func testLongTrimmedCreditCardValidation() {
@@ -265,6 +265,6 @@ class CredentialsValidatorTests: XCTestCase {
         let validationResult = validator.validate(creditCardNumber: creditCardNumber)
 
         // Then
-        XCTAssert(!validationResult, "Credit card '11112222333344445' shouldn't be valid. A lot of digits.")
+        XCTAssertFalse(validationResult)
     }
 }
