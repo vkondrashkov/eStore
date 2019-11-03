@@ -10,14 +10,17 @@ import UIKit
 
 final class CatalogComponent {
     let navigation: UINavigationController
+    let productsService: ProductsService
     let themeManager: ThemeManager
     let alertFactory: AlertFactory
     
     init(navigation: UINavigationController,
+         productsService: ProductsService,
          themeManager: ThemeManager,
          alertFactory: AlertFactory) {
 
         self.navigation = navigation
+        self.productsService = productsService
         self.themeManager = themeManager
         self.alertFactory = alertFactory
     }
