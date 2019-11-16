@@ -1,5 +1,5 @@
 //
-//  ProductsServiceSpec.swift
+//  ProductsListPresenterSpec.swift
 //  Tests
 //
 //  Created by Vladislav Kondrashkov on 11/3/19.
@@ -11,7 +11,7 @@ import Nimble
 
 @testable import eStore
 
-final class ProductsServiceSpec: QuickSpec {
+final class ProductsListPresenterSpec: QuickSpec {
     final class ProductsServiceSpy: ProductsService {
         var didGetSmartphone = false
         var didGetLaptops = false

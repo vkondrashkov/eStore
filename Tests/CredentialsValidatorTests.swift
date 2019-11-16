@@ -110,6 +110,17 @@ class CredentialsValidatorTests: XCTestCase {
         XCTAssertFalse(validationResult)
     }
 
+    func testLongEmailValidation() {
+        // Given
+        let email = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa. aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+
+        // When
+        let validationResult = validator.validate(email: email)
+
+        // Then
+        XCTAssertFalse(validationResult)
+    }
+
     // MARK: - Password validation
 
     func testSuccessfulPasswordValidation() {
