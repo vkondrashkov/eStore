@@ -135,6 +135,7 @@
 		9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55266220AFC8C0004ACC4 /* AppComponent.swift */; };
 		9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55268220AFCBC0004ACC4 /* RootCoordinator.swift */; };
 		9CC5526B220AFCC30004ACC4 /* RootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5526A220AFCC30004ACC4 /* RootBuilder.swift */; };
+		9CD2B1AB238183FB00927979 /* eStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AA238183FB00927979 /* eStore.swift */; };
 		9CD6A85B226E030900DF4C65 /* UITableView+Generic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD6A85A226E030900DF4C65 /* UITableView+Generic.swift */; };
 		9CD6A85D226E033700DF4C65 /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD6A85C226E033700DF4C65 /* ReuseIdentifiable.swift */; };
 		9CD6A85F226E034C00DF4C65 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD6A85E226E034C00DF4C65 /* NibLoadable.swift */; };
@@ -291,6 +292,7 @@
 		9CC55266220AFC8C0004ACC4 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
 		9CC55268220AFCBC0004ACC4 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		9CC5526A220AFCC30004ACC4 /* RootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootBuilder.swift; sourceTree = "<group>"; };
+		9CD2B1AA238183FB00927979 /* eStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eStore.swift; sourceTree = "<group>"; };
 		9CD6A85A226E030900DF4C65 /* UITableView+Generic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Generic.swift"; sourceTree = "<group>"; };
 		9CD6A85C226E033700DF4C65 /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
 		9CD6A85E226E034C00DF4C65 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 			isa = PBXGroup;
 			children = (
 				9C76ABB022359F8400FB39DA /* ProductsService.swift */,
+				9CD2B1AA238183FB00927979 /* eStore.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -951,6 +954,7 @@
 				9CC46BD622153932005E24F5 /* SignUpPresenter.swift in Sources */,
 				9CA419202222D6E900BAF215 /* Category.swift in Sources */,
 				9C56E11B225B692200E72428 /* LightTheme.swift in Sources */,
+				9CD2B1AB238183FB00927979 /* eStore.swift in Sources */,
 				9C8FEC03226B952A007C30EB /* ThemeSettingsColorPickerView.swift in Sources */,
 				9C56E113225B5F0200E72428 /* ThemeObserver.swift in Sources */,
 				9CA418DA221D884900BAF215 /* Laptop.swift in Sources */,
