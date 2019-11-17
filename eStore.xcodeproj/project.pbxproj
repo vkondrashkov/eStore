@@ -136,6 +136,7 @@
 		9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55268220AFCBC0004ACC4 /* RootCoordinator.swift */; };
 		9CC5526B220AFCC30004ACC4 /* RootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5526A220AFCC30004ACC4 /* RootBuilder.swift */; };
 		9CD2B1AB238183FB00927979 /* eStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AA238183FB00927979 /* eStore.swift */; };
+		9CD2B1AD2381860600927979 /* ProductsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AC2381860600927979 /* ProductsRepository.swift */; };
 		9CD2B1AF2381950600927979 /* products-smartphones-stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AE2381950500927979 /* products-smartphones-stub.json */; };
 		9CD2B1B0238195B200927979 /* products-smartphones-stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AE2381950500927979 /* products-smartphones-stub.json */; };
 		9CD2B1B32381A12900927979 /* products-tvs-stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B12381A12900927979 /* products-tvs-stub.json */; };
@@ -305,6 +306,7 @@
 		9CC55268220AFCBC0004ACC4 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		9CC5526A220AFCC30004ACC4 /* RootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootBuilder.swift; sourceTree = "<group>"; };
 		9CD2B1AA238183FB00927979 /* eStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eStore.swift; sourceTree = "<group>"; };
+		9CD2B1AC2381860600927979 /* ProductsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRepository.swift; sourceTree = "<group>"; };
 		9CD2B1AE2381950500927979 /* products-smartphones-stub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-smartphones-stub.json"; sourceTree = "<group>"; };
 		9CD2B1B12381A12900927979 /* products-tvs-stub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-tvs-stub.json"; sourceTree = "<group>"; };
 		9CD2B1B22381A12900927979 /* products-laptops-stub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-laptops-stub.json"; sourceTree = "<group>"; };
@@ -427,6 +429,7 @@
 			children = (
 				9C76ABB022359F8400FB39DA /* ProductsService.swift */,
 				9CD2B1AA238183FB00927979 /* eStore.swift */,
+				9CD2B1AC2381860600927979 /* ProductsRepository.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1110,6 +1113,7 @@
 				9CC46BCE2215390F005E24F5 /* SignUpScene.swift in Sources */,
 				9CA418EF221D8D1F00BAF215 /* CatalogPresenter.swift in Sources */,
 				9C76ABAF223588D900FB39DA /* ProductType.swift in Sources */,
+				9CD2B1AD2381860600927979 /* ProductsRepository.swift in Sources */,
 				9CC46C2622180B95005E24F5 /* ProfileCoordinator.swift in Sources */,
 				9CC5526B220AFCC30004ACC4 /* RootBuilder.swift in Sources */,
 				9CC46BB52214C3B7005E24F5 /* AuthComponent.swift in Sources */,
