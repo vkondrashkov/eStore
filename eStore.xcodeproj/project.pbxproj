@@ -151,6 +151,7 @@
 		9CD2B1BD2381AB4B00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6-stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B52381A31C00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6-stub.json */; };
 		9CD2B1BE2381AB4D00927979 /* products-tvs-stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B12381A12900927979 /* products-tvs-stub.json */; };
 		9CD2B1BF2381AB5000927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe-stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B72381A31C00927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe-stub.json */; };
+		9CD2B1C12381C4F000927979 /* Result+Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1C02381C4F000927979 /* Result+Values.swift */; };
 		9CD6A85B226E030900DF4C65 /* UITableView+Generic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD6A85A226E030900DF4C65 /* UITableView+Generic.swift */; };
 		9CD6A85D226E033700DF4C65 /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD6A85C226E033700DF4C65 /* ReuseIdentifiable.swift */; };
 		9CD6A85F226E034C00DF4C65 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD6A85E226E034C00DF4C65 /* NibLoadable.swift */; };
@@ -317,6 +318,7 @@
 		9CD2B1B52381A31C00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6-stub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-laptop-34ec91a46a12a40fc44c414b61b638e6-stub.json"; sourceTree = "<group>"; };
 		9CD2B1B62381A31C00927979 /* products-smartphone-3571539fcbe330452d4d938502ed9f15-stub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-smartphone-3571539fcbe330452d4d938502ed9f15-stub.json"; sourceTree = "<group>"; };
 		9CD2B1B72381A31C00927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe-stub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-tv-09af2b066b649bbb8ff54dafca4660fe-stub.json"; sourceTree = "<group>"; };
+		9CD2B1C02381C4F000927979 /* Result+Values.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Values.swift"; sourceTree = "<group>"; };
 		9CD6A85A226E030900DF4C65 /* UITableView+Generic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Generic.swift"; sourceTree = "<group>"; };
 		9CD6A85C226E033700DF4C65 /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
 		9CD6A85E226E034C00DF4C65 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
@@ -577,6 +579,7 @@
 				9CD6A860226E047800DF4C65 /* UICollectionView+Generic.swift */,
 				9CD6A85C226E033700DF4C65 /* ReuseIdentifiable.swift */,
 				9CD6A85E226E034C00DF4C65 /* NibLoadable.swift */,
+				9CD2B1C02381C4F000927979 /* Result+Values.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1035,6 +1038,7 @@
 				9C83BC07222EAEF700CBB1FF /* ProductDescriptionCoordinator.swift in Sources */,
 				9CC46BC8221538F8005E24F5 /* SignUpContract.swift in Sources */,
 				9CC46B89221405C6005E24F5 /* RootComponent.swift in Sources */,
+				9CD2B1C12381C4F000927979 /* Result+Values.swift in Sources */,
 				9C452FB42242DB0700924FA5 /* CartScene.swift in Sources */,
 				9C56E103225A93C700E72428 /* ThemeSettingsComponent.swift in Sources */,
 				9C8FEC00226B8EF7007C30EB /* SectionedMenuColorPickerCell.swift in Sources */,
