@@ -13,246 +13,180 @@ import Moya
 @testable import eStore
 
 final class ProductsUseCaseSpec: QuickSpec {
+    final class CompletionSpy<V, E: Error> {
+        var invoked = false
+        var invokedResult: Result<V, E>?
+
+        lazy var completion: (Result<V, E>) -> Void = { result in
+            self.invoked = true
+            self.invokedResult = result
+        }
+    }
+
     override func spec() {
         var productsUseCase: ProductsUseCase!
 
-        beforeEach {
-            let provider = MoyaProvider<eStore>(stubClosure: MoyaProvider.immediatelyStub)
-            let repository = ProductsRepositoryImpl(provider: provider)
-            productsUseCase = ProductsUseCaseImpl(repository: repository)
-        }
+        // MARK: - When repository succeeds
 
-        // MARK: - fetchSmartphone(id:)
+        context("when repository succeeds") {
+            beforeEach {
+                let provider = MoyaProvider<eStore>(stubClosure: MoyaProvider.immediatelyStub)
+                let repository = ProductsRepositoryImpl(provider: provider)
+                productsUseCase = ProductsUseCaseImpl(repository: repository)
+            }
 
-        describe("on fetchSmartphone(id:)") {
-            context("with wrong id") {
-                it("should return error") {
-                    var receivedError: Error?
-                    productsUseCase.fetchSmartphone(
-                        id: "wrongId",
-                        completion: { result in
-                            switch result {
-                            case .success:
-                                fail("Expected call fetchSmarpthone(id:) to fail, but it succeed.")
-                            case .failure(let error):
-                                receivedError = error
-                            }
-                        }
-                    )
-                    expect(receivedError).toNotEventually(beNil())
+            // MARK: - Smartphone requests
+
+            describe("on fetchSmartphone(id:)") {
+                context("with wrong id") {
+                    it("should return error") {
+                        let completionSpy = CompletionSpy<Smartphone, ProductsUseCaseError>()
+                        productsUseCase.fetchSmartphone(
+                            id: "wrongId",
+                            completion: completionSpy.completion
+                        )
+                        expect(completionSpy.invokedResult?.error).toNot(beNil())
+                    }
+                }
+
+                context("with correct id") {
+                    let id = "3571539fcbe330452d4d938502ed9f15"
+                    it("should return success") {
+                        let completionSpy = CompletionSpy<Smartphone, ProductsUseCaseError>()
+                        productsUseCase.fetchSmartphone(
+                            id: id,
+                            completion: completionSpy.completion
+                        )
+                        expect(completionSpy.invokedResult?.value?.id).to(equal(id))
+                    }
                 }
             }
 
-            context("with correct id") {
-                let id = "3571539fcbe330452d4d938502ed9f15"
+            describe("on fetchSmarphones(:)") {
                 it("should return success") {
-                    var receivedSmartphone: Smartphone?
-                    productsUseCase.fetchSmartphone(
-                        id: id,
-                        completion: { result in
-                            switch result {
-                            case .success(let smartphone):
-                                receivedSmartphone = smartphone
-                            case .failure:
-                                fail("Expected call fetchSmarpthone(id:) to succeed, but it failed.")
-                            }
-                        }
-                    )
-                    expect(receivedSmartphone?.id).toEventually(equal(id))
-                }
-            }
-        }
-
-        // MARK: - fetchSmartphones(:)
-
-        describe("on fetchSmarphones(:)") {
-            context("when repository fails") {
-                it("should return error") {
-                    productsUseCase = self.mockFailureUseCase()
-                    var receivedError: Error?
+                    let completionSpy = CompletionSpy<[Smartphone], ProductsUseCaseError>()
                     productsUseCase.fetchSmartphones(
-                        completion: { result in
-                            switch result {
-                            case .success:
-                                fail("Expected call fetchSmarpthones(:) to fail, but it succeed.")
-                            case .failure(let error):
-                                receivedError = error
-                            }
-                        }
+                        completion: completionSpy.completion
                     )
-                    expect(receivedError).toNotEventually(beNil())
+                    expect(completionSpy.invokedResult?.value).toNot(beEmpty())
                 }
             }
 
-            it("should return success") {
-                var receivedSmartphones: [Smartphone]?
-                productsUseCase.fetchSmartphones(
-                    completion: { result in
-                        switch result {
-                        case .success(let smartphones):
-                            receivedSmartphones = smartphones
-                        case .failure:
-                            fail("Expected call fetchSmarpthone(id:) to succeed, but it failed.")
-                        }
+            // MARK: - Laptop requests
+
+            describe("on fetchLaptop(id:)") {
+                context("with wrong id") {
+                    it("should return error") {
+                        let completionSpy = CompletionSpy<Laptop, ProductsUseCaseError>()
+                        productsUseCase.fetchLaptop(
+                            id: "wrongId",
+                            completion: completionSpy.completion
+                        )
+                        expect(completionSpy.invokedResult?.error).toNot(beNil())
                     }
-                )
-                expect(receivedSmartphones).toNotEventually(beEmpty())
-            }
-        }
+                }
 
-        // MARK: - fetchLaptop(id:)
-
-        describe("on fetchLaptop(id:)") {
-            context("with wrong id") {
-                it("should return error") {
-                    var receivedError: Error?
-                    productsUseCase.fetchLaptop(
-                        id: "wrongId",
-                        completion: { result in
-                            switch result {
-                            case .success:
-                                fail("Expected call fetchLaptop(id:) to fail, but it succeed.")
-                            case .failure(let error):
-                                receivedError = error
-                            }
-                        }
-                    )
-                    expect(receivedError).toNotEventually(beNil())
+                context("with correct id") {
+                    let id = "34ec91a46a12a40fc44c414b61b638e6"
+                    it("should return success") {
+                        let completionSpy = CompletionSpy<Laptop, ProductsUseCaseError>()
+                        productsUseCase.fetchLaptop(
+                            id: id,
+                            completion: completionSpy.completion
+                        )
+                        expect(completionSpy.invokedResult?.value?.id).to(equal(id))
+                    }
                 }
             }
 
-            context("with correct id") {
-                let id = "34ec91a46a12a40fc44c414b61b638e6"
+            describe("on fetchLaptops(:)") {
                 it("should return success") {
-                    var receivedLaptop: Laptop?
-                    productsUseCase.fetchLaptop(
-                        id: id,
-                        completion: { result in
-                            switch result {
-                            case .success(let smartphone):
-                                receivedLaptop = smartphone
-                            case .failure:
-                                fail("Expected call fetchLaptop(id:) to succeed, but it failed.")
-                            }
-                        }
-                    )
-                    expect(receivedLaptop?.id).toEventually(equal(id))
-                }
-            }
-        }
-
-        // MARK: - fetchLaptops(:)
-
-        describe("on fetchLaptops(:)") {
-            context("when repository fails") {
-                it("should return error") {
-                    productsUseCase = self.mockFailureUseCase()
-                    var receivedError: Error?
+                    let completionSpy = CompletionSpy<[Laptop], ProductsUseCaseError>()
                     productsUseCase.fetchLaptops(
-                        completion: { result in
-                            switch result {
-                            case .success:
-                                fail("Expected call fetchLaptops(:) to fail, but it succeed.")
-                            case .failure(let error):
-                                receivedError = error
-                            }
-                        }
+                        completion: completionSpy.completion
                     )
-                    expect(receivedError).toNotEventually(beNil())
+                    expect(completionSpy.invokedResult?.value).toNot(beEmpty())
                 }
             }
 
-            it("should return success") {
-                var receivedLaptops: [Laptop]?
-                productsUseCase.fetchLaptops(
-                    completion: { result in
-                        switch result {
-                        case .success(let laptops):
-                            receivedLaptops = laptops
-                        case .failure:
-                            fail("Expected call fetchLaptops(:) to succeed, but it failed.")
-                        }
+            // MARK: - TV requests
+
+            describe("on fetchTV(id:)") {
+                context("with wrong id") {
+                    it("should return error") {
+                        let completionSpy = CompletionSpy<TV, ProductsUseCaseError>()
+                        productsUseCase.fetchTV(
+                            id: "wrongId",
+                            completion: completionSpy.completion
+                        )
+                        expect(completionSpy.invokedResult?.error).toNot(beNil())
                     }
-                )
-                expect(receivedLaptops).toNotEventually(beEmpty())
-            }
-        }
+                }
 
-        // MARK: - fetchTV(id:)
-
-        describe("on fetchTV(id:)") {
-            context("with wrong id") {
-                it("should return error") {
-                    var receivedError: Error?
-                    productsUseCase.fetchTV(
-                        id: "wrongId",
-                        completion: { result in
-                            switch result {
-                            case .success:
-                                fail("Expected call fetchTV(id:) to fail, but it succeed.")
-                            case .failure(let error):
-                                receivedError = error
-                            }
-                        }
-                    )
-                    expect(receivedError).toNotEventually(beNil())
+                context("with correct id") {
+                    let id = "09af2b066b649bbb8ff54dafca4660fe"
+                    it("should return success") {
+                        let completionSpy = CompletionSpy<TV, ProductsUseCaseError>()
+                        productsUseCase.fetchTV(
+                            id: id,
+                            completion: completionSpy.completion
+                        )
+                        expect(completionSpy.invokedResult?.value?.id).to(equal(id))
+                    }
                 }
             }
 
-            context("with correct id") {
-                let id = "09af2b066b649bbb8ff54dafca4660fe"
+            describe("on fetchTVs(:)") {
                 it("should return success") {
-                    var receivedTV: TV?
-                    productsUseCase.fetchTV(
-                        id: id,
-                        completion: { result in
-                            switch result {
-                            case .success(let tv):
-                                receivedTV = tv
-                            case .failure:
-                                fail("Expected call fetchTV(id:) to succeed, but it failed.")
-                            }
-                        }
+                    let completionSpy = CompletionSpy<[TV], ProductsUseCaseError>()
+                    productsUseCase.fetchTVs(
+                        completion: completionSpy.completion
                     )
-                    expect(receivedTV?.id).toEventually(equal(id))
+                    expect(completionSpy.invokedResult?.value).toNot(beEmpty())
                 }
             }
         }
 
-        // MARK: - fetchTVs(:)
+        // MARK: - When repository fails
 
-        describe("on fetchTVs(:)") {
-            context("when repository fails") {
+        context("when repository fails") {
+            beforeEach {
+                let provider = MoyaProvider<eStore>(
+                    endpointClosure: ProductsUseCaseSpec.errorEndpointClosure,
+                    stubClosure: MoyaProvider.immediatelyStub
+                )
+                let repository = ProductsRepositoryImpl(provider: provider)
+                productsUseCase = ProductsUseCaseImpl(repository: repository)
+            }
+
+            describe("on fetchSmartphones(:)") {
                 it("should return error") {
-                    productsUseCase = self.mockFailureUseCase()
-                    var receivedError: Error?
-                    productsUseCase.fetchTVs(
-                        completion: { result in
-                            switch result {
-                            case .success:
-                                fail("Expected call fetchTVs(:) to fail, but it succeed.")
-                            case .failure(let error):
-                                receivedError = error
-                            }
-                        }
+                    let completionSpy = CompletionSpy<[Smartphone], ProductsUseCaseError>()
+                    productsUseCase.fetchSmartphones(
+                        completion: completionSpy.completion
                     )
-                    expect(receivedError).toNotEventually(beNil())
+                    expect(completionSpy.invokedResult?.error).toNot(beNil())
                 }
             }
 
-            it("should return success") {
-                var receivedTVs: [TV]?
-                productsUseCase.fetchTVs(
-                    completion: { result in
-                        switch result {
-                        case .success(let tvs):
-                            receivedTVs = tvs
-                        case .failure:
-                            fail("Expected call fetchTVs(:) to succeed, but it failed.")
-                        }
-                    }
-                )
-                expect(receivedTVs).toNotEventually(beEmpty())
+            describe("on fetchLaptop(:)") {
+                it("should return error") {
+                    let completionSpy = CompletionSpy<[Laptop], ProductsUseCaseError>()
+                    productsUseCase.fetchLaptops(
+                        completion: completionSpy.completion
+                    )
+                    expect(completionSpy.invokedResult?.error).toNot(beNil())
+                }
+            }
+
+            describe("on fetchTVs(:)") {
+                it("should return error") {
+                    let completionSpy = CompletionSpy<[TV], ProductsUseCaseError>()
+                    productsUseCase.fetchTVs(
+                        completion: completionSpy.completion
+                    )
+                    expect(completionSpy.invokedResult?.error).toNot(beNil())
+                }
             }
         }
     }
@@ -260,15 +194,6 @@ final class ProductsUseCaseSpec: QuickSpec {
 
 // MARK: - Utils
 extension ProductsUseCaseSpec {
-    func mockFailureUseCase() -> ProductsUseCase {
-        let provider = MoyaProvider<eStore>(
-            endpointClosure: ProductsUseCaseSpec.errorEndpointClosure,
-            stubClosure: MoyaProvider.immediatelyStub
-        )
-        let repository = ProductsRepositoryImpl(provider: provider)
-        return ProductsUseCaseImpl(repository: repository)
-    }
-
     static func errorEndpointClosure(target: eStore) -> Endpoint {
         return Endpoint(
             url: target.baseURL.absoluteString,
