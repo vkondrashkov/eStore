@@ -36,7 +36,7 @@ final class ProductsUseCaseImpl: ProductsUseCase {
                 completion(.success(smartphone))
             case .failure(let error):
                 switch error {
-                case .badRequest:
+                case .invalidInput:
                     completion(.failure(.invalidData))
                 default:
                     completion(.failure(.failure))
@@ -52,7 +52,7 @@ final class ProductsUseCaseImpl: ProductsUseCase {
                 completion(.success(smartphones))
             case .failure(let error):
                 switch error {
-                case .badRequest:
+                case .invalidInput:
                     completion(.failure(.invalidData))
                 default:
                     completion(.failure(.failure))
@@ -68,7 +68,7 @@ final class ProductsUseCaseImpl: ProductsUseCase {
                 completion(.success(laptop))
             case .failure(let error):
                 switch error {
-                case .badRequest:
+                case .invalidInput:
                     completion(.failure(.invalidData))
                 default:
                     completion(.failure(.failure))
@@ -84,7 +84,7 @@ final class ProductsUseCaseImpl: ProductsUseCase {
                 completion(.success(laptops))
             case .failure(let error):
                 switch error {
-                case .badRequest:
+                case .invalidInput:
                     completion(.failure(.invalidData))
                 default:
                     completion(.failure(.failure))
@@ -100,7 +100,7 @@ final class ProductsUseCaseImpl: ProductsUseCase {
                 completion(.success(tv))
             case .failure(let error):
                 switch error {
-                case .badRequest:
+                case .invalidInput:
                     completion(.failure(.invalidData))
                 default:
                     completion(.failure(.failure))
@@ -116,7 +116,7 @@ final class ProductsUseCaseImpl: ProductsUseCase {
                 completion(.success(tvs))
             case .failure(let error):
                 switch error {
-                case .badRequest:
+                case .invalidInput:
                     completion(.failure(.invalidData))
                 default:
                     completion(.failure(.failure))

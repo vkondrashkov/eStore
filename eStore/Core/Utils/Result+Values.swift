@@ -6,8 +6,6 @@
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
 //
 
-import Foundation
-
 extension Result {
     var value: Success? {
         guard case .success(let value) = self else{

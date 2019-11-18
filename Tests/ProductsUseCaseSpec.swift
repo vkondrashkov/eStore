@@ -30,7 +30,7 @@ final class ProductsUseCaseSpec: QuickSpec {
 
         context("when repository succeeds") {
             beforeEach {
-                let provider = MoyaProvider<eStore>(stubClosure: MoyaProvider.immediatelyStub)
+                let provider = MoyaProvider<eStoreAPI>(stubClosure: MoyaProvider.immediatelyStub)
                 let repository = ProductsRepositoryImpl(provider: provider)
                 productsUseCase = ProductsUseCaseImpl(repository: repository)
             }
@@ -151,7 +151,7 @@ final class ProductsUseCaseSpec: QuickSpec {
 
         context("when repository fails") {
             beforeEach {
-                let provider = MoyaProvider<eStore>(
+                let provider = MoyaProvider<eStoreAPI>(
                     endpointClosure: ProductsUseCaseSpec.errorEndpointClosure,
                     stubClosure: MoyaProvider.immediatelyStub
                 )
@@ -194,7 +194,7 @@ final class ProductsUseCaseSpec: QuickSpec {
 
 // MARK: - Utils
 extension ProductsUseCaseSpec {
-    static func errorEndpointClosure(target: eStore) -> Endpoint {
+    static func errorEndpointClosure(target: eStoreAPI) -> Endpoint {
         return Endpoint(
             url: target.baseURL.absoluteString,
             sampleResponseClosure: { () -> EndpointSampleResponse in

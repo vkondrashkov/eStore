@@ -6,14 +6,13 @@
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
 //
 
-import Foundation
 import Moya
 import ObjectMapper
 import Result
 
 enum ProductsRepositoryError: Error {
-    case badRequest
-    case badResponse
+    case invalidInput
+    case failed
 }
 
 protocol ProductsRepository {
@@ -26,9 +25,9 @@ protocol ProductsRepository {
 }
 
 final class ProductsRepositoryImpl {
-    private let provider: MoyaProvider<eStore>
+    private let provider: MoyaProvider<eStoreAPI>
 
-    init(provider: MoyaProvider<eStore>) {
+    init(provider: MoyaProvider<eStoreAPI>) {
         self.provider = provider
     }
 }
@@ -36,42 +35,43 @@ final class ProductsRepositoryImpl {
 // MARK: - ProductsRepository implementation
 extension ProductsRepositoryImpl: ProductsRepository {
     func fetchSmartphones(completion: @escaping (Result<[Smartphone], ProductsRepositoryError>) -> Void) {
-        provider.request(.getSmartphones) { result in
+        provider.request(.smartphones) { result in
             completion(self.processResponse(result: result))
         }
     }
 
     func fetchSmartphone(id: String, completion: @escaping (Result<Smartphone, ProductsRepositoryError>) -> Void) {
-        provider.request(.getSmartphone(id)) { result in
+        provider.request(.smartphone(id: id)) { result in
             completion(self.processResponse(result: result))
         }
     }
 
     func fetchLaptops(completion: @escaping (Result<[Laptop], ProductsRepositoryError>) -> Void) {
-        provider.request(.getLaptops) { result in
+        provider.request(.laptops) { result in
             completion(self.processResponse(result: result))
         }
     }
 
     func fetchLaptop(id: String, completion: @escaping (Result<Laptop, ProductsRepositoryError>) -> Void) {
-        provider.request(.getLaptop(id)) { result in
+        provider.request(.laptop(id: id)) { result in
             completion(self.processResponse(result: result))
         }
     }
 
     func fetchTVs(completion: @escaping (Result<[TV], ProductsRepositoryError>) -> Void) {
-        provider.request(.getTVs) { result in
+        provider.request(.tvs) { result in
             completion(self.processResponse(result: result))
         }
     }
 
     func fetchTV(id: String, completion: @escaping (Result<TV, ProductsRepositoryError>) -> Void) {
-        provider.request(.getTV(id)) { result in
+        provider.request(.tv(id: id)) { result in
             completion(self.processResponse(result: result))
         }
     }
 }
 
+// MARK: - Utils
 private extension ProductsRepositoryImpl {
     typealias MoyaResult = Result<Response, MoyaError>
     typealias ItemResult<Item> = Result<Item, ProductsRepositoryError>
@@ -80,15 +80,15 @@ private extension ProductsRepositoryImpl {
         switch result {
         case .success(let response):
             guard let json = try? response.mapJSON() as? [String: Any] else {
-                return .failure(.badResponse)
+                return .failure(.failed)
             }
             guard let item = Mapper<Item>().map(JSON: json) else {
-                return .failure(.badResponse)
+                return .failure(.failed)
             }
             return .success(item)
         case .failure(let error):
             debugPrint("🛑 Error code: \(error.errorCode)\n\(error.errorDescription ?? "")")
-            return .failure(.badRequest)
+            return .failure(.invalidInput)
         }
     }
 
@@ -96,15 +96,15 @@ private extension ProductsRepositoryImpl {
         switch result {
         case .success(let response):
             guard let json = try? response.mapJSON() as? [[String: Any]] else {
-                return .failure(.badResponse)
+                return .failure(.failed)
             }
             guard let itemList = try? Mapper<Item>().mapArray(JSONArray: json) else {
-                return .failure(.badResponse)
+                return .failure(.failed)
             }
             return .success(itemList)
         case .failure(let error):
             debugPrint("🛑 Error code: \(error.errorCode)\n\(error.errorDescription ?? "")")
-            return .failure(.badRequest)
+            return .failure(.invalidInput)
         }
     }
 }

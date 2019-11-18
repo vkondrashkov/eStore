@@ -137,21 +137,15 @@
 		9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55266220AFC8C0004ACC4 /* AppComponent.swift */; };
 		9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC55268220AFCBC0004ACC4 /* RootCoordinator.swift */; };
 		9CC5526B220AFCC30004ACC4 /* RootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC5526A220AFCC30004ACC4 /* RootBuilder.swift */; };
-		9CD2B1AB238183FB00927979 /* eStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AA238183FB00927979 /* eStore.swift */; };
 		9CD2B1AD2381860600927979 /* ProductsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AC2381860600927979 /* ProductsRepository.swift */; };
-		9CD2B1AF2381950600927979 /* products-smartphones-stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AE2381950500927979 /* products-smartphones-stub.json */; };
-		9CD2B1B0238195B200927979 /* products-smartphones-stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AE2381950500927979 /* products-smartphones-stub.json */; };
-		9CD2B1B32381A12900927979 /* products-tvs-stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B12381A12900927979 /* products-tvs-stub.json */; };
-		9CD2B1B42381A12900927979 /* products-laptops-stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B22381A12900927979 /* products-laptops-stub.json */; };
-		9CD2B1B82381A31C00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6-stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B52381A31C00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6-stub.json */; };
-		9CD2B1B92381A31C00927979 /* products-smartphone-3571539fcbe330452d4d938502ed9f15-stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B62381A31C00927979 /* products-smartphone-3571539fcbe330452d4d938502ed9f15-stub.json */; };
-		9CD2B1BA2381A31C00927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe-stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B72381A31C00927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe-stub.json */; };
-		9CD2B1BB2381AB4500927979 /* products-smartphone-3571539fcbe330452d4d938502ed9f15-stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B62381A31C00927979 /* products-smartphone-3571539fcbe330452d4d938502ed9f15-stub.json */; };
-		9CD2B1BC2381AB4900927979 /* products-laptops-stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B22381A12900927979 /* products-laptops-stub.json */; };
-		9CD2B1BD2381AB4B00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6-stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B52381A31C00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6-stub.json */; };
-		9CD2B1BE2381AB4D00927979 /* products-tvs-stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B12381A12900927979 /* products-tvs-stub.json */; };
-		9CD2B1BF2381AB5000927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe-stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B72381A31C00927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe-stub.json */; };
 		9CD2B1C12381C4F000927979 /* Result+Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1C02381C4F000927979 /* Result+Values.swift */; };
+		9CD2B1C423827A7300927979 /* eStoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AA238183FB00927979 /* eStoreAPI.swift */; };
+		9CD2B1C523827B9400927979 /* products-smartphones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AE2381950500927979 /* products-smartphones.json */; };
+		9CD2B1C623827B9700927979 /* products-smartphone-3571539fcbe330452d4d938502ed9f15.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B62381A31C00927979 /* products-smartphone-3571539fcbe330452d4d938502ed9f15.json */; };
+		9CD2B1C723827B9900927979 /* products-laptops.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B22381A12900927979 /* products-laptops.json */; };
+		9CD2B1C823827B9F00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B52381A31C00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6.json */; };
+		9CD2B1C923827BA200927979 /* products-tvs.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B12381A12900927979 /* products-tvs.json */; };
+		9CD2B1CA23827BA500927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B72381A31C00927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe.json */; };
 		9CD6A85B226E030900DF4C65 /* UITableView+Generic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD6A85A226E030900DF4C65 /* UITableView+Generic.swift */; };
 		9CD6A85D226E033700DF4C65 /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD6A85C226E033700DF4C65 /* ReuseIdentifiable.swift */; };
 		9CD6A85F226E034C00DF4C65 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD6A85E226E034C00DF4C65 /* NibLoadable.swift */; };
@@ -310,14 +304,14 @@
 		9CC55266220AFC8C0004ACC4 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
 		9CC55268220AFCBC0004ACC4 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		9CC5526A220AFCC30004ACC4 /* RootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootBuilder.swift; sourceTree = "<group>"; };
-		9CD2B1AA238183FB00927979 /* eStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eStore.swift; sourceTree = "<group>"; };
+		9CD2B1AA238183FB00927979 /* eStoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eStoreAPI.swift; sourceTree = "<group>"; };
 		9CD2B1AC2381860600927979 /* ProductsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRepository.swift; sourceTree = "<group>"; };
-		9CD2B1AE2381950500927979 /* products-smartphones-stub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-smartphones-stub.json"; sourceTree = "<group>"; };
-		9CD2B1B12381A12900927979 /* products-tvs-stub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-tvs-stub.json"; sourceTree = "<group>"; };
-		9CD2B1B22381A12900927979 /* products-laptops-stub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-laptops-stub.json"; sourceTree = "<group>"; };
-		9CD2B1B52381A31C00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6-stub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-laptop-34ec91a46a12a40fc44c414b61b638e6-stub.json"; sourceTree = "<group>"; };
-		9CD2B1B62381A31C00927979 /* products-smartphone-3571539fcbe330452d4d938502ed9f15-stub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-smartphone-3571539fcbe330452d4d938502ed9f15-stub.json"; sourceTree = "<group>"; };
-		9CD2B1B72381A31C00927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe-stub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-tv-09af2b066b649bbb8ff54dafca4660fe-stub.json"; sourceTree = "<group>"; };
+		9CD2B1AE2381950500927979 /* products-smartphones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-smartphones.json"; sourceTree = "<group>"; };
+		9CD2B1B12381A12900927979 /* products-tvs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-tvs.json"; sourceTree = "<group>"; };
+		9CD2B1B22381A12900927979 /* products-laptops.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-laptops.json"; sourceTree = "<group>"; };
+		9CD2B1B52381A31C00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-laptop-34ec91a46a12a40fc44c414b61b638e6.json"; sourceTree = "<group>"; };
+		9CD2B1B62381A31C00927979 /* products-smartphone-3571539fcbe330452d4d938502ed9f15.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-smartphone-3571539fcbe330452d4d938502ed9f15.json"; sourceTree = "<group>"; };
+		9CD2B1B72381A31C00927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-tv-09af2b066b649bbb8ff54dafca4660fe.json"; sourceTree = "<group>"; };
 		9CD2B1C02381C4F000927979 /* Result+Values.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Values.swift"; sourceTree = "<group>"; };
 		9CD6A85A226E030900DF4C65 /* UITableView+Generic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Generic.swift"; sourceTree = "<group>"; };
 		9CD6A85C226E033700DF4C65 /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
@@ -435,7 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				9C76ABB022359F8400FB39DA /* ProductsService.swift */,
-				9CD2B1AA238183FB00927979 /* eStore.swift */,
+				9CD2B1AA238183FB00927979 /* eStoreAPI.swift */,
 				9CD2B1AC2381860600927979 /* ProductsRepository.swift */,
 			);
 			path = Networking;
@@ -444,12 +438,7 @@
 		9C83BBEA222C2D1500CBB1FF /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				9CD2B1AE2381950500927979 /* products-smartphones-stub.json */,
-				9CD2B1B62381A31C00927979 /* products-smartphone-3571539fcbe330452d4d938502ed9f15-stub.json */,
-				9CD2B1B22381A12900927979 /* products-laptops-stub.json */,
-				9CD2B1B52381A31C00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6-stub.json */,
-				9CD2B1B12381A12900927979 /* products-tvs-stub.json */,
-				9CD2B1B72381A31C00927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe-stub.json */,
+				9CD2B1CB23827C1800927979 /* Stubbed Responses */,
 				9C83BBED222C2D1500CBB1FF /* Info.plist */,
 				9C1C322E236ED9900039ECDA /* CredentialsValidatorTests.swift */,
 				9C482E8F2380864000FE93C6 /* ProductsUseCaseSpec.swift */,
@@ -768,6 +757,19 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		9CD2B1CB23827C1800927979 /* Stubbed Responses */ = {
+			isa = PBXGroup;
+			children = (
+				9CD2B1AE2381950500927979 /* products-smartphones.json */,
+				9CD2B1B62381A31C00927979 /* products-smartphone-3571539fcbe330452d4d938502ed9f15.json */,
+				9CD2B1B22381A12900927979 /* products-laptops.json */,
+				9CD2B1B52381A31C00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6.json */,
+				9CD2B1B12381A12900927979 /* products-tvs.json */,
+				9CD2B1B72381A31C00927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe.json */,
+			);
+			path = "Stubbed Responses";
+			sourceTree = "<group>";
+		};
 		B2D5710387B01CFBF94F9DB4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -875,12 +877,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CD2B1AF2381950600927979 /* products-smartphones-stub.json in Resources */,
-				9CD2B1BA2381A31C00927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe-stub.json in Resources */,
-				9CD2B1B82381A31C00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6-stub.json in Resources */,
-				9CD2B1B32381A12900927979 /* products-tvs-stub.json in Resources */,
-				9CD2B1B92381A31C00927979 /* products-smartphone-3571539fcbe330452d4d938502ed9f15-stub.json in Resources */,
-				9CD2B1B42381A12900927979 /* products-laptops-stub.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -888,12 +884,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CD2B1BB2381AB4500927979 /* products-smartphone-3571539fcbe330452d4d938502ed9f15-stub.json in Resources */,
-				9CD2B1BE2381AB4D00927979 /* products-tvs-stub.json in Resources */,
-				9CD2B1BC2381AB4900927979 /* products-laptops-stub.json in Resources */,
-				9CD2B1BD2381AB4B00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6-stub.json in Resources */,
-				9CD2B1B0238195B200927979 /* products-smartphones-stub.json in Resources */,
-				9CD2B1BF2381AB5000927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe-stub.json in Resources */,
+				9CD2B1C523827B9400927979 /* products-smartphones.json in Resources */,
+				9CD2B1CA23827BA500927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe.json in Resources */,
+				9CD2B1C923827BA200927979 /* products-tvs.json in Resources */,
+				9CD2B1C723827B9900927979 /* products-laptops.json in Resources */,
+				9CD2B1C823827B9F00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6.json in Resources */,
+				9CD2B1C623827B9700927979 /* products-smartphone-3571539fcbe330452d4d938502ed9f15.json in Resources */,
 				9CC5524B220AF8520004ACC4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1003,12 +999,12 @@
 				9CC46BD622153932005E24F5 /* SignUpPresenter.swift in Sources */,
 				9CA419202222D6E900BAF215 /* Category.swift in Sources */,
 				9C56E11B225B692200E72428 /* LightTheme.swift in Sources */,
-				9CD2B1AB238183FB00927979 /* eStore.swift in Sources */,
 				9C8FEC03226B952A007C30EB /* ThemeSettingsColorPickerView.swift in Sources */,
 				9C56E113225B5F0200E72428 /* ThemeObserver.swift in Sources */,
 				9CA418DA221D884900BAF215 /* Laptop.swift in Sources */,
 				9CA418D4221D879C00BAF215 /* StoreItem.swift in Sources */,
 				9C452FB22242DB0000924FA5 /* CartBuilder.swift in Sources */,
+				9CD2B1C423827A7300927979 /* eStoreAPI.swift in Sources */,
 				9CC46BB72214C3FC005E24F5 /* AuthBuilder.swift in Sources */,
 				9CC46BD022153918005E24F5 /* SignUpCoordinator.swift in Sources */,
 				9CA41924222324DE00BAF215 /* ProductsListContract.swift in Sources */,
