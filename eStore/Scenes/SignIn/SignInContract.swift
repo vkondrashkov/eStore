@@ -11,6 +11,8 @@ import UIKit
 protocol SignInDependency: AnyObject {
     var parent: UINavigationController { get }
     var themeManager: ThemeManager { get }
+    var credentialsValidatorUseCase: CredentialsValidatorUseCase { get }
+    var authorizationUseCase: AuthorizationUseCase { get }
     var alertFactory: AlertFactory { get }
 }
 
