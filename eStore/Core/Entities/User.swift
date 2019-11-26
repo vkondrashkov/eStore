@@ -6,4 +6,30 @@
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
 //
 
-import Foundation
+class User {
+    enum Role: Int {
+        case guest
+        case authorized
+        case contentMaker
+        case moderator
+        case admin
+    }
+
+    let id: String
+    let username: String
+    let email: String?
+    let fullname: String?
+    let role: User.Role
+
+    init(id: String,
+         username: String,
+         email: String?,
+         fullname: String?,
+         role: User.Role) {
+        self.id = id
+        self.username = username
+        self.email = email
+        self.fullname = fullname
+        self.role = role
+    }
+}
