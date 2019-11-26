@@ -22,7 +22,10 @@ extension RootBuilderImpl: RootBuilder {
         let view = RootViewImpl()
         let component = RootComponent(
             rootViewController: view,
+            authorizationRepository: dependency.authorizationRepository,
+            userRepository: dependency.userRepository,
             themeManager: dependency.themeManager,
+            userMapper: UserMapperImpl(),
             alertFactory: dependency.alertFactory
         )
         let scene = RootSceneImpl(window: dependency.parent)
@@ -32,8 +35,13 @@ extension RootBuilderImpl: RootBuilder {
                                           show: view,
                                           dashboardBuilder: dashboardBuilder,
                                           authBuilder: authBuilder)
-        let presenter = RootPresenterImpl(view: view,
-                                          router: coordinator)
+        let presenter = RootPresenterImpl(
+            view: view,
+            router: coordinator,
+            interactor: RootInteractorImpl(
+                userRepository: dependency.userRepository
+            )
+        )
         view.presenter = presenter
         return coordinator
     }

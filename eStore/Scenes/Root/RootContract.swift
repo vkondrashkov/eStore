@@ -38,3 +38,7 @@ protocol RootView: AnyObject { }
 protocol RootPresenter: AnyObject {
     func handleViewAppear()
 }
+
+protocol RootInteractor: AnyObject {
+    func loadUser(completion: ((Bool) -> Void)?)
+}
