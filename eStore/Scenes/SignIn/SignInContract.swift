@@ -39,7 +39,9 @@ protocol SignInListener: AnyObject {
 protocol SignInView: AnyObject, ThemeUpdatable, AlertDisplayable {
     func display(rightBarButton: String)
     func display(emailCaption: String)
+    func display(emailError: String)
     func display(passwordCaption: String)
+    func display(passwordError: String)
     func display(signInButton: String)
     func display(forgotPasswordButton: String)
     func showActivityIndicator()
