@@ -8,7 +8,6 @@
 
 import Moya
 import ObjectMapper
-import Result
 
 enum ProductsRepositoryError: Error {
     case invalidInput
