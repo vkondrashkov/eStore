@@ -11,14 +11,20 @@ import UIKit
 final class AuthComponent {
     let rootViewController: UINavigationController
     let themeManager: ThemeManager
+    let credentialsValidatorUseCase: CredentialsValidatorUseCase
+    let authorizationUseCase: AuthorizationUseCase
     let alertFactory: AlertFactory
 
     init(rootViewController: UINavigationController,
          themeManager: ThemeManager,
+         credentialsValidatorUseCase: CredentialsValidatorUseCase,
+         authorizationUseCase: AuthorizationUseCase,
          alertFactory: AlertFactory) {
 
         self.rootViewController = rootViewController
         self.themeManager = themeManager
+        self.credentialsValidatorUseCase = credentialsValidatorUseCase
+        self.authorizationUseCase = authorizationUseCase
         self.alertFactory = alertFactory
     }
 }

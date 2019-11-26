@@ -10,7 +10,10 @@ import UIKit
 
 protocol AuthDependency: AnyObject {
     var parent: UIViewController { get }
+    var authorizationRepository: AuthorizationRepository { get }
+    var userRepository: UserRepository { get }
     var themeManager: ThemeManager { get }
+    var userMapper: UserMapper { get }
     var alertFactory: AlertFactory { get }
 }
 
