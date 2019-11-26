@@ -9,6 +9,8 @@
 import Moya
 
 enum eStoreAPI {
+    case authorize(login: String, password: String)
+
     case smartphones
     case smartphone(id: String)
     case deleteSmartphone(id: String)
@@ -30,6 +32,8 @@ extension eStoreAPI: TargetType {
 
     var path: String {
         switch self {
+        case .authorize:
+            return "/authorize"
         case .smartphones:
             return "/smartphones"
         case .smartphone(let id):
@@ -53,6 +57,8 @@ extension eStoreAPI: TargetType {
 
     var method: Method {
         switch self {
+        case .authorize:
+            return .post
         case .deleteSmartphone, .deleteLaptop, .deleteTV:
             return .delete
         default:
@@ -62,6 +68,8 @@ extension eStoreAPI: TargetType {
 
     var sampleData: Data {
         switch self {
+        case .authorize(let login, let password):
+            return stubbedResponse("authorize-\(login)-\(password)")
         case .smartphones:
             return stubbedResponse("products-smartphones")
         case .smartphone(let id):
