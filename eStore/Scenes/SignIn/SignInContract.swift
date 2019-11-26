@@ -54,5 +54,19 @@ protocol SignInPresenter: AnyObject {
     func shouldViewAppear()
     func handleRightBarButtonPress()
     func handleForgotPasswordPress()
-    func handleSignInButtonPress()
+    func handleSignInButtonPress(login: String?, password: String?)
+}
+
+enum SignInInteractorError: Error {
+    case invalidData
+    case failed
+}
+
+protocol SignInInteractor {
+    func validate(email: String) -> Bool
+    func validate(username: String) -> Bool
+    func validate(password: String) -> Bool
+    func signIn(login: String,
+                password: String,
+                completion: ((Result<User, SignInInteractorError>) -> Void)?)
 }

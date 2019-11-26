@@ -11,14 +11,17 @@ import Foundation
 final class SignInPresenterImpl {
     private unowned let view: SignInView
     private unowned let router: SignInRouter
+    private let interactor: SignInInteractor
     private unowned let themeManager: ThemeManager
 
     init(view: SignInView,
          router: SignInRouter,
+         interactor: SignInInteractor,
          themeManager: ThemeManager) {
 
         self.view = view
         self.router = router
+        self.interactor = interactor
         self.themeManager = themeManager
         self.themeManager.add(observer: self)
     }
