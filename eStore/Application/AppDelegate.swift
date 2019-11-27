@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Moya
 import SnapKit
 
 @UIApplicationMain
@@ -22,6 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let component = AppComponent(
             window: window,
+            authorizationRepository: AuthorizationRepositoryImpl(
+                provider: MoyaProvider<eStoreAPI>(),
+                userMapper: UserMapperImpl()
+            ),
+            userRepository: UserRepositoryImpl(),
             themeManager: themeManager,
             alertFactory: alertFactory
         )

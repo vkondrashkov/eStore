@@ -15,11 +15,11 @@ final class SignInViewImpl: UIViewController {
 
     private var containerView: UIView!
     private var emailCaption: UILabel!
+    private var emailStatusLabel: UILabel!
     private var emailTextField: UITextField!
     private var passwordCaption: UILabel!
+    private var passwordStatusLabel: UILabel!
     private var passwordTextField: UITextField!
-    private var confirmPasswordCaption: UILabel!
-    private var confirmPasswordTextField: UITextField!
     private var signInButton: UIButton!
     private var forgotPasswordButton: UIButton!
     private var activityIndicator: UIActivityIndicatorView!
@@ -53,6 +53,14 @@ final class SignInViewImpl: UIViewController {
             make.height.equalTo(40)
         }
 
+        emailStatusLabel = UILabel()
+        containerView.addSubview(emailStatusLabel)
+        emailStatusLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalTo(emailTextField.snp.top).offset(-10)
+        }
+
         passwordCaption = UILabel()
         containerView.addSubview(passwordCaption)
         passwordCaption.snp.makeConstraints { make in
@@ -66,6 +74,14 @@ final class SignInViewImpl: UIViewController {
             make.top.equalTo(passwordCaption.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(40)
+        }
+
+        passwordStatusLabel = UILabel()
+        containerView.addSubview(passwordStatusLabel)
+        passwordStatusLabel.snp.makeConstraints { make in
+            make.top.equalTo(emailTextField.snp.bottom).offset(20)
+            make.trailing.equalToSuperview()
+            make.bottom.equalTo(passwordTextField.snp.top).offset(-10)
         }
 
         signInButton = UIButton()
@@ -96,10 +112,16 @@ final class SignInViewImpl: UIViewController {
 
         emailCaption.font = .boldSystemFont(ofSize: 17)
 
+        emailStatusLabel.font = .boldSystemFont(ofSize: 17)
+        emailStatusLabel.textAlignment = .right
+
         emailTextField.borderStyle = .roundedRect
         emailTextField.keyboardType = .emailAddress
 
         passwordCaption.font = .boldSystemFont(ofSize: 17)
+
+        passwordStatusLabel.font = .boldSystemFont(ofSize: 17)
+        passwordStatusLabel.textAlignment = .right
 
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.isSecureTextEntry = true
@@ -128,7 +150,10 @@ final class SignInViewImpl: UIViewController {
     }
 
     @objc private func signInButtonDidPressed() {
-        presenter.handleSignInButtonPress()
+        presenter.handleSignInButtonPress(
+            login: emailTextField.text,
+            password: passwordTextField.text
+        )
     }
 
     @objc private func forgotPasswordButtonDidPressed() {
@@ -161,8 +186,18 @@ extension SignInViewImpl: SignInView {
         self.emailCaption.text = emailCaption
     }
 
+    func display(emailError: String) {
+        self.emailStatusLabel.text = emailError
+        self.emailStatusLabel.textColor = Color.redPigment
+    }
+
     func display(passwordCaption: String) {
         self.passwordCaption.text = passwordCaption
+    }
+
+    func display(passwordError: String) {
+        self.passwordStatusLabel.text = passwordError
+        self.passwordStatusLabel.textColor = Color.redPigment
     }
 
     func display(signInButton: String) {

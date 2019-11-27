@@ -32,7 +32,6 @@ final class RootCoordinator {
 extension RootCoordinator: Coordinator {
     func start() {
         scene.play(rootShow: show)
-        showAuth()
     }
 
     func stop(completion: (() -> Void)?) {

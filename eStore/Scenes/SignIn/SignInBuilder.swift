@@ -29,6 +29,10 @@ extension SignInBuilderImpl: SignInBuilder {
         let presenter = SignInPresenterImpl(
             view: view,
             router: coordinator,
+            interactor: SignInInteractorImpl(
+                credentialsValidatorUseCase: dependency.credentialsValidatorUseCase,
+                authorizationUseCase: dependency.authorizationUseCase
+            ),
             themeManager: dependency.themeManager
         )
         view.presenter = presenter

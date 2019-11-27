@@ -5,7 +5,7 @@ use_frameworks!
 target 'eStore' do
     pod 'ObjectMapper', '~> 3.4'
     pod 'SnapKit', '~> 4.0.0'
-    pod 'Moya', '~> 13.0'
+    pod 'Moya', '14.0.0-beta.5'
     target 'Tests' do
         inherit! :search_paths
 

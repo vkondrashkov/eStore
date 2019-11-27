@@ -24,6 +24,12 @@ extension AuthBuilderImpl: AuthBuilder {
         let component = AuthComponent(
             rootViewController: view,
             themeManager: dependency.themeManager,
+            credentialsValidatorUseCase: CredentialsValidatorUseCaseImpl(),
+            authorizationUseCase: AuthorizationUseCaseImpl(
+                authorizationRepository: dependency.authorizationRepository,
+                userRepository: dependency.userRepository,
+                userMapper: dependency.userMapper
+            ),
             alertFactory: dependency.alertFactory
         )
         let scene = AuthSceneImpl(rootViewController: dependency.parent)

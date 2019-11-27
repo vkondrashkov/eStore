@@ -1,18 +1,16 @@
 PODS:
-  - Alamofire (4.9.1)
-  - Moya (13.0.1):
-    - Moya/Core (= 13.0.1)
-  - Moya/Core (13.0.1):
-    - Alamofire (~> 4.1)
-    - Result (~> 4.1)
+  - Alamofire (5.0.0-rc.3)
+  - Moya (14.0.0-beta.5):
+    - Moya/Core (= 14.0.0-beta.5)
+  - Moya/Core (14.0.0-beta.5):
+    - Alamofire (= 5.0.0-rc.3)
   - Nimble (8.0.1)
   - ObjectMapper (3.4.2)
   - Quick (2.0.0)
-  - Result (4.1.0)
   - SnapKit (4.0.1)
 
 DEPENDENCIES:
-  - Moya (~> 13.0)
+  - Moya (= 14.0.0-beta.5)
   - Nimble
   - ObjectMapper (~> 3.4)
   - Quick
@@ -25,18 +23,16 @@ SPEC REPOS:
     - Nimble
     - ObjectMapper
     - Quick
-    - Result
     - SnapKit
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
+  Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
+  Moya: 2c16c3fe92eda302070213452281b59198f946d8
   Nimble: 45f786ae66faa9a709624227fae502db55a8bdd0
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   Quick: ce1276c7c27ba2da3cb2fd0cde053c3648b3b22d
-  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
 
-PODFILE CHECKSUM: c11d842066e53ac014044cdd28edc5549f9a2e12
+PODFILE CHECKSUM: 1a57c57eff573d7f7c838eae0b937317867a1e20
 
 COCOAPODS: 1.8.4

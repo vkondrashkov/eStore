@@ -10,6 +10,8 @@ import UIKit
 
 protocol RootDependency: AnyObject {
     var parent: UIWindow { get }
+    var authorizationRepository: AuthorizationRepository { get }
+    var userRepository: UserRepository { get }
     var themeManager: ThemeManager { get }
     var alertFactory: AlertFactory { get }
 }
@@ -35,4 +37,8 @@ protocol RootView: AnyObject { }
 
 protocol RootPresenter: AnyObject {
     func handleViewAppear()
+}
+
+protocol RootInteractor: AnyObject {
+    func loadUser(completion: ((Bool) -> Void)?)
 }
