@@ -11,6 +11,7 @@ import Foundation
 final class ProductsListPresenterImpl {
     private unowned let view: ProductsListView
     private unowned let router: ProductsListRouter
+    private let interactor: ProductsListInteractor
     private let productsService: ProductsService
     private unowned let themeManager: ThemeManager
     
@@ -18,12 +19,14 @@ final class ProductsListPresenterImpl {
     
     init(view: ProductsListView,
          router: ProductsListRouter,
+         interactor: ProductsListInteractor,
          productsService: ProductsService,
          productType: ProductType,
          themeManager: ThemeManager) {
         
         self.view = view
         self.router = router
+        self.interactor = interactor
         self.productsService = productsService
         self.productType = productType
         self.themeManager = themeManager
@@ -38,31 +41,31 @@ extension ProductsListPresenterImpl: ProductsListPresenter {
         
         switch productType {
         case .Smartphone:
-            productsService.getSmartphone(completion: { [weak self] result in
-                guard let storeItemList = result else {
-                    // TODO: Error handling
+            interactor.fetchSmartphones(completion: { [weak self] result in
+                self?.view.hideActivityIndicator()
+                guard let smartphones = result.value else {
                     return
                 }
-                self?.view.display(storeItemList: storeItemList)
-                self?.view.hideActivityIndicator()
+                let storeItems = smartphones.map { $0.toStoreItem() }
+                self?.view.display(storeItemList: storeItems)
             })
         case .Laptop:
-            productsService.getLaptops(completion: { [weak self] result in
-                guard let storeItemList = result else {
-                    // TODO: Error handling
+            interactor.fetchLaptops(completion: { [weak self] result in
+                self?.view.hideActivityIndicator()
+                guard let laptops = result.value else {
                     return
                 }
-                self?.view.display(storeItemList: storeItemList)
-                self?.view.hideActivityIndicator()
+                let storeItems = laptops.map { $0.toStoreItem() }
+                self?.view.display(storeItemList: storeItems)
             })
         case .TV:
-            productsService.getTV(completion: { [weak self] result in
-                guard let storeItemList = result else {
-                    // TODO: Error handling
+            interactor.fetchTVs(completion: { [weak self] result in
+                self?.view.hideActivityIndicator()
+                guard let tvs = result.value else {
                     return
                 }
-                self?.view.display(storeItemList: storeItemList)
-                self?.view.hideActivityIndicator()
+                let storeItems = tvs.map { $0.toStoreItem() }
+                self?.view.display(storeItemList: storeItems)
             })
         }
     }

@@ -37,6 +37,9 @@ extension ProductsListBuilderImpl: ProductsListBuilder {
         let presenter = ProductsListPresenterImpl(
             view: view,
             router: coordinator,
+            interactor: ProductsListInteractorImpl(
+                productsUseCase: dependency.productsUseCase
+            ),
             productsService: dependency.productsService,
             productType: productType,
             themeManager: dependency.themeManager

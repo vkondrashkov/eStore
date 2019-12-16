@@ -10,6 +10,7 @@ import UIKit
 
 protocol ProductsListDependency: AnyObject {
     var navigation: UINavigationController { get }
+    var productsUseCase: ProductsUseCase { get }
     var productsService: ProductsService { get }
     var themeManager: ThemeManager { get }
     var alertFactory: AlertFactory { get }
@@ -40,4 +41,14 @@ protocol ProductsListView: AnyObject, ThemeUpdatable {
 protocol ProductsListPresenter: AnyObject {
     func handleLoadView()
     func handleProductPress(storeItem: StoreItem)
+}
+
+enum ProductsListInteractorError: Error {
+    case failed
+}
+
+protocol ProductsListInteractor: AnyObject {
+    func fetchSmartphones(completion: @escaping (Result<[Smartphone], ProductsListInteractorError>) -> Void)
+    func fetchTVs(completion: @escaping (Result<[TV], ProductsListInteractorError>) -> Void)
+    func fetchLaptops(completion: @escaping (Result<[Laptop], ProductsListInteractorError>) -> Void)
 }
