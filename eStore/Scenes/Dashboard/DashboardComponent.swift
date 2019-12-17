@@ -8,11 +8,13 @@
 
 import UIKit
 
-final class DashboardComponent {
+final class DashboardComponent: CatalogDependency, CartDependency, ProfileDependency {
     let rootViewController: UITabBarController
     let catalogNavigation: UINavigationController
     let cartNavigation: UINavigationController
     let profileNavigation: UINavigationController
+    let userRepository: UserRepository
+    let cartRepository: CartRepository
     let themeManager: ThemeManager
     let alertFactory: AlertFactory
 
@@ -20,23 +22,17 @@ final class DashboardComponent {
          catalogNavigation: UINavigationController,
          cartNavigation: UINavigationController,
          profileNavigation: UINavigationController,
+         userRepository: UserRepository,
+         cartRepository: CartRepository,
          themeManager: ThemeManager,
          alertFactory: AlertFactory) {
-
         self.rootViewController = rootViewController
         self.catalogNavigation = catalogNavigation
         self.cartNavigation = cartNavigation
         self.profileNavigation = profileNavigation
+        self.userRepository = userRepository
+        self.cartRepository = cartRepository
         self.themeManager = themeManager
         self.alertFactory = alertFactory
     }
 }
-
-// MARK: - ProfileDependency implementation
-extension DashboardComponent: ProfileDependency { }
-
-// MARK: - CartDependency implementation
-extension DashboardComponent: CartDependency { }
-
-// MARK: - CatalogDependency implementation
-extension DashboardComponent: CatalogDependency { }

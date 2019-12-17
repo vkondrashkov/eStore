@@ -11,6 +11,7 @@ import UIKit
 protocol DashboardDependency: AnyObject {
     var parent: UIViewController { get }
     var themeManager: ThemeManager { get }
+    var userRepository: UserRepository { get }
     var alertFactory: AlertFactory { get }
 }
 
