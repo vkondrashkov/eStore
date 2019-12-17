@@ -38,6 +38,9 @@ extension ProfileBuilderImpl: ProfileBuilder {
         let presenter = ProfilePresenterImpl(
             view: view,
             router: coordinator,
+            interactor: ProfileInteractorImpl(
+                userRepository: dependency.userRepository
+            ),
             themeManager: dependency.themeManager
         )
         view.presenter = presenter
