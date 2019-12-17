@@ -8,22 +8,38 @@
 
 final class ProductDescriptionInteractorImpl {
     private let cartRepository: CartRepository
+    private let userRepository: UserRepository
 
-    init(cartRepository: CartRepository) {
+    init(cartRepository: CartRepository,
+         userRepository: UserRepository) {
         self.cartRepository = cartRepository
+        self.userRepository = userRepository
     }
 }
 
 // MARK: - ProductDescriptionInteractor implementation
 
 extension ProductDescriptionInteractorImpl: ProductDescriptionInteractor {
-    func addToCart(id: Int, productTypeId: Int, completion: @escaping (ProductDescriptionInteractorError?) -> Void) {
-        cartRepository.add(id: id, productTypeId: productTypeId, completion: { error in
-            guard error == nil else {
-                completion(.failed)
-                return
+    var currentUser: User? {
+        return userRepository.currentUser
+    }
+
+    func addToCart(productId: Int, productTypeId: Int, completion: @escaping (ProductDescriptionInteractorError?) -> Void) {
+        guard let user = userRepository.currentUser else {
+            completion(.notAuthorized)
+            return
+        }
+        self.cartRepository.add(
+            userId: user.id,
+            productId: productId,
+            productTypeId: productTypeId,
+            completion: { error in
+                guard error == nil else {
+                    completion(.failed)
+                    return
+                }
+                completion(nil)
             }
-            completion(nil)
-        })
+        )
     }
 }

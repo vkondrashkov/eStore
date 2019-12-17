@@ -10,6 +10,7 @@ import UIKit
 
 protocol ProductDescriptionDependency: AnyObject {
     var navigation: UINavigationController { get }
+    var userRepository: UserRepository { get }
     var cartRepository: CartRepository { get }
     var themeManager: ThemeManager { get }
     var alertFactory: AlertFactory { get }
@@ -36,8 +37,10 @@ protocol ProductDescriptionPresenter: AnyObject {
 
 enum ProductDescriptionInteractorError: Error {
     case failed
+    case notAuthorized
 }
 
 protocol ProductDescriptionInteractor {
-    func addToCart(id: Int, productTypeId: Int, completion: @escaping (ProductDescriptionInteractorError?) -> Void)
+    var currentUser: User? { get }
+    func addToCart(productId: Int, productTypeId: Int, completion: @escaping (ProductDescriptionInteractorError?) -> Void)
 }

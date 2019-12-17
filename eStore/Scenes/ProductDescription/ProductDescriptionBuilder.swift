@@ -32,7 +32,8 @@ extension ProductDescriptionBuilderImpl: ProductDescriptionBuilder {
         let presenter = ProductDescriptionPresenterImpl(
             view: view,
             interactor: ProductDescriptionInteractorImpl(
-                cartRepository: dependency.cartRepository
+                cartRepository: dependency.cartRepository,
+                userRepository: dependency.userRepository
             ),
             themeManager: dependency.themeManager
         )

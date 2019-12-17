@@ -28,8 +28,8 @@ extension ProductDescriptionPresenterImpl: ProductDescriptionPresenter {
     func handleLoadView() { }
 
     func cartAddButtonDidPress(id: Int, productTypeId: Int) {
-        interactor.addToCart(id: id, productTypeId: productTypeId, completion: { [weak self] error in
-            if let error = error {
+        interactor.addToCart(productId: id, productTypeId: productTypeId, completion: { [weak self] error in
+            if error != nil {
                 let alert = Alert(
                     title: "Oops...",
                     message: "Something went wrong. Try again later.",
