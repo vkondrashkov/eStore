@@ -25,7 +25,7 @@ extension CatalogBuilderImpl: CatalogBuilder {
         let component = CatalogComponent(
             navigation: dependency.catalogNavigation,
             productsUseCase: ProductsUseCaseImpl(
-                repository: ProductsRepositoryImpl(provider: MoyaProvider<eStoreAPI>(stubClosure: MoyaProvider.immediatelyStub))
+                repository: ProductsRepositoryImpl(provider: MoyaProvider<eStoreAPI>())
             ),
             productsService: ProductsServiceImpl(),
             themeManager: dependency.themeManager,

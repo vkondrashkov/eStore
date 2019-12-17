@@ -11,9 +11,9 @@ import UIKit
 class CategoryTableViewDataSource: NSObject, UITableViewDataSource {
     var theme: Theme!
     var categories: [Category] = [
-        Category(iconUrl: "smartphone-icon", name: "Smartphone"),
-        Category(iconUrl: "tv-icon", name: "TV"),
-        Category(iconUrl: "laptop-icon", name: "Laptop")
+        Category(iconUrl: "smartphone-icon", name: "Smartphone", productId: 0),
+        Category(iconUrl: "laptop-icon", name: "Laptop", productId: 1),
+        Category(iconUrl: "tv-icon", name: "TV", productId: 2)
     ]
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

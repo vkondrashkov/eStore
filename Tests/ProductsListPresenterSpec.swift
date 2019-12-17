@@ -73,7 +73,7 @@ final class ProductsListPresenterSpec: QuickSpec {
                         view: productsListViewDummy,
                         router: productsListRouterDummy,
                         productsService: productsServiceSpy,
-                        productType: .Smartphone,
+                        productType: .smartphone,
                         themeManager: themeManagerDummy
                     )
                     productsListPresenter.handleLoadView()

@@ -9,36 +9,33 @@
 import ObjectMapper
 
 class TV: ImmutableMappable {
-    let id: String
+    let id: Int
     let imageUrl: String?
     let name: String
-    let brand: String
+    let brandName: String
     let display: Display
     let operatingSystem: OperatingSystem
     let price: Int
-    let stockCount: Int
 
     required init(map: Map) throws {
         id = try map.value("id")
         imageUrl = try? map.value("imageUrl")
         name = try map.value("name")
-        brand = try map.value("brand")
-        operatingSystem = try OperatingSystem(rawValue: map.value("operatingSystem")) ?? .unknown
-        display = Display(width: try map.value("display.width"), height: try map.value("display.height"))
+        brandName = try map.value("brandName")
+        operatingSystem = try OperatingSystem(rawValue: map.value("operatingSystemRawValue")) ?? .unknown
+        display = Display(width: try map.value("resolutionWidth"), height: try map.value("resolutionHeight"))
         price = try map.value("price")
-        stockCount = try map.value("stockCount")
     }
 
     func mapping(map: Map) {
         id >>> map["id"]
         imageUrl >>> map["imageUrl"]
         name >>> map["name"]
-        brand >>> map["brand"]
-        operatingSystem.rawValue >>> map["operatingSystem"]
+        brandName >>> map["brandName"]
+        operatingSystem.rawValue >>> map["operatingSystemRawValue"]
         display.width >>> map["display.width"]
         display.height >>> map["display.height"]
         price >>> map["price"]
-        stockCount >>> map["stockCount"]
     }
 }
 
@@ -52,11 +49,11 @@ extension TV: StoreItemConvertible {
             id: id,
             imageUrl: imageUrl,
             name: name,
-            brand: brand,
-            type: .TV,
+            brand: brandName,
+            type: .tv,
             specifications: specifications,
             price: price,
-            stockCount: stockCount
+            stockCount: 1
         )
         return storeItem
     }

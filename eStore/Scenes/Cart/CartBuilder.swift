@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Moya
 
 final class CartBuilderImpl {
     private let dependency: CartDependency
@@ -28,6 +29,11 @@ extension CartBuilderImpl: CartBuilder {
         let presenter = CartPresenterImpl(
             view: view,
             router: coordinator,
+            interactor: CartInteractorImpl(
+                cartRepository: CartRepositoryImpl(
+                    provider: MoyaProvider<eStoreAPI>()
+                )
+            ),
             themeManager: dependency.themeManager
         )
         view.presenter = presenter

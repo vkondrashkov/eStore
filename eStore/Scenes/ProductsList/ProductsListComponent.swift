@@ -8,20 +8,20 @@
 
 import UIKit
 
-final class ProductsListComponent {
+final class ProductsListComponent: ProductDescriptionDependency {
     let navigation: UINavigationController
+    let cartRepository: CartRepository
     let themeManager: ThemeManager
     let alertFactory: AlertFactory
     
     init(navigation: UINavigationController,
+         cartRepository: CartRepository,
          themeManager: ThemeManager,
          alertFactory: AlertFactory) {
 
         self.navigation = navigation
+        self.cartRepository = cartRepository
         self.themeManager = themeManager
         self.alertFactory = alertFactory
     }
 }
-
-// MARK: - ProductDescriptionDependency implementation
-extension ProductsListComponent: ProductDescriptionDependency { }

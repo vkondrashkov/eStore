@@ -27,10 +27,9 @@ final class CatalogPresenterImpl {
 // MARK: - CatalogPresenter implementation
 extension CatalogPresenterImpl: CatalogPresenter {
     func handleLoadView() { }
-    
-    // TEMP
-    func handleCategoryPress(title: String) {
-        router.showProductsList(title: title)
+
+    func handleCategoryPress(productId: Int) {
+        router.showProductsList(productId: productId)
     }
 }
 

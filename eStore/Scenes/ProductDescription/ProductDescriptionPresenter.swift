@@ -10,11 +10,14 @@ import Foundation
 
 final class ProductDescriptionPresenterImpl {
     private unowned let view: ProductDescriptionView
+    private let interactor: ProductDescriptionInteractor
     private unowned let themeManager: ThemeManager
     
     init(view: ProductDescriptionView,
+         interactor: ProductDescriptionInteractor,
          themeManager: ThemeManager) {
         self.view = view
+        self.interactor = interactor
         self.themeManager = themeManager
         self.themeManager.add(observer: self)
     }
@@ -24,17 +27,21 @@ final class ProductDescriptionPresenterImpl {
 extension ProductDescriptionPresenterImpl: ProductDescriptionPresenter {
     func handleLoadView() { }
 
-    func cartAddButtonDidPress() {
-        let alert = Alert(
-            title: "Oops...",
-            message: "Unfortunately this feature is unavailable, try again later.",
-            alertType: .singleAction,
-            primaryCaption: "OK",
-            primaryAction: nil,
-            secondaryCaption: nil,
-            secondaryAction: nil
-        )
-        view.display(alert: alert)
+    func cartAddButtonDidPress(id: Int, productTypeId: Int) {
+        interactor.addToCart(id: id, productTypeId: productTypeId, completion: { [weak self] error in
+            if let error = error {
+                let alert = Alert(
+                    title: "Oops...",
+                    message: "Something went wrong. Try again later.",
+                    alertType: .singleAction,
+                    primaryCaption: "OK",
+                    primaryAction: nil,
+                    secondaryCaption: nil,
+                    secondaryAction: nil
+                )
+                self?.view.display(alert: alert)
+            }
+        })
     }
 }
 

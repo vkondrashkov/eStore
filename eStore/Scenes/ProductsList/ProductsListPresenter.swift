@@ -40,7 +40,7 @@ extension ProductsListPresenterImpl: ProductsListPresenter {
         view.showActivityIndicator()
         
         switch productType {
-        case .Smartphone:
+        case .smartphone:
             interactor.fetchSmartphones(completion: { [weak self] result in
                 self?.view.hideActivityIndicator()
                 guard let smartphones = result.value else {
@@ -49,7 +49,7 @@ extension ProductsListPresenterImpl: ProductsListPresenter {
                 let storeItems = smartphones.map { $0.toStoreItem() }
                 self?.view.display(storeItemList: storeItems)
             })
-        case .Laptop:
+        case .laptop:
             interactor.fetchLaptops(completion: { [weak self] result in
                 self?.view.hideActivityIndicator()
                 guard let laptops = result.value else {
@@ -58,7 +58,7 @@ extension ProductsListPresenterImpl: ProductsListPresenter {
                 let storeItems = laptops.map { $0.toStoreItem() }
                 self?.view.display(storeItemList: storeItems)
             })
-        case .TV:
+        case .tv:
             interactor.fetchTVs(completion: { [weak self] result in
                 self?.view.hideActivityIndicator()
                 guard let tvs = result.value else {

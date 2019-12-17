@@ -11,7 +11,7 @@ protocol StoreItemConvertible {
 }
 
 class StoreItem {
-    let id: String
+    let id: Int
     let imageUrl: String?
     let name: String
     let brand: String
@@ -20,7 +20,7 @@ class StoreItem {
     let price: Int
     let stockCount: Int
 
-    init(id: String,
+    init(id: Int,
          imageUrl: String?,
          name: String,
          brand: String,

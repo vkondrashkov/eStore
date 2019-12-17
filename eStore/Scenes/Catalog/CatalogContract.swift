@@ -27,13 +27,12 @@ protocol CatalogShow: AnyObject {
 }
 
 protocol CatalogRouter: AnyObject {
-    // TODO: Refactor show(_:) method
-    func showProductsList(title: String)
+    func showProductsList(productId: Int)
 }
 
 protocol CatalogView: AnyObject, ThemeUpdatable { }
 
 protocol CatalogPresenter: AnyObject {
     func handleLoadView()
-    func handleCategoryPress(title: String) // TEMP
+    func handleCategoryPress(productId: Int)
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Moya
 
 final class ProductsListBuilderImpl {
     private let dependency: ProductsListDependency
@@ -20,10 +21,11 @@ final class ProductsListBuilderImpl {
 extension ProductsListBuilderImpl: ProductsListBuilder {
     func build(with productType: ProductType) -> ProductsListCoordinator {
         let view = ProductsListViewImpl()
-        view.title = productType.rawValue
+        view.title = productType.title
         view.theme = dependency.themeManager.currentTheme
         let component = ProductsListComponent(
             navigation: dependency.navigation,
+            cartRepository: CartRepositoryImpl(provider: MoyaProvider<eStoreAPI>()),
             themeManager: dependency.themeManager,
             alertFactory: dependency.alertFactory
         )

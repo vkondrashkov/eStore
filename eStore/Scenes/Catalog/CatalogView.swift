@@ -93,7 +93,7 @@ extension CatalogViewImpl: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter.handleCategoryPress(title: categoryTableViewDataSource.categories[indexPath.row].name)
+        presenter.handleCategoryPress(productId: categoryTableViewDataSource.categories[indexPath.row].productId)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

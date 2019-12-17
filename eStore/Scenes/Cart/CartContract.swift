@@ -40,3 +40,12 @@ protocol CartPresenter: AnyObject {
     func handleLoadView()
     func handleProductPress(storeItem: StoreItem)
 }
+
+enum CartInteractorError: Error {
+    case failed
+    case invalidData
+}
+
+protocol CartInteractor: AnyObject {
+    func fetch(completion: @escaping (Result<[CartItem], CartInteractorError>) -> Void)
+}

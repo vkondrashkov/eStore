@@ -6,6 +6,7 @@
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
 //
 
+import Alamofire
 import Moya
 
 enum eStoreAPI {
@@ -22,12 +23,17 @@ enum eStoreAPI {
     case tvs
     case tv(id: String)
     case deleteTV(id: String)
+
+    case cart
+    case addCart(id: Int, productId: Int)
+    case deleteCart(id: Int)
 }
 
 // MARK: TargetType implementation
 extension eStoreAPI: TargetType {
     var baseURL: URL {
         return URL(string: "http://localhost:8080")!
+        //return URL(string: "http://192.168.0.100:8080")!
     }
 
     var path: String {
@@ -35,34 +41,53 @@ extension eStoreAPI: TargetType {
         case .authorize:
             return "/authorize"
         case .smartphones:
-            return "/smartphones"
+            return "/smartphone"
         case .smartphone(let id):
-            return "/smartphones/\(id)"
+            return "/smartphone/\(id)"
         case .deleteSmartphone(let id):
-            return "/smartphones/\(id)"
+            return "/smartphone/\(id)"
         case .laptops:
-            return "/laptops"
+            return "/laptop"
         case .laptop(let id):
-            return "/laptops/\(id)"
+            return "/laptop/\(id)"
         case .deleteLaptop(let id):
-            return "/laptops/\(id)"
+            return "/laptop/\(id)"
         case .tvs:
-            return "/tvs"
+            return "/tv"
         case .tv(let id):
-            return "/tvs/\(id)"
+            return "/tv/\(id)"
         case .deleteTV(let id):
-            return "/tvs/\(id)"
+            return "/tv/\(id)"
+        case .cart:
+            return "/cart"
+        case .addCart:
+            return "/cart"
+        case .deleteCart(let id):
+            return "/cart/\(id)"
         }
     }
 
-    var method: Method {
+    var method: Moya.Method {
         switch self {
-        case .authorize:
+        case .authorize, .addCart:
             return .post
-        case .deleteSmartphone, .deleteLaptop, .deleteTV:
+        case .deleteSmartphone, .deleteLaptop, .deleteTV,
+             .deleteCart:
             return .delete
         default:
             return .get
+        }
+    }
+
+    var parameters: [String: Any]? {
+        switch self {
+        case .addCart(let id, let productId):
+            return [
+                "productId": id,
+                "productTypeId": productId
+            ]
+        default:
+            return nil
         }
     }
 
@@ -88,6 +113,9 @@ extension eStoreAPI: TargetType {
     }
 
     var task: Task {
+        if let parameters = self.parameters {
+            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
+        }
         return .requestPlain // TEMP
     }
 

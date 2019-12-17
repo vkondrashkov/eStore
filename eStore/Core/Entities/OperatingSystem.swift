@@ -6,8 +6,8 @@
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
 //
 
-enum OperatingSystem: String {
-    case iOS
+enum OperatingSystem: Int {
+    case iOS = 0
     case Android
     case MacOs
     case Windows

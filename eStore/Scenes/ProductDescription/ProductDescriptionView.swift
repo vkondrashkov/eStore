@@ -97,6 +97,6 @@ extension ProductDescriptionViewImpl: UITableViewDelegate { }
 // MARK: - ProductDescriptionTablePriceCellDelegate implementation
 extension ProductDescriptionViewImpl: ProductDescriptionTablePriceCellDelegate {
     func cartAddButtonDidPress(_ cell: ProductDescriptionTablePriceCell) {
-        presenter.cartAddButtonDidPress()
+        presenter.cartAddButtonDidPress(id: dataSource.item.id, productTypeId: dataSource.item.type.rawValue)
     }
 }

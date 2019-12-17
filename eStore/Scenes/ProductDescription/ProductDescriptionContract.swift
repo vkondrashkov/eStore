@@ -10,6 +10,7 @@ import UIKit
 
 protocol ProductDescriptionDependency: AnyObject {
     var navigation: UINavigationController { get }
+    var cartRepository: CartRepository { get }
     var themeManager: ThemeManager { get }
     var alertFactory: AlertFactory { get }
 }
@@ -30,5 +31,13 @@ protocol ProductDescriptionView: AnyObject, ThemeUpdatable, AlertDisplayable { }
 
 protocol ProductDescriptionPresenter: AnyObject {
     func handleLoadView()
-    func cartAddButtonDidPress()
+    func cartAddButtonDidPress(id: Int, productTypeId: Int)
+}
+
+enum ProductDescriptionInteractorError: Error {
+    case failed
+}
+
+protocol ProductDescriptionInteractor {
+    func addToCart(id: Int, productTypeId: Int, completion: @escaping (ProductDescriptionInteractorError?) -> Void)
 }
