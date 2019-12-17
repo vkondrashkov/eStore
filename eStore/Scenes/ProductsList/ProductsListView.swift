@@ -98,6 +98,15 @@ extension ProductsListViewImpl: ThemeUpdatable {
     }
 }
 
+// MARK: - AlertDisplayable implementation
+
+extension ProductsListViewImpl: AlertDisplayable {
+    func display(alert: Alert) {
+        let alertController = AlertFactoryImpl().make(alert: alert)
+        present(alertController, animated: true, completion: nil)
+    }
+}
+
 // MARK: - ProductsListView implementation
 extension ProductsListViewImpl: ProductsListView {
     func showActivityIndicator() {
@@ -146,5 +155,25 @@ extension ProductsListViewImpl: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.handleProductPress(storeItem: productsTableViewDataSource.items[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let actions = presenter.configureEditActions(for: indexPath)
+
+        var tableViewRowActions: [UITableViewRowAction] = []
+        for action in actions {
+            let action = UITableViewRowAction(
+                style: action.isDestructive ? .destructive : .normal,
+                title: action.title,
+                handler: { [weak self] tableRowAction, indexPath in
+                    guard let self = self else { return }
+                    let item = self.productsTableViewDataSource.items[indexPath.row]
+                    action.action?(item)
+                }
+            )
+            tableViewRowActions.append(action)
+        }
+
+        return tableViewRowActions
     }
 }

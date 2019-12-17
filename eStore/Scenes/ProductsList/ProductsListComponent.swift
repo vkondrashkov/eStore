@@ -10,16 +10,18 @@ import UIKit
 
 final class ProductsListComponent: ProductDescriptionDependency {
     let navigation: UINavigationController
+    let userRepository: UserRepository
     let cartRepository: CartRepository
     let themeManager: ThemeManager
     let alertFactory: AlertFactory
     
     init(navigation: UINavigationController,
+         userRepository: UserRepository,
          cartRepository: CartRepository,
          themeManager: ThemeManager,
          alertFactory: AlertFactory) {
-
         self.navigation = navigation
+        self.userRepository = userRepository
         self.cartRepository = cartRepository
         self.themeManager = themeManager
         self.alertFactory = alertFactory

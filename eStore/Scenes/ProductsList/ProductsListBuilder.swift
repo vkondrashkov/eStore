@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Moya
 
 final class ProductsListBuilderImpl {
     private let dependency: ProductsListDependency
@@ -25,7 +24,8 @@ extension ProductsListBuilderImpl: ProductsListBuilder {
         view.theme = dependency.themeManager.currentTheme
         let component = ProductsListComponent(
             navigation: dependency.navigation,
-            cartRepository: CartRepositoryImpl(provider: MoyaProvider<eStoreAPI>()),
+            userRepository: dependency.userRepository,
+            cartRepository: dependency.cartRepository,
             themeManager: dependency.themeManager,
             alertFactory: dependency.alertFactory
         )
@@ -40,9 +40,10 @@ extension ProductsListBuilderImpl: ProductsListBuilder {
             view: view,
             router: coordinator,
             interactor: ProductsListInteractorImpl(
-                productsUseCase: dependency.productsUseCase
+                productsUseCase: dependency.productsUseCase,
+                userRepository: dependency.userRepository,
+                cartRepository: dependency.cartRepository
             ),
-            productsService: dependency.productsService,
             productType: productType,
             themeManager: dependency.themeManager
         )
