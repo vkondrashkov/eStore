@@ -76,6 +76,12 @@ final class CartViewImpl: UIViewController {
         presenter.handleLoadView()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        presenter.shouldViewAppear()
+    }
+
     private func apply(theme: Theme) {
         view.backgroundColor = theme.backgroundColor
         navigationController?.navigationBar.tintColor = theme.tintColor
@@ -173,5 +179,17 @@ extension CartViewImpl: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.handleProductPress(storeItem: cartTableViewDataSource.items[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteTitle = NSLocalizedString("Delete", comment: "Delete action")
+        let deleteAction = UITableViewRowAction(
+            style: .destructive,
+            title: deleteTitle) { action, indexPath in
+                let item = self.cartTableViewDataSource.items[indexPath.row]
+                self.presenter.handleProductDelete(storeItem: item)
+            }
+
+        return [deleteAction]
     }
 }
