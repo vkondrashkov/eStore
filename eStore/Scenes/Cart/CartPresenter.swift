@@ -26,28 +26,37 @@ final class CartPresenterImpl {
         self.themeManager = themeManager
         self.themeManager.add(observer: self)
     }
+
+    private func reloadCart() {
+        interactor.fetch(completion: { [weak self] cartItems in
+            DispatchQueue.main.async {
+                self?.view.hideActivityIndicator()
+                switch cartItems {
+                case .success(let items):
+                    let storeItems = items.map { $0.toStoreItem() }
+                    self?.view.display(storeItemList: storeItems)
+                case .failure:
+                    break
+                    // TODO: display error on screen
+                }
+            }
+        })
+    }
 }
 
 // MARK: - CartPresenter implementation
 extension CartPresenterImpl: CartPresenter {
     func handleLoadView() {
         view.showActivityIndicator()
-        interactor.fetch(completion: { [weak self] cartItems in
-            self?.view.hideActivityIndicator()
-            switch cartItems {
-            case .success(let items):
-                let storeItems = items.map { $0.toStoreItem() }
-                self?.view.display(storeItemList: storeItems)
-            case .failure:
-                break
-                // TODO: display error on screen
-            }
-        })
+        reloadCart()
+    }
+
+    func handleRefresh() {
+        reloadCart()
     }
 
     func handleProductPress(storeItem: StoreItem) {
-        // TEMP
-        handleLoadView()
+
     }
 }
 

@@ -8,7 +8,7 @@
 
 class User {
     enum Role: Int {
-        case guest
+        case guest = 0
         case authorized
         case contentMaker
         case moderator

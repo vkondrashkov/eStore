@@ -151,6 +151,8 @@
 		9CC77F6E23A8550600466AA4 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F6D23A8550600466AA4 /* CartItem.swift */; };
 		9CC77F7023A8565700466AA4 /* CartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F6F23A8565700466AA4 /* CartInteractor.swift */; };
 		9CC77F7223A85CF300466AA4 /* ProductDescriptionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F7123A85CF300466AA4 /* ProductDescriptionInteractor.swift */; };
+		9CC77F7923A8CA7700466AA4 /* String+Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F7823A8CA7700466AA4 /* String+Crypto.swift */; };
+		9CC77F7B23A8CA8400466AA4 /* Data+Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F7A23A8CA8400466AA4 /* Data+Crypto.swift */; };
 		9CD2B1AD2381860600927979 /* ProductsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AC2381860600927979 /* ProductsRepository.swift */; };
 		9CD2B1C12381C4F000927979 /* Result+Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1C02381C4F000927979 /* Result+Values.swift */; };
 		9CD2B1C423827A7300927979 /* eStoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AA238183FB00927979 /* eStoreAPI.swift */; };
@@ -335,6 +337,8 @@
 		9CC77F6D23A8550600466AA4 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		9CC77F6F23A8565700466AA4 /* CartInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartInteractor.swift; sourceTree = "<group>"; };
 		9CC77F7123A85CF300466AA4 /* ProductDescriptionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDescriptionInteractor.swift; sourceTree = "<group>"; };
+		9CC77F7823A8CA7700466AA4 /* String+Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Crypto.swift"; sourceTree = "<group>"; };
+		9CC77F7A23A8CA8400466AA4 /* Data+Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Crypto.swift"; sourceTree = "<group>"; };
 		9CD2B1AA238183FB00927979 /* eStoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eStoreAPI.swift; sourceTree = "<group>"; };
 		9CD2B1AC2381860600927979 /* ProductsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRepository.swift; sourceTree = "<group>"; };
 		9CD2B1AE2381950500927979 /* products-smartphones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-smartphones.json"; sourceTree = "<group>"; };
@@ -631,6 +635,8 @@
 				9CD6A85E226E034C00DF4C65 /* NibLoadable.swift */,
 				9CD2B1C02381C4F000927979 /* Result+Values.swift */,
 				9CB71C1F238ACFFD006003A9 /* NSManagedObjectContext+Save.swift */,
+				9CC77F7823A8CA7700466AA4 /* String+Crypto.swift */,
+				9CC77F7A23A8CA8400466AA4 /* Data+Crypto.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1156,6 +1162,7 @@
 				9CB71C26238ADF7D006003A9 /* MappableUser.swift in Sources */,
 				9CA418E3221D8CEC00BAF215 /* CatalogContract.swift in Sources */,
 				9CBC281C223BC5A70091082B /* UIImageView+Downloaded.swift in Sources */,
+				9CC77F7923A8CA7700466AA4 /* String+Crypto.swift in Sources */,
 				9CC46C2022180B7B005E24F5 /* ProfileComponent.swift in Sources */,
 				9C415BFC2260868300658A2B /* CircularFillAnimation.swift in Sources */,
 				9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */,
@@ -1188,6 +1195,7 @@
 				9C76ABB122359F8400FB39DA /* ProductsService.swift in Sources */,
 				9C56E119225B605000E72428 /* DarkTheme.swift in Sources */,
 				9C76ABAD22357FCC00FB39DA /* Specification.swift in Sources */,
+				9CC77F7B23A8CA8400466AA4 /* Data+Crypto.swift in Sources */,
 				9CC46B9122140623005E24F5 /* RootPresenter.swift in Sources */,
 				9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */,
 				9C1C9622225F590F0055EE46 /* ThemeBuilder.swift in Sources */,

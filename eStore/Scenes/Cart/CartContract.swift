@@ -38,6 +38,7 @@ protocol CartView: AnyObject, ThemeUpdatable, AlertDisplayable {
 
 protocol CartPresenter: AnyObject {
     func handleLoadView()
+    func handleRefresh()
     func handleProductPress(storeItem: StoreItem)
 }
 

@@ -17,6 +17,8 @@ final class CartViewImpl: UIViewController {
     private var fadeMaskView: UIView!
     private var activityIndicator: UIActivityIndicatorView!
 
+    private let refreshControl = UIRefreshControl()
+
     private var cartTableViewDataSource = CartTableViewDataSource()
     private var cartTableView: UITableView!
 
@@ -66,6 +68,9 @@ final class CartViewImpl: UIViewController {
         cartTableView.register(CartTableViewCell.self, forCellReuseIdentifier: CartTableViewCell.reuseIdentifier)
         cartTableView.dataSource = cartTableViewDataSource
         cartTableView.delegate = self
+        cartTableView.refreshControl = refreshControl
+
+        refreshControl.addTarget(self, action: #selector(refreshControlDidPull), for: .valueChanged)
 
         apply(theme: theme)
         presenter.handleLoadView()
@@ -79,6 +84,12 @@ final class CartViewImpl: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: theme.textColor]
         cartTableView.separatorColor = theme.borderColor
+    }
+
+    // MARK: - Actions
+
+    @objc func refreshControlDidPull() {
+        presenter.handleRefresh()
     }
 }
 
@@ -99,6 +110,7 @@ extension CartViewImpl: CartView {
     }
 
     func hideActivityIndicator() {
+        refreshControl.endRefreshing()
         activityIndicator.stopAnimating()
         UIView.transition(
             with: view,
