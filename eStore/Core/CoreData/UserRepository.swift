@@ -14,12 +14,15 @@ enum UserRepositoryError: Error {
 }
 
 protocol UserRepository {
+    var currentUser: User? { get }
     func saveUser(_ user: User,
                   completion: ((Result<Bool, UserRepositoryError>) -> Void)?)
     func loadUser(completion: ((Result<User, UserRepositoryError>) -> Void)?)
+    func removeUser(completion: ((UserRepositoryError?) -> Void)?)
 }
 
 final class UserRepositoryImpl {
+    var currentUser: User?
     private let persistentContainer: NSPersistentContainer
 
     private lazy var context: NSManagedObjectContext = {
@@ -28,6 +31,8 @@ final class UserRepositoryImpl {
 
     init(persistentContainer: NSPersistentContainer) {
         self.persistentContainer = persistentContainer
+
+        self.loadUser(completion: nil)
     }
 
     convenience init() {
@@ -52,12 +57,13 @@ extension UserRepositoryImpl: UserRepository {
                 }
             }
             let userData = NSEntityDescription.insertNewObject(forEntityName: "UserData", into: self.context) as! UserData
-            userData.id = user.id
+            userData.id = String(user.id)
             userData.username = user.username
             userData.email = user.email
             userData.fullname = user.fullname
             userData.role = Int16(user.role.rawValue)
             self.context.saveAsyncInPerform { saved in
+                self.currentUser = user
                 completion?(.success(saved))
             }
         }
@@ -77,13 +83,32 @@ extension UserRepositoryImpl: UserRepository {
                 return
             }
             self.context.saveAsyncInPerform { _ in
+                self.currentUser = user
                 completion?(.success(user))
             }
         }
     }
 
+    func removeUser(completion: ((UserRepositoryError?) -> Void)?) {
+        let request = NSFetchRequest<UserData>(entityName: "UserData")
+        request.fetchLimit = 1
+        context.perform {
+            guard let result = try? self.context.fetch(request),
+                let userData = result.first else {
+                    completion?(.failed)
+                    return
+            }
+            self.context.delete(userData)
+            self.context.saveAsyncInPerform { _ in
+                self.currentUser = nil
+                completion?(nil)
+            }
+        }
+    }
+
     func mapUserDataToUser(userData: UserData) -> User? {
-        guard let id = userData.id,
+        guard let userId = userData.id,
+            let id = Int(userId),
             let username = userData.username,
             let role = User.Role(rawValue: Int(userData.role)) else {
                 return nil
