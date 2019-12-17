@@ -73,6 +73,10 @@ final class ProductsListViewImpl: UIViewController {
         view.backgroundColor = theme.backgroundColor
         productsTableView.separatorColor = theme.borderColor
     }
+
+    @objc private func rightBarButtonDidPress() {
+        presenter.handleAddProductPress()
+    }
 }
 
 // MARK: - ThemeUpdatable implementation
@@ -140,6 +144,16 @@ extension ProductsListViewImpl: ProductsListView {
     func display(storeItemList: [StoreItem]) {
         productsTableViewDataSource.items = storeItemList
         productsTableView.reloadData()
+    }
+
+    func display(rightBarButtonTitle: String) {
+        let rightBarButtonItem = UIBarButtonItem(
+            title: rightBarButtonTitle,
+            style: .plain,
+            target: self,
+            action: #selector(rightBarButtonDidPress)
+        )
+        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 }
 

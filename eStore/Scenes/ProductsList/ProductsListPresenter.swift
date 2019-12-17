@@ -102,6 +102,10 @@ extension ProductsListPresenterImpl: ProductsListPresenter {
         view.showActivityIndicator()
         
         reloadProductsList()
+
+        if let user = interactor.currentUser, user.role.rawValue >= User.Role.moderator.rawValue {
+            view.display(rightBarButtonTitle: "Add")
+        }
     }
     
     func handleProductPress(storeItem: StoreItem) {
@@ -141,6 +145,17 @@ extension ProductsListPresenterImpl: ProductsListPresenter {
                 }
             }
         )
+    }
+
+    func handleAddProductPress() {
+        switch productType {
+        case .smartphone:
+            router.showSmartphoneAddition()
+        case .laptop:
+            router.showLaptopAddition()
+        case .tv:
+            router.showTVAddition()
+        }
     }
 }
 

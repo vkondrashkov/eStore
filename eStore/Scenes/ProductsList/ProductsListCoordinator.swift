@@ -40,4 +40,10 @@ extension ProductsListCoordinator: ProductsListRouter {
         productDescriptionCoordinator = productDescriptionBuilder.build(with: storeItem)
         productDescriptionCoordinator?.start()
     }
+
+    func showSmartphoneAddition() { }
+
+    func showLaptopAddition() { }
+
+    func showTVAddition() { }
 }

@@ -31,18 +31,23 @@ protocol ProductsListShow: AnyObject {
 
 protocol ProductsListRouter: AnyObject {
     func showProductDescription(for storeItem: StoreItem)
+    func showSmartphoneAddition()
+    func showLaptopAddition()
+    func showTVAddition()
 }
 
 protocol ProductsListView: AnyObject, ThemeUpdatable, AlertDisplayable {
     func showActivityIndicator()
     func hideActivityIndicator()
     func display(storeItemList: [StoreItem])
+    func display(rightBarButtonTitle: String)
 }
 
 protocol ProductsListPresenter: AnyObject {
     func handleLoadView()
     func handleProductPress(storeItem: StoreItem)
-    func configureEditActions(for indexPath: IndexPath) -> [(title: String, isDestructive: Bool, action: ((StoreItem) -> Void)?)] 
+    func configureEditActions(for indexPath: IndexPath) -> [(title: String, isDestructive: Bool, action: ((StoreItem) -> Void)?)]
+    func handleAddProductPress()
 }
 
 enum ProductsListInteractorError: Error {
