@@ -14,6 +14,9 @@ enum ProductsUseCaseError: Error {
 }
 
 protocol ProductsUseCase {
+    func addSmartphone(userId: Int,
+                       smartphoneForm: SmartphoneForm,
+                       completion: @escaping (Result<Smartphone, ProductsRepositoryError>) -> Void)
     func fetchSmartphone(id: String, completion: @escaping (Result<Smartphone, ProductsUseCaseError>) -> Void)
     func fetchSmartphones(completion: @escaping (Result<[Smartphone], ProductsUseCaseError>) -> Void)
     func deleteSmartphone(id: Int, completion: @escaping (ProductsUseCaseError?) -> Void)
@@ -30,6 +33,22 @@ final class ProductsUseCaseImpl: ProductsUseCase {
 
     init(repository: ProductsRepository) {
         self.repository = repository
+    }
+
+    func addSmartphone(userId: Int,
+                       smartphoneForm: SmartphoneForm,
+                       completion: @escaping (Result<Smartphone, ProductsRepositoryError>) -> Void) {
+        repository.addSmartphone(
+            userId: userId,
+            smartphoneForm: smartphoneForm,
+            completion: { smartphone in
+                let result: Result<Smartphone, ProductsRepositoryError> = smartphone
+                    .mapError { _ in
+                        return .failed
+                    }
+                completion(result)
+            }
+        )
     }
 
     func fetchSmartphone(id: String, completion: @escaping (Result<Smartphone, ProductsUseCaseError>) -> Void) {

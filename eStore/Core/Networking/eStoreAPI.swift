@@ -13,6 +13,7 @@ enum eStoreAPI {
     case authorize(login: String, password: String)
     case register(login: String, password: String)
 
+    case addSmartphone(userId: Int, smartphoneForm: SmartphoneForm)
     case smartphones
     case smartphone(id: String)
     case deleteSmartphone(id: Int)
@@ -43,6 +44,8 @@ extension eStoreAPI: TargetType {
             return "/user/authorize"
         case .register:
             return "/user/register"
+        case .addSmartphone:
+            return "/smartphone"
         case .smartphones:
             return "/smartphone"
         case .smartphone(let id):
@@ -72,7 +75,7 @@ extension eStoreAPI: TargetType {
 
     var method: Moya.Method {
         switch self {
-        case .authorize, .register, .addCart:
+        case .authorize, .register, .addCart, .addSmartphone:
             return .post
         case .deleteSmartphone, .deleteLaptop, .deleteTV,
              .deleteCart:
@@ -99,6 +102,8 @@ extension eStoreAPI: TargetType {
                 "login": login,
                 "password": password.hashed(.sha512)!
             ]
+        case .addSmartphone(_, let smartphoneForm):
+            return smartphoneForm.toParameters()
         default:
             return nil
         }
@@ -140,6 +145,8 @@ extension eStoreAPI: TargetType {
         case .addCart(let userId, _, _):
             headers["userId"] = String(userId)
         case .deleteCart(let userId, _):
+            headers["userId"] = String(userId)
+        case .addSmartphone(let userId, _):
             headers["userId"] = String(userId)
         default:
             break

@@ -150,11 +150,11 @@ extension ProductsListPresenterImpl: ProductsListPresenter {
     func handleAddProductPress() {
         switch productType {
         case .smartphone:
-            router.showSmartphoneAddition()
+            router.showSmartphoneEditor()
         case .laptop:
-            router.showLaptopAddition()
+            router.showLaptopEditor()
         case .tv:
-            router.showTVAddition()
+            router.showTVEditor()
         }
     }
 }

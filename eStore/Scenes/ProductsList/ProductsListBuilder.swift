@@ -24,17 +24,21 @@ extension ProductsListBuilderImpl: ProductsListBuilder {
         view.theme = dependency.themeManager.currentTheme
         let component = ProductsListComponent(
             navigation: dependency.navigation,
+            smartphoneEditorScene: SmartphoneEditorSceneImpl(navigation: dependency.navigation),
             userRepository: dependency.userRepository,
             cartRepository: dependency.cartRepository,
+            productsUseCase: dependency.productsUseCase,
             themeManager: dependency.themeManager,
             alertFactory: dependency.alertFactory
         )
         let scene = ProductsListSceneImpl(navigation: dependency.navigation)
         let productDescriptionBuilder = ProductDescriptionBuilderImpl(dependency: component)
+        let smartphoneEditorBuilder = SmartphoneEditorBuilderImpl(dependency: component)
         let coordinator = ProductsListCoordinator(
             scene: scene,
             show: view,
-            productDescriptionBuilder: productDescriptionBuilder
+            productDescriptionBuilder: productDescriptionBuilder,
+            smartphoneEditorBuilder: smartphoneEditorBuilder
         )
         let presenter = ProductsListPresenterImpl(
             view: view,

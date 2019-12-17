@@ -155,6 +155,14 @@
 		9CC77F7B23A8CA8400466AA4 /* Data+Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F7A23A8CA8400466AA4 /* Data+Crypto.swift */; };
 		9CC77F7F23A9292B00466AA4 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F7E23A9292B00466AA4 /* ProfileInteractor.swift */; };
 		9CC77F8123A92F5B00466AA4 /* SignUpInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F8023A92F5B00466AA4 /* SignUpInteractor.swift */; };
+		9CC77F8623A95EEC00466AA4 /* SmartphoneEditorContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F8523A95EEC00466AA4 /* SmartphoneEditorContract.swift */; };
+		9CC77F8823A95EF400466AA4 /* SmartphoneEditorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F8723A95EF400466AA4 /* SmartphoneEditorBuilder.swift */; };
+		9CC77F8A23A95EFB00466AA4 /* SmartphoneEditorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F8923A95EFB00466AA4 /* SmartphoneEditorScene.swift */; };
+		9CC77F8C23A95F0300466AA4 /* SmartphoneEditorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F8B23A95F0300466AA4 /* SmartphoneEditorCoordinator.swift */; };
+		9CC77F8E23A95F0900466AA4 /* SmartphoneEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F8D23A95F0900466AA4 /* SmartphoneEditorView.swift */; };
+		9CC77F9023A95F1000466AA4 /* SmartphoneEditorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F8F23A95F1000466AA4 /* SmartphoneEditorPresenter.swift */; };
+		9CC77F9223A95F1800466AA4 /* SmartphoneEditorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F9123A95F1800466AA4 /* SmartphoneEditorInteractor.swift */; };
+		9CC77F9423A9739300466AA4 /* SmartphoneForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F9323A9739300466AA4 /* SmartphoneForm.swift */; };
 		9CD2B1AD2381860600927979 /* ProductsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AC2381860600927979 /* ProductsRepository.swift */; };
 		9CD2B1C12381C4F000927979 /* Result+Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1C02381C4F000927979 /* Result+Values.swift */; };
 		9CD2B1C423827A7300927979 /* eStoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AA238183FB00927979 /* eStoreAPI.swift */; };
@@ -343,6 +351,14 @@
 		9CC77F7A23A8CA8400466AA4 /* Data+Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Crypto.swift"; sourceTree = "<group>"; };
 		9CC77F7E23A9292B00466AA4 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		9CC77F8023A92F5B00466AA4 /* SignUpInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpInteractor.swift; sourceTree = "<group>"; };
+		9CC77F8523A95EEC00466AA4 /* SmartphoneEditorContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartphoneEditorContract.swift; sourceTree = "<group>"; };
+		9CC77F8723A95EF400466AA4 /* SmartphoneEditorBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartphoneEditorBuilder.swift; sourceTree = "<group>"; };
+		9CC77F8923A95EFB00466AA4 /* SmartphoneEditorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartphoneEditorScene.swift; sourceTree = "<group>"; };
+		9CC77F8B23A95F0300466AA4 /* SmartphoneEditorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartphoneEditorCoordinator.swift; sourceTree = "<group>"; };
+		9CC77F8D23A95F0900466AA4 /* SmartphoneEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartphoneEditorView.swift; sourceTree = "<group>"; };
+		9CC77F8F23A95F1000466AA4 /* SmartphoneEditorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartphoneEditorPresenter.swift; sourceTree = "<group>"; };
+		9CC77F9123A95F1800466AA4 /* SmartphoneEditorInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartphoneEditorInteractor.swift; sourceTree = "<group>"; };
+		9CC77F9323A9739300466AA4 /* SmartphoneForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartphoneForm.swift; sourceTree = "<group>"; };
 		9CD2B1AA238183FB00927979 /* eStoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eStoreAPI.swift; sourceTree = "<group>"; };
 		9CD2B1AC2381860600927979 /* ProductsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRepository.swift; sourceTree = "<group>"; };
 		9CD2B1AE2381950500927979 /* products-smartphones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-smartphones.json"; sourceTree = "<group>"; };
@@ -538,6 +554,7 @@
 				9CA418D3221D879C00BAF215 /* StoreItem.swift */,
 				9CC77F6D23A8550600466AA4 /* CartItem.swift */,
 				9CA418D5221D883700BAF215 /* Smartphone.swift */,
+				9CC77F9323A9739300466AA4 /* SmartphoneForm.swift */,
 				9CA418D9221D884900BAF215 /* Laptop.swift */,
 				9CA418D7221D883F00BAF215 /* TV.swift */,
 				9CA418DD221D898300BAF215 /* Display.swift */,
@@ -759,6 +776,7 @@
 				9CC5525B220AFB810004ACC4 /* Dashboard */,
 				9CA418E1221D8CD300BAF215 /* Catalog */,
 				9CA41922222324AF00BAF215 /* ProductsList */,
+				9CC77F8223A95EB100466AA4 /* SmartphoneEditor */,
 				9C83BBFD222EAEAC00CBB1FF /* ProductDescription */,
 				9C452FAA2242DAB300924FA5 /* Cart */,
 				9CC5525D220AFBB00004ACC4 /* Profile */,
@@ -825,6 +843,20 @@
 				9CC77F7E23A9292B00466AA4 /* ProfileInteractor.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		9CC77F8223A95EB100466AA4 /* SmartphoneEditor */ = {
+			isa = PBXGroup;
+			children = (
+				9CC77F8523A95EEC00466AA4 /* SmartphoneEditorContract.swift */,
+				9CC77F8723A95EF400466AA4 /* SmartphoneEditorBuilder.swift */,
+				9CC77F8923A95EFB00466AA4 /* SmartphoneEditorScene.swift */,
+				9CC77F8B23A95F0300466AA4 /* SmartphoneEditorCoordinator.swift */,
+				9CC77F8D23A95F0900466AA4 /* SmartphoneEditorView.swift */,
+				9CC77F8F23A95F1000466AA4 /* SmartphoneEditorPresenter.swift */,
+				9CC77F9123A95F1800466AA4 /* SmartphoneEditorInteractor.swift */,
+			);
+			path = SmartphoneEditor;
 			sourceTree = "<group>";
 		};
 		9CD2B1CB23827C1800927979 /* Stubbed Responses */ = {
@@ -1121,7 +1153,9 @@
 				9C1C322D236ECAD30039ECDA /* CredentialsValidatorUseCase.swift in Sources */,
 				9CC46C0922161559005E24F5 /* SignInView.swift in Sources */,
 				9CC46B9822141058005E24F5 /* DashboardContract.swift in Sources */,
+				9CC77F8C23A95F0300466AA4 /* SmartphoneEditorCoordinator.swift in Sources */,
 				9CC77F6E23A8550600466AA4 /* CartItem.swift in Sources */,
+				9CC77F8E23A95F0900466AA4 /* SmartphoneEditorView.swift in Sources */,
 				9CD6A85F226E034C00DF4C65 /* NibLoadable.swift in Sources */,
 				9CC46C2822180B9F005E24F5 /* ProfileView.swift in Sources */,
 				9CC46BD42215392A005E24F5 /* SignUpView.swift in Sources */,
@@ -1143,6 +1177,7 @@
 				9C1C9624225F5C550055EE46 /* ThemeUpdatable.swift in Sources */,
 				9C83BC03222EAEE100CBB1FF /* ProductDescriptionBuilder.swift in Sources */,
 				9CA418DE221D898300BAF215 /* Display.swift in Sources */,
+				9CC77F8823A95EF400466AA4 /* SmartphoneEditorBuilder.swift in Sources */,
 				9CA418E9221D8D0500BAF215 /* CatalogScene.swift in Sources */,
 				9CC46C0522161548005E24F5 /* SignInScene.swift in Sources */,
 				9CB71C20238ACFFD006003A9 /* NSManagedObjectContext+Save.swift in Sources */,
@@ -1170,8 +1205,10 @@
 				9CB71C26238ADF7D006003A9 /* MappableUser.swift in Sources */,
 				9CA418E3221D8CEC00BAF215 /* CatalogContract.swift in Sources */,
 				9CBC281C223BC5A70091082B /* UIImageView+Downloaded.swift in Sources */,
+				9CC77F8623A95EEC00466AA4 /* SmartphoneEditorContract.swift in Sources */,
 				9CC77F7923A8CA7700466AA4 /* String+Crypto.swift in Sources */,
 				9CC46C2022180B7B005E24F5 /* ProfileComponent.swift in Sources */,
+				9CC77F9023A95F1000466AA4 /* SmartphoneEditorPresenter.swift in Sources */,
 				9C415BFC2260868300658A2B /* CircularFillAnimation.swift in Sources */,
 				9CC55267220AFC8C0004ACC4 /* AppComponent.swift in Sources */,
 				9CA4193422251C5600BAF215 /* ProductsListTableViewCell.swift in Sources */,
@@ -1183,8 +1220,10 @@
 				9C83BC0E222EF5D100CBB1FF /* ProductDescriptionTableViewDataSource.swift in Sources */,
 				9C452FB82242DB1500924FA5 /* CartView.swift in Sources */,
 				9CA4191E2222CF0B00BAF215 /* CategoryTableViewDataSource.swift in Sources */,
+				9CC77F9423A9739300466AA4 /* SmartphoneForm.swift in Sources */,
 				9CC46C032216153A005E24F5 /* SignInBuilder.swift in Sources */,
 				9C56E109225A93D900E72428 /* ThemeSettingsCoordinator.swift in Sources */,
+				9CC77F8A23A95EFB00466AA4 /* SmartphoneEditorScene.swift in Sources */,
 				9CBC2819223B839D0091082B /* ProductDescriptionTableHeaderCell.swift in Sources */,
 				9C8FEC07226B9553007C30EB /* ThemeSettingsColorPickerViewCell.swift in Sources */,
 				9CB71C29238AE0F5006003A9 /* UserMapper.swift in Sources */,
@@ -1193,6 +1232,7 @@
 				9C56E10D225A93E700E72428 /* ThemeSettingsPresenter.swift in Sources */,
 				9CD6A85B226E030900DF4C65 /* UITableView+Generic.swift in Sources */,
 				9CD2B1D52382B22300927979 /* User.swift in Sources */,
+				9CC77F9223A95F1800466AA4 /* SmartphoneEditorInteractor.swift in Sources */,
 				9CC77F7023A8565700466AA4 /* CartInteractor.swift in Sources */,
 				9CC46C2422180B8C005E24F5 /* ProfileScene.swift in Sources */,
 				9CC46BCC22153908005E24F5 /* SignUpBuilder.swift in Sources */,

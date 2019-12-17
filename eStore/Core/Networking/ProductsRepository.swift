@@ -15,6 +15,9 @@ enum ProductsRepositoryError: Error {
 }
 
 protocol ProductsRepository {
+    func addSmartphone(userId: Int,
+                       smartphoneForm: SmartphoneForm,
+                       completion: @escaping (Result<Smartphone, ProductsRepositoryError>) -> Void)
     func fetchSmartphones(completion: @escaping (Result<[Smartphone], ProductsRepositoryError>) -> Void)
     func fetchSmartphone(id: String, completion: @escaping (Result<Smartphone, ProductsRepositoryError>) -> Void)
     func deleteSmartphone(id: Int, completion: @escaping (ProductsRepositoryError?) -> Void)
@@ -36,6 +39,14 @@ final class ProductsRepositoryImpl {
 
 // MARK: - ProductsRepository implementation
 extension ProductsRepositoryImpl: ProductsRepository {
+    func addSmartphone(userId: Int,
+                       smartphoneForm: SmartphoneForm,
+                       completion: @escaping (Result<Smartphone, ProductsRepositoryError>) -> Void) {
+        provider.request(.addSmartphone(userId: userId, smartphoneForm: smartphoneForm)) { result in
+            completion(self.processResponse(result: result))
+        }
+    }
+
     func fetchSmartphones(completion: @escaping (Result<[Smartphone], ProductsRepositoryError>) -> Void) {
         provider.request(.smartphones) { result in
             completion(self.processResponse(result: result))

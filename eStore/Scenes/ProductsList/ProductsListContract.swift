@@ -31,9 +31,9 @@ protocol ProductsListShow: AnyObject {
 
 protocol ProductsListRouter: AnyObject {
     func showProductDescription(for storeItem: StoreItem)
-    func showSmartphoneAddition()
-    func showLaptopAddition()
-    func showTVAddition()
+    func showSmartphoneEditor()
+    func showLaptopEditor()
+    func showTVEditor()
 }
 
 protocol ProductsListView: AnyObject, ThemeUpdatable, AlertDisplayable {
