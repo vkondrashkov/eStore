@@ -24,10 +24,11 @@ extension CatalogBuilderImpl: CatalogBuilder {
         view.theme = dependency.themeManager.currentTheme
         let component = CatalogComponent(
             navigation: dependency.catalogNavigation,
+            userRepository: dependency.userRepository,
+            cartRepository: dependency.cartRepository,
             productsUseCase: ProductsUseCaseImpl(
                 repository: ProductsRepositoryImpl(provider: MoyaProvider<eStoreAPI>())
             ),
-            productsService: ProductsServiceImpl(),
             themeManager: dependency.themeManager,
             alertFactory: dependency.alertFactory
         )

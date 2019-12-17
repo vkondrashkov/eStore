@@ -10,6 +10,8 @@ import UIKit
 
 protocol CatalogDependency: AnyObject {
     var catalogNavigation: UINavigationController { get }
+    var userRepository: UserRepository { get }
+    var cartRepository: CartRepository { get }
     var themeManager: ThemeManager { get }
     var alertFactory: AlertFactory { get }
 }
