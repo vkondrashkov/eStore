@@ -25,15 +25,14 @@ final class RootPresenterImpl {
 // MARK: - RootPresenter implementation
 extension RootPresenterImpl: RootPresenter {
     func handleViewAppear() {
-        self.router.showDashboard()
-//        interactor.loadUser(completion: { [weak self] succeed in
-//            DispatchQueue.main.async {
-//                if succeed {
-//                    self?.router.showDashboard()
-//                } else {
-//                    self?.router.showAuth()
-//                }
-//            }
-//        })
+        interactor.loadUser(completion: { [weak self] succeed in
+            DispatchQueue.main.async {
+                if succeed {
+                    self?.router.showDashboard()
+                } else {
+                    self?.router.showAuth()
+                }
+            }
+        })
     }
 }

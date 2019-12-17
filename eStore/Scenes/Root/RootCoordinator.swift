@@ -57,7 +57,6 @@ extension RootCoordinator: AuthListener {
     func authenticate() {
         authCoordinator?.stop(completion: { [weak self] in
             self?.authCoordinator = nil
-            self?.showDashboard()
         })
     }
 }
@@ -67,7 +66,6 @@ extension RootCoordinator: DashboardListener {
     func logout() {
         dashboardCoordinator?.stop(completion: { [weak self] in
             self?.dashboardCoordinator = nil
-            self?.showAuth()
         })
     }
 }
