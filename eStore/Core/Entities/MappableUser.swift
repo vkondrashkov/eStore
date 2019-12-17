@@ -9,7 +9,7 @@
 import ObjectMapper
 
 class MappableUser: ImmutableMappable {
-    let id: String
+    let id: Int
     let username: String?
     let email: String?
     let fullname: String?
@@ -20,7 +20,7 @@ class MappableUser: ImmutableMappable {
         username = try? map.value("username")
         email = try? map.value("email")
         fullname = try? map.value("fullname")
-        roleRawValue = try? map.value("role")
+        roleRawValue = try? map.value("roleRawValue")
     }
 
     func mapping(map: Map) {
@@ -28,6 +28,6 @@ class MappableUser: ImmutableMappable {
         username >>> map["username"]
         email >>> map["email"]
         fullname >>> map["fullname"]
-        roleRawValue >>> map["role"]
+        roleRawValue >>> map["roleRawValue"]
     }
 }

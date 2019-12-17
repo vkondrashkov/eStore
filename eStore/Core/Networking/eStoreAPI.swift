@@ -11,22 +11,23 @@ import Moya
 
 enum eStoreAPI {
     case authorize(login: String, password: String)
+    case register(login: String, password: String)
 
     case smartphones
     case smartphone(id: String)
-    case deleteSmartphone(id: String)
+    case deleteSmartphone(id: Int)
 
     case laptops
     case laptop(id: String)
-    case deleteLaptop(id: String)
+    case deleteLaptop(id: Int)
 
     case tvs
     case tv(id: String)
-    case deleteTV(id: String)
+    case deleteTV(id: Int)
 
-    case cart
-    case addCart(id: Int, productId: Int)
-    case deleteCart(id: Int)
+    case cart(userId: Int)
+    case addCart(userId: Int, productId: Int, productTypeId: Int)
+    case deleteCart(userId: Int, cartItemId: Int)
 }
 
 // MARK: TargetType implementation
@@ -39,7 +40,9 @@ extension eStoreAPI: TargetType {
     var path: String {
         switch self {
         case .authorize:
-            return "/authorize"
+            return "/user/authorize"
+        case .register:
+            return "/user/register"
         case .smartphones:
             return "/smartphone"
         case .smartphone(let id):
@@ -62,14 +65,14 @@ extension eStoreAPI: TargetType {
             return "/cart"
         case .addCart:
             return "/cart"
-        case .deleteCart(let id):
+        case .deleteCart(_, let id):
             return "/cart/\(id)"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .authorize, .addCart:
+        case .authorize, .register, .addCart:
             return .post
         case .deleteSmartphone, .deleteLaptop, .deleteTV,
              .deleteCart:
@@ -81,10 +84,20 @@ extension eStoreAPI: TargetType {
 
     var parameters: [String: Any]? {
         switch self {
-        case .addCart(let id, let productId):
+        case .addCart(_, let productId, let productTypeId):
             return [
-                "productId": id,
-                "productTypeId": productId
+                "productId": productId,
+                "productTypeId": productTypeId
+            ]
+        case .authorize(let login, let password):
+            return [
+                "login": login,
+                "password": password.hashed(.sha512)!
+            ]
+        case .register(let login, let password):
+            return [
+                "login": login,
+                "password": password.hashed(.sha512)!
             ]
         default:
             return nil
@@ -119,8 +132,19 @@ extension eStoreAPI: TargetType {
         return .requestPlain // TEMP
     }
 
-    var headers: [String : String]? {
-        return ["Content-Type": "application/json"]
+    var headers: [String: String]? {
+        var headers: [String: String] = ["Content-Type": "application/json"]
+        switch self {
+        case .cart(let userId):
+            headers["userId"] = String(userId)
+        case .addCart(let userId, _, _):
+            headers["userId"] = String(userId)
+        case .deleteCart(let userId, _):
+            headers["userId"] = String(userId)
+        default:
+            break
+        }
+        return headers
     }
 
     var validationType: ValidationType {

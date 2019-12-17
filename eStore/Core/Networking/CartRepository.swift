@@ -15,8 +15,14 @@ enum CartRepositoryError: Error {
 }
 
 protocol CartRepository {
-    func fetch(completion: @escaping (Result<[CartItem], CartRepositoryError>) -> Void)
-    func add(id: Int, productTypeId: Int, completion: @escaping (CartRepositoryError?) -> Void)
+    func fetchCart(userId: Int, completion: @escaping (Result<[CartItem], CartRepositoryError>) -> Void)
+    func add(userId: Int,
+             productId: Int,
+             productTypeId: Int,
+             completion: @escaping (CartRepositoryError?) -> Void)
+    func remove(userId: Int,
+                storeItemId: Int,
+                completion: @escaping (CartRepositoryError?) -> Void)
 }
 
 final class CartRepositoryImpl {
@@ -30,8 +36,8 @@ final class CartRepositoryImpl {
 // MARK: - CartRepository implementation
 
 extension CartRepositoryImpl: CartRepository {
-    func fetch(completion: @escaping (Result<[CartItem], CartRepositoryError>) -> Void) {
-        provider.request(.cart, completion: { result in
+    func fetchCart(userId: Int, completion: @escaping (Result<[CartItem], CartRepositoryError>) -> Void) {
+        provider.request(.cart(userId: userId), completion: { result in
             switch result {
             case .success(let response):
                 guard let json = try? response.mapJSON() as? [[String: Any]] else {
@@ -50,13 +56,34 @@ extension CartRepositoryImpl: CartRepository {
         })
     }
 
-    func add(id: Int, productTypeId: Int, completion: @escaping (CartRepositoryError?) -> Void) {
-        provider.request(.addCart(id: id, productId: productTypeId), completion: { result in
-            guard result.error == nil else {
-                completion(.failed)
-                return
+    func add(userId: Int,
+             productId: Int,
+             productTypeId: Int,
+             completion: @escaping (CartRepositoryError?) -> Void) {
+        provider.request(
+            .addCart(userId: userId, productId: productId, productTypeId: productTypeId),
+            completion: { result in
+                guard result.error == nil else {
+                    completion(.failed)
+                    return
+                }
+                completion(nil)
             }
-            completion(nil)
-        })
+        )
+    }
+
+    func remove(userId: Int,
+                storeItemId: Int,
+                completion: @escaping (CartRepositoryError?) -> Void) {
+        provider.request(
+            .deleteCart(userId: userId, cartItemId: storeItemId),
+            completion: { result in
+                guard result.error == nil else {
+                    completion(.failed)
+                    return
+                }
+                completion(nil)
+            }
+        )
     }
 }

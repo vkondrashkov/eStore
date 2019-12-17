@@ -17,10 +17,13 @@ enum ProductsRepositoryError: Error {
 protocol ProductsRepository {
     func fetchSmartphones(completion: @escaping (Result<[Smartphone], ProductsRepositoryError>) -> Void)
     func fetchSmartphone(id: String, completion: @escaping (Result<Smartphone, ProductsRepositoryError>) -> Void)
+    func deleteSmartphone(id: Int, completion: @escaping (ProductsRepositoryError?) -> Void)
     func fetchLaptops(completion: @escaping (Result<[Laptop], ProductsRepositoryError>) -> Void)
     func fetchLaptop(id: String, completion: @escaping (Result<Laptop, ProductsRepositoryError>) -> Void)
+    func deleteLaptop(id: Int, completion: @escaping (ProductsRepositoryError?) -> Void)
     func fetchTVs(completion: @escaping (Result<[TV], ProductsRepositoryError>) -> Void)
     func fetchTV(id: String, completion: @escaping (Result<TV, ProductsRepositoryError>) -> Void)
+    func deleteTV(id: Int, completion: @escaping (ProductsRepositoryError?) -> Void)
 }
 
 final class ProductsRepositoryImpl {
@@ -45,6 +48,16 @@ extension ProductsRepositoryImpl: ProductsRepository {
         }
     }
 
+    func deleteSmartphone(id: Int, completion: @escaping (ProductsRepositoryError?) -> Void) {
+        provider.request(.deleteSmartphone(id: id)) { result in
+            guard result.error == nil else {
+                completion(.failed)
+                return
+            }
+            completion(nil)
+        }
+    }
+
     func fetchLaptops(completion: @escaping (Result<[Laptop], ProductsRepositoryError>) -> Void) {
         provider.request(.laptops) { result in
             completion(self.processResponse(result: result))
@@ -57,6 +70,16 @@ extension ProductsRepositoryImpl: ProductsRepository {
         }
     }
 
+    func deleteLaptop(id: Int, completion: @escaping (ProductsRepositoryError?) -> Void) {
+        provider.request(.deleteLaptop(id: id)) { result in
+            guard result.error == nil else {
+                completion(.failed)
+                return
+            }
+            completion(nil)
+        }
+    }
+
     func fetchTVs(completion: @escaping (Result<[TV], ProductsRepositoryError>) -> Void) {
         provider.request(.tvs) { result in
             completion(self.processResponse(result: result))
@@ -66,6 +89,16 @@ extension ProductsRepositoryImpl: ProductsRepository {
     func fetchTV(id: String, completion: @escaping (Result<TV, ProductsRepositoryError>) -> Void) {
         provider.request(.tv(id: id)) { result in
             completion(self.processResponse(result: result))
+        }
+    }
+
+    func deleteTV(id: Int, completion: @escaping (ProductsRepositoryError?) -> Void) {
+        provider.request(.deleteTV(id: id)) { result in
+            guard result.error == nil else {
+                completion(.failed)
+                return
+            }
+            completion(nil)
         }
     }
 }

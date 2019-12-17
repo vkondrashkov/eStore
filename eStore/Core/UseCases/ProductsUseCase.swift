@@ -16,10 +16,13 @@ enum ProductsUseCaseError: Error {
 protocol ProductsUseCase {
     func fetchSmartphone(id: String, completion: @escaping (Result<Smartphone, ProductsUseCaseError>) -> Void)
     func fetchSmartphones(completion: @escaping (Result<[Smartphone], ProductsUseCaseError>) -> Void)
+    func deleteSmartphone(id: Int, completion: @escaping (ProductsUseCaseError?) -> Void)
     func fetchLaptop(id: String, completion: @escaping (Result<Laptop, ProductsUseCaseError>) -> Void)
     func fetchLaptops(completion: @escaping (Result<[Laptop], ProductsUseCaseError>) -> Void)
+    func deleteLaptop(id: Int, completion: @escaping (ProductsUseCaseError?) -> Void)
     func fetchTV(id: String, completion: @escaping (Result<TV, ProductsUseCaseError>) -> Void)
     func fetchTVs(completion: @escaping (Result<[TV], ProductsUseCaseError>) -> Void)
+    func deleteTV(id: Int, completion: @escaping (ProductsUseCaseError?) -> Void)
 }
 
 final class ProductsUseCaseImpl: ProductsUseCase {
@@ -61,6 +64,16 @@ final class ProductsUseCaseImpl: ProductsUseCase {
         }
     }
 
+    func deleteSmartphone(id: Int, completion: @escaping (ProductsUseCaseError?) -> Void) {
+        repository.deleteSmartphone(id: id, completion: { error in
+            guard error == nil else {
+                completion(.failure)
+                return
+            }
+            completion(nil)
+        })
+    }
+
     func fetchLaptop(id: String, completion: @escaping (Result<Laptop, ProductsUseCaseError>) -> Void) {
         repository.fetchLaptop(id: id) { result in
             switch result {
@@ -93,6 +106,16 @@ final class ProductsUseCaseImpl: ProductsUseCase {
         }
     }
 
+    func deleteLaptop(id: Int, completion: @escaping (ProductsUseCaseError?) -> Void) {
+        repository.deleteLaptop(id: id, completion: { error in
+            guard error == nil else {
+                completion(.failure)
+                return
+            }
+            completion(nil)
+        })
+    }
+
     func fetchTV(id: String, completion: @escaping (Result<TV, ProductsUseCaseError>) -> Void) {
         repository.fetchTV(id: id) { result in
             switch result {
@@ -123,5 +146,14 @@ final class ProductsUseCaseImpl: ProductsUseCase {
                 }
             }
         }
+    }
+
+    func deleteTV(id: Int, completion: @escaping (ProductsUseCaseError?) -> Void) {
+        repository.deleteTV(id: id, completion: { error in
+            guard error == nil else {
+                return
+            }
+            completion(nil)
+        })
     }
 }

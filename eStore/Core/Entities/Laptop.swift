@@ -69,7 +69,7 @@ extension Laptop: StoreItemConvertible {
             type: .laptop,
             specifications: specifications,
             price: price,
-            stockCount: 0
+            stockCount: 1
         )
         return storeItem
     }

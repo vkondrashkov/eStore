@@ -15,13 +15,13 @@ class User {
         case admin
     }
 
-    let id: String
+    let id: Int
     let username: String
     let email: String?
     let fullname: String?
     let role: User.Role
 
-    init(id: String,
+    init(id: Int,
          username: String,
          email: String?,
          fullname: String?,

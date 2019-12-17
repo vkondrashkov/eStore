@@ -18,6 +18,9 @@ protocol AuthorizationRepository {
     func authorize(login: String,
                    password: String,
                    completion: ((Result<User, AuthorizationRepositoryError>) -> Void)?)
+    func register(login: String,
+                  password: String,
+                  completion: ((Result<User, AuthorizationRepositoryError>) -> Void)?)
 }
 
 final class AuthorizationRepositoryImpl {
@@ -38,6 +41,30 @@ extension AuthorizationRepositoryImpl: AuthorizationRepository {
                    completion: ((Result<User, AuthorizationRepositoryError>) -> Void)?) {
         provider.request(.authorize(login: login, password: password)) { response in
             let result: Result<User, AuthorizationRepositoryError> = response
+                .mapError { _ in
+                    return .failed
+                }
+                .flatMap { data in
+                    guard let json = try? data.mapJSON() as? [String: Any] else {
+                        return .failure(.failed)
+                    }
+                    guard let mappableUser = Mapper<MappableUser>().map(JSON: json) else {
+                        return .failure(.failed)
+                    }
+                    guard let user = self.userMapper.userFromMappableUser(mappableUser) else {
+                        return .failure(.failed)
+                    }
+                    return .success(user)
+                }
+            completion?(result)
+        }
+    }
+
+    func register(login: String,
+                  password: String,
+                  completion: ((Result<User, AuthorizationRepositoryError>) -> Void)?) {
+        provider.request(.register(login: login, password: password)) { user in
+            let result: Result<User, AuthorizationRepositoryError> = user
                 .mapError { _ in
                     return .failed
                 }
