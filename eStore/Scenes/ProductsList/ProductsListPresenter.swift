@@ -69,7 +69,7 @@ final class ProductsListPresenterImpl {
                 self?.reloadProductsList()
             })
         case .laptop:
-            interactor.deleteSmartphone(id: storeItem.id, completion: { [weak self] _ in
+            interactor.deleteLaptop(id: storeItem.id, completion: { [weak self] _ in
                 self?.reloadProductsList()
             })
         case .tv:

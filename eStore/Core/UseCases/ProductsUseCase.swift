@@ -20,6 +20,9 @@ protocol ProductsUseCase {
     func fetchSmartphone(id: String, completion: @escaping (Result<Smartphone, ProductsUseCaseError>) -> Void)
     func fetchSmartphones(completion: @escaping (Result<[Smartphone], ProductsUseCaseError>) -> Void)
     func deleteSmartphone(id: Int, completion: @escaping (ProductsUseCaseError?) -> Void)
+    func addLaptop(userId: Int,
+                   laptopForm: LaptopForm,
+                   completion: @escaping (Result<Laptop, ProductsRepositoryError>) -> Void)
     func fetchLaptop(id: String, completion: @escaping (Result<Laptop, ProductsUseCaseError>) -> Void)
     func fetchLaptops(completion: @escaping (Result<[Laptop], ProductsUseCaseError>) -> Void)
     func deleteLaptop(id: Int, completion: @escaping (ProductsUseCaseError?) -> Void)
@@ -91,6 +94,22 @@ final class ProductsUseCaseImpl: ProductsUseCase {
             }
             completion(nil)
         })
+    }
+
+    func addLaptop(userId: Int,
+                   laptopForm: LaptopForm,
+                   completion: @escaping (Result<Laptop, ProductsRepositoryError>) -> Void) {
+        repository.addLaptop(
+            userId: userId,
+            laptopForm: laptopForm,
+            completion: { laptop in
+                let result: Result<Laptop, ProductsRepositoryError> = laptop
+                    .mapError { _ in
+                        return .failed
+                    }
+                completion(result)
+            }
+        )
     }
 
     func fetchLaptop(id: String, completion: @escaping (Result<Laptop, ProductsUseCaseError>) -> Void) {

@@ -163,6 +163,14 @@
 		9CC77F9023A95F1000466AA4 /* SmartphoneEditorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F8F23A95F1000466AA4 /* SmartphoneEditorPresenter.swift */; };
 		9CC77F9223A95F1800466AA4 /* SmartphoneEditorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F9123A95F1800466AA4 /* SmartphoneEditorInteractor.swift */; };
 		9CC77F9423A9739300466AA4 /* SmartphoneForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F9323A9739300466AA4 /* SmartphoneForm.swift */; };
+		9CC77F9D23A97CF600466AA4 /* LaptopEditorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F9623A97CF500466AA4 /* LaptopEditorBuilder.swift */; };
+		9CC77F9E23A97CF600466AA4 /* LaptopEditorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F9723A97CF500466AA4 /* LaptopEditorInteractor.swift */; };
+		9CC77F9F23A97CF600466AA4 /* LaptopEditorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F9823A97CF500466AA4 /* LaptopEditorPresenter.swift */; };
+		9CC77FA023A97CF600466AA4 /* LaptopEditorContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F9923A97CF500466AA4 /* LaptopEditorContract.swift */; };
+		9CC77FA123A97CF600466AA4 /* LaptopEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F9A23A97CF500466AA4 /* LaptopEditorView.swift */; };
+		9CC77FA223A97CF600466AA4 /* LaptopEditorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F9B23A97CF500466AA4 /* LaptopEditorCoordinator.swift */; };
+		9CC77FA323A97CF600466AA4 /* LaptopEditorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F9C23A97CF500466AA4 /* LaptopEditorScene.swift */; };
+		9CC77FA523A97E3100466AA4 /* LaptopForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77FA423A97E3100466AA4 /* LaptopForm.swift */; };
 		9CD2B1AD2381860600927979 /* ProductsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AC2381860600927979 /* ProductsRepository.swift */; };
 		9CD2B1C12381C4F000927979 /* Result+Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1C02381C4F000927979 /* Result+Values.swift */; };
 		9CD2B1C423827A7300927979 /* eStoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AA238183FB00927979 /* eStoreAPI.swift */; };
@@ -359,6 +367,14 @@
 		9CC77F8F23A95F1000466AA4 /* SmartphoneEditorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartphoneEditorPresenter.swift; sourceTree = "<group>"; };
 		9CC77F9123A95F1800466AA4 /* SmartphoneEditorInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartphoneEditorInteractor.swift; sourceTree = "<group>"; };
 		9CC77F9323A9739300466AA4 /* SmartphoneForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartphoneForm.swift; sourceTree = "<group>"; };
+		9CC77F9623A97CF500466AA4 /* LaptopEditorBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaptopEditorBuilder.swift; sourceTree = "<group>"; };
+		9CC77F9723A97CF500466AA4 /* LaptopEditorInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaptopEditorInteractor.swift; sourceTree = "<group>"; };
+		9CC77F9823A97CF500466AA4 /* LaptopEditorPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaptopEditorPresenter.swift; sourceTree = "<group>"; };
+		9CC77F9923A97CF500466AA4 /* LaptopEditorContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaptopEditorContract.swift; sourceTree = "<group>"; };
+		9CC77F9A23A97CF500466AA4 /* LaptopEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaptopEditorView.swift; sourceTree = "<group>"; };
+		9CC77F9B23A97CF500466AA4 /* LaptopEditorCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaptopEditorCoordinator.swift; sourceTree = "<group>"; };
+		9CC77F9C23A97CF500466AA4 /* LaptopEditorScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaptopEditorScene.swift; sourceTree = "<group>"; };
+		9CC77FA423A97E3100466AA4 /* LaptopForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaptopForm.swift; sourceTree = "<group>"; };
 		9CD2B1AA238183FB00927979 /* eStoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eStoreAPI.swift; sourceTree = "<group>"; };
 		9CD2B1AC2381860600927979 /* ProductsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRepository.swift; sourceTree = "<group>"; };
 		9CD2B1AE2381950500927979 /* products-smartphones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-smartphones.json"; sourceTree = "<group>"; };
@@ -556,6 +572,7 @@
 				9CA418D5221D883700BAF215 /* Smartphone.swift */,
 				9CC77F9323A9739300466AA4 /* SmartphoneForm.swift */,
 				9CA418D9221D884900BAF215 /* Laptop.swift */,
+				9CC77FA423A97E3100466AA4 /* LaptopForm.swift */,
 				9CA418D7221D883F00BAF215 /* TV.swift */,
 				9CA418DD221D898300BAF215 /* Display.swift */,
 				9CA418DF221D8A0900BAF215 /* OperatingSystem.swift */,
@@ -776,6 +793,7 @@
 				9CC5525B220AFB810004ACC4 /* Dashboard */,
 				9CA418E1221D8CD300BAF215 /* Catalog */,
 				9CA41922222324AF00BAF215 /* ProductsList */,
+				9CC77F9523A97CF500466AA4 /* LaptopEditor */,
 				9CC77F8223A95EB100466AA4 /* SmartphoneEditor */,
 				9C83BBFD222EAEAC00CBB1FF /* ProductDescription */,
 				9C452FAA2242DAB300924FA5 /* Cart */,
@@ -858,6 +876,21 @@
 			);
 			path = SmartphoneEditor;
 			sourceTree = "<group>";
+		};
+		9CC77F9523A97CF500466AA4 /* LaptopEditor */ = {
+			isa = PBXGroup;
+			children = (
+				9CC77F9923A97CF500466AA4 /* LaptopEditorContract.swift */,
+				9CC77F9623A97CF500466AA4 /* LaptopEditorBuilder.swift */,
+				9CC77F9C23A97CF500466AA4 /* LaptopEditorScene.swift */,
+				9CC77F9B23A97CF500466AA4 /* LaptopEditorCoordinator.swift */,
+				9CC77F9A23A97CF500466AA4 /* LaptopEditorView.swift */,
+				9CC77F9823A97CF500466AA4 /* LaptopEditorPresenter.swift */,
+				9CC77F9723A97CF500466AA4 /* LaptopEditorInteractor.swift */,
+			);
+			name = LaptopEditor;
+			path = eStore/Scenes/LaptopEditor;
+			sourceTree = SOURCE_ROOT;
 		};
 		9CD2B1CB23827C1800927979 /* Stubbed Responses */ = {
 			isa = PBXGroup;
@@ -1120,6 +1153,7 @@
 				9CA418EB221D8D0D00BAF215 /* CatalogCoordinator.swift in Sources */,
 				9CC46BA222141088005E24F5 /* DashboardView.swift in Sources */,
 				9C83BC12222EFCC300CBB1FF /* ProductDescriptionTableViewCell.swift in Sources */,
+				9CC77FA023A97CF600466AA4 /* LaptopEditorContract.swift in Sources */,
 				9CBBF7F82267676C00424E37 /* SectionedMenuView.swift in Sources */,
 				9CC77F7F23A9292B00466AA4 /* ProfileInteractor.swift in Sources */,
 				9C452FB62242DB0F00924FA5 /* CartCoordinator.swift in Sources */,
@@ -1134,10 +1168,12 @@
 				9CC46BBD2214C41B005E24F5 /* AuthView.swift in Sources */,
 				9CC46BBB2214C412005E24F5 /* AuthCoordinator.swift in Sources */,
 				9CB71C30238BB744006003A9 /* AuthorizationRepository.swift in Sources */,
+				9CC77FA223A97CF600466AA4 /* LaptopEditorCoordinator.swift in Sources */,
 				9CC46B9E22141072005E24F5 /* DashboardScene.swift in Sources */,
 				9C56E111225B5EF800E72428 /* ThemeManager.swift in Sources */,
 				9CA4192E2223250A00BAF215 /* ProductsListView.swift in Sources */,
 				9CC46C2222180B83005E24F5 /* ProfileBuilder.swift in Sources */,
+				9CC77F9F23A97CF600466AA4 /* LaptopEditorPresenter.swift in Sources */,
 				9CC55244220AF8510004ACC4 /* AppDelegate.swift in Sources */,
 				9CC46B9A22141061005E24F5 /* DashboardComponent.swift in Sources */,
 				9CC46BB92214C409005E24F5 /* AuthScene.swift in Sources */,
@@ -1159,6 +1195,7 @@
 				9CD6A85F226E034C00DF4C65 /* NibLoadable.swift in Sources */,
 				9CC46C2822180B9F005E24F5 /* ProfileView.swift in Sources */,
 				9CC46BD42215392A005E24F5 /* SignUpView.swift in Sources */,
+				9CC77FA523A97E3100466AA4 /* LaptopForm.swift in Sources */,
 				9CC46C172216982E005E24F5 /* KeyboardManager.swift in Sources */,
 				9C415BFE226086B100658A2B /* Animation.swift in Sources */,
 				9CD6A85D226E033700DF4C65 /* ReuseIdentifiable.swift in Sources */,
@@ -1181,6 +1218,7 @@
 				9CA418E9221D8D0500BAF215 /* CatalogScene.swift in Sources */,
 				9CC46C0522161548005E24F5 /* SignInScene.swift in Sources */,
 				9CB71C20238ACFFD006003A9 /* NSManagedObjectContext+Save.swift in Sources */,
+				9CC77F9D23A97CF600466AA4 /* LaptopEditorBuilder.swift in Sources */,
 				9CC46BB02214719D005E24F5 /* Coordinator.swift in Sources */,
 				9C83BC01222EAED800CBB1FF /* ProductDescriptionComponent.swift in Sources */,
 				9CA4191B2222CC9500BAF215 /* CategoryTableViewCell.swift in Sources */,
@@ -1235,6 +1273,7 @@
 				9CC77F9223A95F1800466AA4 /* SmartphoneEditorInteractor.swift in Sources */,
 				9CC77F7023A8565700466AA4 /* CartInteractor.swift in Sources */,
 				9CC46C2422180B8C005E24F5 /* ProfileScene.swift in Sources */,
+				9CC77FA123A97CF600466AA4 /* LaptopEditorView.swift in Sources */,
 				9CC46BCC22153908005E24F5 /* SignUpBuilder.swift in Sources */,
 				9C86D93F22AA418500E2E92B /* AlertDisplayable.swift in Sources */,
 				9CA418E7221D8CFC00BAF215 /* CatalogBuilder.swift in Sources */,
@@ -1245,6 +1284,7 @@
 				9C76ABAD22357FCC00FB39DA /* Specification.swift in Sources */,
 				9CC77F7B23A8CA8400466AA4 /* Data+Crypto.swift in Sources */,
 				9CC46B9122140623005E24F5 /* RootPresenter.swift in Sources */,
+				9CC77FA323A97CF600466AA4 /* LaptopEditorScene.swift in Sources */,
 				9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */,
 				9C1C9622225F590F0055EE46 /* ThemeBuilder.swift in Sources */,
 				9C56E10B225A93E000E72428 /* ThemeSettingsView.swift in Sources */,
@@ -1254,6 +1294,7 @@
 				9CD2B1AD2381860600927979 /* ProductsRepository.swift in Sources */,
 				9CC46C2622180B95005E24F5 /* ProfileCoordinator.swift in Sources */,
 				9CC5526B220AFCC30004ACC4 /* RootBuilder.swift in Sources */,
+				9CC77F9E23A97CF600466AA4 /* LaptopEditorInteractor.swift in Sources */,
 				9CC46BB52214C3B7005E24F5 /* AuthComponent.swift in Sources */,
 				9CB71C14238AC6C3006003A9 /* eStore.xcdatamodeld in Sources */,
 				9CD2B1D32382B04B00927979 /* SignInInteractor.swift in Sources */,

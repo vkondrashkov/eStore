@@ -15,3 +15,24 @@ enum OperatingSystem: Int {
     case WebOs
     case unknown
 }
+
+extension OperatingSystem {
+    var title: String {
+        switch self {
+        case .iOS:
+            return "iOS"
+        case .Android:
+            return "Android"
+        case .MacOs:
+            return "MacOs"
+        case .Windows:
+            return "Windows"
+        case .Linux:
+            return "Linux"
+        case .WebOs:
+            return "WebOs"
+        case .unknown:
+            return "unknown"
+        }
+    }
+}

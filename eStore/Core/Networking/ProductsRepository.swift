@@ -21,6 +21,9 @@ protocol ProductsRepository {
     func fetchSmartphones(completion: @escaping (Result<[Smartphone], ProductsRepositoryError>) -> Void)
     func fetchSmartphone(id: String, completion: @escaping (Result<Smartphone, ProductsRepositoryError>) -> Void)
     func deleteSmartphone(id: Int, completion: @escaping (ProductsRepositoryError?) -> Void)
+    func addLaptop(userId: Int,
+                   laptopForm: LaptopForm,
+                   completion: @escaping (Result<Laptop, ProductsRepositoryError>) -> Void)
     func fetchLaptops(completion: @escaping (Result<[Laptop], ProductsRepositoryError>) -> Void)
     func fetchLaptop(id: String, completion: @escaping (Result<Laptop, ProductsRepositoryError>) -> Void)
     func deleteLaptop(id: Int, completion: @escaping (ProductsRepositoryError?) -> Void)
@@ -66,6 +69,14 @@ extension ProductsRepositoryImpl: ProductsRepository {
                 return
             }
             completion(nil)
+        }
+    }
+
+    func addLaptop(userId: Int,
+                   laptopForm: LaptopForm,
+                   completion: @escaping (Result<Laptop, ProductsRepositoryError>) -> Void) {
+        provider.request(.addLaptop(userId: userId, laptopForm: laptopForm)) { result in
+            completion(self.processResponse(result: result))
         }
     }
 

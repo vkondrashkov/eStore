@@ -1,5 +1,5 @@
 //
-//  SmartphoneEditorView.swift
+//  LaptopEditorView.swift
 //  eStore
 //
 //  Created by Vladislav Kondrashkov on 12/17/19.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-final class SmartphoneEditorViewImpl: UIViewController, SmartphoneEditorCoordinatorProvidable {
-    var presenter: SmartphoneEditorPresenter!
-    var coordinator: SmartphoneEditorCoordinator!
+final class LaptopEditorViewImpl: UIViewController, LaptopEditorCoordinatorProvidable {
+    var presenter: LaptopEditorPresenter!
+    var coordinator: LaptopEditorCoordinator!
 
     private let scrollView = UIScrollView()
     private let contentView = UIView()
@@ -44,16 +44,19 @@ final class SmartphoneEditorViewImpl: UIViewController, SmartphoneEditorCoordina
     private let processorNameLabel = UILabel()
     private let processorNameTextField = UITextField()
 
-    private let colorLabel = UILabel()
-    private let colorTextField = UITextField()
+    private let graphicsAdapterLabel = UILabel()
+    private let graphicsAdapterTextField = UITextField()
 
     private let batteryCapacityLabel = UILabel()
     private let batteryCapacityTextField = UITextField()
 
+    private let colorLabel = UILabel()
+    private let colorTextField = UITextField()
+
     private let priceLabel = UILabel()
     private let priceTextField = UITextField()
 
-    private let operatingSystemValues = ["iOS", "Android"]
+    private let operatingSystemValues = ["MacOs", "Windows", "Linux"]
 
     private var currentOperatingSystem: OperatingSystem = .unknown
 
@@ -190,21 +193,21 @@ final class SmartphoneEditorViewImpl: UIViewController, SmartphoneEditorCoordina
             $0.leading.trailing.equalToSuperview().inset(10)
         }
 
-        contentView.addSubview(colorLabel)
-        colorLabel.snp.makeConstraints {
+        contentView.addSubview(graphicsAdapterLabel)
+        graphicsAdapterLabel.snp.makeConstraints {
             $0.top.equalTo(processorNameTextField.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview().inset(10)
         }
 
-        contentView.addSubview(colorTextField)
-        colorTextField.snp.makeConstraints {
-            $0.top.equalTo(colorLabel.snp.bottom).offset(10)
+        contentView.addSubview(graphicsAdapterTextField)
+        graphicsAdapterTextField.snp.makeConstraints {
+            $0.top.equalTo(graphicsAdapterLabel.snp.bottom).offset(10)
             $0.leading.trailing.equalToSuperview().inset(10)
         }
 
         contentView.addSubview(batteryCapacityLabel)
         batteryCapacityLabel.snp.makeConstraints {
-            $0.top.equalTo(colorTextField.snp.bottom).offset(20)
+            $0.top.equalTo(graphicsAdapterTextField.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview().inset(10)
         }
 
@@ -214,9 +217,21 @@ final class SmartphoneEditorViewImpl: UIViewController, SmartphoneEditorCoordina
             $0.leading.trailing.equalToSuperview().inset(10)
         }
 
+        contentView.addSubview(colorLabel)
+        colorLabel.snp.makeConstraints {
+            $0.top.equalTo(batteryCapacityTextField.snp.bottom).offset(20)
+            $0.leading.trailing.equalToSuperview().inset(10)
+        }
+
+        contentView.addSubview(colorTextField)
+        colorTextField.snp.makeConstraints {
+            $0.top.equalTo(colorLabel.snp.bottom).offset(10)
+            $0.leading.trailing.equalToSuperview().inset(10)
+        }
+
         contentView.addSubview(priceLabel)
         priceLabel.snp.makeConstraints {
-            $0.top.equalTo(batteryCapacityTextField.snp.bottom).offset(20)
+            $0.top.equalTo(colorTextField.snp.bottom).offset(20)
             $0.leading.trailing.equalToSuperview().inset(10)
         }
 
@@ -253,16 +268,10 @@ final class SmartphoneEditorViewImpl: UIViewController, SmartphoneEditorCoordina
         operatingSystemLabel.text = "Operating system:"
         operatingSystemLabel.font = .boldSystemFont(ofSize: 17)
 
-//        let operatingSystemTapGesture = UITapGestureRecognizer(target: self, action: #selector(operatingSystemValueLabelDidTap))
-//        operatingSystemValueLabel.addGestureRecognizer(operatingSystemTapGesture)
-//        operatingSystemValueLabel.isUserInteractionEnabled = true
-//        operatingSystemValueLabel.text = "Select"
-
         let toolBar = UIToolbar()
         toolBar.barStyle = .blackTranslucent
         toolBar.translatesAutoresizingMaskIntoConstraints = false
         toolBar.items = [UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonDidTap))]
-//        view.addSubview(toolBar)
 
         operatingSystemPickerView.delegate = self
         operatingSystemPickerView.dataSource = self
@@ -296,15 +305,20 @@ final class SmartphoneEditorViewImpl: UIViewController, SmartphoneEditorCoordina
 
         processorNameTextField.borderStyle = .roundedRect
 
-        colorLabel.text = "Color:"
-        colorLabel.font = .boldSystemFont(ofSize: 17)
+        graphicsAdapterLabel.text = "Graphics adapter:"
+        graphicsAdapterLabel.font = .boldSystemFont(ofSize: 17)
 
-        colorTextField.borderStyle = .roundedRect
+        graphicsAdapterTextField.borderStyle = .roundedRect
 
         batteryCapacityLabel.text = "Battery capacity:"
         batteryCapacityLabel.font = .boldSystemFont(ofSize: 17)
 
         batteryCapacityTextField.borderStyle = .roundedRect
+
+        colorLabel.text = "Color:"
+        colorLabel.font = .boldSystemFont(ofSize: 17)
+
+        colorTextField.borderStyle = .roundedRect
 
         priceLabel.text = "Price (BYN):"
         priceLabel.font = .boldSystemFont(ofSize: 17)
@@ -338,7 +352,7 @@ final class SmartphoneEditorViewImpl: UIViewController, SmartphoneEditorCoordina
     }
 
     @objc private func rightBarButtonDidPress() {
-        presenter.handleDonePress(smartphoneForm: SmartphoneForm(
+        presenter.handleDonePress(laptopForm: LaptopForm(
             imageUrl: imageUrlTextField.text,
             name: nameTextField.text ?? "",
             brandName: brandNameTextField.text ?? "",
@@ -350,6 +364,7 @@ final class SmartphoneEditorViewImpl: UIViewController, SmartphoneEditorCoordina
             ramCapacity: Int(ramCapacityTextField.text ?? "") ?? 0,
             memoryCapacity: Int(memoryCapacityTextField.text ?? "") ?? 0,
             processorName: processorNameTextField.text ?? "",
+            graphicsAdapter: graphicsAdapterTextField.text ?? "",
             color: colorTextField.text ?? "",
             batteryCapacity: Int(batteryCapacityTextField.text ?? "") ?? 0,
             price: Int(priceTextField.text ?? "") ?? 0
@@ -369,18 +384,20 @@ final class SmartphoneEditorViewImpl: UIViewController, SmartphoneEditorCoordina
             } else {
                 scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: endFrame?.size.height ?? 0, right: 0)
             }
-            UIView.animate(withDuration: duration,
-                                       delay: TimeInterval(0),
-                                       options: animationCurve,
-                                       animations: { self.view.layoutIfNeeded() },
-                                       completion: nil)
+            UIView.animate(
+                withDuration: duration,
+                delay: TimeInterval(0),
+                options: animationCurve,
+                animations: { self.view.layoutIfNeeded() },
+                completion: nil
+            )
         }
     }
 }
 
 // MARK: - UIPickerViewDelegate implementation
 
-extension SmartphoneEditorViewImpl: UIPickerViewDelegate {
+extension LaptopEditorViewImpl: UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -394,18 +411,18 @@ extension SmartphoneEditorViewImpl: UIPickerViewDelegate {
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        currentOperatingSystem = OperatingSystem(rawValue: row) ?? .unknown
+        currentOperatingSystem = OperatingSystem(rawValue: row + OperatingSystem.MacOs.rawValue) ?? .unknown
         operatingSystemTextField.text = operatingSystemValues[row]
     }
 }
 
 // MARK:  - UIPickerViewDataSource implementation
 
-extension SmartphoneEditorViewImpl: UIPickerViewDataSource { }
+extension LaptopEditorViewImpl: UIPickerViewDataSource { }
 
 // MARK: - SmartphoneEditorView implementation
 
-extension SmartphoneEditorViewImpl: SmartphoneEditorView {
+extension LaptopEditorViewImpl: LaptopEditorView {
     func update(theme: Theme, animated: Bool) {
 
     }

@@ -50,7 +50,7 @@ class ProductDescriptionTableViewDataSource: NSObject, UITableViewDataSource {
         case let someDisplay as Display:
             value = "\(someDisplay.width)x\(someDisplay.height)"
         case let someOs as OperatingSystem:
-            value = "FIX ME"//someOs.rawValue
+            value = someOs.title
         default:
             value = "unknown"
         }

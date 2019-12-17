@@ -14,15 +14,18 @@ final class ProductsListCoordinator {
     private var productDescriptionCoordinator: ProductDescriptionCoordinator?
 
     private let smartphoneEditorBuilder: SmartphoneEditorBuilder
+    private let laptopEditorBuilder: LaptopEditorBuilder
     
     init(scene: ProductsListScene,
          show: ProductsListShow,
          productDescriptionBuilder: ProductDescriptionBuilder,
-         smartphoneEditorBuilder: SmartphoneEditorBuilder) {
+         smartphoneEditorBuilder: SmartphoneEditorBuilder,
+         laptopEditorBuilder: LaptopEditorBuilder) {
         self.scene = scene
         self.show = show
         self.productDescriptionBuilder = productDescriptionBuilder
         self.smartphoneEditorBuilder = smartphoneEditorBuilder
+        self.laptopEditorBuilder = laptopEditorBuilder
     }
 }
 
@@ -53,7 +56,14 @@ extension ProductsListCoordinator: ProductsListRouter {
         coordinator?.start()
     }
 
-    func showLaptopEditor() { }
+    func showLaptopEditor() {
+        let provider = laptopEditorBuilder.build()
+        let coordinator = provider.coordinator
+        coordinator?.onTerminate = { [weak coordinator] in
+            coordinator?.stop { }
+        }
+        coordinator?.start()
+    }
 
     func showTVEditor() { }
 }
