@@ -11,14 +11,16 @@ import Foundation
 final class SignUpPresenterImpl {
     private unowned let view: SignUpView
     private unowned let router: SignUpRouter
+    private let interactor: SignUpInteractor
     private unowned let themeManager: ThemeManager
 
     init(view: SignUpView,
          router: SignUpRouter,
+         interactor: SignUpInteractor,
          themeManager: ThemeManager) {
-
         self.view = view
         self.router = router
+        self.interactor = interactor
         self.themeManager = themeManager
         self.themeManager.add(observer: self)
     }
@@ -38,14 +40,78 @@ extension SignUpPresenterImpl: SignUpPresenter {
         router.routeSignIn()
     }
 
-    func handleSignUpButtonPress() {
+    func handleSignUpButtonPress(login: String?, password: String?, confirmPassword: String?) {
+        guard let unwrappedLogin = login, let unwrappedPassword = password else {
+            if login?.isEmpty ?? true {
+//                view.display(emailError: "This field shouldn't be empty")
+            }
+            if password?.isEmpty ?? true {
+//                view.display(passwordError: "This field shouldn't be empty")
+            }
+            view.hideActivityIndicator()
+            view.display(signUpButton: "Sign In")
+            return
+        }
         view.showActivityIndicator()
         view.display(signUpButton: "")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
-            self?.view.hideActivityIndicator()
-            self?.view.display(signUpButton: "Sign Up")
-            self?.router.completeSignUp()
-        })
+        let isUsernameValid = interactor.validate(username: unwrappedLogin)
+        let isEmailValid = interactor.validate(email: unwrappedLogin)
+        let isLoginValid = isUsernameValid || isEmailValid
+        let isPasswordValid = interactor.validate(password: unwrappedPassword)
+
+        guard isLoginValid, isPasswordValid else {
+            if !isLoginValid {
+//                view.display(emailError: "Invalid email or login")
+            }
+            if !isPasswordValid {
+//                view.display(passwordError: "Invalid password")
+            }
+            view.hideActivityIndicator()
+            view.display(signUpButton: "Sign In")
+            return
+        }
+
+        interactor.signUp(
+            login: unwrappedLogin,
+            password: unwrappedPassword,
+            completion: { [weak self] result in
+                switch result {
+                case .success:
+                    self?.view.hideActivityIndicator()
+                    self?.view.display(signUpButton: "Sign In")
+                    self?.router.completeSignUp()
+                case .failure(let error):
+                    switch error {
+                    case .failed:
+                        let alert = Alert(
+                            title: "Oops...",
+                            message: "Something went wrong. Try again later.",
+                            alertType: .singleAction,
+                            primaryCaption: "OK",
+                            primaryAction: nil,
+                            secondaryCaption: nil,
+                            secondaryAction: nil
+                        )
+//                        self?.view.display(alert: alert)
+                        self?.view.hideActivityIndicator()
+                        self?.view.display(signUpButton: "Sign In")
+                    case .invalidData:
+                        let alert = Alert(
+                            title: "Oops...",
+                            message: "User with given data doesn't exist.",
+                            alertType: .singleAction,
+                            primaryCaption: "OK",
+                            primaryAction: nil,
+                            secondaryCaption: nil,
+                            secondaryAction: nil
+                        )
+//                        self?.view.display(alert: alert)
+                        self?.view.hideActivityIndicator()
+                        self?.view.display(signUpButton: "Sign In")
+                    }
+                }
+            }
+        )
     }
 }
 

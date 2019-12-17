@@ -136,7 +136,11 @@ final class SignUpViewImpl: UIViewController {
     }
 
     @objc private func signUpButtonDidPressed() {
-        presenter.handleSignUpButtonPress()
+        presenter.handleSignUpButtonPress(
+            login: emailTextField.text,
+            password: passwordTextField.text,
+            confirmPassword: confirmPasswordTextField.text
+        )
     }
 
     private func apply(theme: Theme) {

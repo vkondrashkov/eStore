@@ -10,6 +10,8 @@ import UIKit
 
 protocol SignUpDependency: AnyObject {
     var parent: UINavigationController { get }
+    var credentialsValidatorUseCase: CredentialsValidatorUseCase { get }
+    var authorizationUseCase: AuthorizationUseCase { get }
     var themeManager: ThemeManager { get }
     var alertFactory: AlertFactory { get }
 }
@@ -49,5 +51,19 @@ protocol SignUpView: AnyObject, ThemeUpdatable {
 protocol SignUpPresenter: AnyObject {
     func shouldViewAppear()
     func handleRightBarButtonPress()
-    func handleSignUpButtonPress()
+    func handleSignUpButtonPress(login: String?, password: String?, confirmPassword: String?)
+}
+
+enum SignUpInteractorError: Error {
+    case invalidData
+    case failed
+}
+
+protocol SignUpInteractor {
+    func validate(email: String) -> Bool
+    func validate(username: String) -> Bool
+    func validate(password: String) -> Bool
+    func signUp(login: String,
+                password: String,
+                completion: ((Result<User, SignUpInteractorError>) -> Void)?)
 }
