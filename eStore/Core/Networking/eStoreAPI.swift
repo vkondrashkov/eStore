@@ -23,6 +23,7 @@ enum eStoreAPI {
     case laptop(id: String)
     case deleteLaptop(id: Int)
 
+    case addTV(userId: Int, tvForm: TVForm)
     case tvs
     case tv(id: String)
     case deleteTV(id: Int)
@@ -61,6 +62,8 @@ extension eStoreAPI: TargetType {
             return "/laptop/\(id)"
         case .deleteLaptop(let id):
             return "/laptop/\(id)"
+        case .addTV:
+            return "/tv"
         case .tvs:
             return "/tv"
         case .tv(let id):
@@ -79,7 +82,7 @@ extension eStoreAPI: TargetType {
     var method: Moya.Method {
         switch self {
         case .authorize, .register, .addCart, .addSmartphone,
-             .addLaptop:
+             .addLaptop, .addTV:
             return .post
         case .deleteSmartphone, .deleteLaptop, .deleteTV,
              .deleteCart:
@@ -110,6 +113,8 @@ extension eStoreAPI: TargetType {
             return smartphoneForm.toParameters()
         case .addLaptop(_, let laptopForm):
             return laptopForm.toParameters()
+        case .addTV(_, let tvForm):
+            return tvForm.toParameters()
         default:
             return nil
         }
@@ -155,6 +160,8 @@ extension eStoreAPI: TargetType {
         case .addSmartphone(let userId, _):
             headers["userId"] = String(userId)
         case .addLaptop(let userId, _):
+            headers["userId"] = String(userId)
+        case .addTV(let userId, _):
             headers["userId"] = String(userId)
         default:
             break

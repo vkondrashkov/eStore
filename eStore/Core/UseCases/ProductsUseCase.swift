@@ -26,6 +26,9 @@ protocol ProductsUseCase {
     func fetchLaptop(id: String, completion: @escaping (Result<Laptop, ProductsUseCaseError>) -> Void)
     func fetchLaptops(completion: @escaping (Result<[Laptop], ProductsUseCaseError>) -> Void)
     func deleteLaptop(id: Int, completion: @escaping (ProductsUseCaseError?) -> Void)
+    func addTV(userId: Int,
+               tvForm: TVForm,
+               completion: @escaping (Result<TV, ProductsRepositoryError>) -> Void)
     func fetchTV(id: String, completion: @escaping (Result<TV, ProductsUseCaseError>) -> Void)
     func fetchTVs(completion: @escaping (Result<[TV], ProductsUseCaseError>) -> Void)
     func deleteTV(id: Int, completion: @escaping (ProductsUseCaseError?) -> Void)
@@ -152,6 +155,22 @@ final class ProductsUseCaseImpl: ProductsUseCase {
             }
             completion(nil)
         })
+    }
+
+    func addTV(userId: Int,
+               tvForm: TVForm,
+               completion: @escaping (Result<TV, ProductsRepositoryError>) -> Void) {
+        repository.addTV(
+            userId: userId,
+            tvForm: tvForm,
+            completion: { tv in
+                let result: Result<TV, ProductsRepositoryError> = tv
+                    .mapError { _ in
+                        return .failed
+                    }
+                completion(result)
+            }
+        )
     }
 
     func fetchTV(id: String, completion: @escaping (Result<TV, ProductsUseCaseError>) -> Void) {

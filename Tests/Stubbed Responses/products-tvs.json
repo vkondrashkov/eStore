@@ -1,28 +1,22 @@
 [
     {
-        "id": "09af2b066b649bbb8ff54dafca4660fe",
-        "imageUrl": "https://content2.onliner.by/catalog/device/header/921d9b7a3dc1fcb5f44b78cd4649dac7.jpeg",
-        "brand": "Samsung",
-        "name": "UE43NU7100U",
-        "operatingSystem": "WebOs",
-        "display": {
-            "width": 3840,
-            "height": 2160
-        },
+        "resolutionWidth": 3840,
+        "resolutionHeight": 2160,
+        "id": 1,
         "price": 991,
-        "stockCount": 0
+        "imageUrl": "https://content2.onliner.by/catalog/device/header/921d9b7a3dc1fcb5f44b78cd4649dac7.jpeg",
+        "operatingSystemRawValue": 6,
+        "brandName": "Samsung",
+        "name": "UE43NU7100U"
     },
     {
-        "id": "1490ab49c5af2773450bc6c017477029",
-        "imageUrl": "https://content2.onliner.by/catalog/device/header/7f76d8e82eb6da4732f9dfeefd46247f.jpeg",
-        "brand": "Xiaomi",
-        "name": "MI TV 4A Pro 43''",
-        "operatingSystem": "WebOs",
-        "display": {
-            "width": 1920,
-            "height": 1080
-        },
-        "price": 858,
-        "stockCount": 4
+        "resolutionWidth": 3840,
+        "resolutionHeight": 2160,
+        "id": 1,
+        "price": 991,
+        "imageUrl": "https://content2.onliner.by/catalog/device/header/921d9b7a3dc1fcb5f44b78cd4649dac7.jpeg",
+        "operatingSystemRawValue": 6,
+        "brandName": "Samsung",
+        "name": "UE43NU7100U"
     }
 ]

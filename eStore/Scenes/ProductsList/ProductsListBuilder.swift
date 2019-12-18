@@ -26,6 +26,7 @@ extension ProductsListBuilderImpl: ProductsListBuilder {
             navigation: dependency.navigation,
             smartphoneEditorScene: SmartphoneEditorSceneImpl(navigation: dependency.navigation),
             laptopEditorScene: LaptopEditorSceneImpl(navigation: dependency.navigation),
+            tvEditorScene: TVEditorSceneImpl(navigation: dependency.navigation),
             userRepository: dependency.userRepository,
             cartRepository: dependency.cartRepository,
             productsUseCase: dependency.productsUseCase,
@@ -36,12 +37,14 @@ extension ProductsListBuilderImpl: ProductsListBuilder {
         let productDescriptionBuilder = ProductDescriptionBuilderImpl(dependency: component)
         let smartphoneEditorBuilder = SmartphoneEditorBuilderImpl(dependency: component)
         let laptopEditorBuilder = LaptopEditorBuilderImpl(dependency: component)
+        let tvEditorBuilder = TVEditorBuilderImpl(dependency: component)
         let coordinator = ProductsListCoordinator(
             scene: scene,
             show: view,
             productDescriptionBuilder: productDescriptionBuilder,
             smartphoneEditorBuilder: smartphoneEditorBuilder,
-            laptopEditorBuilder: laptopEditorBuilder
+            laptopEditorBuilder: laptopEditorBuilder,
+            tvEditorBuilder: tvEditorBuilder
         )
         let presenter = ProductsListPresenterImpl(
             view: view,

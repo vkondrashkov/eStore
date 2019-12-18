@@ -8,10 +8,11 @@
 
 import UIKit
 
-final class ProductsListComponent: ProductDescriptionDependency, SmartphoneEditorDependency, LaptopEditorDependency {
+final class ProductsListComponent: ProductDescriptionDependency, SmartphoneEditorDependency, LaptopEditorDependency, TVEditorDependency {
     let navigation: UINavigationController
     let smartphoneEditorScene: SmartphoneEditorScene
     let laptopEditorScene: LaptopEditorScene
+    let tvEditorScene: TVEditorScene
     let userRepository: UserRepository
     let cartRepository: CartRepository
     let productsUseCase: ProductsUseCase
@@ -21,6 +22,7 @@ final class ProductsListComponent: ProductDescriptionDependency, SmartphoneEdito
     init(navigation: UINavigationController,
          smartphoneEditorScene: SmartphoneEditorScene,
          laptopEditorScene: LaptopEditorScene,
+         tvEditorScene: TVEditorScene,
          userRepository: UserRepository,
          cartRepository: CartRepository,
          productsUseCase: ProductsUseCase,
@@ -29,6 +31,7 @@ final class ProductsListComponent: ProductDescriptionDependency, SmartphoneEdito
         self.navigation = navigation
         self.smartphoneEditorScene = smartphoneEditorScene
         self.laptopEditorScene = laptopEditorScene
+        self.tvEditorScene = tvEditorScene
         self.userRepository = userRepository
         self.cartRepository = cartRepository
         self.productsUseCase = productsUseCase

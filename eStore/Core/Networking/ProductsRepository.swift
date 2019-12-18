@@ -27,6 +27,9 @@ protocol ProductsRepository {
     func fetchLaptops(completion: @escaping (Result<[Laptop], ProductsRepositoryError>) -> Void)
     func fetchLaptop(id: String, completion: @escaping (Result<Laptop, ProductsRepositoryError>) -> Void)
     func deleteLaptop(id: Int, completion: @escaping (ProductsRepositoryError?) -> Void)
+    func addTV(userId: Int,
+               tvForm: TVForm,
+               completion: @escaping (Result<TV, ProductsRepositoryError>) -> Void)
     func fetchTVs(completion: @escaping (Result<[TV], ProductsRepositoryError>) -> Void)
     func fetchTV(id: String, completion: @escaping (Result<TV, ProductsRepositoryError>) -> Void)
     func deleteTV(id: Int, completion: @escaping (ProductsRepositoryError?) -> Void)
@@ -99,6 +102,14 @@ extension ProductsRepositoryImpl: ProductsRepository {
                 return
             }
             completion(nil)
+        }
+    }
+
+    func addTV(userId: Int,
+               tvForm: TVForm,
+               completion: @escaping (Result<TV, ProductsRepositoryError>) -> Void) {
+        provider.request(.addTV(userId: userId, tvForm: tvForm)) { result in
+            completion(self.processResponse(result: result))
         }
     }
 

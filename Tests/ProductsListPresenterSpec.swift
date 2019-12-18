@@ -30,7 +30,52 @@ final class ProductsListPresenterSpec: QuickSpec {
         }
     }
 
+    final class ProductsListInteractorSpy: ProductsListInteractor {
+        var currentUser: User? = nil
+
+        var hasInvokedFetchSmartphones = false
+        var hasInvokedDeleteSmartphone = false
+        var hasInvokedFetchTV = false
+        var hasInvokedFetchTVs = false
+        var hasInvokedDeleteTV = false
+        var hasInvokedFetchLaptops = false
+        var hasInvokedDeleteLaptop = false
+        var hasInvokedAddToCart = false
+
+        func fetchSmartphones(completion: @escaping (Result<[Smartphone], ProductsListInteractorError>) -> Void) {
+            hasInvokedFetchSmartphones = true
+        }
+
+        func deleteSmartphone(id: Int, completion: @escaping (ProductsListInteractorError?) -> Void) {
+            hasInvokedDeleteSmartphone = true
+        }
+
+        func fetchTVs(completion: @escaping (Result<[TV], ProductsListInteractorError>) -> Void) {
+            hasInvokedFetchTVs = true
+        }
+
+        func deleteTV(id: Int, completion: @escaping (ProductsListInteractorError?) -> Void) {
+            hasInvokedDeleteTV = true
+        }
+
+        func fetchLaptops(completion: @escaping (Result<[Laptop], ProductsListInteractorError>) -> Void) {
+            hasInvokedFetchLaptops = true
+        }
+
+        func deleteLaptop(id: Int, completion: @escaping (ProductsListInteractorError?) -> Void) {
+            hasInvokedDeleteLaptop = true
+        }
+
+        func addToCart(productId: Int, productTypeId: Int, completion: @escaping (ProductsListInteractorError?) -> Void) {
+            hasInvokedAddToCart = true
+        }
+    }
+
     final class ProductsListViewDummy: ProductsListView {
+        func display(rightBarButtonTitle: String) { }
+
+        func display(alert: Alert) { }
+
         func showActivityIndicator() { }
 
         func hideActivityIndicator() { }
@@ -41,6 +86,12 @@ final class ProductsListPresenterSpec: QuickSpec {
     }
 
     final class ProductsListRouterDummy: ProductsListRouter {
+        func showSmartphoneEditor() { }
+
+        func showLaptopEditor() { }
+
+        func showTVEditor() { }
+
         func showProductDescription(for storeItem: StoreItem) { }
     }
 
@@ -57,14 +108,14 @@ final class ProductsListPresenterSpec: QuickSpec {
     override func spec() {
         let productsListViewDummy = ProductsListViewDummy()
         let productsListRouterDummy = ProductsListRouterDummy()
-        var productsServiceSpy: ProductsServiceSpy!
+        var productsListInteractorSpy: ProductsListInteractorSpy!
         let themeManagerDummy = ThemeManagerDummy()
 
         describe("on handleLoadView()") {
             var productsListPresenter: ProductsListPresenter!
 
             beforeSuite {
-                productsServiceSpy = ProductsServiceSpy()
+                productsListInteractorSpy = ProductsListInteractorSpy()
             }
 
             context("with Smartphone product type") {
@@ -72,14 +123,14 @@ final class ProductsListPresenterSpec: QuickSpec {
                     productsListPresenter = ProductsListPresenterImpl(
                         view: productsListViewDummy,
                         router: productsListRouterDummy,
-                        productsService: productsServiceSpy,
+                        interactor: productsListInteractorSpy,
                         productType: .smartphone,
                         themeManager: themeManagerDummy
                     )
                     productsListPresenter.handleLoadView()
                 }
                 it("should call smartphone request") {
-                    expect(productsServiceSpy.didGetSmartphone).to(beTrue())
+                    expect(productsListInteractorSpy.hasInvokedFetchSmartphones).to(beTrue())
                 }
             }
 
@@ -88,14 +139,14 @@ final class ProductsListPresenterSpec: QuickSpec {
                     productsListPresenter = ProductsListPresenterImpl(
                         view: productsListViewDummy,
                         router: productsListRouterDummy,
-                        productsService: productsServiceSpy,
-                        productType: .Laptop,
+                        interactor: productsListInteractorSpy,
+                        productType: .laptop,
                         themeManager: themeManagerDummy
                     )
                     productsListPresenter.handleLoadView()
                 }
                 it("should call laptop request") {
-                    expect(productsServiceSpy.didGetLaptops).to(beTrue())
+                    expect(productsListInteractorSpy.hasInvokedFetchLaptops).to(beTrue())
                 }
             }
 
@@ -104,14 +155,14 @@ final class ProductsListPresenterSpec: QuickSpec {
                     productsListPresenter = ProductsListPresenterImpl(
                         view: productsListViewDummy,
                         router: productsListRouterDummy,
-                        productsService: productsServiceSpy,
-                        productType: .TV,
+                        interactor: productsListInteractorSpy,
+                        productType: .tv,
                         themeManager: themeManagerDummy
                     )
                     productsListPresenter.handleLoadView()
                 }
                 it("should call tv request") {
-                    expect(productsServiceSpy.didGetTV).to(beTrue())
+                    expect(productsListInteractorSpy.hasInvokedFetchTVs).to(beTrue())
                 }
             }
         }

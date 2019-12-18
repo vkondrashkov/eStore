@@ -171,15 +171,23 @@
 		9CC77FA223A97CF600466AA4 /* LaptopEditorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F9B23A97CF500466AA4 /* LaptopEditorCoordinator.swift */; };
 		9CC77FA323A97CF600466AA4 /* LaptopEditorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77F9C23A97CF500466AA4 /* LaptopEditorScene.swift */; };
 		9CC77FA523A97E3100466AA4 /* LaptopForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77FA423A97E3100466AA4 /* LaptopForm.swift */; };
+		9CC77FA723A9882B00466AA4 /* TVForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77FA623A9882B00466AA4 /* TVForm.swift */; };
+		9CC77FB023A9891B00466AA4 /* TVEditorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77FA923A9891B00466AA4 /* TVEditorScene.swift */; };
+		9CC77FB123A9891B00466AA4 /* TVEditorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77FAA23A9891B00466AA4 /* TVEditorPresenter.swift */; };
+		9CC77FB223A9891B00466AA4 /* TVEditorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77FAB23A9891B00466AA4 /* TVEditorCoordinator.swift */; };
+		9CC77FB323A9891B00466AA4 /* TVEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77FAC23A9891B00466AA4 /* TVEditorView.swift */; };
+		9CC77FB423A9891B00466AA4 /* TVEditorContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77FAD23A9891B00466AA4 /* TVEditorContract.swift */; };
+		9CC77FB523A9891B00466AA4 /* TVEditorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77FAE23A9891B00466AA4 /* TVEditorInteractor.swift */; };
+		9CC77FB623A9891B00466AA4 /* TVEditorBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77FAF23A9891B00466AA4 /* TVEditorBuilder.swift */; };
 		9CD2B1AD2381860600927979 /* ProductsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AC2381860600927979 /* ProductsRepository.swift */; };
 		9CD2B1C12381C4F000927979 /* Result+Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1C02381C4F000927979 /* Result+Values.swift */; };
 		9CD2B1C423827A7300927979 /* eStoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AA238183FB00927979 /* eStoreAPI.swift */; };
 		9CD2B1C523827B9400927979 /* products-smartphones.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AE2381950500927979 /* products-smartphones.json */; };
-		9CD2B1C623827B9700927979 /* products-smartphone-3571539fcbe330452d4d938502ed9f15.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B62381A31C00927979 /* products-smartphone-3571539fcbe330452d4d938502ed9f15.json */; };
+		9CD2B1C623827B9700927979 /* products-smartphone-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B62381A31C00927979 /* products-smartphone-1.json */; };
 		9CD2B1C723827B9900927979 /* products-laptops.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B22381A12900927979 /* products-laptops.json */; };
-		9CD2B1C823827B9F00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B52381A31C00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6.json */; };
+		9CD2B1C823827B9F00927979 /* products-laptop-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B52381A31C00927979 /* products-laptop-1.json */; };
 		9CD2B1C923827BA200927979 /* products-tvs.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B12381A12900927979 /* products-tvs.json */; };
-		9CD2B1CA23827BA500927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B72381A31C00927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe.json */; };
+		9CD2B1CA23827BA500927979 /* products-tv-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 9CD2B1B72381A31C00927979 /* products-tv-1.json */; };
 		9CD2B1D32382B04B00927979 /* SignInInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1D22382B04B00927979 /* SignInInteractor.swift */; };
 		9CD2B1D52382B22300927979 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1D42382B22300927979 /* User.swift */; };
 		9CD2B1D72382B2EA00927979 /* AuthorizationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1D62382B2EA00927979 /* AuthorizationUseCase.swift */; };
@@ -375,14 +383,22 @@
 		9CC77F9B23A97CF500466AA4 /* LaptopEditorCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaptopEditorCoordinator.swift; sourceTree = "<group>"; };
 		9CC77F9C23A97CF500466AA4 /* LaptopEditorScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaptopEditorScene.swift; sourceTree = "<group>"; };
 		9CC77FA423A97E3100466AA4 /* LaptopForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaptopForm.swift; sourceTree = "<group>"; };
+		9CC77FA623A9882B00466AA4 /* TVForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVForm.swift; sourceTree = "<group>"; };
+		9CC77FA923A9891B00466AA4 /* TVEditorScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVEditorScene.swift; sourceTree = "<group>"; };
+		9CC77FAA23A9891B00466AA4 /* TVEditorPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVEditorPresenter.swift; sourceTree = "<group>"; };
+		9CC77FAB23A9891B00466AA4 /* TVEditorCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVEditorCoordinator.swift; sourceTree = "<group>"; };
+		9CC77FAC23A9891B00466AA4 /* TVEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVEditorView.swift; sourceTree = "<group>"; };
+		9CC77FAD23A9891B00466AA4 /* TVEditorContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVEditorContract.swift; sourceTree = "<group>"; };
+		9CC77FAE23A9891B00466AA4 /* TVEditorInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVEditorInteractor.swift; sourceTree = "<group>"; };
+		9CC77FAF23A9891B00466AA4 /* TVEditorBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVEditorBuilder.swift; sourceTree = "<group>"; };
 		9CD2B1AA238183FB00927979 /* eStoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eStoreAPI.swift; sourceTree = "<group>"; };
 		9CD2B1AC2381860600927979 /* ProductsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRepository.swift; sourceTree = "<group>"; };
 		9CD2B1AE2381950500927979 /* products-smartphones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-smartphones.json"; sourceTree = "<group>"; };
 		9CD2B1B12381A12900927979 /* products-tvs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-tvs.json"; sourceTree = "<group>"; };
 		9CD2B1B22381A12900927979 /* products-laptops.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-laptops.json"; sourceTree = "<group>"; };
-		9CD2B1B52381A31C00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-laptop-34ec91a46a12a40fc44c414b61b638e6.json"; sourceTree = "<group>"; };
-		9CD2B1B62381A31C00927979 /* products-smartphone-3571539fcbe330452d4d938502ed9f15.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-smartphone-3571539fcbe330452d4d938502ed9f15.json"; sourceTree = "<group>"; };
-		9CD2B1B72381A31C00927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-tv-09af2b066b649bbb8ff54dafca4660fe.json"; sourceTree = "<group>"; };
+		9CD2B1B52381A31C00927979 /* products-laptop-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-laptop-1.json"; sourceTree = "<group>"; };
+		9CD2B1B62381A31C00927979 /* products-smartphone-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-smartphone-1.json"; sourceTree = "<group>"; };
+		9CD2B1B72381A31C00927979 /* products-tv-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-tv-1.json"; sourceTree = "<group>"; };
 		9CD2B1C02381C4F000927979 /* Result+Values.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Values.swift"; sourceTree = "<group>"; };
 		9CD2B1D22382B04B00927979 /* SignInInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInInteractor.swift; sourceTree = "<group>"; };
 		9CD2B1D42382B22300927979 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -574,6 +590,7 @@
 				9CA418D9221D884900BAF215 /* Laptop.swift */,
 				9CC77FA423A97E3100466AA4 /* LaptopForm.swift */,
 				9CA418D7221D883F00BAF215 /* TV.swift */,
+				9CC77FA623A9882B00466AA4 /* TVForm.swift */,
 				9CA418DD221D898300BAF215 /* Display.swift */,
 				9CA418DF221D8A0900BAF215 /* OperatingSystem.swift */,
 				9C76ABAC22357FCC00FB39DA /* Specification.swift */,
@@ -795,6 +812,7 @@
 				9CA41922222324AF00BAF215 /* ProductsList */,
 				9CC77F9523A97CF500466AA4 /* LaptopEditor */,
 				9CC77F8223A95EB100466AA4 /* SmartphoneEditor */,
+				9CC77FA823A9891B00466AA4 /* TVEditor */,
 				9C83BBFD222EAEAC00CBB1FF /* ProductDescription */,
 				9C452FAA2242DAB300924FA5 /* Cart */,
 				9CC5525D220AFBB00004ACC4 /* Profile */,
@@ -892,15 +910,30 @@
 			path = eStore/Scenes/LaptopEditor;
 			sourceTree = SOURCE_ROOT;
 		};
+		9CC77FA823A9891B00466AA4 /* TVEditor */ = {
+			isa = PBXGroup;
+			children = (
+				9CC77FAD23A9891B00466AA4 /* TVEditorContract.swift */,
+				9CC77FAF23A9891B00466AA4 /* TVEditorBuilder.swift */,
+				9CC77FA923A9891B00466AA4 /* TVEditorScene.swift */,
+				9CC77FAB23A9891B00466AA4 /* TVEditorCoordinator.swift */,
+				9CC77FAC23A9891B00466AA4 /* TVEditorView.swift */,
+				9CC77FAA23A9891B00466AA4 /* TVEditorPresenter.swift */,
+				9CC77FAE23A9891B00466AA4 /* TVEditorInteractor.swift */,
+			);
+			name = TVEditor;
+			path = eStore/Scenes/TVEditor;
+			sourceTree = SOURCE_ROOT;
+		};
 		9CD2B1CB23827C1800927979 /* Stubbed Responses */ = {
 			isa = PBXGroup;
 			children = (
 				9CD2B1AE2381950500927979 /* products-smartphones.json */,
-				9CD2B1B62381A31C00927979 /* products-smartphone-3571539fcbe330452d4d938502ed9f15.json */,
+				9CD2B1B62381A31C00927979 /* products-smartphone-1.json */,
 				9CD2B1B22381A12900927979 /* products-laptops.json */,
-				9CD2B1B52381A31C00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6.json */,
+				9CD2B1B52381A31C00927979 /* products-laptop-1.json */,
 				9CD2B1B12381A12900927979 /* products-tvs.json */,
-				9CD2B1B72381A31C00927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe.json */,
+				9CD2B1B72381A31C00927979 /* products-tv-1.json */,
 				9CB71C2A238AE346006003A9 /* authorize-stubUser-A123456.json */,
 			);
 			path = "Stubbed Responses";
@@ -1021,11 +1054,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CD2B1C523827B9400927979 /* products-smartphones.json in Resources */,
-				9CD2B1CA23827BA500927979 /* products-tv-09af2b066b649bbb8ff54dafca4660fe.json in Resources */,
+				9CD2B1CA23827BA500927979 /* products-tv-1.json in Resources */,
 				9CD2B1C923827BA200927979 /* products-tvs.json in Resources */,
 				9CD2B1C723827B9900927979 /* products-laptops.json in Resources */,
-				9CD2B1C823827B9F00927979 /* products-laptop-34ec91a46a12a40fc44c414b61b638e6.json in Resources */,
-				9CD2B1C623827B9700927979 /* products-smartphone-3571539fcbe330452d4d938502ed9f15.json in Resources */,
+				9CD2B1C823827B9F00927979 /* products-laptop-1.json in Resources */,
+				9CD2B1C623827B9700927979 /* products-smartphone-1.json in Resources */,
 				9CC5524B220AF8520004ACC4 /* Assets.xcassets in Resources */,
 				9CB71C2E238AEF26006003A9 /* authorize-stubUser-A123456.json in Resources */,
 			);
@@ -1177,6 +1210,9 @@
 				9CC55244220AF8510004ACC4 /* AppDelegate.swift in Sources */,
 				9CC46B9A22141061005E24F5 /* DashboardComponent.swift in Sources */,
 				9CC46BB92214C409005E24F5 /* AuthScene.swift in Sources */,
+				9CC77FB423A9891B00466AA4 /* TVEditorContract.swift in Sources */,
+				9CC77FB323A9891B00466AA4 /* TVEditorView.swift in Sources */,
+				9CC77FA723A9882B00466AA4 /* TVForm.swift in Sources */,
 				9C452FBF2242E08B00924FA5 /* CartTableViewDataSource.swift in Sources */,
 				9C83BC07222EAEF700CBB1FF /* ProductDescriptionCoordinator.swift in Sources */,
 				9CC46BC8221538F8005E24F5 /* SignUpContract.swift in Sources */,
@@ -1224,6 +1260,7 @@
 				9CA4191B2222CC9500BAF215 /* CategoryTableViewCell.swift in Sources */,
 				9C56E105225A93CE00E72428 /* ThemeSettingsBuilder.swift in Sources */,
 				9CA418D8221D883F00BAF215 /* TV.swift in Sources */,
+				9CC77FB123A9891B00466AA4 /* TVEditorPresenter.swift in Sources */,
 				9CC46BBF2214C425005E24F5 /* AuthPresenter.swift in Sources */,
 				9C83BC05222EAEEB00CBB1FF /* ProductDescriptionScene.swift in Sources */,
 				9CC46C0722161550005E24F5 /* SignInCoordinator.swift in Sources */,
@@ -1231,6 +1268,7 @@
 				9CBBF7FB22676B1E00424E37 /* SectionedMenuRegularCell.swift in Sources */,
 				9C83BB94222A591A00CBB1FF /* ProductsListTableViewDataSource.swift in Sources */,
 				9C56E10F225A950A00E72428 /* UserDefaultsManager.swift in Sources */,
+				9CC77FB523A9891B00466AA4 /* TVEditorInteractor.swift in Sources */,
 				9C56E117225B5FA200E72428 /* Theme.swift in Sources */,
 				9CA418E0221D8A0900BAF215 /* OperatingSystem.swift in Sources */,
 				9CC46BFF22161529005E24F5 /* SignInContract.swift in Sources */,
@@ -1261,6 +1299,7 @@
 				9CC77F9423A9739300466AA4 /* SmartphoneForm.swift in Sources */,
 				9CC46C032216153A005E24F5 /* SignInBuilder.swift in Sources */,
 				9C56E109225A93D900E72428 /* ThemeSettingsCoordinator.swift in Sources */,
+				9CC77FB623A9891B00466AA4 /* TVEditorBuilder.swift in Sources */,
 				9CC77F8A23A95EFB00466AA4 /* SmartphoneEditorScene.swift in Sources */,
 				9CBC2819223B839D0091082B /* ProductDescriptionTableHeaderCell.swift in Sources */,
 				9C8FEC07226B9553007C30EB /* ThemeSettingsColorPickerViewCell.swift in Sources */,
@@ -1272,6 +1311,7 @@
 				9CD2B1D52382B22300927979 /* User.swift in Sources */,
 				9CC77F9223A95F1800466AA4 /* SmartphoneEditorInteractor.swift in Sources */,
 				9CC77F7023A8565700466AA4 /* CartInteractor.swift in Sources */,
+				9CC77FB223A9891B00466AA4 /* TVEditorCoordinator.swift in Sources */,
 				9CC46C2422180B8C005E24F5 /* ProfileScene.swift in Sources */,
 				9CC77FA123A97CF600466AA4 /* LaptopEditorView.swift in Sources */,
 				9CC46BCC22153908005E24F5 /* SignUpBuilder.swift in Sources */,
@@ -1286,6 +1326,7 @@
 				9CC46B9122140623005E24F5 /* RootPresenter.swift in Sources */,
 				9CC77FA323A97CF600466AA4 /* LaptopEditorScene.swift in Sources */,
 				9CC55269220AFCBC0004ACC4 /* RootCoordinator.swift in Sources */,
+				9CC77FB023A9891B00466AA4 /* TVEditorScene.swift in Sources */,
 				9C1C9622225F590F0055EE46 /* ThemeBuilder.swift in Sources */,
 				9C56E10B225A93E000E72428 /* ThemeSettingsView.swift in Sources */,
 				9CC46BCE2215390F005E24F5 /* SignUpScene.swift in Sources */,

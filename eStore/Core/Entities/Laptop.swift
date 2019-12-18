@@ -19,6 +19,8 @@ class Laptop: ImmutableMappable {
     let memoryCapacity: Int
     let processorName: String
     let graphicsAdapter: String
+    let color: String
+    let batteryCapacity: Int
     let price: Int
 
     required init(map: Map) throws {
@@ -32,6 +34,8 @@ class Laptop: ImmutableMappable {
         memoryCapacity = try map.value("memoryCapacity")
         processorName = try map.value("processorName")
         graphicsAdapter = try map.value("graphicsAdapter")
+        color = try map.value("color")
+        batteryCapacity = try map.value("batteryCapacity")
         price = try map.value("price")
     }
 
@@ -47,6 +51,8 @@ class Laptop: ImmutableMappable {
         memoryCapacity >>> map["memoryCapacity"]
         processorName >>> map["processorName"]
         graphicsAdapter >>> map["graphicsAdapter"]
+        color >>> map["color"]
+        batteryCapacity >>> map["batteryCapacity"]
         price >>> map["price"]
     }
 }
@@ -61,6 +67,8 @@ extension Laptop: StoreItemConvertible {
         specifications.append(Specification(name: "Memory", value: "\(memoryCapacity) GB"))
         specifications.append(Specification(name: "Processor", value: processorName))
         specifications.append(Specification(name: "Graphics adapter", value: graphicsAdapter))
+        specifications.append(Specification(name: "Color", value: color))
+        specifications.append(Specification(name: "Battery capacity", value: "\(batteryCapacity) mAh"))
         let storeItem = StoreItem(
             id: id,
             imageUrl: imageUrl,

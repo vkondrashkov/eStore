@@ -22,9 +22,15 @@ final class AuthorizationSpec: QuickSpec {
                        completion: ((Result<User, AuthorizationRepositoryError>) -> Void)?) {
             completion?(stubbedAuthorizeResult)
         }
+
+        func register(login: String, password: String, completion: ((Result<User, AuthorizationRepositoryError>) -> Void)?) {
+            completion?(stubbedAuthorizeResult)
+        }
     }
 
     final class UserRepositoryStub: UserRepository {
+        var currentUser: User? = nil
+
         var stubbedSaveResult: Result<Bool, UserRepositoryError>!
         var stubbedLoadResult: Result<User, UserRepositoryError>!
 
@@ -34,6 +40,10 @@ final class AuthorizationSpec: QuickSpec {
 
         func loadUser(completion: ((Result<User, UserRepositoryError>) -> Void)?) {
             completion?(stubbedLoadResult)
+        }
+
+        func removeUser(completion: ((UserRepositoryError?) -> Void)?) {
+            completion?(nil)
         }
     }
 
@@ -148,7 +158,7 @@ final class AuthorizationSpec: QuickSpec {
         context("when all repositories succeed") {
             beforeEach {
                 expectedUser = User(
-                    id: "3571539fcbe330452d4d938502ed9f15",
+                    id: 1,
                     username: "stubUser",
                     email: "example@domain.com",
                     fullname: "Foo Bar",
@@ -183,7 +193,7 @@ final class AuthorizationSpec: QuickSpec {
         context("when authorization repository fails") {
             beforeEach {
                 expectedUser = User(
-                    id: "3571539fcbe330452d4d938502ed9f15",
+                    id: 1,
                     username: "stubUser",
                     email: "example@domain.com",
                     fullname: "Foo Bar",
@@ -219,7 +229,7 @@ final class AuthorizationSpec: QuickSpec {
         context("when user repository fails") {
             beforeEach {
                 expectedUser = User(
-                    id: "3571539fcbe330452d4d938502ed9f15",
+                    id: 1,
                     username: "stubUser",
                     email: "example@domain.com",
                     fullname: "Foo Bar",

@@ -50,11 +50,11 @@ final class ProductsUseCaseSpec: QuickSpec {
                 }
 
                 context("with correct id") {
-                    let id = "3571539fcbe330452d4d938502ed9f15"
+                    let id = 1
                     it("should return success") {
                         let completionSpy = CompletionSpy<Smartphone, ProductsUseCaseError>()
                         productsUseCase.fetchSmartphone(
-                            id: id,
+                            id: String(id),
                             completion: completionSpy.completion
                         )
                         expect(completionSpy.invokedResult?.value?.id).to(equal(id))
@@ -87,11 +87,11 @@ final class ProductsUseCaseSpec: QuickSpec {
                 }
 
                 context("with correct id") {
-                    let id = "34ec91a46a12a40fc44c414b61b638e6"
+                    let id = 1
                     it("should return success") {
                         let completionSpy = CompletionSpy<Laptop, ProductsUseCaseError>()
                         productsUseCase.fetchLaptop(
-                            id: id,
+                            id: String(id),
                             completion: completionSpy.completion
                         )
                         expect(completionSpy.invokedResult?.value?.id).to(equal(id))
@@ -124,11 +124,11 @@ final class ProductsUseCaseSpec: QuickSpec {
                 }
 
                 context("with correct id") {
-                    let id = "09af2b066b649bbb8ff54dafca4660fe"
+                    let id = 1
                     it("should return success") {
                         let completionSpy = CompletionSpy<TV, ProductsUseCaseError>()
                         productsUseCase.fetchTV(
-                            id: id,
+                            id: String(id),
                             completion: completionSpy.completion
                         )
                         expect(completionSpy.invokedResult?.value?.id).to(equal(id))
