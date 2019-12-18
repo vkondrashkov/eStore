@@ -14,10 +14,13 @@ final class SignUpViewImpl: UIViewController {
 
     private var containerView: UIView!
     private var emailCaption: UILabel!
+    private var emailStatusLabel: UILabel!
     private var emailTextField: UITextField!
     private var passwordCaption: UILabel!
+    private var passwordStatusLabel: UILabel!
     private var passwordTextField: UITextField!
     private var confirmPasswordCaption: UILabel!
+    private var confirmPasswordStatusLabel: UILabel!
     private var confirmPasswordTextField: UITextField!
     private var signUpButton: UIButton!
     private var activityIndicator: UIActivityIndicatorView!
@@ -51,6 +54,14 @@ final class SignUpViewImpl: UIViewController {
             make.height.equalTo(40)
         }
 
+        emailStatusLabel = UILabel()
+        containerView.addSubview(emailStatusLabel)
+        emailStatusLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalTo(emailTextField.snp.top).offset(-10)
+        }
+
         passwordCaption = UILabel()
         containerView.addSubview(passwordCaption)
         passwordCaption.snp.makeConstraints { make in
@@ -66,6 +77,14 @@ final class SignUpViewImpl: UIViewController {
             make.height.equalTo(40)
         }
 
+        passwordStatusLabel = UILabel()
+        containerView.addSubview(passwordStatusLabel)
+        passwordStatusLabel.snp.makeConstraints { make in
+            make.top.equalTo(emailTextField.snp.bottom).offset(20)
+            make.trailing.equalToSuperview()
+            make.bottom.equalTo(passwordTextField.snp.top).offset(-10)
+        }
+
         confirmPasswordCaption = UILabel()
         containerView.addSubview(confirmPasswordCaption)
         confirmPasswordCaption.snp.makeConstraints { make in
@@ -79,6 +98,14 @@ final class SignUpViewImpl: UIViewController {
             make.top.equalTo(confirmPasswordCaption.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(40)
+        }
+
+        confirmPasswordStatusLabel = UILabel()
+        containerView.addSubview(confirmPasswordStatusLabel)
+        confirmPasswordStatusLabel.snp.makeConstraints { make in
+            make.top.equalTo(passwordTextField.snp.bottom).offset(20)
+            make.trailing.equalToSuperview()
+            make.bottom.equalTo(confirmPasswordTextField.snp.top).offset(-10)
         }
 
         signUpButton = UIButton()
@@ -106,15 +133,24 @@ final class SignUpViewImpl: UIViewController {
         emailTextField.borderStyle = .roundedRect
         emailTextField.keyboardType = .emailAddress
 
+        emailStatusLabel.font = .boldSystemFont(ofSize: 17)
+        emailStatusLabel.textAlignment = .right
+
         passwordCaption.font = .boldSystemFont(ofSize: 17)
 
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.isSecureTextEntry = true
 
+        passwordStatusLabel.font = .boldSystemFont(ofSize: 17)
+        passwordStatusLabel.textAlignment = .right
+
         confirmPasswordCaption.font = .boldSystemFont(ofSize: 17)
 
         confirmPasswordTextField.borderStyle = .roundedRect
         confirmPasswordTextField.isSecureTextEntry = true
+
+        confirmPasswordStatusLabel.font = .boldSystemFont(ofSize: 17)
+        confirmPasswordStatusLabel.textAlignment = .right
 
         signUpButton.addTarget(self, action: #selector(signUpButtonDidPressed), for: .touchUpInside)
         signUpButton.layer.cornerRadius = 5
@@ -179,7 +215,17 @@ extension SignUpViewImpl: ThemeUpdatable {
     }
 }
 
+// MARK: - AlertDisplayable implementation
+
+extension SignUpViewImpl: AlertDisplayable {
+    func display(alert: Alert) {
+        let alertController = AlertFactoryImpl().make(alert: alert)
+        present(alertController, animated: true, completion: nil)
+    }
+}
+
 // MARK: - SignUpView implementation
+
 extension SignUpViewImpl: SignUpView {
     func display(rightBarButton: String) {
         let rightBarButtonItem = UIBarButtonItem(title: rightBarButton,
@@ -193,12 +239,27 @@ extension SignUpViewImpl: SignUpView {
         self.emailCaption.text = emailCaption
     }
 
+    func display(emailError: String) {
+        emailStatusLabel.text = emailError
+        emailStatusLabel.textColor = Color.redPigment
+    }
+
     func display(passwordCaption: String) {
         self.passwordCaption.text = passwordCaption
     }
 
+    func display(passwordError: String) {
+        passwordStatusLabel.text = passwordError
+        passwordStatusLabel.textColor = Color.redPigment
+    }
+
     func display(confirmPasswordCaption: String) {
         self.confirmPasswordCaption.text = confirmPasswordCaption
+    }
+
+    func display(confirmPasswordError: String) {
+        confirmPasswordStatusLabel.text = confirmPasswordError
+        confirmPasswordStatusLabel.textColor = Color.redPigment
     }
 
     func display(signUpButton: String) {

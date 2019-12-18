@@ -73,7 +73,6 @@ final class ProfilePresenterImpl {
 // MARK: - ProfilePresenter implementation
 extension ProfilePresenterImpl: ProfilePresenter {
     func handleLoadView() {
-//        view.display(rightBarButton: "Edit")
         guard let user = interactor.currentUser else {
             router.logout()
             return

@@ -136,6 +136,8 @@ extension eStoreAPI: TargetType {
             return stubbedResponse("products-tvs")
         case .tv(let id):
             return stubbedResponse("products-tv-\(id)")
+        case .cart(let userId):
+            return stubbedResponse("cart-\(userId)")
         default:
             return Data()
         }

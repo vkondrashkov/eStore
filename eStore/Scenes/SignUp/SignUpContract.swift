@@ -38,11 +38,14 @@ protocol SignUpListener: AnyObject {
     func signUp()
 }
 
-protocol SignUpView: AnyObject, ThemeUpdatable {
+protocol SignUpView: AnyObject, ThemeUpdatable, AlertDisplayable {
     func display(rightBarButton: String)
     func display(emailCaption: String)
+    func display(emailError: String)
     func display(passwordCaption: String)
+    func display(passwordError: String)
     func display(confirmPasswordCaption: String)
+    func display(confirmPasswordError: String)
     func display(signUpButton: String)
     func showActivityIndicator()
     func hideActivityIndicator()

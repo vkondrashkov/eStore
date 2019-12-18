@@ -40,17 +40,24 @@ extension SignUpPresenterImpl: SignUpPresenter {
         router.routeSignIn()
     }
 
-    func handleSignUpButtonPress(login: String?, password: String?, confirmPassword: String?) {
-        guard let unwrappedLogin = login, let unwrappedPassword = password else {
-            if login?.isEmpty ?? true {
-//                view.display(emailError: "This field shouldn't be empty")
-            }
-            if password?.isEmpty ?? true {
-//                view.display(passwordError: "This field shouldn't be empty")
-            }
-            view.hideActivityIndicator()
-            view.display(signUpButton: "Sign In")
-            return
+    func handleSignUpButtonPress(login: String?,
+                                 password: String?,
+                                 confirmPassword: String?) {
+        guard let unwrappedLogin = login,
+            let unwrappedPassword = password,
+            let unwrappedConfirmPassword = confirmPassword else {
+                if login?.isEmpty ?? true {
+                    view.display(emailError: "This field shouldn't be empty")
+                }
+                if password?.isEmpty ?? true {
+                    view.display(passwordError: "This field shouldn't be empty")
+                }
+                if confirmPassword?.isEmpty ?? true {
+                    view.display(confirmPasswordError: "Shouldn't be empty")
+                }
+                view.hideActivityIndicator()
+                view.display(signUpButton: "Sign Up")
+                return
         }
         view.showActivityIndicator()
         view.display(signUpButton: "")
@@ -58,13 +65,17 @@ extension SignUpPresenterImpl: SignUpPresenter {
         let isEmailValid = interactor.validate(email: unwrappedLogin)
         let isLoginValid = isUsernameValid || isEmailValid
         let isPasswordValid = interactor.validate(password: unwrappedPassword)
+        let isConfirmPasswordValid = unwrappedConfirmPassword == unwrappedPassword
 
-        guard isLoginValid, isPasswordValid else {
+        guard isLoginValid, isPasswordValid, isConfirmPasswordValid else {
             if !isLoginValid {
-//                view.display(emailError: "Invalid email or login")
+                view.display(emailError: "Invalid email or login")
             }
             if !isPasswordValid {
-//                view.display(passwordError: "Invalid password")
+                view.display(passwordError: "Invalid password")
+            }
+            if !isConfirmPasswordValid {
+                view.display(confirmPasswordError: "Doesn't match")
             }
             view.hideActivityIndicator()
             view.display(signUpButton: "Sign In")
@@ -92,7 +103,7 @@ extension SignUpPresenterImpl: SignUpPresenter {
                             secondaryCaption: nil,
                             secondaryAction: nil
                         )
-//                        self?.view.display(alert: alert)
+                        self?.view.display(alert: alert)
                         self?.view.hideActivityIndicator()
                         self?.view.display(signUpButton: "Sign In")
                     case .invalidData:
@@ -105,7 +116,7 @@ extension SignUpPresenterImpl: SignUpPresenter {
                             secondaryCaption: nil,
                             secondaryAction: nil
                         )
-//                        self?.view.display(alert: alert)
+                        self?.view.display(alert: alert)
                         self?.view.hideActivityIndicator()
                         self?.view.display(signUpButton: "Sign In")
                     }

@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "price": 42069,
+        "ownerId": 3,
+        "imageUrl": "",
+        "productId": 1,
+        "brandName": "LUBLU",
+        "name": "ZHENYA"
+    },
+    {
+        "id": 2,
+        "price": 1389,
+        "ownerId": 3,
+        "imageUrl": "https://content2.onliner.by/catalog/device/header@2/0ab0b43eb38b5767ea29c4509f0a9d3b.jpeg",
+        "productId": 2,
+        "brandName": "Apple",
+        "name": "iPhone 7 128GB Black"
+    },
+    {
+        "id": 3,
+        "price": 2129,
+        "ownerId": 3,
+        "imageUrl": "https://content2.onliner.by/catalog/device/header/69fd1638fafefbe0ecc02ab7fd9391f0.jpeg",
+        "productId": 1,
+        "brandName": "Apple",
+        "name": "MacBook Air 13'' (2017 год) [MQD32]"
+    },
+    {
+        "id": 4,
+        "price": 991,
+        "ownerId": 3,
+        "imageUrl": "https://content2.onliner.by/catalog/device/header/921d9b7a3dc1fcb5f44b78cd4649dac7.jpeg",
+        "productId": 2,
+        "brandName": "Samsung",
+        "name": "UE43NU7100U"
+    }
+]
