@@ -79,7 +79,7 @@ extension ProfilePresenterImpl: ProfilePresenter {
         }
 
         let userRow = SectionedMenuRow(
-            imageUrl: "",
+            imageUrl: nil,
             title: user.fullname ?? user.username,
             type: .thumbnail,
             action: nil

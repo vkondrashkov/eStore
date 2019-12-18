@@ -18,6 +18,7 @@ final class ProductsListViewImpl: UIViewController {
     
     private var productsTableViewDataSource = ProductsListTableViewDataSource()
     private var productsTableView: UITableView!
+    private let refreshControl = UIRefreshControl()
 
     override func loadView() {
         view = UIView()
@@ -64,9 +65,18 @@ final class ProductsListViewImpl: UIViewController {
         productsTableView.register(ProductsListTableViewCell.self, forCellReuseIdentifier: ProductsListTableViewCell.reuseIdentifier)
         productsTableView.dataSource = productsTableViewDataSource
         productsTableView.delegate = self
+        productsTableView.refreshControl = refreshControl
+
+        refreshControl.addTarget(self, action: #selector(refreshControlDidPull), for: .valueChanged)
 
         apply(theme: theme)
         presenter.handleLoadView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        presenter.shouldViewAppear()
     }
 
     private func apply(theme: Theme) {
@@ -74,8 +84,14 @@ final class ProductsListViewImpl: UIViewController {
         productsTableView.separatorColor = theme.borderColor
     }
 
+    // MARK: - Actions
+
     @objc private func rightBarButtonDidPress() {
         presenter.handleAddProductPress()
+    }
+
+    @objc private func refreshControlDidPull() {
+        presenter.handleRefresh()
     }
 }
 
@@ -128,6 +144,7 @@ extension ProductsListViewImpl: ProductsListView {
     }
     
     func hideActivityIndicator() {
+        refreshControl.endRefreshing()
         activityIndicator.stopAnimating()
         UIView.transition(
             with: view,

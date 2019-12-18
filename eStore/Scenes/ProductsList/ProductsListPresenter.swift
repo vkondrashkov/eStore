@@ -100,12 +100,18 @@ extension ProductsListPresenterImpl: ProductsListPresenter {
 
     func handleLoadView() {
         view.showActivityIndicator()
-        
-        reloadProductsList()
 
         if let user = interactor.currentUser, user.role.rawValue >= User.Role.moderator.rawValue {
             view.display(rightBarButtonTitle: "Add")
         }
+    }
+
+    func shouldViewAppear() {
+        reloadProductsList()
+    }
+
+    func handleRefresh() {
+        reloadProductsList()
     }
     
     func handleProductPress(storeItem: StoreItem) {

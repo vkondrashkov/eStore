@@ -45,6 +45,8 @@ protocol ProductsListView: AnyObject, ThemeUpdatable, AlertDisplayable {
 
 protocol ProductsListPresenter: AnyObject {
     func handleLoadView()
+    func shouldViewAppear()
+    func handleRefresh()
     func handleProductPress(storeItem: StoreItem)
     func configureEditActions(for indexPath: IndexPath) -> [(title: String, isDestructive: Bool, action: ((StoreItem) -> Void)?)]
     func handleAddProductPress()

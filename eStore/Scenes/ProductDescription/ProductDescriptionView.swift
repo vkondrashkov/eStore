@@ -15,6 +15,7 @@ final class ProductDescriptionViewImpl: UIViewController {
     var dataSource: ProductDescriptionTableViewDataSource!
 
     private var descriptionTableView: UITableView!
+    private let refreshControl = UIRefreshControl()
 
     override func loadView() {
         view = UIView()
@@ -39,6 +40,9 @@ final class ProductDescriptionViewImpl: UIViewController {
         descriptionTableView.register(ProductDescriptionTablePriceCell.self, forCellReuseIdentifier: ProductDescriptionTablePriceCell.reuseIdentifier)
         descriptionTableView.dataSource = dataSource
         descriptionTableView.delegate = self
+        descriptionTableView.refreshControl = refreshControl
+
+        refreshControl.addTarget(self, action: #selector(refreshControlDidPull), for: .valueChanged)
 
         apply(theme: theme)
         presenter.handleLoadView()
@@ -54,11 +58,24 @@ final class ProductDescriptionViewImpl: UIViewController {
     @objc private func rightBarButtonDidPress() {
         presenter.handleEditPress(storeItem: dataSource.item)
     }
+
+    @objc private func refreshControlDidPull() {
+        presenter.handleRefresh(storeItem: dataSource.item)
+    }
 }
 
 // MARK: - ProductDescriptionView implementation
 
 extension ProductDescriptionViewImpl: ProductDescriptionView {
+    func update(storeItem: StoreItem) {
+        dataSource.item = storeItem
+        descriptionTableView.reloadData()
+    }
+
+    func hideActivityIndicator() {
+        refreshControl.endRefreshing()
+    }
+
     func display(rightBarButtonTitle: String) {
         let rightBarButtonItem = UIBarButtonItem(
             title: rightBarButtonTitle,

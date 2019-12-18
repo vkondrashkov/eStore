@@ -36,11 +36,14 @@ protocol ProductDescriptionShow: AnyObject {
 }
 
 protocol ProductDescriptionView: AnyObject, ThemeUpdatable, AlertDisplayable {
+    func update(storeItem: StoreItem)
+    func hideActivityIndicator()
     func display(rightBarButtonTitle: String)
 }
 
 protocol ProductDescriptionPresenter: AnyObject {
     func handleLoadView()
+    func handleRefresh(storeItem: StoreItem)
     func handleEditPress(storeItem: StoreItem)
     func cartAddButtonDidPress(id: Int, productTypeId: Int)
 }

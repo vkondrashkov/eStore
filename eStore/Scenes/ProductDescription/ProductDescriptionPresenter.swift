@@ -34,6 +34,13 @@ extension ProductDescriptionPresenterImpl: ProductDescriptionPresenter {
         }
     }
 
+    func handleRefresh(storeItem: StoreItem) {
+        requestAccordingType(storeItem: storeItem, completion: { [weak self] updatedStoreItem in
+            self?.view.hideActivityIndicator()
+            self?.view.update(storeItem: updatedStoreItem)
+        })
+    }
+
     func handleEditPress(storeItem: StoreItem) {
         switch storeItem.type {
         case .smartphone:
@@ -85,3 +92,30 @@ extension ProductDescriptionPresenterImpl: ThemeObserver {
     }
 }
 
+private extension ProductDescriptionPresenterImpl {
+    func requestAccordingType(storeItem: StoreItem, completion: ((StoreItem) -> Void)?) {
+        switch storeItem.type {
+        case .smartphone:
+            interactor.fetchSmartphone(id: String(storeItem.id), completion: { [weak self] result in
+                guard let smartphone = result.value else {
+                    return
+                }
+                completion?(smartphone.toStoreItem())
+            })
+        case .laptop:
+            interactor.fetchLaptop(id: String(storeItem.id), completion: { [weak self] result in
+                guard let laptop = result.value else {
+                    return
+                }
+                completion?(laptop.toStoreItem())
+            })
+        case .tv:
+            interactor.fetchTV(id: String(storeItem.id), completion: { [weak self] result in
+                guard let tv = result.value else {
+                    return
+                }
+                completion?(tv.toStoreItem())
+            })
+        }
+    }
+}
