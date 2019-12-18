@@ -48,7 +48,6 @@ final class CartPresenterImpl {
 extension CartPresenterImpl: CartPresenter {
     func handleLoadView() {
         view.showActivityIndicator()
-//        reloadCart()
     }
 
     func shouldViewAppear() {
@@ -59,9 +58,7 @@ extension CartPresenterImpl: CartPresenter {
         reloadCart()
     }
 
-    func handleProductPress(storeItem: StoreItem) {
-
-    }
+    func handleProductPress(storeItem: StoreItem) { }
 
     func handleProductDelete(storeItem: StoreItem) {
         interactor.delete(storeItemId: storeItem.id, completion: { [weak self] _ in

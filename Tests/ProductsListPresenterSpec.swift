@@ -148,7 +148,7 @@ final class ProductsListPresenterSpec: QuickSpec {
 
         // MARK: - on handleLoadView()
 
-        describe("on handleLoadView()") {
+        describe("on shouldViewAppear()") {
             let productsListRouterDummy = ProductsListRouterDummy()
             var productsListViewSpy: ProductsListViewSpy!
             var productsListInteractorSpy: ProductsListInteractorSpy!
@@ -169,7 +169,7 @@ final class ProductsListPresenterSpec: QuickSpec {
                     productType: .smartphone,
                     themeManager: themeManagerDummy
                 )
-                productsListPresenter.handleLoadView()
+                productsListPresenter.shouldViewAppear()
                 expect(productsListInteractorSpy.hasInvokedFetchSmartphones).to(beTrue())
             }
 
@@ -181,7 +181,7 @@ final class ProductsListPresenterSpec: QuickSpec {
                     productType: .laptop,
                     themeManager: themeManagerDummy
                 )
-                productsListPresenter.handleLoadView()
+                productsListPresenter.shouldViewAppear()
                 expect(productsListInteractorSpy.hasInvokedFetchLaptops).to(beTrue())
             }
 
@@ -193,7 +193,7 @@ final class ProductsListPresenterSpec: QuickSpec {
                     productType: .tv,
                     themeManager: themeManagerDummy
                 )
-                productsListPresenter.handleLoadView()
+                productsListPresenter.shouldViewAppear()
                 expect(productsListInteractorSpy.hasInvokedFetchTVs).to(beTrue())
             }
 
