@@ -19,7 +19,7 @@ final class LaptopEditorBuilderImpl {
 // MARK: - LaptopEditorBuilder implementation
 
 extension LaptopEditorBuilderImpl: LaptopEditorBuilder {
-    func build() -> LaptopEditorCoordinatorProvidable {
+    func build(with laptop: Laptop?) -> LaptopEditorCoordinatorProvidable {
         let view = LaptopEditorViewImpl()
         let coordinator = LaptopEditorCoordinator(
             scene: dependency.laptopEditorScene,
@@ -33,6 +33,7 @@ extension LaptopEditorBuilderImpl: LaptopEditorBuilder {
                 productsUseCase: dependency.productsUseCase
             )
         )
+        presenter.laptop = laptop
         view.coordinator = coordinator
         view.presenter = presenter
         return view

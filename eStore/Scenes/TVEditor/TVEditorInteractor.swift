@@ -42,4 +42,25 @@ extension TVEditorInteractorImpl: TVEditorInteractor {
             }
         )
     }
+
+    func updateTV(tvId: Int,
+                  tvForm: TVForm,
+                  completion: @escaping (Result<TV, TVEditorInteractorError>) -> Void) {
+        guard let user = userRepository.currentUser else {
+            completion(.failure(.notAuthorized))
+            return
+        }
+        productsUseCase.updateTV(
+            userId: user.id,
+            tvId: tvId,
+            tvForm: tvForm,
+            completion: { tv in
+                let result: Result<TV, TVEditorInteractorError> = tv
+                    .mapError { _ in
+                        return .failed
+                }
+                completion(result)
+            }
+        )
+    }
 }

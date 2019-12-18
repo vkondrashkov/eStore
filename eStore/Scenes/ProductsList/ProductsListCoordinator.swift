@@ -51,7 +51,7 @@ extension ProductsListCoordinator: ProductsListRouter {
     }
 
     func showSmartphoneEditor() {
-        let provider = smartphoneEditorBuilder.build()
+        let provider = smartphoneEditorBuilder.build(with: nil)
         let coordinator = provider.coordinator
         coordinator?.onTerminate = { [weak coordinator] in
             coordinator?.stop { }
@@ -60,7 +60,7 @@ extension ProductsListCoordinator: ProductsListRouter {
     }
 
     func showLaptopEditor() {
-        let provider = laptopEditorBuilder.build()
+        let provider = laptopEditorBuilder.build(with: nil)
         let coordinator = provider.coordinator
         coordinator?.onTerminate = { [weak coordinator] in
             coordinator?.stop { }
@@ -69,7 +69,7 @@ extension ProductsListCoordinator: ProductsListRouter {
     }
 
     func showTVEditor() {
-        let provider = tvEditorBuilder.build()
+        let provider = tvEditorBuilder.build(with: nil)
         let coordinator = provider.coordinator
         coordinator?.onTerminate = { [weak coordinator] in
             coordinator?.stop { }

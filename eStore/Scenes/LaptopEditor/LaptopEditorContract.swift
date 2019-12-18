@@ -21,7 +21,7 @@ protocol LaptopEditorCoordinatorProvidable: AnyObject {
 }
 
 protocol LaptopEditorBuilder: AnyObject {
-    func build() -> LaptopEditorCoordinatorProvidable
+    func build(with laptop: Laptop?) -> LaptopEditorCoordinatorProvidable
 }
 
 protocol LaptopEditorScene: AnyObject {
@@ -34,6 +34,19 @@ protocol LaptopEditorRouter: AnyObject {
 }
 
 protocol LaptopEditorView: AnyObject, ThemeUpdatable, AlertDisplayable {
+    func display(imageUrl: String)
+    func display(name: String)
+    func display(brandName: String)
+    func display(operatingSystem: OperatingSystem)
+    func display(displayWidth: String)
+    func display(displayHeight: String)
+    func display(ramCapacity: String)
+    func display(memoryCapacity: String)
+    func display(processorName: String)
+    func display(graphicsAdapter: String)
+    func display(color: String)
+    func display(batteryCapacity: String)
+    func display(price: String)
 }
 
 protocol LaptopEditorPresenter: AnyObject {
@@ -49,5 +62,8 @@ enum LaptopEditorInteractorError: Error {
 protocol LaptopEditorInteractor: AnyObject {
     var currentUser: User? { get }
     func addLaptop(laptopForm: LaptopForm,
-                   completion: @escaping (Result<Laptop, LaptopEditorInteractorError>) -> Void) 
+                   completion: @escaping (Result<Laptop, LaptopEditorInteractorError>) -> Void)
+    func updateLaptop(laptopId: Int,
+                      laptopForm: LaptopForm,
+                      completion: @escaping (Result<Laptop, LaptopEditorInteractorError>) -> Void)
 }

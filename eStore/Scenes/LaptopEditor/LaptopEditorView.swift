@@ -423,11 +423,60 @@ extension LaptopEditorViewImpl: UIPickerViewDataSource { }
 // MARK: - SmartphoneEditorView implementation
 
 extension LaptopEditorViewImpl: LaptopEditorView {
-    func update(theme: Theme, animated: Bool) {
-
+    func display(imageUrl: String) {
+        imageUrlTextField.text = imageUrl
     }
 
-    func display(alert: Alert) {
-        
+    func display(name: String) {
+        nameTextField.text = name
     }
+
+    func display(brandName: String) {
+        brandNameTextField.text = brandName
+    }
+
+    func display(operatingSystem: OperatingSystem) {
+        currentOperatingSystem = operatingSystem
+        operatingSystemTextField.text = operatingSystem.title
+    }
+
+    func display(displayWidth: String) {
+        displayWidthTextField.text = displayWidth
+    }
+
+    func display(displayHeight: String) {
+        displayHeightTextField.text = displayHeight
+    }
+
+    func display(ramCapacity: String) {
+        ramCapacityTextField.text = ramCapacity
+    }
+
+    func display(memoryCapacity: String) {
+        memoryCapacityTextField.text = memoryCapacity
+    }
+
+    func display(processorName: String) {
+        processorNameTextField.text = processorName
+    }
+
+    func display(graphicsAdapter: String) {
+        graphicsAdapterTextField.text = graphicsAdapter
+    }
+
+    func display(color: String) {
+        colorTextField.text = color
+    }
+
+    func display(batteryCapacity: String) {
+        batteryCapacityTextField.text = batteryCapacity
+    }
+
+    func display(price: String) {
+        priceTextField.text = price
+    }
+
+    func update(theme: Theme, animated: Bool) { }
+
+    func display(alert: Alert) { }
 }

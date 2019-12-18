@@ -11,6 +11,8 @@ final class SmartphoneEditorPresenterImpl {
     private weak var router: SmartphoneEditorRouter?
     private let interactor: SmartphoneEditorInteractor
 
+    var smartphone: Smartphone?
+
     init(view: SmartphoneEditorView,
          router: SmartphoneEditorRouter,
          interactor: SmartphoneEditorInteractor) {
@@ -23,14 +25,39 @@ final class SmartphoneEditorPresenterImpl {
 // MARK: - SmartphoneEditorPresenter implementation
 
 extension SmartphoneEditorPresenterImpl: SmartphoneEditorPresenter {
-    func handleLoadView() { }
+    func handleLoadView() {
+        if let smartphone = smartphone {
+            view?.display(imageUrl: smartphone.imageUrl ?? "")
+            view?.display(name: smartphone.name)
+            view?.display(brandName: smartphone.brandName)
+            view?.display(operatingSystem: smartphone.operatingSystem)
+            view?.display(displayWidth: String(smartphone.display.width))
+            view?.display(displayHeight: String(smartphone.display.height))
+            view?.display(ramCapacity: String(smartphone.ramCapacity))
+            view?.display(memoryCapacity: String(smartphone.memoryCapacity))
+            view?.display(processorName: smartphone.processorName)
+            view?.display(color: smartphone.color)
+            view?.display(batteryCapacity: String(smartphone.batteryCapacity))
+            view?.display(price: String(smartphone.price))
+        }
+    }
 
     func handleDonePress(smartphoneForm: SmartphoneForm) {
-        interactor.addSmartphone(
-            smartphoneForm: smartphoneForm,
-            completion: { [weak self] _ in
-                self?.router?.terminate()
-            }
-        )
+        if let smartphone = smartphone {
+            interactor.updateSmartphone(
+                smartphoneId: smartphone.id,
+                smartphoneForm: smartphoneForm,
+                completion: { [weak self] _ in
+                    self?.router?.terminate()
+                }
+            )
+        } else {
+            interactor.addSmartphone(
+                smartphoneForm: smartphoneForm,
+                completion: { [weak self] _ in
+                    self?.router?.terminate()
+                }
+            )
+        }
     }
 }

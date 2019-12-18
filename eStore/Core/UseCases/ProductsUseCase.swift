@@ -10,25 +10,37 @@ import Foundation
 
 enum ProductsUseCaseError: Error {
     case invalidData
-    case failure
+    case failed
 }
 
 protocol ProductsUseCase {
     func addSmartphone(userId: Int,
                        smartphoneForm: SmartphoneForm,
-                       completion: @escaping (Result<Smartphone, ProductsRepositoryError>) -> Void)
+                       completion: @escaping (Result<Smartphone, ProductsUseCaseError>) -> Void)
+    func updateSmartphone(userId: Int,
+                          smartphoneId: Int,
+                          smartphoneForm: SmartphoneForm,
+                          completion: @escaping (Result<Smartphone, ProductsUseCaseError>) -> Void)
     func fetchSmartphone(id: String, completion: @escaping (Result<Smartphone, ProductsUseCaseError>) -> Void)
     func fetchSmartphones(completion: @escaping (Result<[Smartphone], ProductsUseCaseError>) -> Void)
     func deleteSmartphone(id: Int, completion: @escaping (ProductsUseCaseError?) -> Void)
     func addLaptop(userId: Int,
                    laptopForm: LaptopForm,
-                   completion: @escaping (Result<Laptop, ProductsRepositoryError>) -> Void)
+                   completion: @escaping (Result<Laptop, ProductsUseCaseError>) -> Void)
+    func updateLaptop(userId: Int,
+                      laptopId: Int,
+                      laptopForm: LaptopForm,
+                      completion: @escaping (Result<Laptop, ProductsUseCaseError>) -> Void)
     func fetchLaptop(id: String, completion: @escaping (Result<Laptop, ProductsUseCaseError>) -> Void)
     func fetchLaptops(completion: @escaping (Result<[Laptop], ProductsUseCaseError>) -> Void)
     func deleteLaptop(id: Int, completion: @escaping (ProductsUseCaseError?) -> Void)
     func addTV(userId: Int,
                tvForm: TVForm,
-               completion: @escaping (Result<TV, ProductsRepositoryError>) -> Void)
+               completion: @escaping (Result<TV, ProductsUseCaseError>) -> Void)
+    func updateTV(userId: Int,
+                  tvId: Int,
+                  tvForm: TVForm,
+                  completion: @escaping (Result<TV, ProductsUseCaseError>) -> Void)
     func fetchTV(id: String, completion: @escaping (Result<TV, ProductsUseCaseError>) -> Void)
     func fetchTVs(completion: @escaping (Result<[TV], ProductsUseCaseError>) -> Void)
     func deleteTV(id: Int, completion: @escaping (ProductsUseCaseError?) -> Void)
@@ -43,12 +55,30 @@ final class ProductsUseCaseImpl: ProductsUseCase {
 
     func addSmartphone(userId: Int,
                        smartphoneForm: SmartphoneForm,
-                       completion: @escaping (Result<Smartphone, ProductsRepositoryError>) -> Void) {
+                       completion: @escaping (Result<Smartphone, ProductsUseCaseError>) -> Void) {
         repository.addSmartphone(
             userId: userId,
             smartphoneForm: smartphoneForm,
             completion: { smartphone in
-                let result: Result<Smartphone, ProductsRepositoryError> = smartphone
+                let result: Result<Smartphone, ProductsUseCaseError> = smartphone
+                    .mapError { _ in
+                        return .failed
+                    }
+                completion(result)
+            }
+        )
+    }
+
+    func updateSmartphone(userId: Int,
+                          smartphoneId: Int,
+                          smartphoneForm: SmartphoneForm,
+                          completion: @escaping (Result<Smartphone, ProductsUseCaseError>) -> Void) {
+        repository.updateSmartphone(
+            userId: userId,
+            smartphoneId: smartphoneId,
+            smartphoneForm: smartphoneForm,
+            completion: { smartphone in
+                let result: Result<Smartphone, ProductsUseCaseError> = smartphone
                     .mapError { _ in
                         return .failed
                     }
@@ -67,7 +97,7 @@ final class ProductsUseCaseImpl: ProductsUseCase {
                 case .invalidInput:
                     completion(.failure(.invalidData))
                 default:
-                    completion(.failure(.failure))
+                    completion(.failure(.failed))
                 }
             }
         }
@@ -83,7 +113,7 @@ final class ProductsUseCaseImpl: ProductsUseCase {
                 case .invalidInput:
                     completion(.failure(.invalidData))
                 default:
-                    completion(.failure(.failure))
+                    completion(.failure(.failed))
                 }
             }
         }
@@ -92,7 +122,7 @@ final class ProductsUseCaseImpl: ProductsUseCase {
     func deleteSmartphone(id: Int, completion: @escaping (ProductsUseCaseError?) -> Void) {
         repository.deleteSmartphone(id: id, completion: { error in
             guard error == nil else {
-                completion(.failure)
+                completion(.failed)
                 return
             }
             completion(nil)
@@ -101,12 +131,30 @@ final class ProductsUseCaseImpl: ProductsUseCase {
 
     func addLaptop(userId: Int,
                    laptopForm: LaptopForm,
-                   completion: @escaping (Result<Laptop, ProductsRepositoryError>) -> Void) {
+                   completion: @escaping (Result<Laptop, ProductsUseCaseError>) -> Void) {
         repository.addLaptop(
             userId: userId,
             laptopForm: laptopForm,
             completion: { laptop in
-                let result: Result<Laptop, ProductsRepositoryError> = laptop
+                let result: Result<Laptop, ProductsUseCaseError> = laptop
+                    .mapError { _ in
+                        return .failed
+                    }
+                completion(result)
+            }
+        )
+    }
+
+    func updateLaptop(userId: Int,
+                      laptopId: Int,
+                      laptopForm: LaptopForm,
+                      completion: @escaping (Result<Laptop, ProductsUseCaseError>) -> Void) {
+        repository.updateLaptop(
+            userId: userId,
+            laptopId: laptopId,
+            laptopForm: laptopForm,
+            completion: { laptop in
+                let result: Result<Laptop, ProductsUseCaseError> = laptop
                     .mapError { _ in
                         return .failed
                     }
@@ -125,7 +173,7 @@ final class ProductsUseCaseImpl: ProductsUseCase {
                 case .invalidInput:
                     completion(.failure(.invalidData))
                 default:
-                    completion(.failure(.failure))
+                    completion(.failure(.failed))
                 }
             }
         }
@@ -141,7 +189,7 @@ final class ProductsUseCaseImpl: ProductsUseCase {
                 case .invalidInput:
                     completion(.failure(.invalidData))
                 default:
-                    completion(.failure(.failure))
+                    completion(.failure(.failed))
                 }
             }
         }
@@ -150,7 +198,7 @@ final class ProductsUseCaseImpl: ProductsUseCase {
     func deleteLaptop(id: Int, completion: @escaping (ProductsUseCaseError?) -> Void) {
         repository.deleteLaptop(id: id, completion: { error in
             guard error == nil else {
-                completion(.failure)
+                completion(.failed)
                 return
             }
             completion(nil)
@@ -159,12 +207,30 @@ final class ProductsUseCaseImpl: ProductsUseCase {
 
     func addTV(userId: Int,
                tvForm: TVForm,
-               completion: @escaping (Result<TV, ProductsRepositoryError>) -> Void) {
+               completion: @escaping (Result<TV, ProductsUseCaseError>) -> Void) {
         repository.addTV(
             userId: userId,
             tvForm: tvForm,
             completion: { tv in
-                let result: Result<TV, ProductsRepositoryError> = tv
+                let result: Result<TV, ProductsUseCaseError> = tv
+                    .mapError { _ in
+                        return .failed
+                    }
+                completion(result)
+            }
+        )
+    }
+
+    func updateTV(userId: Int,
+                  tvId: Int,
+                  tvForm: TVForm,
+                  completion: @escaping (Result<TV, ProductsUseCaseError>) -> Void) {
+        repository.updateTV(
+            userId: userId,
+            tvId: tvId,
+            tvForm: tvForm,
+            completion: { tv in
+                let result: Result<TV, ProductsUseCaseError> = tv
                     .mapError { _ in
                         return .failed
                     }
@@ -183,7 +249,7 @@ final class ProductsUseCaseImpl: ProductsUseCase {
                 case .invalidInput:
                     completion(.failure(.invalidData))
                 default:
-                    completion(.failure(.failure))
+                    completion(.failure(.failed))
                 }
             }
         }
@@ -199,7 +265,7 @@ final class ProductsUseCaseImpl: ProductsUseCase {
                 case .invalidInput:
                     completion(.failure(.invalidData))
                 default:
-                    completion(.failure(.failure))
+                    completion(.failure(.failed))
                 }
             }
         }

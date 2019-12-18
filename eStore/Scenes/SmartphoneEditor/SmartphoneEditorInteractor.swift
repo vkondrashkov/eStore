@@ -42,4 +42,25 @@ extension SmartphoneEditorInteractorImpl: SmartphoneEditorInteractor {
             }
         )
     }
+
+    func updateSmartphone(smartphoneId: Int,
+                          smartphoneForm: SmartphoneForm,
+                          completion: @escaping (Result<Smartphone, SmartphoneEditorInteractorError>) -> Void) {
+        guard let user = userRepository.currentUser else {
+            completion(.failure(.notAuthorized))
+            return
+        }
+        productsUseCase.updateSmartphone(
+            userId: user.id,
+            smartphoneId: smartphoneId,
+            smartphoneForm: smartphoneForm,
+            completion: { smartphone in
+                let result: Result<Smartphone, SmartphoneEditorInteractorError> = smartphone
+                    .mapError { _ in
+                        return .failed
+                    }
+                completion(result)
+            }
+        )
+    }
 }

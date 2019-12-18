@@ -18,18 +18,30 @@ protocol ProductsRepository {
     func addSmartphone(userId: Int,
                        smartphoneForm: SmartphoneForm,
                        completion: @escaping (Result<Smartphone, ProductsRepositoryError>) -> Void)
+    func updateSmartphone(userId: Int,
+                          smartphoneId: Int,
+                          smartphoneForm: SmartphoneForm,
+                          completion: @escaping (Result<Smartphone, ProductsRepositoryError>) -> Void)
     func fetchSmartphones(completion: @escaping (Result<[Smartphone], ProductsRepositoryError>) -> Void)
     func fetchSmartphone(id: String, completion: @escaping (Result<Smartphone, ProductsRepositoryError>) -> Void)
     func deleteSmartphone(id: Int, completion: @escaping (ProductsRepositoryError?) -> Void)
     func addLaptop(userId: Int,
                    laptopForm: LaptopForm,
                    completion: @escaping (Result<Laptop, ProductsRepositoryError>) -> Void)
+    func updateLaptop(userId: Int,
+                      laptopId: Int,
+                      laptopForm: LaptopForm,
+                      completion: @escaping (Result<Laptop, ProductsRepositoryError>) -> Void)
     func fetchLaptops(completion: @escaping (Result<[Laptop], ProductsRepositoryError>) -> Void)
     func fetchLaptop(id: String, completion: @escaping (Result<Laptop, ProductsRepositoryError>) -> Void)
     func deleteLaptop(id: Int, completion: @escaping (ProductsRepositoryError?) -> Void)
     func addTV(userId: Int,
                tvForm: TVForm,
                completion: @escaping (Result<TV, ProductsRepositoryError>) -> Void)
+    func updateTV(userId: Int,
+                  tvId: Int,
+                  tvForm: TVForm,
+                  completion: @escaping (Result<TV, ProductsRepositoryError>) -> Void)
     func fetchTVs(completion: @escaping (Result<[TV], ProductsRepositoryError>) -> Void)
     func fetchTV(id: String, completion: @escaping (Result<TV, ProductsRepositoryError>) -> Void)
     func deleteTV(id: Int, completion: @escaping (ProductsRepositoryError?) -> Void)
@@ -45,6 +57,18 @@ final class ProductsRepositoryImpl {
 
 // MARK: - ProductsRepository implementation
 extension ProductsRepositoryImpl: ProductsRepository {
+    func updateSmartphone(userId: Int,
+                          smartphoneId: Int,
+                          smartphoneForm: SmartphoneForm,
+                          completion: @escaping (Result<Smartphone, ProductsRepositoryError>) -> Void) {
+        provider.request(.updateSmartphone(
+            userId: userId,
+            smartphoneId: smartphoneId,
+            smartphoneForm: smartphoneForm)) { result in
+                completion(self.processResponse(result: result))
+        }
+    }
+
     func addSmartphone(userId: Int,
                        smartphoneForm: SmartphoneForm,
                        completion: @escaping (Result<Smartphone, ProductsRepositoryError>) -> Void) {
@@ -83,6 +107,18 @@ extension ProductsRepositoryImpl: ProductsRepository {
         }
     }
 
+    func updateLaptop(userId: Int,
+                      laptopId: Int,
+                      laptopForm: LaptopForm,
+                      completion: @escaping (Result<Laptop, ProductsRepositoryError>) -> Void) {
+        provider.request(.updateLaptop(
+            userId: userId,
+            laptopId: laptopId,
+            laptopForm: laptopForm)) { result in
+                completion(self.processResponse(result: result))
+        }
+    }
+
     func fetchLaptops(completion: @escaping (Result<[Laptop], ProductsRepositoryError>) -> Void) {
         provider.request(.laptops) { result in
             completion(self.processResponse(result: result))
@@ -110,6 +146,18 @@ extension ProductsRepositoryImpl: ProductsRepository {
                completion: @escaping (Result<TV, ProductsRepositoryError>) -> Void) {
         provider.request(.addTV(userId: userId, tvForm: tvForm)) { result in
             completion(self.processResponse(result: result))
+        }
+    }
+
+    func updateTV(userId: Int,
+                  tvId: Int,
+                  tvForm: TVForm,
+                  completion: @escaping (Result<TV, ProductsRepositoryError>) -> Void) {
+        provider.request(.updateTV(
+            userId: userId,
+            tvId: tvId,
+            tvForm: tvForm)) { result in
+                completion(self.processResponse(result: result))
         }
     }
 

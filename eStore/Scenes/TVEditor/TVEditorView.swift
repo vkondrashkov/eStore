@@ -293,11 +293,36 @@ extension TVEditorViewImpl: UIPickerViewDataSource { }
 // MARK: - TVEditorView implementation
 
 extension TVEditorViewImpl: TVEditorView {
-    func update(theme: Theme, animated: Bool) {
-
+    func display(imageUrl: String) {
+        imageUrlTextField.text = imageUrl
     }
 
-    func display(alert: Alert) {
-        
+    func display(name: String) {
+        nameTextField.text = name
     }
+
+    func display(brandName: String) {
+        brandNameTextField.text = brandName
+    }
+
+    func display(operatingSystem: OperatingSystem) {
+        currentOperatingSystem = operatingSystem
+        operatingSystemTextField.text = operatingSystem.title
+    }
+
+    func display(displayWidth: String) {
+        displayWidthTextField.text = displayWidth
+    }
+
+    func display(displayHeight: String) {
+        displayHeightTextField.text = displayHeight
+    }
+
+    func display(price: String) {
+        priceTextField.text = price
+    }
+
+    func update(theme: Theme, animated: Bool) { }
+
+    func display(alert: Alert) { }
 }

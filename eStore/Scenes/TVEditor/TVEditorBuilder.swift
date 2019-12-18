@@ -19,7 +19,7 @@ final class TVEditorBuilderImpl {
 // MARK: - TVEditorBuilder implementation
 
 extension TVEditorBuilderImpl: TVEditorBuilder {
-    func build() -> TVEditorCoordinatorProvidable {
+    func build(with tv: TV?) -> TVEditorCoordinatorProvidable {
         let view = TVEditorViewImpl()
         let coordinator = TVEditorCoordinator(
             scene: dependency.tvEditorScene,
@@ -33,6 +33,7 @@ extension TVEditorBuilderImpl: TVEditorBuilder {
                 productsUseCase: dependency.productsUseCase
             )
         )
+        presenter.tv = tv
         view.coordinator = coordinator
         view.presenter = presenter
         return view

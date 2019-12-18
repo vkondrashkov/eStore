@@ -12,7 +12,7 @@ class Laptop: ImmutableMappable {
     let id: Int
     let imageUrl: String?
     let name: String
-    let brand: String
+    let brandName: String
     let operatingSystem: OperatingSystem
     let display: Display
     let ramCapacity: Int
@@ -27,7 +27,7 @@ class Laptop: ImmutableMappable {
         id = try map.value("id")
         imageUrl = try? map.value("imageUrl")
         name = try map.value("name")
-        brand = try map.value("brandName")
+        brandName = try map.value("brandName")
         operatingSystem = try OperatingSystem(rawValue: map.value("operatingSystemRawValue")) ?? .unknown
         display = Display(width: try map.value("resolutionWidth"), height: try map.value("resolutionHeight"))
         ramCapacity = try map.value("ramCapacity")
@@ -43,7 +43,7 @@ class Laptop: ImmutableMappable {
         id >>> map["id"]
         imageUrl >>> map["imageUrl"]
         name >>> map["name"]
-        brand >>> map["brandName"]
+        brandName >>> map["brandName"]
         operatingSystem.rawValue >>> map["operatingSystemRawValue"]
         display.width >>> map["display.width"]
         display.height >>> map["display.height"]
@@ -73,7 +73,7 @@ extension Laptop: StoreItemConvertible {
             id: id,
             imageUrl: imageUrl,
             name: name,
-            brand: brand,
+            brand: brandName,
             type: .laptop,
             specifications: specifications,
             price: price,

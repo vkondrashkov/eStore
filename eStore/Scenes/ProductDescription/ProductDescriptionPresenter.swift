@@ -10,13 +10,16 @@ import Foundation
 
 final class ProductDescriptionPresenterImpl {
     private unowned let view: ProductDescriptionView
+    private unowned let router: ProductDescriptionRouter
     private let interactor: ProductDescriptionInteractor
     private unowned let themeManager: ThemeManager
     
     init(view: ProductDescriptionView,
+         router: ProductDescriptionRouter,
          interactor: ProductDescriptionInteractor,
          themeManager: ThemeManager) {
         self.view = view
+        self.router = router
         self.interactor = interactor
         self.themeManager = themeManager
         self.themeManager.add(observer: self)
@@ -25,7 +28,37 @@ final class ProductDescriptionPresenterImpl {
 
 // MARK: - ProductDescriptionPresenter implementation
 extension ProductDescriptionPresenterImpl: ProductDescriptionPresenter {
-    func handleLoadView() { }
+    func handleLoadView() {
+        if let user = interactor.currentUser, user.role.rawValue >= User.Role.contentMaker.rawValue {
+            view.display(rightBarButtonTitle: "Edit")
+        }
+    }
+
+    func handleEditPress(storeItem: StoreItem) {
+        switch storeItem.type {
+        case .smartphone:
+            interactor.fetchSmartphone(id: String(storeItem.id), completion: { [weak self] result in
+                guard let smartphone = result.value else {
+                    return
+                }
+                self?.router.showSmartphoneEditor(smartphone: smartphone)
+            })
+        case .laptop:
+            interactor.fetchLaptop(id: String(storeItem.id), completion: { [weak self] result in
+                guard let laptop = result.value else {
+                    return
+                }
+                self?.router.showLaptopEditor(laptop: laptop)
+            })
+        case .tv:
+            interactor.fetchTV(id: String(storeItem.id), completion: { [weak self] result in
+                guard let tv = result.value else {
+                    return
+                }
+                self?.router.showTVEditor(tv: tv)
+            })
+        }
+    }
 
     func cartAddButtonDidPress(id: Int, productTypeId: Int) {
         interactor.addToCart(productId: id, productTypeId: productTypeId, completion: { [weak self] error in

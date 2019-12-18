@@ -11,6 +11,8 @@ final class TVEditorPresenterImpl {
     private weak var router: TVEditorRouter?
     private let interactor: TVEditorInteractor
 
+    var tv: TV?
+
     init(view: TVEditorView,
          router: TVEditorRouter,
          interactor: TVEditorInteractor) {
@@ -23,14 +25,34 @@ final class TVEditorPresenterImpl {
 // MARK: - LaptopEditorPresenter implementation
 
 extension TVEditorPresenterImpl: TVEditorPresenter {
-    func handleLoadView() { }
+    func handleLoadView() {
+        if let tv = tv {
+            view?.display(imageUrl: tv.imageUrl ?? "")
+            view?.display(name: tv.name)
+            view?.display(brandName: tv.brandName)
+            view?.display(operatingSystem: tv.operatingSystem)
+            view?.display(displayWidth: String(tv.display.width))
+            view?.display(displayHeight: String(tv.display.height))
+            view?.display(price: String(tv.price))
+        }
+    }
 
     func handleDonePress(tvForm: TVForm) {
-        interactor.addTV(
-            tvForm: tvForm,
-            completion: { [weak self] _ in
-                self?.router?.terminate()
-            }
-        )
+        if let tv = tv {
+            interactor.updateTV(
+                tvId: tv.id,
+                tvForm: tvForm,
+                completion: { [weak self] _ in
+                    self?.router?.terminate()
+                }
+            )
+        } else {
+            interactor.addTV(
+                tvForm: tvForm,
+                completion: { [weak self] _ in
+                    self?.router?.terminate()
+                }
+            )
+        }
     }
 }

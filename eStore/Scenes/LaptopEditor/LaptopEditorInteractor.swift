@@ -42,4 +42,25 @@ extension LaptopEditorInteractorImpl: LaptopEditorInteractor {
             }
         )
     }
+
+    func updateLaptop(laptopId: Int,
+                      laptopForm: LaptopForm,
+                      completion: @escaping (Result<Laptop, LaptopEditorInteractorError>) -> Void) {
+        guard let user = userRepository.currentUser else {
+            completion(.failure(.notAuthorized))
+            return
+        }
+        productsUseCase.updateLaptop(
+            userId: user.id,
+            laptopId: laptopId,
+            laptopForm: laptopForm,
+            completion: { laptop in
+                let result: Result<Laptop, LaptopEditorInteractorError> = laptop
+                    .mapError { _ in
+                        return .failed
+                }
+                completion(result)
+            }
+        )
+    }
 }

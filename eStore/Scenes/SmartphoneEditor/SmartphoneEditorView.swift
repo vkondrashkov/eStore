@@ -26,7 +26,6 @@ final class SmartphoneEditorViewImpl: UIViewController, SmartphoneEditorCoordina
 
     private let operatingSystemLabel = UILabel()
     private let operatingSystemTextField = UITextField()
-    //private let operatingSystemValueLabel = UILabel()
     private let operatingSystemPickerView = UIPickerView()
 
     private let displayWidthLabel = UILabel()
@@ -406,6 +405,55 @@ extension SmartphoneEditorViewImpl: UIPickerViewDataSource { }
 // MARK: - SmartphoneEditorView implementation
 
 extension SmartphoneEditorViewImpl: SmartphoneEditorView {
+    func display(imageUrl: String) {
+        imageUrlTextField.text = imageUrl
+    }
+
+    func display(name: String) {
+        nameTextField.text = name
+    }
+
+    func display(brandName: String) {
+        brandNameTextField.text = brandName
+    }
+
+    func display(operatingSystem: OperatingSystem) {
+        currentOperatingSystem = operatingSystem
+        operatingSystemTextField.text = operatingSystem.title
+    }
+
+    func display(displayWidth: String) {
+        displayWidthTextField.text = displayWidth
+    }
+
+    func display(displayHeight: String) {
+        displayHeightTextField.text = displayHeight
+    }
+
+    func display(ramCapacity: String) {
+        ramCapacityTextField.text = ramCapacity
+    }
+
+    func display(memoryCapacity: String) {
+        memoryCapacityTextField.text = memoryCapacity
+    }
+
+    func display(processorName: String) {
+        processorNameTextField.text = processorName
+    }
+
+    func display(color: String) {
+        colorTextField.text = color
+    }
+
+    func display(batteryCapacity: String) {
+        batteryCapacityTextField.text = batteryCapacity
+    }
+
+    func display(price: String) {
+        priceTextField.text = price
+    }
+
     func update(theme: Theme, animated: Bool) {
 
     }

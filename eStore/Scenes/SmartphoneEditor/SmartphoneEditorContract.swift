@@ -21,7 +21,7 @@ protocol SmartphoneEditorCoordinatorProvidable: AnyObject {
 }
 
 protocol SmartphoneEditorBuilder: AnyObject {
-    func build() -> SmartphoneEditorCoordinatorProvidable
+    func build(with smartphone: Smartphone?) -> SmartphoneEditorCoordinatorProvidable
 }
 
 protocol SmartphoneEditorScene: AnyObject {
@@ -34,25 +34,24 @@ protocol SmartphoneEditorRouter: AnyObject {
 }
 
 protocol SmartphoneEditorView: AnyObject, ThemeUpdatable, AlertDisplayable {
+    func display(imageUrl: String)
+    func display(name: String)
+    func display(brandName: String)
+    func display(operatingSystem: OperatingSystem)
+    func display(displayWidth: String)
+    func display(displayHeight: String)
+    func display(ramCapacity: String)
+    func display(memoryCapacity: String)
+    func display(processorName: String)
+    func display(color: String)
+    func display(batteryCapacity: String)
+    func display(price: String)
 }
 
 protocol SmartphoneEditorPresenter: AnyObject {
     func handleLoadView()
     func handleDonePress(smartphoneForm: SmartphoneForm)
 }
-
-//id = try map.value("id")
-//imageUrl = try? map.value("imageUrl")
-//name = try map.value("name")
-//brandName = try map.value("brandName")
-//operatingSystem = try OperatingSystem(rawValue: map.value("operatingSystemRawValue")) ?? .unknown
-//display = Display(width: try map.value("resolutionWidth"), height: try map.value("resolutionHeight"))
-//ramCapacity = try map.value("ramCapacity")
-//memoryCapacity = try map.value("memoryCapacity")
-//processorName = try map.value("processorName")
-//color = try map.value("color")
-//batteryCapacity = try map.value("batteryCapacity")
-//price = try map.value("price")
 
 enum SmartphoneEditorInteractorError: Error {
     case failed
@@ -62,5 +61,8 @@ enum SmartphoneEditorInteractorError: Error {
 protocol SmartphoneEditorInteractor: AnyObject {
     var currentUser: User? { get }
     func addSmartphone(smartphoneForm: SmartphoneForm,
-                       completion: @escaping (Result<Smartphone, SmartphoneEditorInteractorError>) -> Void) 
+                       completion: @escaping (Result<Smartphone, SmartphoneEditorInteractorError>) -> Void)
+    func updateSmartphone(smartphoneId: Int,
+                          smartphoneForm: SmartphoneForm,
+                          completion: @escaping (Result<Smartphone, SmartphoneEditorInteractorError>) -> Void)
 }

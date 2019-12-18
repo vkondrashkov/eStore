@@ -48,10 +48,27 @@ final class ProductDescriptionViewImpl: UIViewController {
         view.backgroundColor = theme.backgroundColor
         descriptionTableView.separatorColor = theme.borderColor
     }
+
+    // MARK: - Actions
+
+    @objc private func rightBarButtonDidPress() {
+        presenter.handleEditPress(storeItem: dataSource.item)
+    }
 }
 
 // MARK: - ProductDescriptionView implementation
-extension ProductDescriptionViewImpl: ProductDescriptionView { }
+
+extension ProductDescriptionViewImpl: ProductDescriptionView {
+    func display(rightBarButtonTitle: String) {
+        let rightBarButtonItem = UIBarButtonItem(
+            title: rightBarButtonTitle,
+            style: .plain,
+            target: self,
+            action: #selector(rightBarButtonDidPress)
+        )
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+    }
+}
 
 // MARK: - ThemeUpdatable implementation
 extension ProductDescriptionViewImpl: ThemeUpdatable {

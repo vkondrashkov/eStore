@@ -19,7 +19,7 @@ final class SmartphoneEditorBuilderImpl {
 // MARK: - SmartphoneEditorBuilder implementation
 
 extension SmartphoneEditorBuilderImpl: SmartphoneEditorBuilder {
-    func build() -> SmartphoneEditorCoordinatorProvidable {
+    func build(with smartphone: Smartphone?) -> SmartphoneEditorCoordinatorProvidable {
         let view = SmartphoneEditorViewImpl()
         let coordinator = SmartphoneEditorCoordinator(
             scene: dependency.smartphoneEditorScene,
@@ -33,6 +33,7 @@ extension SmartphoneEditorBuilderImpl: SmartphoneEditorBuilder {
                 productsUseCase: dependency.productsUseCase
             )
         )
+        presenter.smartphone = smartphone
         view.coordinator = coordinator
         view.presenter = presenter
         return view
