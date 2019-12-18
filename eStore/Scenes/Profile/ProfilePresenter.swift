@@ -45,7 +45,7 @@ final class ProfilePresenterImpl {
         router.showContact()
     }
 
-    private func handleLogoutCategoryPress() {
+    func handleLogoutCategoryPress() {
         let alert = Alert(
             title: "Logout confirmation",
             message: "Are you sure you want to log out?",

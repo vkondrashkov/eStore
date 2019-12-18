@@ -46,6 +46,7 @@ protocol ProfileView: AnyObject, ThemeUpdatable, AlertDisplayable {
 
 protocol ProfilePresenter: AnyObject {
     func handleLoadView()
+    func handleLogoutCategoryPress()
     func handleRightBarButtonPress()
 }
 

@@ -183,6 +183,7 @@
 		9CC77FBD23AA0C3A00466AA4 /* UserMapperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77FBC23AA0C3A00466AA4 /* UserMapperSpec.swift */; };
 		9CC77FBF23AA104100466AA4 /* RegistrationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77FBE23AA104100466AA4 /* RegistrationSpec.swift */; };
 		9CC77FC123AA1A0700466AA4 /* RootAuthenticationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77FC023AA1A0700466AA4 /* RootAuthenticationSpec.swift */; };
+		9CC77FC523AA1E9400466AA4 /* LogoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC77FC423AA1E9400466AA4 /* LogoutSpec.swift */; };
 		9CD2B1AD2381860600927979 /* ProductsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AC2381860600927979 /* ProductsRepository.swift */; };
 		9CD2B1C12381C4F000927979 /* Result+Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1C02381C4F000927979 /* Result+Values.swift */; };
 		9CD2B1C423827A7300927979 /* eStoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD2B1AA238183FB00927979 /* eStoreAPI.swift */; };
@@ -399,6 +400,7 @@
 		9CC77FBC23AA0C3A00466AA4 /* UserMapperSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMapperSpec.swift; sourceTree = "<group>"; };
 		9CC77FBE23AA104100466AA4 /* RegistrationSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationSpec.swift; sourceTree = "<group>"; };
 		9CC77FC023AA1A0700466AA4 /* RootAuthenticationSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootAuthenticationSpec.swift; sourceTree = "<group>"; };
+		9CC77FC423AA1E9400466AA4 /* LogoutSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutSpec.swift; sourceTree = "<group>"; };
 		9CD2B1AA238183FB00927979 /* eStoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eStoreAPI.swift; sourceTree = "<group>"; };
 		9CD2B1AC2381860600927979 /* ProductsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRepository.swift; sourceTree = "<group>"; };
 		9CD2B1AE2381950500927979 /* products-smartphones.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "products-smartphones.json"; sourceTree = "<group>"; };
@@ -544,6 +546,7 @@
 				9C1C322E236ED9900039ECDA /* CredentialsValidatorTests.swift */,
 				9CB71C2C238AEC2E006003A9 /* AuthorizationSpec.swift */,
 				9CC77FBE23AA104100466AA4 /* RegistrationSpec.swift */,
+				9CC77FC423AA1E9400466AA4 /* LogoutSpec.swift */,
 				9CC77FC023AA1A0700466AA4 /* RootAuthenticationSpec.swift */,
 				9CC77FB923A9EC8B00466AA4 /* CartRepositorySpec.swift */,
 				9C482E8F2380864000FE93C6 /* ProductsUseCaseSpec.swift */,
@@ -1165,6 +1168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CC77FC523AA1E9400466AA4 /* LogoutSpec.swift in Sources */,
 				9CC77FBF23AA104100466AA4 /* RegistrationSpec.swift in Sources */,
 				9C1C3239236F45130039ECDA /* AlertFactorySpec.swift in Sources */,
 				9C1C3235236F37BD0039ECDA /* ThemeManagerSpec.swift in Sources */,
