@@ -324,5 +324,8 @@ extension TVEditorViewImpl: TVEditorView {
 
     func update(theme: Theme, animated: Bool) { }
 
-    func display(alert: Alert) { }
+    func display(alert: Alert) {
+        let alertController = AlertFactoryImpl().make(alert: alert)
+        present(alertController, animated: true, completion: nil)
+    }
 }

@@ -40,7 +40,7 @@ enum eStoreAPI {
 extension eStoreAPI: TargetType {
     var baseURL: URL {
 //        return URL(string: "http://localhost:8080")!
-        return URL(string: "http://192.168.1.77:8080")!
+        return URL(string: "http://172.20.10.2:8080")!
     }
 
     var path: String {

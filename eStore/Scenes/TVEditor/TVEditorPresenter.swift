@@ -49,7 +49,19 @@ extension TVEditorPresenterImpl: TVEditorPresenter {
         } else {
             interactor.addTV(
                 tvForm: tvForm,
-                completion: { [weak self] _ in
+                completion: { [weak self] result in
+                    guard result.error == nil else {
+                        self?.view?.display(alert: Alert(
+                            title: "Already exists!",
+                            message: "Such product already exists in database",
+                            alertType: .singleAction,
+                            primaryCaption: "OK",
+                            primaryAction: nil,
+                            secondaryCaption: nil,
+                            secondaryAction: nil
+                        ))
+                        return
+                    }
                     self?.router?.terminate()
                 }
             )

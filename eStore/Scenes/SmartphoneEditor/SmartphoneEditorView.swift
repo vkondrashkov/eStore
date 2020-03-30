@@ -459,6 +459,7 @@ extension SmartphoneEditorViewImpl: SmartphoneEditorView {
     }
 
     func display(alert: Alert) {
-        
+        let alertController = AlertFactoryImpl().make(alert: alert)
+        present(alertController, animated: true, completion: nil)
     }
 }
