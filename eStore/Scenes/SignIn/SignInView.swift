@@ -175,10 +175,12 @@ final class SignInViewImpl: UIViewController {
 // MARK: - SignInView implementation
 extension SignInViewImpl: SignInView {
     func display(rightBarButton: String) {
-        let rightBarButtonItem = UIBarButtonItem(title: rightBarButton,
-                                                 style: .plain,
-                                                 target: self,
-                                                 action: #selector(rightBarButtonDidPressed))
+        let rightBarButtonItem = UIBarButtonItem(
+            title: rightBarButton,
+            style: .plain,
+            target: self,
+            action: #selector(rightBarButtonDidPressed)
+        )
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Moya
 
 final class DashboardBuilderImpl {
     private let dependency: DashboardDependency
@@ -33,6 +34,8 @@ extension DashboardBuilderImpl: DashboardBuilder {
             catalogNavigation: catalogNavigation,
             cartNavigation: cartNavigation,
             profileNavigation: profileNavigation,
+            userRepository: dependency.userRepository,
+            cartRepository: CartRepositoryImpl(provider: MoyaProvider<eStoreAPI>()),
             themeManager: dependency.themeManager,
             alertFactory: dependency.alertFactory
         )

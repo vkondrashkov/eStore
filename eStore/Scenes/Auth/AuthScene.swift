@@ -19,6 +19,7 @@ final class AuthSceneImpl {
 // MARK: - AuthScene implementation
 extension AuthSceneImpl: AuthScene {
     func play(authShow: AuthShow) {
+        authShow.navViewController.modalPresentationStyle = .fullScreen
         rootViewController.present(authShow.navViewController, animated: true, completion: nil)
     }
 

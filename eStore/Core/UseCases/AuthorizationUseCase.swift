@@ -15,6 +15,9 @@ protocol AuthorizationUseCase {
     func authorize(login: String,
                    password: String,
                    completion: ((Result<User, AuthorizationUseCaseError>) -> Void)?)
+    func register(login: String,
+                  password: String,
+                  completion: ((Result<User, AuthorizationUseCaseError>) -> Void)?)
 }
 
 final class AuthorizationUseCaseImpl {
@@ -52,6 +55,43 @@ extension AuthorizationUseCaseImpl: AuthorizationUseCase {
                     }
                 guard let user = authorization.value else {
                     completion?(authorization)
+                    return
+                }
+                self.userRepository.saveUser(user, completion: { saved in
+                    let result: Result<User, AuthorizationUseCaseError> = saved
+                        .mapError { _ in AuthorizationUseCaseError.failed }
+                        .flatMap {
+                            if $0 {
+                                return .success(user)
+                            } else {
+                                return .failure(.failed)
+                            }
+                        }
+                    completion?(result)
+                })
+            }
+        )
+    }
+
+    func register(login: String,
+                   password: String,
+                   completion: ((Result<User, AuthorizationUseCaseError>) -> Void)?) {
+        authorizationRepository.register(
+            login: login,
+            password: password,
+            completion: { [weak self] registration in
+                guard let self = self else { return }
+                let registration = registration
+                    .mapError { error -> AuthorizationUseCaseError in
+                        switch error {
+                        case .failed:
+                            return .failed
+                        case .invalidData:
+                            return .invalidData
+                        }
+                    }
+                guard let user = registration.value else {
+                    completion?(registration)
                     return
                 }
                 self.userRepository.saveUser(user, completion: { saved in

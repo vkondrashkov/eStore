@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Moya
 
 final class CatalogBuilderImpl {
     private let dependency: CatalogDependency
@@ -23,7 +24,11 @@ extension CatalogBuilderImpl: CatalogBuilder {
         view.theme = dependency.themeManager.currentTheme
         let component = CatalogComponent(
             navigation: dependency.catalogNavigation,
-            productsService: ProductsServiceImpl(),
+            userRepository: dependency.userRepository,
+            cartRepository: dependency.cartRepository,
+            productsUseCase: ProductsUseCaseImpl(
+                repository: ProductsRepositoryImpl(provider: MoyaProvider<eStoreAPI>())
+            ),
             themeManager: dependency.themeManager,
             alertFactory: dependency.alertFactory
         )

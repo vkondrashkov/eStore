@@ -19,6 +19,7 @@ final class DashboardSceneImpl {
 // MARK: - DashboardScene implementation
 extension DashboardSceneImpl: DashboardScene {
     func play(dashboardShow: DashboardShow) {
+        dashboardShow.tabController.modalPresentationStyle = .fullScreen
         rootViewController.present(dashboardShow.tabController, animated: true, completion: nil)
     }
 

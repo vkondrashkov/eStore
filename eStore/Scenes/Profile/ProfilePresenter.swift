@@ -9,14 +9,17 @@
 final class ProfilePresenterImpl {
     private unowned let view: ProfileView
     private unowned let router: ProfileRouter
+    private let interactor: ProfileInteractor
     private unowned let themeManager: ThemeManager
 
     init(view: ProfileView,
          router: ProfileRouter,
+         interactor: ProfileInteractor,
          themeManager: ThemeManager) {
 
         self.view = view
         self.router = router
+        self.interactor = interactor
         self.themeManager = themeManager
         self.themeManager.add(observer: self)
     }
@@ -42,14 +45,19 @@ final class ProfilePresenterImpl {
         router.showContact()
     }
 
-    private func handleLogoutCategoryPress() {
+    func handleLogoutCategoryPress() {
         let alert = Alert(
             title: "Logout confirmation",
             message: "Are you sure you want to log out?",
             alertType: .doubleAction,
             primaryCaption: "OK",
             primaryAction: { [weak self] in
-                self?.router.logout()
+                self?.interactor.logout(completion: { error in
+                    guard error == nil else {
+                        return
+                    }
+                    self?.router.logout()
+                })
             },
             secondaryCaption: "Cancel",
             secondaryAction: nil
@@ -65,11 +73,14 @@ final class ProfilePresenterImpl {
 // MARK: - ProfilePresenter implementation
 extension ProfilePresenterImpl: ProfilePresenter {
     func handleLoadView() {
-        view.display(rightBarButton: "Edit")
-        
+        guard let user = interactor.currentUser else {
+            router.logout()
+            return
+        }
+
         let userRow = SectionedMenuRow(
-            imageUrl: "https://pp.userapi.com/c846420/v846420977/17f606/5X3A9gQCaY8.jpg?ava=1",
-            title: "Vladislav Kondrashkov",
+            imageUrl: nil,
+            title: user.fullname ?? user.username,
             type: .thumbnail,
             action: nil
         )

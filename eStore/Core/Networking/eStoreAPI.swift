@@ -6,63 +6,132 @@
 //  Copyright © 2019 Vladislav Kondrashkov. All rights reserved.
 //
 
+import Alamofire
 import Moya
 
 enum eStoreAPI {
     case authorize(login: String, password: String)
+    case register(login: String, password: String)
 
+    case addSmartphone(userId: Int, smartphoneForm: SmartphoneForm)
+    case updateSmartphone(userId: Int, smartphoneId: Int, smartphoneForm: SmartphoneForm)
     case smartphones
     case smartphone(id: String)
-    case deleteSmartphone(id: String)
+    case deleteSmartphone(id: Int)
 
+    case addLaptop(userId: Int, laptopForm: LaptopForm)
+    case updateLaptop(userId: Int, laptopId: Int, laptopForm: LaptopForm)
     case laptops
     case laptop(id: String)
-    case deleteLaptop(id: String)
+    case deleteLaptop(id: Int)
 
+    case addTV(userId: Int, tvForm: TVForm)
+    case updateTV(userId: Int, tvId: Int, tvForm: TVForm)
     case tvs
     case tv(id: String)
-    case deleteTV(id: String)
+    case deleteTV(id: Int)
+
+    case cart(userId: Int)
+    case addCart(userId: Int, productId: Int, productTypeId: Int)
+    case deleteCart(userId: Int, cartItemId: Int)
 }
 
 // MARK: TargetType implementation
 extension eStoreAPI: TargetType {
     var baseURL: URL {
-        return URL(string: "http://localhost:8080")!
+//        return URL(string: "http://localhost:8080")!
+        return URL(string: "http://172.20.10.2:8080")!
     }
 
     var path: String {
         switch self {
         case .authorize:
-            return "/authorize"
+            return "/user/authorize"
+        case .register:
+            return "/user/register"
+        case .addSmartphone:
+            return "/smartphone"
+        case .updateSmartphone(_, let id, _):
+            return "/smartphone/\(id)"
         case .smartphones:
-            return "/smartphones"
+            return "/smartphone"
         case .smartphone(let id):
-            return "/smartphones/\(id)"
+            return "/smartphone/\(id)"
         case .deleteSmartphone(let id):
-            return "/smartphones/\(id)"
+            return "/smartphone/\(id)"
+        case .addLaptop:
+            return "/laptop"
+        case .updateLaptop(_, let id, _):
+            return "/laptop/\(id)"
         case .laptops:
-            return "/laptops"
+            return "/laptop"
         case .laptop(let id):
-            return "/laptops/\(id)"
+            return "/laptop/\(id)"
         case .deleteLaptop(let id):
-            return "/laptops/\(id)"
+            return "/laptop/\(id)"
+        case .addTV:
+            return "/tv"
+        case .updateTV(_, let id, _):
+            return "/tv/\(id)"
         case .tvs:
-            return "/tvs"
+            return "/tv"
         case .tv(let id):
-            return "/tvs/\(id)"
+            return "/tv/\(id)"
         case .deleteTV(let id):
-            return "/tvs/\(id)"
+            return "/tv/\(id)"
+        case .cart:
+            return "/cart"
+        case .addCart:
+            return "/cart"
+        case .deleteCart(_, let id):
+            return "/cart/\(id)"
         }
     }
 
-    var method: Method {
+    var method: Moya.Method {
         switch self {
-        case .authorize:
+        case .authorize, .register, .addCart, .addSmartphone,
+             .addLaptop, .addTV, .updateSmartphone, .updateLaptop, .updateTV:
             return .post
-        case .deleteSmartphone, .deleteLaptop, .deleteTV:
+        case .deleteSmartphone, .deleteLaptop, .deleteTV,
+             .deleteCart:
             return .delete
         default:
             return .get
+        }
+    }
+
+    var parameters: [String: Any]? {
+        switch self {
+        case .addCart(_, let productId, let productTypeId):
+            return [
+                "productId": productId,
+                "productTypeId": productTypeId
+            ]
+        case .authorize(let login, let password):
+            return [
+                "login": login,
+                "password": password.hashed(.sha512)!
+            ]
+        case .register(let login, let password):
+            return [
+                "login": login,
+                "password": password.hashed(.sha512)!
+            ]
+        case .addSmartphone(_, let smartphoneForm):
+            return smartphoneForm.toParameters()
+        case .addLaptop(_, let laptopForm):
+            return laptopForm.toParameters()
+        case .addTV(_, let tvForm):
+            return tvForm.toParameters()
+        case .updateSmartphone(_, _, let smartphoneForm):
+            return smartphoneForm.toParameters()
+        case .updateLaptop(_, _, let laptopForm):
+            return laptopForm.toParameters()
+        case .updateTV(_, _, let tvForm):
+            return tvForm.toParameters()
+        default:
+            return nil
         }
     }
 
@@ -82,17 +151,45 @@ extension eStoreAPI: TargetType {
             return stubbedResponse("products-tvs")
         case .tv(let id):
             return stubbedResponse("products-tv-\(id)")
+        case .cart(let userId):
+            return stubbedResponse("cart-\(userId)")
         default:
             return Data()
         }
     }
 
     var task: Task {
+        if let parameters = self.parameters {
+            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
+        }
         return .requestPlain // TEMP
     }
 
-    var headers: [String : String]? {
-        return ["Content-Type": "application/json"]
+    var headers: [String: String]? {
+        var headers: [String: String] = ["Content-Type": "application/json"]
+        switch self {
+        case .cart(let userId):
+            headers["userId"] = String(userId)
+        case .addCart(let userId, _, _):
+            headers["userId"] = String(userId)
+        case .deleteCart(let userId, _):
+            headers["userId"] = String(userId)
+        case .addSmartphone(let userId, _):
+            headers["userId"] = String(userId)
+        case .addLaptop(let userId, _):
+            headers["userId"] = String(userId)
+        case .addTV(let userId, _):
+            headers["userId"] = String(userId)
+        case .updateSmartphone(let userId, _, _):
+            headers["userId"] = String(userId)
+        case .updateLaptop(let userId, _, _):
+            headers["userId"] = String(userId)
+        case .updateTV(let userId, _, _):
+            headers["userId"] = String(userId)
+        default:
+            break
+        }
+        return headers
     }
 
     var validationType: ValidationType {

@@ -27,10 +27,34 @@ extension ProductDescriptionBuilderImpl: ProductDescriptionBuilder {
         view.alertFactory = dependency.alertFactory
         view.theme = dependency.themeManager.currentTheme
         let scene = ProductDescriptionSceneImpl(navigation: dependency.navigation)
-        let coordinator = ProductDescriptionCoordinator(scene: scene,
-                                                        show: view)
+        let component = ProductDescriptionComponent(
+            navigation: dependency.navigation,
+            smartphoneEditorScene: SmartphoneEditorSceneImpl(navigation: dependency.navigation),
+            laptopEditorScene: LaptopEditorSceneImpl(navigation: dependency.navigation),
+            tvEditorScene: TVEditorSceneImpl(navigation: dependency.navigation),
+            userRepository: dependency.userRepository,
+            productsUseCase: dependency.productsUseCase,
+            themeManager: dependency.themeManager,
+            alertFactory: dependency.alertFactory
+        )
+        let smartphoneEditorBuilder = SmartphoneEditorBuilderImpl(dependency: component)
+        let laptopEditorBuilder = LaptopEditorBuilderImpl(dependency: component)
+        let tvEditorBuilder = TVEditorBuilderImpl(dependency: component)
+        let coordinator = ProductDescriptionCoordinator(
+            scene: scene,
+            show: view,
+            smartphoneEditorBuilder: smartphoneEditorBuilder,
+            laptopEditorBuilder: laptopEditorBuilder,
+            tvEditorBuilder: tvEditorBuilder
+        )
         let presenter = ProductDescriptionPresenterImpl(
             view: view,
+            router: coordinator,
+            interactor: ProductDescriptionInteractorImpl(
+                cartRepository: dependency.cartRepository,
+                userRepository: dependency.userRepository,
+                productsUseCase: dependency.productsUseCase
+            ),
             themeManager: dependency.themeManager
         )
         view.presenter = presenter

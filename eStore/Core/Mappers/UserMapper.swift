@@ -27,7 +27,8 @@ final class UserMapperImpl: UserMapper {
     }
 
     func userFromUserData(_ userData: UserData) -> User? {
-        guard let id = userData.id,
+        guard let userId = userData.id,
+            let id = Int(userId),
             let username = userData.username else {
                 return nil
         }

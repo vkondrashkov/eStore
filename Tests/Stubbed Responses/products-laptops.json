@@ -1,31 +1,34 @@
 [
     {
-        "id": "34ec91a46a12a40fc44c414b61b638e6",
+        "id": 1,
+        "resolutionHeight": 900,
+        "batteryCapacity": 1960,
+        "processorName": "Intel Core i5 5350U",
+        "ramCapacity": 8,
+        "operatingSystemRawValue": 3,
+        "graphicsAdapter": "",
         "imageUrl": "https://content2.onliner.by/catalog/device/header/69fd1638fafefbe0ecc02ab7fd9391f0.jpeg",
-        "brand": "Apple",
-        "name": "MacBook Air 13'' (2017 год) [MQD32]",
-        "operatingSystem": "MacOs",
-        "display": {
-            "width": 1440,
-            "height": 900
-        },
-        "processor": "Intel Core i5 5350U",
+        "color": "Silver",
         "price": 2129,
-        "stockCount": 6
-
+        "resolutionWidth": 1440,
+        "brandName": "Apple",
+        "name": "MacBook Air 13'' (2017 год) [MQD32]",
+        "memoryCapacity": 128
     },
     {
-        "id": "c584ce7e3117e3563b1bf0450844d459",
-        "imageUrl": "https://content2.onliner.by/catalog/device/header/d5fb0dbff218465e5e2cb70d49007d28.jpeg",
-        "brand": "Xiaomi",
-        "name": "Mi Notebook Pro 15.6 JYU4036CN",
-        "operatingSystem": "Windows",
-        "display": {
-            "width": 1920,
-            "height": 1080
-        },
-        "processor": "Intel Core i5 8250U",
-        "price": 2202,
-        "stockCount": 0
+        "id": 2,
+        "resolutionHeight": 900,
+        "batteryCapacity": 1960,
+        "processorName": "Intel Core i5 5350U",
+        "ramCapacity": 8,
+        "operatingSystemRawValue": 3,
+        "graphicsAdapter": "",
+        "imageUrl": "https://content2.onliner.by/catalog/device/header/69fd1638fafefbe0ecc02ab7fd9391f0.jpeg",
+        "color": "Silver",
+        "price": 2129,
+        "resolutionWidth": 1440,
+        "brandName": "Apple",
+        "name": "MacBook Air 13'' (2017 год) [MQD32]",
+        "memoryCapacity": 128
     }
 ]

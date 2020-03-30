@@ -18,6 +18,7 @@ final class ProductsListViewImpl: UIViewController {
     
     private var productsTableViewDataSource = ProductsListTableViewDataSource()
     private var productsTableView: UITableView!
+    private let refreshControl = UIRefreshControl()
 
     override func loadView() {
         view = UIView()
@@ -64,14 +65,33 @@ final class ProductsListViewImpl: UIViewController {
         productsTableView.register(ProductsListTableViewCell.self, forCellReuseIdentifier: ProductsListTableViewCell.reuseIdentifier)
         productsTableView.dataSource = productsTableViewDataSource
         productsTableView.delegate = self
+        productsTableView.refreshControl = refreshControl
+
+        refreshControl.addTarget(self, action: #selector(refreshControlDidPull), for: .valueChanged)
 
         apply(theme: theme)
         presenter.handleLoadView()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        presenter.shouldViewAppear()
+    }
+
     private func apply(theme: Theme) {
         view.backgroundColor = theme.backgroundColor
         productsTableView.separatorColor = theme.borderColor
+    }
+
+    // MARK: - Actions
+
+    @objc private func rightBarButtonDidPress() {
+        presenter.handleAddProductPress()
+    }
+
+    @objc private func refreshControlDidPull() {
+        presenter.handleRefresh()
     }
 }
 
@@ -98,6 +118,15 @@ extension ProductsListViewImpl: ThemeUpdatable {
     }
 }
 
+// MARK: - AlertDisplayable implementation
+
+extension ProductsListViewImpl: AlertDisplayable {
+    func display(alert: Alert) {
+        let alertController = AlertFactoryImpl().make(alert: alert)
+        present(alertController, animated: true, completion: nil)
+    }
+}
+
 // MARK: - ProductsListView implementation
 extension ProductsListViewImpl: ProductsListView {
     func showActivityIndicator() {
@@ -115,6 +144,7 @@ extension ProductsListViewImpl: ProductsListView {
     }
     
     func hideActivityIndicator() {
+        refreshControl.endRefreshing()
         activityIndicator.stopAnimating()
         UIView.transition(
             with: view,
@@ -132,6 +162,16 @@ extension ProductsListViewImpl: ProductsListView {
         productsTableViewDataSource.items = storeItemList
         productsTableView.reloadData()
     }
+
+    func display(rightBarButtonTitle: String) {
+        let rightBarButtonItem = UIBarButtonItem(
+            title: rightBarButtonTitle,
+            style: .plain,
+            target: self,
+            action: #selector(rightBarButtonDidPress)
+        )
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+    }
 }
 
 // MARK: - ProductsListShow implementation
@@ -146,5 +186,25 @@ extension ProductsListViewImpl: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.handleProductPress(storeItem: productsTableViewDataSource.items[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let actions = presenter.configureEditActions(for: indexPath)
+
+        var tableViewRowActions: [UITableViewRowAction] = []
+        for action in actions {
+            let action = UITableViewRowAction(
+                style: action.isDestructive ? .destructive : .normal,
+                title: action.title,
+                handler: { [weak self] tableRowAction, indexPath in
+                    guard let self = self else { return }
+                    let item = self.productsTableViewDataSource.items[indexPath.row]
+                    action.action?(item)
+                }
+            )
+            tableViewRowActions.append(action)
+        }
+
+        return tableViewRowActions
     }
 }

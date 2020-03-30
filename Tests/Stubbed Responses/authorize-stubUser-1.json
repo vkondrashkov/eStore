@@ -1,7 +1,7 @@
 {
-    "id": "3571539fcbe330452d4d938502ed9f15",
+    "id": 1,
     "username": "stubUser",
     "email": "example@domain.com",
     "fullname": "Foo Bar",
-    "role": 1
+    "roleRawValue": 1
 }

@@ -10,6 +10,7 @@ import UIKit
 
 protocol ProfileDependency: AnyObject {
     var profileNavigation: UINavigationController { get }
+    var userRepository: UserRepository { get }
     var themeManager: ThemeManager { get }
     var alertFactory: AlertFactory { get }
 }
@@ -45,5 +46,15 @@ protocol ProfileView: AnyObject, ThemeUpdatable, AlertDisplayable {
 
 protocol ProfilePresenter: AnyObject {
     func handleLoadView()
+    func handleLogoutCategoryPress()
     func handleRightBarButtonPress()
+}
+
+enum ProfileInteractorError: Error {
+    case failed
+}
+
+protocol ProfileInteractor: AnyObject {
+    var currentUser: User? { get }
+    func logout(completion: @escaping (ProfileInteractorError?) -> Void)
 }

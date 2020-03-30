@@ -17,6 +17,8 @@ final class CartViewImpl: UIViewController {
     private var fadeMaskView: UIView!
     private var activityIndicator: UIActivityIndicatorView!
 
+    private let refreshControl = UIRefreshControl()
+
     private var cartTableViewDataSource = CartTableViewDataSource()
     private var cartTableView: UITableView!
 
@@ -66,9 +68,18 @@ final class CartViewImpl: UIViewController {
         cartTableView.register(CartTableViewCell.self, forCellReuseIdentifier: CartTableViewCell.reuseIdentifier)
         cartTableView.dataSource = cartTableViewDataSource
         cartTableView.delegate = self
+        cartTableView.refreshControl = refreshControl
+
+        refreshControl.addTarget(self, action: #selector(refreshControlDidPull), for: .valueChanged)
 
         apply(theme: theme)
         presenter.handleLoadView()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        presenter.shouldViewAppear()
     }
 
     private func apply(theme: Theme) {
@@ -79,6 +90,12 @@ final class CartViewImpl: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: theme.textColor]
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: theme.textColor]
         cartTableView.separatorColor = theme.borderColor
+    }
+
+    // MARK: - Actions
+
+    @objc func refreshControlDidPull() {
+        presenter.handleRefresh()
     }
 }
 
@@ -99,6 +116,7 @@ extension CartViewImpl: CartView {
     }
 
     func hideActivityIndicator() {
+        refreshControl.endRefreshing()
         activityIndicator.stopAnimating()
         UIView.transition(
             with: view,
@@ -161,5 +179,17 @@ extension CartViewImpl: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.handleProductPress(storeItem: cartTableViewDataSource.items[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteTitle = NSLocalizedString("Delete", comment: "Delete action")
+        let deleteAction = UITableViewRowAction(
+            style: .destructive,
+            title: deleteTitle) { action, indexPath in
+                let item = self.cartTableViewDataSource.items[indexPath.row]
+                self.presenter.handleProductDelete(storeItem: item)
+            }
+
+        return [deleteAction]
     }
 }

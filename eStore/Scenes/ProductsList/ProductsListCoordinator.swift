@@ -12,14 +12,23 @@ final class ProductsListCoordinator {
     
     private let productDescriptionBuilder: ProductDescriptionBuilder
     private var productDescriptionCoordinator: ProductDescriptionCoordinator?
+
+    private let smartphoneEditorBuilder: SmartphoneEditorBuilder
+    private let laptopEditorBuilder: LaptopEditorBuilder
+    private let tvEditorBuilder: TVEditorBuilder
     
     init(scene: ProductsListScene,
          show: ProductsListShow,
-         productDescriptionBuilder: ProductDescriptionBuilder) {
-        
+         productDescriptionBuilder: ProductDescriptionBuilder,
+         smartphoneEditorBuilder: SmartphoneEditorBuilder,
+         laptopEditorBuilder: LaptopEditorBuilder,
+         tvEditorBuilder: TVEditorBuilder) {
         self.scene = scene
         self.show = show
         self.productDescriptionBuilder = productDescriptionBuilder
+        self.smartphoneEditorBuilder = smartphoneEditorBuilder
+        self.laptopEditorBuilder = laptopEditorBuilder
+        self.tvEditorBuilder = tvEditorBuilder
     }
 }
 
@@ -39,5 +48,32 @@ extension ProductsListCoordinator: ProductsListRouter {
     func showProductDescription(for storeItem: StoreItem) {
         productDescriptionCoordinator = productDescriptionBuilder.build(with: storeItem)
         productDescriptionCoordinator?.start()
+    }
+
+    func showSmartphoneEditor() {
+        let provider = smartphoneEditorBuilder.build(with: nil)
+        let coordinator = provider.coordinator
+        coordinator?.onTerminate = { [weak coordinator] in
+            coordinator?.stop { }
+        }
+        coordinator?.start()
+    }
+
+    func showLaptopEditor() {
+        let provider = laptopEditorBuilder.build(with: nil)
+        let coordinator = provider.coordinator
+        coordinator?.onTerminate = { [weak coordinator] in
+            coordinator?.stop { }
+        }
+        coordinator?.start()
+    }
+
+    func showTVEditor() {
+        let provider = tvEditorBuilder.build(with: nil)
+        let coordinator = provider.coordinator
+        coordinator?.onTerminate = { [weak coordinator] in
+            coordinator?.stop { }
+        }
+        coordinator?.start()
     }
 }

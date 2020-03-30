@@ -28,6 +28,10 @@ extension SignUpBuilderImpl: SignUpBuilder {
         let presenter = SignUpPresenterImpl(
             view: view,
             router: coordinator,
+            interactor: SignUpInteractorImpl(
+                credentialsValidatorUseCase: dependency.credentialsValidatorUseCase,
+                authorizationUseCase: dependency.authorizationUseCase
+            ),
             themeManager: dependency.themeManager
         )
         view.presenter = presenter

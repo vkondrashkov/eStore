@@ -28,6 +28,10 @@ extension CartBuilderImpl: CartBuilder {
         let presenter = CartPresenterImpl(
             view: view,
             router: coordinator,
+            interactor: CartInteractorImpl(
+                cartRepository: dependency.cartRepository,
+                userRepository: dependency.userRepository
+            ),
             themeManager: dependency.themeManager
         )
         view.presenter = presenter

@@ -20,24 +20,40 @@ final class ProductsListBuilderImpl {
 extension ProductsListBuilderImpl: ProductsListBuilder {
     func build(with productType: ProductType) -> ProductsListCoordinator {
         let view = ProductsListViewImpl()
-        view.title = productType.rawValue
+        view.title = productType.title
         view.theme = dependency.themeManager.currentTheme
         let component = ProductsListComponent(
             navigation: dependency.navigation,
+            smartphoneEditorScene: SmartphoneEditorSceneImpl(navigation: dependency.navigation),
+            laptopEditorScene: LaptopEditorSceneImpl(navigation: dependency.navigation),
+            tvEditorScene: TVEditorSceneImpl(navigation: dependency.navigation),
+            userRepository: dependency.userRepository,
+            cartRepository: dependency.cartRepository,
+            productsUseCase: dependency.productsUseCase,
             themeManager: dependency.themeManager,
             alertFactory: dependency.alertFactory
         )
         let scene = ProductsListSceneImpl(navigation: dependency.navigation)
         let productDescriptionBuilder = ProductDescriptionBuilderImpl(dependency: component)
+        let smartphoneEditorBuilder = SmartphoneEditorBuilderImpl(dependency: component)
+        let laptopEditorBuilder = LaptopEditorBuilderImpl(dependency: component)
+        let tvEditorBuilder = TVEditorBuilderImpl(dependency: component)
         let coordinator = ProductsListCoordinator(
             scene: scene,
             show: view,
-            productDescriptionBuilder: productDescriptionBuilder
+            productDescriptionBuilder: productDescriptionBuilder,
+            smartphoneEditorBuilder: smartphoneEditorBuilder,
+            laptopEditorBuilder: laptopEditorBuilder,
+            tvEditorBuilder: tvEditorBuilder
         )
         let presenter = ProductsListPresenterImpl(
             view: view,
             router: coordinator,
-            productsService: dependency.productsService,
+            interactor: ProductsListInteractorImpl(
+                productsUseCase: dependency.productsUseCase,
+                userRepository: dependency.userRepository,
+                cartRepository: dependency.cartRepository
+            ),
             productType: productType,
             themeManager: dependency.themeManager
         )

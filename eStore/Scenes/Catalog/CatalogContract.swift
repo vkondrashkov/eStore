@@ -10,6 +10,8 @@ import UIKit
 
 protocol CatalogDependency: AnyObject {
     var catalogNavigation: UINavigationController { get }
+    var userRepository: UserRepository { get }
+    var cartRepository: CartRepository { get }
     var themeManager: ThemeManager { get }
     var alertFactory: AlertFactory { get }
 }
@@ -27,13 +29,12 @@ protocol CatalogShow: AnyObject {
 }
 
 protocol CatalogRouter: AnyObject {
-    // TODO: Refactor show(_:) method
-    func showProductsList(title: String)
+    func showProductsList(productId: Int)
 }
 
 protocol CatalogView: AnyObject, ThemeUpdatable { }
 
 protocol CatalogPresenter: AnyObject {
     func handleLoadView()
-    func handleCategoryPress(title: String) // TEMP
+    func handleCategoryPress(productId: Int)
 }

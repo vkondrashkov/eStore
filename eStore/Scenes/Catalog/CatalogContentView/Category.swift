@@ -11,4 +11,5 @@ import UIKit
 struct Category {
     let iconUrl: String?
     let name: String
+    let productId: Int
 }

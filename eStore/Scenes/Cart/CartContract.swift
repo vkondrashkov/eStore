@@ -10,6 +10,8 @@ import UIKit
 
 protocol CartDependency: AnyObject {
     var cartNavigation: UINavigationController { get }
+    var userRepository: UserRepository { get }
+    var cartRepository: CartRepository { get }
     var themeManager: ThemeManager { get }
     var alertFactory: AlertFactory { get }
 }
@@ -38,5 +40,19 @@ protocol CartView: AnyObject, ThemeUpdatable, AlertDisplayable {
 
 protocol CartPresenter: AnyObject {
     func handleLoadView()
+    func shouldViewAppear()
+    func handleRefresh()
     func handleProductPress(storeItem: StoreItem)
+    func handleProductDelete(storeItem: StoreItem)
+}
+
+enum CartInteractorError: Error {
+    case failed
+    case invalidData
+    case notAuthorized
+}
+
+protocol CartInteractor: AnyObject {
+    func fetch(completion: @escaping (Result<[CartItem], CartInteractorError>) -> Void)
+    func delete(storeItemId: Int, completion: @escaping (CartInteractorError?) -> Void)
 }

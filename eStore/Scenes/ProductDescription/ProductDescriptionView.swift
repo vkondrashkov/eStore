@@ -15,6 +15,7 @@ final class ProductDescriptionViewImpl: UIViewController {
     var dataSource: ProductDescriptionTableViewDataSource!
 
     private var descriptionTableView: UITableView!
+    private let refreshControl = UIRefreshControl()
 
     override func loadView() {
         view = UIView()
@@ -39,6 +40,9 @@ final class ProductDescriptionViewImpl: UIViewController {
         descriptionTableView.register(ProductDescriptionTablePriceCell.self, forCellReuseIdentifier: ProductDescriptionTablePriceCell.reuseIdentifier)
         descriptionTableView.dataSource = dataSource
         descriptionTableView.delegate = self
+        descriptionTableView.refreshControl = refreshControl
+
+        refreshControl.addTarget(self, action: #selector(refreshControlDidPull), for: .valueChanged)
 
         apply(theme: theme)
         presenter.handleLoadView()
@@ -48,10 +52,40 @@ final class ProductDescriptionViewImpl: UIViewController {
         view.backgroundColor = theme.backgroundColor
         descriptionTableView.separatorColor = theme.borderColor
     }
+
+    // MARK: - Actions
+
+    @objc private func rightBarButtonDidPress() {
+        presenter.handleEditPress(storeItem: dataSource.item)
+    }
+
+    @objc private func refreshControlDidPull() {
+        presenter.handleRefresh(storeItem: dataSource.item)
+    }
 }
 
 // MARK: - ProductDescriptionView implementation
-extension ProductDescriptionViewImpl: ProductDescriptionView { }
+
+extension ProductDescriptionViewImpl: ProductDescriptionView {
+    func update(storeItem: StoreItem) {
+        dataSource.item = storeItem
+        descriptionTableView.reloadData()
+    }
+
+    func hideActivityIndicator() {
+        refreshControl.endRefreshing()
+    }
+
+    func display(rightBarButtonTitle: String) {
+        let rightBarButtonItem = UIBarButtonItem(
+            title: rightBarButtonTitle,
+            style: .plain,
+            target: self,
+            action: #selector(rightBarButtonDidPress)
+        )
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+    }
+}
 
 // MARK: - ThemeUpdatable implementation
 extension ProductDescriptionViewImpl: ThemeUpdatable {
@@ -97,6 +131,6 @@ extension ProductDescriptionViewImpl: UITableViewDelegate { }
 // MARK: - ProductDescriptionTablePriceCellDelegate implementation
 extension ProductDescriptionViewImpl: ProductDescriptionTablePriceCellDelegate {
     func cartAddButtonDidPress(_ cell: ProductDescriptionTablePriceCell) {
-        presenter.cartAddButtonDidPress()
+        presenter.cartAddButtonDidPress(id: dataSource.item.id, productTypeId: dataSource.item.type.rawValue)
     }
 }
